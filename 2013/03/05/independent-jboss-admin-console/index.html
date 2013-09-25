@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  
+  <title>Independent JBoss Admin Console | HAL</title>
+  <meta name="author" content="Red Hat, Inc.">
+  
+  <meta name="description" content="We&amp;#39;re currently working on a new feature for the JBoss Admin Console. The console should become independent from the
+rest of the JBoss AS distribution. As the console is built with GWT and &quot;merely&quot; consists of static resources like
+HTML, JavaScript and CSS, the idea is to have a dedicated host which serves these resources. When loading the console
+the user can manage a list of server instances and chooses the one he likes to connect to. The server instances are
+stored in the browsers local storage, so they will be available the next time the
+console is launched:">
+  
+  
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <meta property="og:title" content="Independent JBoss Admin Console"/>
+  <meta property="og:site_name" content="HAL"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+    <link href="/favicon.png" rel="icon"/>
+    <link rel="alternate" href="/atom.xml" title="HAL" type="application/atom+xml"/>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--link rel="stylesheet" href="/css/bootstrap.css" media="screen" type="text/css"/-->
+    <link rel="stylesheet" media="screen" href="http://static.jboss.org/theme/css/bootstrap-community/2.3.1.1/bootstrap-community.min.css">
+
+
+    <style type="text/css">
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 860px;
+        }
+
+        .carousel-inner>.item>img {
+            margin: 0 auto;
+        }
+
+        .carousel-inner h3 {
+            color:#ffffff;
+        }
+
+        .banner {
+            background-color:#3B4D64;
+            height: 110px;
+            background: url("/img/bg2_2000px.jpg") no-repeat scroll center center transparent;
+        }
+
+        .banner h1 {
+            color:#ffffff;
+            padding-top:60px;
+            padding-left:15px;
+        }
+
+        .gist {
+            font-size:80%;
+            padding-right:15px;
+            padding-left:15px;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="/css/responsive.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/hal.css" type="text/css"/>
+</head>
+
+<body>
+
+    <div id="content" class="container">
+        <!-- header -->
+        
+<div class="banner">
+    <a href="/"><h1>HAL</h1></a>
+    <div class="taglinelight visible-desktop">Managing Wildfly &amp; EAP Server Instances</div>
+</div>
+
+<!-- Navbar ================================================== -->
+<div id="navbar-fix" class='navbar navbar-inverse'>
+  <div class='navbar-inner'>
+    <div class='container-fluid'>
+
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <!--a class="brand" href="/">Home</a-->
+      <div class='nav-collapse collapse'>
+
+<!-- main menu -->
+<ul class='nav'>
+    <li><a href="/">Home</a></li>
+
+
+    <li><a href="/blog/index.html">Blog</a></li>
+
+
+
+  <li class='dropdown'>
+    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
+    <ul class='dropdown-menu'>
+
+      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+
+      <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
+
+    </ul>
+  </li>
+
+
+
+  <li class='dropdown'>
+    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Community<b class='caret'></b></a>
+    <ul class='dropdown-menu'>
+
+      <li><a href="//issues.jboss.org/browse/HAL">Issue Tracking</a></li>
+
+      <li><a href="//lists.jboss.org/mailman/listinfo/wildfly-dev">Mailing List</a></li>
+
+      <li><a href="//freenode.net#wildlfy-management">IRC</a></li>
+
+      <li><a href="//wildfly.org">Wildfly</a></li>
+
+    </ul>
+  </li>
+
+
+</ul>
+
+<!-- extend menu: archive/tagcloud/... -->
+<ul class='nav pull-right'>
+
+
+    <li><a href="//github.com/hal">Github</a></li>
+
+
+  <!--li><a class="various" href="#fbox-tagcloud">tags</a></li-->
+</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+        <!-- body -->
+        
+<ol class="breadcrumb">
+    <li><a href="/blog/index.html" title="Blog">Blog</a></li>
+    <li>/</li>
+    <li class="active">Independent JBoss Admin Console</li>
+</ol>
+
+
+<article class="post">
+  <div class="row">
+
+    <!-- article.meta -->
+    <div class="span2 article-meta">
+      <div class="date">
+        <time datetime="2013-03-05T20:43:00.000Z">
+          <span class="day">05</span> / 
+          <span class="month">03</span> / 
+          <span class="year">13</span>
+        </time>
+      </div>
+      <div class="post-tags">
+        
+  <!-- tags: '2' -->
+  
+    <a href='/tags/jboss/'><span class='post-tag'>jboss</span></a>
+  
+    <a href='/tags/console/'><span class='post-tag'>console</span></a>
+  
+
+      </div>
+    </div>
+
+    <!-- article main -->
+    <div class="span10 article-main">
+      <header><div class="page-header">
+        
+  
+    <h1 class="title">Independent JBoss Admin Console</h1>
+  
+
+      </div></header>
+      <div class="article-entry">
+        
+          <p>We&#39;re currently working on a new feature for the JBoss Admin Console. The console should become independent from the
+rest of the JBoss AS distribution. As the console is built with GWT and &quot;merely&quot; consists of static resources like
+HTML, JavaScript and CSS, the idea is to have a dedicated host which serves these resources. When loading the console
+the user can manage a list of server instances and chooses the one he likes to connect to. The server instances are
+stored in the browsers <a href="http://www.w3.org/TR/webstorage/" target="_blank">local storage</a>, so they will be available the next time the
+console is launched:<a id="more"></a></p>
+<img src="/images/posts/select_server_instance.png" class="centered" title="Connect to server">
+
+
+<p>Using this kind of setup brings us several advantages:</p>
+<ul>
+<li>We can update the console independently from the rest of the AS code base</li>
+<li>We can deploy the console to various (web)app stores like Firefox Marketplace or Chrome Web Store</li>
+<li>We can have different console versions with different feature sets (nightly, beta, stable)</li>
+<li>Using one console you can connect to different server instances running different setups (development, staging, production)</li>
+</ul>
+<h1>CORS</h1>
+<p>The console talks to the domain controller (DC) using the HTTP management API. Now when the console and the DC live
+on different hosts, the <a href="http://en.wikipedia.org/wiki/Same_origin_policy" target="_blank">same origin policy</a> (SOP) throws a monkey
+wrench in our efforts. Luckily we&#39;re not the first ones confronted with this problem. There are several ways to solve
+SOP restrictions:</p>
+<ul>
+<li>Server Side Proxies</li>
+<li><a href="http://en.wikipedia.org/wiki/JSONP" target="_blank">JSON with padding</a> (JSONP)</li>
+<li><a href="http://www.w3.org/TR/cors/" target="_blank">Cross-Origin Resource Sharing</a> (CORS)</li>
+</ul>
+<h2>Client</h2>
+<p>According to <a href="http://caniuse.com/#search=cors" target="_blank">caniuse.com</a> CORS is implemented in most of the browsers. CORS knows
+two different types of requests.</p>
+<ol>
+<li><p>Simple requests:</p>
+<p> A request that only uses <code>GET</code> or <code>POST</code>. If <code>POST</code> is used to send data to the server, the content type of the data
+sent to the server with the HTTP <code>POST</code> request is one of <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>
+or <code>text/plain</code>. The request must not contain custom headers (such as <code>X-Modified</code>, etc.)</p>
+</li>
+<li><p>Preflighted requests</p>
+<p> A request that uses methods other than <code>GET</code> or <code>POST</code>. Also, if <code>POST</code> is used to send request data with a
+content type other than <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code> or <code>text/plain</code>, e.g. if the
+<code>POST</code> request sends an XML payload to the server using <code>application/xml</code> or <code>text/xml</code>, then the request is a
+preflighted request. Furthermore if the request contains custom headers, it&#39;s preflighted.</p>
+</li>
+</ol>
+<p>Unlike simple requests, preflighted requests first send an HTTP <code>OPTIONS</code> request header to the resource on the other
+domain, in order to determine whether the actual request is safe to send. Since the console uses <code>POST</code> with a
+content type of <code>application/dmr-encoded</code> all requests are preflighted requests. This will be important when looking
+at the server side.</p>
+<p>Common to all requests is that the browser adds the request header <code>Origin</code>. The value of this header is the site
+that served the page. For example, suppose a page on <a href="http://www.example-social-network.com" target="_blank">http://www.example-social-network.com</a> attempts to access a
+user&#39;s data in online-personal-calendar.com. If the browser implements CORS, the following request header would be sent:</p>
+<pre><code>Origin: http://www.example-social-network.com</code></pre>
+<h2>Server</h2>
+<p>It is up to the server to decide which origins are allowed. When the server accepts cross-origin requests, it sends an
+<code>Access-Control-Allow-Origin</code> header in its response. The value of the header indicates what origin sites are allowed.
+For example, a response to the previous request would contain the following:</p>
+<pre><code>Access-Control-Allow-Origin: http://www.example-social-network.com.</code></pre>
+<p>For the JBoss AS this implies changes to the class <code>org.jboss.as.domain.http.server.DomainApiHandler</code>. This class
+handles HTTP requests to the management API. The modified version accepts preflighted <code>OPTIONS</code> requests and sets the
+relevant response headers.</p>
+<h2>Authentication</h2>
+<p>The console uses digest authentication. This must continue to work when doing cross-origin requests. By default,
+in cross-origin <code>XMLHttpRequest</code> invocations, browsers will not send credentials. A specific flag called
+<code>withCredentials</code> has to be set on the <code>XMLHttpRequest</code> object when it is invoked. Unfortunately GWTs implementation
+of the JavaScript <code>XMLHttpRequest</code> object does
+<a href="https://code.google.com/p/google-web-toolkit/issues/detail?id=7677" target="_blank">not yet implement</a> this flag. For the time being
+we need to include <code>withCredentials</code> by ourselves.</p>
+<p>The next challenge is to trigger the login dialog when accessing protected resources. Unfortunately when it comes to
+authentication browsers handle CORS quite differently. There are some workarounds depending on which browser is used:</p>
+<ul>
+<li>Chrome <a href="http://blog.chromium.org/2011/06/new-chromium-security-features-june.html" target="_blank">prevents basic authentication from a different origin as a phishing attack</a> period.
+The only way to get around that is to start Chrome using the command line option <code>--allow-cross-origin-auth-prompt</code>.</li>
+<li>Firefox makes no problems when it comes to display the login dialog (well done guys!)</li>
+<li>Safari won&#39;t show the login dialog. You can get around that by inserting a hidden <code>&lt;iframe&gt;</code> element linking to the
+protected url. This will trigger the authentication popup and once the user has authenticated, you can execute direct
+<code>XMLHttpRequests</code> as usual.</li>
+<li>Internet Explorer somewhat support CORS in IE8 and IE9 using the <code>XDomainRequest</code> object (but has limitations).</li>
+</ul>
+<p>Finally there&#39;s an issue related to preflighted <code>OPTIONS</code> requests on the server side. According to the specification
+those requests must exclude user credentials:</p>
+<blockquote><p>Otherwise, make a preflight request [...] with the following additional constraints:
+    - Exclude user credentials.</p>
+<footer><strong>W3C CORS specification</strong><cite><a href="http://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0" target="_blank">www.w3.org/TR/cors/&hellip;</a></cite></footer></blockquote>
+
+
+<p>Hence these requests are blocked by the server with &quot;401 Unauthorized&quot;. As a workaround the authenticators in the AS
+code base must let pass preflighted <code>OPTIONS</code> requests.</p>
+<h2>Status Quo</h2>
+<p>At the moment a first preview of an independent console is available at
+OpenShift: <a href="https://console-hpehl.rhcloud.com" target="_blank"><a href="https://console-hpehl.rhcloud.com">https://console-hpehl.rhcloud.com</a></a>. Please note that you must have a
+CORS enabled server instance running in order to connect from the console. You can build one by yourself using the
+&quot;cors&quot; branch of the AS code base: <a href="https://github.com/hpehl/wildfly/tree/cors" target="_blank"><a href="https://github.com/hpehl/wildfly/tree/cors">https://github.com/hpehl/wildfly/tree/cors</a></a>.
+Follow the steps in the <a href="https://github.com/hpehl/wildfly/tree/cors#readme" target="_blank">README</a> to build the server.</p>
+<p>Due to the limitations regarding authentication and CORS, the solution described here will only work in Firefox and
+Safari. If you want to use Chrome make sure to use the <code>--allow-cross-origin-auth-prompt</code> command line option.</p>
+<h2>Client Library</h2>
+<p>I stumbled upon an interesting project on GitHub: <a href="https://github.com/pazguille/CORS" target="_blank">https://github.com/pazguille/CORS</a>. Seems to have support for IE8+, 
+offers an easy to use API and hides the awkward implementation details. I will evaluate this and try to make a GWT port.</p>
+
+        
+      </div>
+      <footer><div class="article-comment">
+        
+<section id="comment">
+  <div id="disqus_thread" class="article-comment">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+      </div></footer>
+    </div>
+  </div>
+</article>
+
+
+    </div>
+
+    <!-- footer-->
+    <footer class="container">
+        
+<div class="row-fluid">
+    <div class="span3">
+        <h4>Navigate</h4>
+        <ul>
+            <li><a href="/" title="Home">Home</a></li>
+            <li><a href="/blog/index.html" title="Blog">Blog</a></li>
+            <li><a href="/developer/getting-started.html" title="Getting Started">Getting Started</a></li>
+        </ul>
+    </div>
+
+    <div class="span3">
+        <h4>Contribute</h4>
+        <ul>
+            <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
+            <li> <a title="Write code" href="https://github.com/hal">Write Code</a> </li>
+        </ul>
+    </div>
+
+    <div class="span3">
+        <h4>Follow Us</h4>
+        <ul>
+            <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
+            <li> <a title="Twitter" href="http://twitter.com/heiko_braun">Twitter</a> </li>
+        </ul>
+    </div>
+
+    <div class="span3">
+        <h4>Open Source</h4>
+        <p> HAL is released under the <b>LGPL</b> open source license.</b>
+            Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
+        </p>
+    </div>
+</div>
+
+<div class="span12">
+<p style="margin-top: 5px; font-size: 80%;">
+
+    &copy; 2013 Red Hat, Inc. All Rights Reserved
+    
+</p>
+</div>
+
+    </footer>
+
+    <!-- js  -->
+    <!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<!-- bootstrap -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/bootstrap-dropdown.js" ></script>
+  <script language='JavaScript'>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+<script type="text/javascript">
+var disqus_shortname = 'jboss-hal';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+    </body>
+</html>

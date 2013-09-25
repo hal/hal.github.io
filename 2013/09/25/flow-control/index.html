@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  
+  <title>Flow Control | HAL</title>
+  <meta name="author" content="Red Hat, Inc.">
+  
+  <meta name="description" content="Within Ajax applications you need to manage a lot of interaction and RPC related asynchronous events. The control flow structures become hard to understand and yield unpredicatable results.
+We created a re-usable GWT module that provides some higher order control structures that you can use to tame the asynchronous callback beast. It’s been inspired by Async.js, but aligns with the core GWT API’s more naturally.">
+  
+  
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <meta property="og:title" content="Flow Control"/>
+  <meta property="og:site_name" content="HAL"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+    <link href="/favicon.png" rel="icon"/>
+    <link rel="alternate" href="/atom.xml" title="HAL" type="application/atom+xml"/>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--link rel="stylesheet" href="/css/bootstrap.css" media="screen" type="text/css"/-->
+    <link rel="stylesheet" media="screen" href="http://static.jboss.org/theme/css/bootstrap-community/2.3.1.1/bootstrap-community.min.css">
+
+
+    <style type="text/css">
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 860px;
+        }
+
+        .carousel-inner>.item>img {
+            margin: 0 auto;
+        }
+
+        .carousel-inner h3 {
+            color:#ffffff;
+        }
+
+        .banner {
+            background-color:#3B4D64;
+            height: 110px;
+            background: url("/img/bg2_2000px.jpg") no-repeat scroll center center transparent;
+        }
+
+        .banner h1 {
+            color:#ffffff;
+            padding-top:60px;
+            padding-left:15px;
+        }
+
+        .gist {
+            font-size:80%;
+            padding-right:15px;
+            padding-left:15px;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="/css/responsive.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/hal.css" type="text/css"/>
+</head>
+
+<body>
+
+    <div id="content" class="container">
+        <!-- header -->
+        
+<div class="banner">
+    <a href="/"><h1>HAL</h1></a>
+    <div class="taglinelight visible-desktop">Managing Wildfly &amp; EAP Server Instances</div>
+</div>
+
+<!-- Navbar ================================================== -->
+<div id="navbar-fix" class='navbar navbar-inverse'>
+  <div class='navbar-inner'>
+    <div class='container-fluid'>
+
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <!--a class="brand" href="/">Home</a-->
+      <div class='nav-collapse collapse'>
+
+<!-- main menu -->
+<ul class='nav'>
+    <li><a href="/">Home</a></li>
+
+
+    <li><a href="/blog/index.html">Blog</a></li>
+
+
+
+  <li class='dropdown'>
+    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
+    <ul class='dropdown-menu'>
+
+      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+
+      <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
+
+    </ul>
+  </li>
+
+
+
+  <li class='dropdown'>
+    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Community<b class='caret'></b></a>
+    <ul class='dropdown-menu'>
+
+      <li><a href="//issues.jboss.org/browse/HAL">Issue Tracking</a></li>
+
+      <li><a href="//lists.jboss.org/mailman/listinfo/wildfly-dev">Mailing List</a></li>
+
+      <li><a href="//freenode.net#wildlfy-management">IRC</a></li>
+
+      <li><a href="//wildfly.org">Wildfly</a></li>
+
+    </ul>
+  </li>
+
+
+</ul>
+
+<!-- extend menu: archive/tagcloud/... -->
+<ul class='nav pull-right'>
+
+
+    <li><a href="//github.com/hal">Github</a></li>
+
+
+  <!--li><a class="various" href="#fbox-tagcloud">tags</a></li-->
+</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+        <!-- body -->
+        
+<ol class="breadcrumb">
+    <li><a href="/blog/index.html" title="Blog">Blog</a></li>
+    <li>/</li>
+    <li class="active">Flow Control</li>
+</ol>
+
+
+<article class="post">
+  <div class="row">
+
+    <!-- article.meta -->
+    <div class="span2 article-meta">
+      <div class="date">
+        <time datetime="2013-09-25T10:10:28.000Z">
+          <span class="day">25</span> / 
+          <span class="month">09</span> / 
+          <span class="year">13</span>
+        </time>
+      </div>
+      <div class="post-tags">
+        
+      </div>
+    </div>
+
+    <!-- article main -->
+    <div class="span10 article-main">
+      <header><div class="page-header">
+        
+  
+    <h1 class="title">Flow Control</h1>
+  
+
+      </div></header>
+      <div class="article-entry">
+        
+          <blockquote>
+<p>Within Ajax applications you need to manage a lot of interaction and RPC related asynchronous events. The control flow structures become hard to understand and yield unpredicatable results.
+We created a re-usable GWT module that provides some higher order control structures that you can use to tame the asynchronous callback beast. It’s been inspired by Async.js, but aligns with the core GWT API’s more naturally.</p>
+</blockquote>
+<a id="more"></a>
+
+<script src="https://gist.github.com/6086876.js"></script>
+
+
+
+<h2>Example: Waterfall Execution</h2>
+<p>Runs an array of functions in series, working on a shared context. However, if any of the functions pass an error to the callback, the next function is not executed and the outcome is immediately called with the error.</p>
+<script src="https://gist.github.com/6087016.js"></script>
+
+
+<p><strong>Step by Step</strong></p>
+<ol>
+<li>Create some executable command (aka Function)</li>
+<li>Create a command that should be run once the first one finishes</li>
+<li>The final callback to be invoked when the waterfall execution finishes. The StringBuffer acts as a shared context object</li>
+<li>Invoke the waterfall execution, providing a shared context (StringBuffer) and a number of function to be executed</li>
+</ol>
+<p><strong>Sources &amp; Maven Coordinates</strong></p>
+<p>The sources for the control API can be found at github:</p>
+<p><a href="https://github.com/hal/core/tree/master/flow/core" target="_blank">https://github.com/hal/core/tree/master/flow/core</a></p>
+<p>The maven artefacts resides with the JBoss repositories:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.jboss.as<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>jboss-as-console-flow<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.6.3.Final<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p><strong>GWT Module Setup</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">module</span> <span class="attribute">rename-to</span>=<span class="value">"your_module"</span>&gt;</span>
+[...]
+<span class="tag">&lt;<span class="title">inherits</span> <span class="attribute">name</span>=<span class="value">"org.jboss.gwt.flow.Flow"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">module</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+
+        
+      </div>
+      <footer><div class="article-comment">
+        
+<section id="comment">
+  <div id="disqus_thread" class="article-comment">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+      </div></footer>
+    </div>
+  </div>
+</article>
+
+
+    </div>
+
+    <!-- footer-->
+    <footer class="container">
+        
+<div class="row-fluid">
+    <div class="span3">
+        <h4>Navigate</h4>
+        <ul>
+            <li><a href="/" title="Home">Home</a></li>
+            <li><a href="/blog/index.html" title="Blog">Blog</a></li>
+            <li><a href="/developer/getting-started.html" title="Getting Started">Getting Started</a></li>
+        </ul>
+    </div>
+
+    <div class="span3">
+        <h4>Contribute</h4>
+        <ul>
+            <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
+            <li> <a title="Write code" href="https://github.com/hal">Write Code</a> </li>
+        </ul>
+    </div>
+
+    <div class="span3">
+        <h4>Follow Us</h4>
+        <ul>
+            <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
+            <li> <a title="Twitter" href="http://twitter.com/heiko_braun">Twitter</a> </li>
+        </ul>
+    </div>
+
+    <div class="span3">
+        <h4>Open Source</h4>
+        <p> HAL is released under the <b>LGPL</b> open source license.</b>
+            Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
+        </p>
+    </div>
+</div>
+
+<div class="span12">
+<p style="margin-top: 5px; font-size: 80%;">
+
+    &copy; 2013 Red Hat, Inc. All Rights Reserved
+    
+</p>
+</div>
+
+    </footer>
+
+    <!-- js  -->
+    <!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<!-- bootstrap -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/bootstrap-dropdown.js" ></script>
+  <script language='JavaScript'>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+<script type="text/javascript">
+var disqus_shortname = 'jboss-hal';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+    </body>
+</html>

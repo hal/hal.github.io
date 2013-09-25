@@ -1,0 +1,153 @@
+/*-------------------------------------------------------------------------------------------*/
+/* 1. SETUP (overwrite bootstrap) */
+/*-------------------------------------------------------------------------------------------*/
+@import url("//fonts.googleapis.com/css?family=Lato:400,400italic");
+
+/*-------------------------------------------------------------------------------------------*/
+/* 2. BASIC bitrap layout */
+/*-------------------------------------------------------------------------------------------*/
+a, a:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+  text-shadow:1px 1px 3px #aaa;
+}
+
+img {
+  margin: 7px;
+  padding: 2px;
+  border: 1px solid rgba(0,0,0,0.45);
+  background: #fff;
+  box-shadow: rgba(0,0,0,1.0) 0px 0px 2px,rgba(255,255,255,0.15) 0px 1px 1px inset;
+}
+
+.tagcloud a {
+  color: #666;
+  margin: 0px;
+  padding: 3px 5px;
+  display: inline-block;
+}
+
+#content { padding-top: 30px; }
+article { margin-top: 35px; }
+
+/* article-meta */
+a:hover .label, a:active .label {
+  background-color: #258fb8;
+  color:#fff;
+}
+.date {
+  display: block;
+  margin: 5px 5px 15px 0;
+  padding: 5px 10px 0 0;
+  border-right: #4488BB 3px solid;
+  text-align: center;
+}
+.date .day {
+  font: normal bold 28px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+}
+.date .month {
+  font-size: .7em;
+  white-space: nowrap;
+}
+
+/* article-main */
+.article-main a:link {
+  display: inline-block;
+  margin: -3px;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0.0);
+  box-shadow: rgba(0,0,0,0) 0px 0px 2px;
+  background: rgba(0,0,0,0.0);
+}
+.article-main a:hover, .tagcloud a:hover {
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 4px;
+  box-shadow: #258fb8 0px 0px 2px,rgba(255,255,255,0.15) 0px 1px 1px inset;
+  background: #258fb8;
+  color: #fff;
+  text-shadow: rgba(0,0,0,0.6) 0px -1px 0px;
+}
+.article-title{
+  margin: -5px 0 15px 0;
+  font-weight:300;
+}
+.article-entry {
+  text-align:justify;
+  text-shadow: white 0px 1px 0px;
+}
+.article-entry p {
+  margin: .7em 0;
+}
+.article-comment {
+  margin-top: 2.5em;
+}
+
+/* pagination */
+.bitpager a {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #ddd;
+  color: #999;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-shadow: 0 0 1px #fff;
+  margin-bottom: 50px;
+}
+.bitpager a:hover {
+  background: #258fb8;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+/* footer */
+.footer {
+  font-size: .85em;
+  text-align: center;
+  padding: 20px 0 0;
+  margin-top: 50px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #fafafa;
+}
+
+.footer li {
+  display: inline;
+  margin: 0 5px;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+/* 4. PERSONAL STYLES */
+/*-------------------------------------------------------------------------------------------*/
+ul ul {
+  font-size: 0.9em;
+  color: #666;
+  line-height: 1.4em;
+}
+
+ul ul ul ul {
+  font-size: 1em;
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Y. EXTENTION:  */
+/*-------------------------------------------------------------------------------------------*/
+.surf a {
+  letter-spacing: 1px;
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Z. HOTFIX: overwrite all at last */
+/*-------------------------------------------------------------------------------------------*/
+nav ul {
+  font-size: 1em;
+}
+
+.map_canvas img {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
