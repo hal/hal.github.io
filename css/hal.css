@@ -5,6 +5,18 @@
     text-decoration: none;
 }
 
+h1 {
+    margin-top: 1em;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    margin-top: 0.66em;
+}
+
 /*
  * HAL specific styles  
  */
@@ -54,4 +66,20 @@
 
 .pagination {
     margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+    span.visible-phone {
+        display: inline !important;
+    }
+
+    .post-tags a {
+        display: inline;
+        margin-right: 5px;
+    }
+
+    .post-tags .post-tag::before {
+        content: "";
+        padding: 0;
+    }
 }
