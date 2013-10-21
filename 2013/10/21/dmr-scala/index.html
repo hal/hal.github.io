@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>console | HAL</title>
+  <title>DMR Scala | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
+  
+  <meta name="description" content="We made some progress with the Scala client libraries for DMR:
+
+DMR.scala
+DMR.repl">
   
   
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  
+  <meta property="og:title" content="DMR Scala"/>
   <meta property="og:site_name" content="HAL"/>
 
   
@@ -68,6 +73,7 @@
             padding-right:15px;
             padding-left:15px;
         }
+
     </style>
 
 
@@ -113,7 +119,7 @@
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+      <li><a href="/developer/getting-started.html">Developer</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -156,135 +162,123 @@
 
         <!-- body -->
         
-  
-    
 
-<article class="post">
-  <div class="row">
+
+
+    
+<ol class="breadcrumb">
+    <li><a href="/blog/index.html" title="Blog">Blog</a></li>
+    <li>/</li>
+    <li class="active">DMR Scala</li>
+</ol>
+
+
+<div class="row" id="post">
 
     <!-- article.meta -->
-    <div class="span2 article-meta">
-      <div class="date">
-        <time datetime="2013-07-18T09:46:00.000Z">
-          <span class="day">18</span> / 
-          <span class="month">07</span> / 
-          <span class="year">13</span>
-        </time>
-      </div>
-      <div class="post-tags">
+    <div class="span3">
         
-  
-    <a href='/tags/jboss/'><span class='post-tag'>jboss</span></a>
-  
-    <a href='/tags/console/'><span class='post-tag'>console</span></a>
-  
-    <a href='/tags/mobile/'><span class='post-tag'>mobile</span></a>
-  
+<div class="well sidebar-nav hidden-phone">
+<ul class="nav nav-list">
+    <li class="nav-header">Categories</li>
+    
+    <li><a href="/categories/jboss/">Jboss</a></li>
+    
+    <li><a href="/categories/jboss/console/">Console</a></li>
+    
+    <li><a href="/categories/jboss/console/mobile/">Mobile</a></li>
+    
+    <li><a href="/categories/gwt/">Gwt</a></li>
+    
+    <li><a href="/categories/dmr/">Dmr</a></li>
+    
+    <li><a href="/categories/dmr/scala/">Scala</a></li>
+    
+    <li><a href="/categories/dmr/scala/dart/">Dart</a></li>
+    
+    <li><a href="/categories/dmr/scala/dart/node.js/">Node.js</a></li>
+    
 
-      </div>
-    </div>
-
-    <!-- article main -->
-    <div class="span10 article-main">
-      <header><div class="page-header">
-        
-  
-    <h1 class="title"><a href="/2013/07/18/admin-apps/">Admin Apps</a></h1>
-  
-
-      </div></header>
-      <div class="article-entry">
-        
-          <p>If you ever wanted to administer your JBoss servers from your iOS or Andoird phone, checkout these great apps from 
-<a href="https://twitter.com/cvasilak" target="_blank">Christos Vasilakis</a>: </p>
-<ul>
-<li>Android: <a href="https://github.com/cvasilak/JBoss-Admin-Android" target="_blank">https://github.com/cvasilak/JBoss-Admin-Android</a></li>
-<li>iOS: <a href="http://www.cvasilak.org/JBossAdmin.html" target="_blank">http://www.cvasilak.org/JBossAdmin.html</a> <a href="https://itunes.apple.com/us/app/jboss-admin/id523516060?mt=8&uo=4" target="itunes_store" target="_blank"><img src="http://r.mzstatic.com/images/web/linkmaker/badge_appstore-sm.gif" alt="JBoss Admin - Christos Vasilakis" style="border: 0;"/></a></li>
 </ul>
-<p>Keep it up, Christos!</p>
+</div>
 
-        
-      </div>
-      <footer><div class="article-comment">
-        
-      </div></footer>
-    </div>
-  </div>
-</article>
-
-  
-    
-
-<article class="post">
-  <div class="row">
-
-    <!-- article.meta -->
-    <div class="span2 article-meta">
-      <div class="date">
-        <time datetime="2013-03-05T20:43:00.000Z">
-          <span class="day">05</span> / 
-          <span class="month">03</span> / 
-          <span class="year">13</span>
-        </time>
-      </div>
-      <div class="post-tags">
-        
-  
-    <a href='/tags/jboss/'><span class='post-tag'>jboss</span></a>
-  
-    <a href='/tags/console/'><span class='post-tag'>console</span></a>
-  
-
-      </div>
     </div>
 
     <!-- article main -->
-    <div class="span10 article-main">
-      <header><div class="page-header">
-        
+    <div class="span9">
+
+        <article class="post">
+            <header>
+                <div>
+                    
   
-    <h1 class="title"><a href="/2013/03/05/independent-jboss-admin-console/">Independent JBoss Admin Console</a></h1>
+    <h1 class="title">DMR Scala</h1>
   
 
-      </div></header>
-      <div class="article-entry">
-        
-          <p>We&#39;re currently working on a new feature for the JBoss Admin Console. The console should become independent from the
-rest of the JBoss AS distribution. As the console is built with GWT and &quot;merely&quot; consists of static resources like
-HTML, JavaScript and CSS, the idea is to have a dedicated host which serves these resources. When loading the console
-the user can manage a list of server instances and chooses the one he likes to connect to. The server instances are
-stored in the browsers <a href="http://www.w3.org/TR/webstorage/" target="_blank">local storage</a>, so they will be available the next time the
-console is launched:
-        
-      </div>
-      <footer><div class="article-comment">
-        
-      </div></footer>
-    </div>
+
+                    <i class="icon-calendar"></i>
+                    <time datetime="2013-10-21T08:30:06.000Z">
+                        <span class="day">21</span> /
+                        <span class="month">10</span> /
+                        <span class="year">13</span>
+                    </time>
+                    <br/>
+
+                     
+
+                </div>
+           </header>
+            <p/>
+            <div class="article-entry">
+                
+                <p>We made some progress with the Scala client libraries for DMR:</p>
+<ul>
+<li><a href="https://github.com/hal/dmr.scala" target="_blank">DMR.scala</a></li>
+<li><a href="https://github.com/hal/dmr.repl" target="_blank">DMR.repl</a><a id="more"></a></li>
+</ul>
+<h3>DMR.scala</h3>
+<p>DMR.scala is a wrapper around the <a href="https://docs.jboss.org/author/display/WFLY8/Detyped+management+and+the+jboss-dmr+library" target="_blank">DMR Java</a> library
+and features a DSL for DMR operations. Using DMR.scala you can use all those neat Scala features when working with
+model nodes:</p>
+<ul>
+<li>Use operators to access child nodes</li>
+<li>Use a model node as a collection of keys / child nodes (enables you to filter, map, ...)</li>
+<li>Pattern matching and extractors</li>
+</ul>
+<h3>DMR.repl</h3>
+<p>DMR.repl is based on DMR.scala and leverages the Scala REPL shell to work with the management model in a very
+interactive way. You can connect to an arbitrary WildFly instance, execute single DMR operations or write scripts
+to accomplish more complex tasks. See the DMR.repl website for more infos.</p>
+<p>There will be a short introduction of both libraries at the JBoss <a href="http://onedaytalk.org/" target="_blank">OneDayTalk</a> as part of
+Emanuel Muckenhubers talk about the <a href="http://onedaytalk.org/index.php/program?id=168" target="_blank">WildFly 8 CLI</a>.</p>
+
+                
+            </div>
+            <footer><div class="article-comment">
+                
+<section id="comment">
+  <div id="disqus_thread" class="article-comment">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
+</section>
 
-  
+            </div></footer>
+        </article>
+    </div>
 
-  <div class="pagination">
-  <div class="row">
-    <div class="span2 offset2 bitpager">
-      
-    </div>
-    <div class="span2 offset6 bitpager">
-      
-    </div>
-  </div>
+
 </div>
+
+
+
 
 
     </div>
 
     <!-- footer-->
     <footer class="container">
-        
-<div class="row-fluid">
-    <div class="span3">
+        <div class="row-fluid">
+    <div class="span2 offset2">
         <h4>Navigate</h4>
         <ul>
             <li><a href="/" title="Home">Home</a></li>
@@ -293,7 +287,7 @@ console is launched:
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Contribute</h4>
         <ul>
             <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
@@ -301,7 +295,7 @@ console is launched:
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Follow Us</h4>
         <ul>
             <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
@@ -309,7 +303,7 @@ console is launched:
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Open Source</h4>
         <p> HAL is released under the <b>LGPL</b> open source license.</b>
             Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
@@ -317,18 +311,31 @@ console is launched:
     </div>
 </div>
 
-<div class="span12">
-<p style="margin-top: 5px; font-size: 80%;">
-
-    &copy; 2013 Red Hat, Inc. All Rights Reserved
-    
-</p>
+<div class="row-fluid">
+    <div class="span10 offset2">
+        <p style="margin-top: 5px; font-size: 80%;">
+        
+            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            
+        <br/>
+        <i class="icon-fire"></i> Made with 
+        <a href="https://github.com/jbossorg/bootstrap-community" style="text-decoration: underline;" target="_NEW">JBoss Community Bootstrap</a> and 
+        <a href="http://zespia.tw/hexo/" style="text-decoration: underline;" target="_NEW">Hexo</a> 
+        </p>
+    </div>
 </div>
 
     </footer>
 
     <!-- js  -->
-    <!-- Le javascript
+    <div class="container" id="companyfooter"> 
+    <div class="redhatlogo"> 
+        <div id="logospacer"></div> 
+        <a href="http://www.redhat.com/"><img src="http://static.jboss.org/theme/images/common/redhat_logo.png"></a> 
+    </div> 
+</div>
+
+<!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -350,7 +357,7 @@ var disqus_shortname = 'jboss-hal';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>

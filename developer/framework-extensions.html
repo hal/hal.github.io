@@ -72,6 +72,7 @@ Most notable are the MVP design pattern [1]">
             padding-right:15px;
             padding-left:15px;
         }
+
     </style>
 
 
@@ -117,7 +118,7 @@ Most notable are the MVP design pattern [1]">
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+      <li><a href="/developer/getting-started.html">Developer</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -168,18 +169,19 @@ Most notable are the MVP design pattern [1]">
 
     <!--Body content-->
     <div class="span9 article-main">
-        <header>
-            <div class="page-header">
-                
+        <article class="page">
+            <header>
+                <div class="page-header">
+                    
   
     <h1 class="title">Framework &amp; Extensions</h1>
   
 
-            </div>
-        </header>
-        <div class="article-entry">
-            
-            <h3>GWTP</h3>
+                </div>
+            </header>
+            <div class="article-entry">
+                
+                <h3>GWTP</h3>
 <p>The console builds on the GWTP framework and inherits most it&#39;s features and framework services. </p>
 <p>Most notable are the MVP design pattern [1] and dependency injection using Gin [2]:</p>
 <p>These two along with the GWTP Placemanager [3] create the foundation for loading, initialising and rendering dialogs. </p>
@@ -277,17 +279,18 @@ Most notable are the MVP design pattern [1]">
 <li>Extension must reside below the package <code>org.jboss.as.console.client.*</code>.</li>
 </ul>
 
-            
-        </div>
-        <footer><div class="article-comment">
-            
+                
+            </div>
+            <footer><div class="article-comment">
+                
 <section id="comment">
   <div id="disqus_thread" class="article-comment">
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 
-        </div></footer>
+            </div></footer>
+        </article>
     </div>
 </div>
 
@@ -296,9 +299,8 @@ Most notable are the MVP design pattern [1]">
 
     <!-- footer-->
     <footer class="container">
-        
-<div class="row-fluid">
-    <div class="span3">
+        <div class="row-fluid">
+    <div class="span2 offset2">
         <h4>Navigate</h4>
         <ul>
             <li><a href="/" title="Home">Home</a></li>
@@ -307,7 +309,7 @@ Most notable are the MVP design pattern [1]">
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Contribute</h4>
         <ul>
             <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
@@ -315,7 +317,7 @@ Most notable are the MVP design pattern [1]">
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Follow Us</h4>
         <ul>
             <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
@@ -323,7 +325,7 @@ Most notable are the MVP design pattern [1]">
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Open Source</h4>
         <p> HAL is released under the <b>LGPL</b> open source license.</b>
             Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
@@ -331,18 +333,31 @@ Most notable are the MVP design pattern [1]">
     </div>
 </div>
 
-<div class="span12">
-<p style="margin-top: 5px; font-size: 80%;">
-
-    &copy; 2013 Red Hat, Inc. All Rights Reserved
-    
-</p>
+<div class="row-fluid">
+    <div class="span10 offset2">
+        <p style="margin-top: 5px; font-size: 80%;">
+        
+            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            
+        <br/>
+        <i class="icon-fire"></i> Made with 
+        <a href="https://github.com/jbossorg/bootstrap-community" style="text-decoration: underline;" target="_NEW">JBoss Community Bootstrap</a> and 
+        <a href="http://zespia.tw/hexo/" style="text-decoration: underline;" target="_NEW">Hexo</a> 
+        </p>
+    </div>
 </div>
 
     </footer>
 
     <!-- js  -->
-    <!-- Le javascript
+    <div class="container" id="companyfooter"> 
+    <div class="redhatlogo"> 
+        <div id="logospacer"></div> 
+        <a href="http://www.redhat.com/"><img src="http://static.jboss.org/theme/images/common/redhat_logo.png"></a> 
+    </div> 
+</div>
+
+<!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

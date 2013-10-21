@@ -68,6 +68,7 @@
             padding-right:15px;
             padding-left:15px;
         }
+
     </style>
 
 
@@ -113,7 +114,7 @@
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+      <li><a href="/developer/getting-started.html">Developer</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -156,93 +157,114 @@
 
         <!-- body -->
         
+<div class="row">
+
+    <div class="span3">
+        
+        
+<div class="well sidebar-nav hidden-phone">
+<ul class="nav nav-list">
+    <li class="nav-header">Categories</li>
+    
+    <li><a href="/categories/jboss/">Jboss</a></li>
+    
+    <li><a href="/categories/jboss/console/">Console</a></li>
+    
+    <li><a href="/categories/jboss/console/mobile/">Mobile</a></li>
+    
+    <li><a href="/categories/gwt/">Gwt</a></li>
+    
+    <li><a href="/categories/dmr/">Dmr</a></li>
+    
+    <li><a href="/categories/dmr/scala/">Scala</a></li>
+    
+    <li><a href="/categories/dmr/scala/dart/">Dart</a></li>
+    
+    <li><a href="/categories/dmr/scala/dart/node.js/">Node.js</a></li>
+    
+
+</ul>
+</div>
+
+        
+    </div>
+
+    <div class="span9">
+        
   
     
 
+
+
 <article class="post">
-  <div class="row">
 
-    <!-- article.meta -->
-    <div class="span2 article-meta">
-      <div class="date">
-        <time datetime="2013-09-25T10:10:28.000Z">
-          <span class="day">25</span> / 
-          <span class="month">09</span> / 
-          <span class="year">13</span>
-        </time>
-      </div>
-      <div class="post-tags">
-        
-      </div>
-    </div>
-
-    <!-- article main -->
-    <div class="span10 article-main">
-      <header><div class="page-header">
-        
+    <header>
+        <div>
+            
   
     <h1 class="title"><a href="/2013/09/25/flow-control/">Flow Control</a></h1>
   
 
-      </div></header>
-      <div class="article-entry">
+
+            <i class="icon-calendar"></i>
+            <time datetime="2013-09-25T10:10:28.000Z">
+                <span class="day">25</span> /
+                <span class="month">09</span> /
+                <span class="year">13</span>
+            </time>
+
+        </div>
+    </header>
+    <p/>
+
+    <div class="article-entry">
         
-          <blockquote>
-<p>Within Ajax applications you need to manage a lot of interaction and RPC related asynchronous events. The control flow structures become hard to understand and yield unpredicatable results.
+        <p>Within Ajax applications you need to manage a lot of interaction and RPC related asynchronous events. The control flow structures become hard to understand and yield unpredicatable results.
 We created a re-usable GWT module that provides some higher order control structures that you can use to tame the asynchronous callback beast. It’s been inspired by Async.js, but aligns with the core GWT API’s more naturally.</p>
-</blockquote>
 
         
-      </div>
-      <footer><div class="article-comment">
-        
-      </div></footer>
     </div>
-  </div>
+    <footer><div class="article-comment">
+        
+    </div></footer>
+
 </article>
+
+<hr/>
+<p/>
+
+
+
 
   
     
 
+
+
 <article class="post">
-  <div class="row">
 
-    <!-- article.meta -->
-    <div class="span2 article-meta">
-      <div class="date">
-        <time datetime="2013-09-24T08:47:00.000Z">
-          <span class="day">24</span> / 
-          <span class="month">09</span> / 
-          <span class="year">13</span>
-        </time>
-      </div>
-      <div class="post-tags">
-        
-  
-    <a href='/tags/dmr/'><span class='post-tag'>dmr</span></a>
-  
-    <a href='/tags/scala/'><span class='post-tag'>scala</span></a>
-  
-    <a href='/tags/dart/'><span class='post-tag'>dart</span></a>
-  
-    <a href='/tags/node.js/'><span class='post-tag'>node.js</span></a>
-  
-
-      </div>
-    </div>
-
-    <!-- article main -->
-    <div class="span10 article-main">
-      <header><div class="page-header">
-        
+    <header>
+        <div>
+            
   
     <h1 class="title"><a href="/2013/09/24/polyglot-dmr/">Polyglot DMR</a></h1>
   
 
-      </div></header>
-      <div class="article-entry">
+
+            <i class="icon-calendar"></i>
+            <time datetime="2013-09-24T08:47:00.000Z">
+                <span class="day">24</span> /
+                <span class="month">09</span> /
+                <span class="year">13</span>
+            </time>
+
+        </div>
+    </header>
+    <p/>
+
+    <div class="article-entry">
         
-          <p>The <strong>d</strong>ynamic or <strong>d</strong>etyped <strong>m</strong>odel <strong>r</strong>epresentation (DMR) is an API to interact with the management model of a 
+        <p>The <strong>d</strong>ynamic or <strong>d</strong>etyped <strong>m</strong>odel <strong>r</strong>epresentation (DMR) is an API to interact with the management model of a 
 running WildFly instance. There&#39;s an Java API available at <a href="https://github.com/jbossas/jboss-dmr" target="_blank">https://github.com/jbossas/jboss-dmr</a> which is described in 
 the <a href="https://docs.jboss.org/author/display/WFLY8/Detyped+management+and+the+jboss-dmr+library" target="_blank">WildFly Wiki</a>. Though 
 the Java API is very rich and powerful it is somewhat hard to write scripts that perform useful tasks like</p>
@@ -251,13 +273,18 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
 <li>Rollout a deployment over all servers in a cluster</li>
 <li>Monitor the state of an application
         
-      </div>
-      <footer><div class="article-comment">
-        
-      </div></footer>
     </div>
-  </div>
+    <footer><div class="article-comment">
+        
+    </div></footer>
+
 </article>
+
+<hr/>
+<p/>
+
+
+
 
   
 
@@ -272,14 +299,17 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
   </div>
 </div>
 
+    </div>
+
+</div>
+
 
     </div>
 
     <!-- footer-->
     <footer class="container">
-        
-<div class="row-fluid">
-    <div class="span3">
+        <div class="row-fluid">
+    <div class="span2 offset2">
         <h4>Navigate</h4>
         <ul>
             <li><a href="/" title="Home">Home</a></li>
@@ -288,7 +318,7 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Contribute</h4>
         <ul>
             <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
@@ -296,7 +326,7 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Follow Us</h4>
         <ul>
             <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
@@ -304,7 +334,7 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Open Source</h4>
         <p> HAL is released under the <b>LGPL</b> open source license.</b>
             Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
@@ -312,18 +342,31 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
     </div>
 </div>
 
-<div class="span12">
-<p style="margin-top: 5px; font-size: 80%;">
-
-    &copy; 2013 Red Hat, Inc. All Rights Reserved
-    
-</p>
+<div class="row-fluid">
+    <div class="span10 offset2">
+        <p style="margin-top: 5px; font-size: 80%;">
+        
+            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            
+        <br/>
+        <i class="icon-fire"></i> Made with 
+        <a href="https://github.com/jbossorg/bootstrap-community" style="text-decoration: underline;" target="_NEW">JBoss Community Bootstrap</a> and 
+        <a href="http://zespia.tw/hexo/" style="text-decoration: underline;" target="_NEW">Hexo</a> 
+        </p>
+    </div>
 </div>
 
     </footer>
 
     <!-- js  -->
-    <!-- Le javascript
+    <div class="container" id="companyfooter"> 
+    <div class="redhatlogo"> 
+        <div id="logospacer"></div> 
+        <a href="http://www.redhat.com/"><img src="http://static.jboss.org/theme/images/common/redhat_logo.png"></a> 
+    </div> 
+</div>
+
+<!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

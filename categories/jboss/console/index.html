@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>dmr | HAL</title>
+  <title>console | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
   
   
@@ -68,6 +68,7 @@
             padding-right:15px;
             padding-left:15px;
         }
+
     </style>
 
 
@@ -113,7 +114,7 @@
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+      <li><a href="/developer/getting-started.html">Developer</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -156,63 +157,104 @@
 
         <!-- body -->
         
+
   
     
 
+
+
 <article class="post">
-  <div class="row">
 
-    <!-- article.meta -->
-    <div class="span2 article-meta">
-      <div class="date">
-        <time datetime="2013-09-24T08:47:00.000Z">
-          <span class="day">24</span> / 
-          <span class="month">09</span> / 
-          <span class="year">13</span>
-        </time>
-      </div>
-      <div class="post-tags">
+    <header>
+        <div>
+            
+  
+    <h1 class="title"><a href="/2013/07/18/admin-apps/">Admin Apps</a></h1>
+  
+
+
+            <i class="icon-calendar"></i>
+            <time datetime="2013-07-18T09:46:00.000Z">
+                <span class="day">18</span> /
+                <span class="month">07</span> /
+                <span class="year">13</span>
+            </time>
+
+        </div>
+    </header>
+    <p/>
+
+    <div class="article-entry">
         
-  
-    <a href='/tags/dmr/'><span class='post-tag'>dmr</span></a>
-  
-    <a href='/tags/scala/'><span class='post-tag'>scala</span></a>
-  
-    <a href='/tags/dart/'><span class='post-tag'>dart</span></a>
-  
-    <a href='/tags/node.js/'><span class='post-tag'>node.js</span></a>
-  
-
-      </div>
-    </div>
-
-    <!-- article main -->
-    <div class="span10 article-main">
-      <header><div class="page-header">
-        
-  
-    <h1 class="title"><a href="/2013/09/24/polyglot-dmr/">Polyglot DMR</a></h1>
-  
-
-      </div></header>
-      <div class="article-entry">
-        
-          <p>The <strong>d</strong>ynamic or <strong>d</strong>etyped <strong>m</strong>odel <strong>r</strong>epresentation (DMR) is an API to interact with the management model of a 
-running WildFly instance. There&#39;s an Java API available at <a href="https://github.com/jbossas/jboss-dmr" target="_blank">https://github.com/jbossas/jboss-dmr</a> which is described in 
-the <a href="https://docs.jboss.org/author/display/WFLY8/Detyped+management+and+the+jboss-dmr+library" target="_blank">WildFly Wiki</a>. Though 
-the Java API is very rich and powerful it is somewhat hard to write scripts that perform useful tasks like</p>
+        <p>If you ever wanted to administer your JBoss servers from your iOS or Andoird phone, checkout these great apps from 
+<a href="https://twitter.com/cvasilak" target="_blank">Christos Vasilakis</a>: </p>
 <ul>
-<li>Periodically read the memory and send an SMS / tweet / email when a threshold is reached</li>
-<li>Rollout a deployment over all servers in a cluster</li>
-<li>Monitor the state of an application
+<li>Android: <a href="https://github.com/cvasilak/JBoss-Admin-Android" target="_blank">https://github.com/cvasilak/JBoss-Admin-Android</a></li>
+<li>iOS: <a href="http://www.cvasilak.org/JBossAdmin.html" target="_blank">http://www.cvasilak.org/JBossAdmin.html</a> <a href="https://itunes.apple.com/us/app/jboss-admin/id523516060?mt=8&uo=4" target="itunes_store" target="_blank"><img src="http://r.mzstatic.com/images/web/linkmaker/badge_appstore-sm.gif" alt="JBoss Admin - Christos Vasilakis" style="border: 0;"/></a></li>
+</ul>
+<p>Keep it up, Christos!</p>
+
         
-      </div>
-      <footer><div class="article-comment">
-        
-      </div></footer>
     </div>
-  </div>
+    <footer><div class="article-comment">
+        
+    </div></footer>
+
 </article>
+
+<hr/>
+<p/>
+
+
+
+
+  
+    
+
+
+
+<article class="post">
+
+    <header>
+        <div>
+            
+  
+    <h1 class="title"><a href="/2013/03/05/independent-jboss-admin-console/">Independent JBoss Admin Console</a></h1>
+  
+
+
+            <i class="icon-calendar"></i>
+            <time datetime="2013-03-05T20:43:00.000Z">
+                <span class="day">05</span> /
+                <span class="month">03</span> /
+                <span class="year">13</span>
+            </time>
+
+        </div>
+    </header>
+    <p/>
+
+    <div class="article-entry">
+        
+        <p>We&#39;re currently working on a new feature for the JBoss Admin Console. The console should become independent from the
+rest of the JBoss AS distribution. As the console is built with GWT and &quot;merely&quot; consists of static resources like
+HTML, JavaScript and CSS, the idea is to have a dedicated host which serves these resources. When loading the console
+the user can manage a list of server instances and chooses the one he likes to connect to. The server instances are
+stored in the browsers <a href="http://www.w3.org/TR/webstorage/" target="_blank">local storage</a>, so they will be available the next time the
+console is launched:
+        
+    </div>
+    <footer><div class="article-comment">
+        
+    </div></footer>
+
+</article>
+
+<hr/>
+<p/>
+
+
+
 
   
 
@@ -232,9 +274,8 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
 
     <!-- footer-->
     <footer class="container">
-        
-<div class="row-fluid">
-    <div class="span3">
+        <div class="row-fluid">
+    <div class="span2 offset2">
         <h4>Navigate</h4>
         <ul>
             <li><a href="/" title="Home">Home</a></li>
@@ -243,7 +284,7 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Contribute</h4>
         <ul>
             <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
@@ -251,7 +292,7 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Follow Us</h4>
         <ul>
             <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
@@ -259,7 +300,7 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Open Source</h4>
         <p> HAL is released under the <b>LGPL</b> open source license.</b>
             Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
@@ -267,18 +308,31 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
     </div>
 </div>
 
-<div class="span12">
-<p style="margin-top: 5px; font-size: 80%;">
-
-    &copy; 2013 Red Hat, Inc. All Rights Reserved
-    
-</p>
+<div class="row-fluid">
+    <div class="span10 offset2">
+        <p style="margin-top: 5px; font-size: 80%;">
+        
+            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            
+        <br/>
+        <i class="icon-fire"></i> Made with 
+        <a href="https://github.com/jbossorg/bootstrap-community" style="text-decoration: underline;" target="_NEW">JBoss Community Bootstrap</a> and 
+        <a href="http://zespia.tw/hexo/" style="text-decoration: underline;" target="_NEW">Hexo</a> 
+        </p>
+    </div>
 </div>
 
     </footer>
 
     <!-- js  -->
-    <!-- Le javascript
+    <div class="container" id="companyfooter"> 
+    <div class="redhatlogo"> 
+        <div id="logospacer"></div> 
+        <a href="http://www.redhat.com/"><img src="http://static.jboss.org/theme/images/common/redhat_logo.png"></a> 
+    </div> 
+</div>
+
+<!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

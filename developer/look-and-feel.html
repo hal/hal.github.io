@@ -71,6 +71,7 @@ HAL builds on the default GWT widgets [1], with minor modifications to provide a
             padding-right:15px;
             padding-left:15px;
         }
+
     </style>
 
 
@@ -116,7 +117,7 @@ HAL builds on the default GWT widgets [1], with minor modifications to provide a
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer Docs</a></li>
+      <li><a href="/developer/getting-started.html">Developer</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -167,18 +168,19 @@ HAL builds on the default GWT widgets [1], with minor modifications to provide a
 
     <!--Body content-->
     <div class="span9 article-main">
-        <header>
-            <div class="page-header">
-                
+        <article class="page">
+            <header>
+                <div class="page-header">
+                    
   
     <h1 class="title">Look &amp; Feel</h1>
   
 
-            </div>
-        </header>
-        <div class="article-entry">
-            
-            <h3>Widgets</h3>
+                </div>
+            </header>
+            <div class="article-entry">
+                
+                <h3>Widgets</h3>
 <p>HAL builds on the default GWT widgets [1], with minor modifications to provide a consistent look&amp;feel (css references, image bundles, etc)</p>
 <p>For specific interaction types we&#39;ve implemented dedicated widgets, that go beyond what GWT has to offer. I.e. the form input widget that provides an open-save-close model is good example of this.</p>
 <p>If a widget has a general purpose then it belongs into the Ballroom library. If a widget only serves our very specific project needs, we keep it within the core/gui module.</p>
@@ -199,17 +201,18 @@ Please keep this in mind when developing new widgets, layout types or navigation
 <li><a href="https://www.section508.gov" target="_blank">https://www.section508.gov</a></li>
 </ol>
 
-            
-        </div>
-        <footer><div class="article-comment">
-            
+                
+            </div>
+            <footer><div class="article-comment">
+                
 <section id="comment">
   <div id="disqus_thread" class="article-comment">
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 
-        </div></footer>
+            </div></footer>
+        </article>
     </div>
 </div>
 
@@ -218,9 +221,8 @@ Please keep this in mind when developing new widgets, layout types or navigation
 
     <!-- footer-->
     <footer class="container">
-        
-<div class="row-fluid">
-    <div class="span3">
+        <div class="row-fluid">
+    <div class="span2 offset2">
         <h4>Navigate</h4>
         <ul>
             <li><a href="/" title="Home">Home</a></li>
@@ -229,7 +231,7 @@ Please keep this in mind when developing new widgets, layout types or navigation
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Contribute</h4>
         <ul>
             <li> <a title="Submit a bug" href="https://issues.jboss.org/browse/HAL">Submit a bug</a> </li>
@@ -237,7 +239,7 @@ Please keep this in mind when developing new widgets, layout types or navigation
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Follow Us</h4>
         <ul>
             <li> <a title="Blog" href="/blog/index.html">Blog</a> </li>
@@ -245,7 +247,7 @@ Please keep this in mind when developing new widgets, layout types or navigation
         </ul>
     </div>
 
-    <div class="span3">
+    <div class="span2">
         <h4>Open Source</h4>
         <p> HAL is released under the <b>LGPL</b> open source license.</b>
             Learn more about the LGPL license <a href="http://de.wikipedia.org/wiki/GNU_Lesser_General_Public_License">here.</a>
@@ -253,18 +255,31 @@ Please keep this in mind when developing new widgets, layout types or navigation
     </div>
 </div>
 
-<div class="span12">
-<p style="margin-top: 5px; font-size: 80%;">
-
-    &copy; 2013 Red Hat, Inc. All Rights Reserved
-    
-</p>
+<div class="row-fluid">
+    <div class="span10 offset2">
+        <p style="margin-top: 5px; font-size: 80%;">
+        
+            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            
+        <br/>
+        <i class="icon-fire"></i> Made with 
+        <a href="https://github.com/jbossorg/bootstrap-community" style="text-decoration: underline;" target="_NEW">JBoss Community Bootstrap</a> and 
+        <a href="http://zespia.tw/hexo/" style="text-decoration: underline;" target="_NEW">Hexo</a> 
+        </p>
+    </div>
 </div>
 
     </footer>
 
     <!-- js  -->
-    <!-- Le javascript
+    <div class="container" id="companyfooter"> 
+    <div class="redhatlogo"> 
+        <div id="logospacer"></div> 
+        <a href="http://www.redhat.com/"><img src="http://static.jboss.org/theme/images/common/redhat_logo.png"></a> 
+    </div> 
+</div>
+
+<!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>Blog | HAL</title>
+  <title>mobile | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
   
   
@@ -157,180 +157,6 @@
 
         <!-- body -->
         
-<div class="row">
-
-    <div class="span3">
-        
-        
-<div class="well sidebar-nav hidden-phone">
-<ul class="nav nav-list">
-    <li class="nav-header">Categories</li>
-    
-    <li><a href="/categories/jboss/">Jboss</a></li>
-    
-    <li><a href="/categories/jboss/console/">Console</a></li>
-    
-    <li><a href="/categories/jboss/console/mobile/">Mobile</a></li>
-    
-    <li><a href="/categories/gwt/">Gwt</a></li>
-    
-    <li><a href="/categories/dmr/">Dmr</a></li>
-    
-    <li><a href="/categories/dmr/scala/">Scala</a></li>
-    
-    <li><a href="/categories/dmr/scala/dart/">Dart</a></li>
-    
-    <li><a href="/categories/dmr/scala/dart/node.js/">Node.js</a></li>
-    
-
-</ul>
-</div>
-
-        
-    </div>
-
-    <div class="span9">
-        
-  
-    
-
-
-
-<article class="post">
-
-    <header>
-        <div>
-            
-  
-    <h1 class="title"><a href="/2013/10/21/dmr-scala/">DMR Scala</a></h1>
-  
-
-
-            <i class="icon-calendar"></i>
-            <time datetime="2013-10-21T08:30:06.000Z">
-                <span class="day">21</span> /
-                <span class="month">10</span> /
-                <span class="year">13</span>
-            </time>
-
-        </div>
-    </header>
-    <p/>
-
-    <div class="article-entry">
-        
-        <p>We made some progress with the Scala client libraries for DMR:</p>
-<ul>
-<li><a href="https://github.com/hal/dmr.scala" target="_blank">DMR.scala</a></li>
-<li><a href="https://github.com/hal/dmr.repl" target="_blank">DMR.repl</a>
-        
-    </div>
-    <footer><div class="article-comment">
-        
-    </div></footer>
-
-</article>
-
-<hr/>
-<p/>
-
-
-
-
-  
-    
-
-
-
-<article class="post">
-
-    <header>
-        <div>
-            
-  
-    <h1 class="title"><a href="/2013/09/25/flow-control/">Flow Control</a></h1>
-  
-
-
-            <i class="icon-calendar"></i>
-            <time datetime="2013-09-25T10:10:28.000Z">
-                <span class="day">25</span> /
-                <span class="month">09</span> /
-                <span class="year">13</span>
-            </time>
-
-        </div>
-    </header>
-    <p/>
-
-    <div class="article-entry">
-        
-        <p>Within Ajax applications you need to manage a lot of interaction and RPC related asynchronous events. The control flow structures become hard to understand and yield unpredicatable results.
-We created a re-usable GWT module that provides some higher order control structures that you can use to tame the asynchronous callback beast. It’s been inspired by Async.js, but aligns with the core GWT API’s more naturally.</p>
-
-        
-    </div>
-    <footer><div class="article-comment">
-        
-    </div></footer>
-
-</article>
-
-<hr/>
-<p/>
-
-
-
-
-  
-    
-
-
-
-<article class="post">
-
-    <header>
-        <div>
-            
-  
-    <h1 class="title"><a href="/2013/09/24/polyglot-dmr/">Polyglot DMR</a></h1>
-  
-
-
-            <i class="icon-calendar"></i>
-            <time datetime="2013-09-24T08:47:00.000Z">
-                <span class="day">24</span> /
-                <span class="month">09</span> /
-                <span class="year">13</span>
-            </time>
-
-        </div>
-    </header>
-    <p/>
-
-    <div class="article-entry">
-        
-        <p>The <strong>d</strong>ynamic or <strong>d</strong>etyped <strong>m</strong>odel <strong>r</strong>epresentation (DMR) is an API to interact with the management model of a 
-running WildFly instance. There&#39;s an Java API available at <a href="https://github.com/jbossas/jboss-dmr" target="_blank">https://github.com/jbossas/jboss-dmr</a> which is described in 
-the <a href="https://docs.jboss.org/author/display/WFLY8/Detyped+management+and+the+jboss-dmr+library" target="_blank">WildFly Wiki</a>. Though 
-the Java API is very rich and powerful it is somewhat hard to write scripts that perform useful tasks like</p>
-<ul>
-<li>Periodically read the memory and send an SMS / tweet / email when a threshold is reached</li>
-<li>Rollout a deployment over all servers in a cluster</li>
-<li>Monitor the state of an application
-        
-    </div>
-    <footer><div class="article-comment">
-        
-    </div></footer>
-
-</article>
-
-<hr/>
-<p/>
-
-
-
 
   
     
@@ -383,54 +209,6 @@ the Java API is very rich and powerful it is somewhat hard to write scripts that
 
 
   
-    
-
-
-
-<article class="post">
-
-    <header>
-        <div>
-            
-  
-    <h1 class="title"><a href="/2013/03/05/independent-jboss-admin-console/">Independent JBoss Admin Console</a></h1>
-  
-
-
-            <i class="icon-calendar"></i>
-            <time datetime="2013-03-05T20:43:00.000Z">
-                <span class="day">05</span> /
-                <span class="month">03</span> /
-                <span class="year">13</span>
-            </time>
-
-        </div>
-    </header>
-    <p/>
-
-    <div class="article-entry">
-        
-        <p>We&#39;re currently working on a new feature for the JBoss Admin Console. The console should become independent from the
-rest of the JBoss AS distribution. As the console is built with GWT and &quot;merely&quot; consists of static resources like
-HTML, JavaScript and CSS, the idea is to have a dedicated host which serves these resources. When loading the console
-the user can manage a list of server instances and chooses the one he likes to connect to. The server instances are
-stored in the browsers <a href="http://www.w3.org/TR/webstorage/" target="_blank">local storage</a>, so they will be available the next time the
-console is launched:
-        
-    </div>
-    <footer><div class="article-comment">
-        
-    </div></footer>
-
-</article>
-
-<hr/>
-<p/>
-
-
-
-
-  
 
   <div class="pagination">
   <div class="row">
@@ -441,10 +219,6 @@ console is launched:
       
     </div>
   </div>
-</div>
-
-    </div>
-
 </div>
 
 
