@@ -3,21 +3,17 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>Getting Started | HAL</title>
+  <title>Look &amp; Feel | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
   
-  <meta name="description" content="Prerequisites
-
-JDK 7
-WildFly 8
-
-In order to work on the console you a need running WildFly instance on your local host. You can download it here:
-http">
+  <meta name="description" content="Widgets
+HAL builds on the default GWT widgets, with minor modifications to provide a consistent look&amp;feel (css references, image bundles, etc)
+For"/>
   
   
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <meta property="og:title" content="Getting Started"/>
+  <meta property="og:title" content="Look &amp; Feel"/>
   <meta property="og:site_name" content="HAL"/>
 
   
@@ -28,7 +24,7 @@ http">
     <link rel="alternate" href="/atom.xml" title="HAL" type="application/atom+xml"/>
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--link rel="stylesheet" href="/css/bootstrap.css" media="screen" type="text/css"/-->
-    <link rel="stylesheet" media="screen" href="http://static.jboss.org/theme/css/bootstrap-community/2.3.1.1/bootstrap-community.min.css">
+    <link rel="stylesheet" media="screen" href="http://static.jboss.org/theme/css/bootstrap-community/2.3.1.1/bootstrap-community.min.css"/>
 
 
     <style type="text/css">
@@ -122,7 +118,9 @@ http">
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer</a></li>
+      <li><a href="/developer/1_getting-started.html">Developer</a></li>
+
+      <li><a href="/mbui/1_overview.html">Interface Kernel</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -139,7 +137,7 @@ http">
 
       <li><a href="//lists.jboss.org/mailman/listinfo/wildfly-dev">Mailing List</a></li>
 
-      <li><a href="//freenode.net#wildlfy-management">IRC</a></li>
+      <li><a href="//freenode.net#wildfly-management">IRC</a></li>
 
       <li><a href="//wildfly.org">Wildfly</a></li>
 
@@ -168,7 +166,7 @@ http">
 <div class="row">
     <!--Sidebar content-->
     <div class="span3">
-        <div class='well sidebar-nav'><ul class='nav nav-list'><li class='nav-header'>Developer</li><li><a href='/developer/framework-extensions.html'>Framework Extensions</a></li><li><a href='/developer/getting-started.html'>Getting Started</a></li><li><a href='/developer/look-and-feel.html'>Look And Feel</a></li><li><a href='/developer/security.html'>Security</a></li><li><a href='/developer/services-data-model.html'>Services Data Model</a></li></ul></div>
+        <div class='well sidebar-nav'><ul class='nav nav-list'><li class='nav-header'>Developer</li><li><a href='/developer/1_getting-started.html'> Getting Started</a></li><li><a href='/developer/2_look-and-feel.html'> Look And Feel</a></li><li><a href='/developer/3_data-model.html'> Data Model</a></li><li><a href='/developer/4_extensions.html'> Extensions</a></li><li><a href='/developer/5_Framework.html'> Framework</a></li><li><a href='/developer/6_security.html'> Security</a></li></ul></div>
     </div>
 
     <!--Body content-->
@@ -178,75 +176,29 @@ http">
                 <div class="page-header">
                     
   
-    <h1 class="title">Getting Started</h1>
+    <h1 class="title">Look &amp; Feel</h1>
   
 
                 </div>
             </header>
             <div class="article-entry">
                 
-                <h3>Prerequisites</h3>
-<ul>
-<li>JDK 7</li>
-<li>WildFly 8</li>
-</ul>
-<p>In order to work on the console you a need running WildFly instance on your local host. You can download it here:</p>
-<p><a href="http://www.wildfly.org/download/" target="_blank">http://www.wildfly.org/download/</a></p>
-<p>You can run WildFly in either the &#39;domain&#39; or &#39;standalone&#39; mode.</p>
-<h3>Introduction to GWT</h3>
-<p>If you are not familiar with GWT, I would recommend you read at least the introduction documents:</p>
-<p><a href="http://www.gwtproject.org/gettingstarted.html" target="_blank">http://www.gwtproject.org/gettingstarted.html</a></p>
-<h3>The GWTP Framework</h3>
-<p>The web console relies on the GWTP framework that provides the core design patterns (MVP), navigation handling and IOC support. </p>
-<p>It&#39;s useful to understand the building blocks before you dive into the code base.</p>
-<p><a href="https://github.com/arcbees/gwtp/wiki" target="_blank">https://github.com/arcbees/gwtp/wiki</a></p>
-<h3>Build and Deploy</h3>
-<h4>Running in hosted mode</h4>
-<ol>
-<li>Make sure WildFly is started</li>
-<li>Make sure you build the top level module first (mvn -Pdev clean install).</li>
-<li>cd &#39;build/app&#39;</li>
-</ol>
-<p>Start the GWT shell with</p>
-<pre><code>mvn gwt:&lt;run|debug&gt;</code></pre>
-<p>When the hosted browser is started, it&#39;s enough to hit the &#39;refresh&#39; button to recompile
-and verify changes. You can get the OOPHM Plugin, required for attaching your browser to the
-hosted mode execution here: <a href="http://gwt.google.com/samples/MissingPlugin/MissingPlugin.html" target="_blank">http://gwt.google.com/samples/MissingPlugin/MissingPlugin.html</a></p>
-<p>NOTE: you need to add user with WildFly add-user script.</p>
-<h4>Running in web mode</h4>
-<pre><code>cd build/app
-mvn package</code></pre>
-<p>Produces a war file in target/*-resources.jar, which needs to be deployed as a WildFly Module.</p>
-<h4>EAP Build Profile</h4>
-<p>To run a customised EAP build (L&amp;F) follow these steps:</p>
-<p>1.) Create a dedicated version number (i.e. 1.0.0.EAP.CR2)
-2.) Rebuild with the EAP profile enabled:</p>
-<pre><code>mvn -Peap clean install</code></pre>
-<h4>Development Profile</h4>
-<p>Due to the increased number of permutations (additional languages) the full compile times have increased quiet drastically. To work around this problem during development, we&#39;ve added a development build profile that restricts the languages to english and the browser permutations to firefox:</p>
-<ol>
-<li><p>Build</p>
-<p> mvn -Pdev clean install</p>
-</li>
-<li><p>Run hosted mode</p>
-<p> cd &#39;build/app&#39;
- mvn -Pdev gwt:run</p>
-</li>
-</ol>
-<h4>Bind Address</h4>
-<p>In some cases you may want to bind both the AS and the hosted mode to a specific address. A typical scenario is running a different OS (i.e windows) in a virtual machine. To make such a setup work you need to bind the hosted mode environment and the application server to a specific inet address that can be access from the virtual machine:</p>
-<p>1.) start the AS on a specific address:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>    ./bin/standalone<span class="variable">.sh</span>
-        -Djboss<span class="variable">.bind</span><span class="variable">.address</span>=<span class="number">192.168</span><span class="number">.2</span><span class="number">.126</span>
-        -Djboss<span class="variable">.bind</span><span class="variable">.address</span><span class="variable">.management</span>=<span class="number">192.168</span><span class="number">.2</span><span class="number">.126</span>
-</pre></td></tr></table></figure>
-
-<p>2.) launch hosted mode on a specific address:</p>
-<pre><code>mvn clean -Dgwt.bindAddress=192.168.2.126 gwt:run</code></pre>
-
+                <h3>Widgets</h3>
+<p>HAL builds on the default <a href="http://www.gwtproject.org/doc/latest/RefWidgetGallery.html" target="_blank">GWT widgets</a>, with minor modifications to provide a consistent look&amp;feel (css references, image bundles, etc)</p>
+<p>For specific interaction types we&#39;ve implemented dedicated widgets, that go beyond what GWT has to offer. I.e. the form input widget that provides an open-save-close model is good example of this.</p>
+<p>If a widget has a general purpose then it belongs into the <a href="https://github.com/hal/ballroom" target="_blank">Ballroom library</a>. If a widget only serves our very specific project needs, we keep it within the core/gui module.</p>
+<h3>Look &amp; Feel</h3>
+<p>HAL provides two different themes: The default one is the community look&amp;feel used with Wildfly. It&#39;s enabled and used out of the box.
+In order to switch to the product look&amp;feel, you need to rebuild the web console using the <code>-Peap</code> maven profile.
+This will create  a console build that relies on the <a href="http://uxd-rcue.rhcloud.com" target="_blank">RCUE</a> styles.</p>
+<p>The themes are driven by a <a href="http://lesscss.org" target="_blank">Less CSS</a> build step that creates two distinct css file for inclusion with the final console.</p>
+<h3>Accessibility</h3>
+<p>The web console implements the <a href="http://www.w3.org/WAI/intro/aria" target="_blank">W3C Aria specification</a> that defines a way to make Web content and Web applications more accessible to people with disabilities.</p>
+<p>The overall layout and each specific <a href="http://www.w3.org/TR/wai-aria-practices/" target="_blank">widgets are designed</a> to be composed and provide keyboard access and screen reader support across the board.</p>
+<div class="alert">
+It is an important requirement to pass the <a href="https://www.section508.gov" target="_blank">508 compliance</a> tests.
+Please keep this in mind when developing new widgets, layout types or navigation concepts.
+</div>
                 
             </div>
             <footer><div class="article-comment">
@@ -273,7 +225,7 @@ mvn package</code></pre>
         <ul>
             <li><a href="/" title="Home">Home</a></li>
             <li><a href="/blog/index.html" title="Blog">Blog</a></li>
-            <li><a href="/developer/getting-started.html" title="Getting Started">Getting Started</a></li>
+            <li><a href="/developer/1_getting-started.html" title="Getting Started">Getting Started</a></li>
         </ul>
     </div>
 
@@ -305,7 +257,7 @@ mvn package</code></pre>
     <div class="span10 offset2">
         <p style="margin-top: 5px; font-size: 80%;">
         
-            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            &copy; 2014 Red Hat, Inc. All Rights Reserved
             
         <br/>
         <i class="icon-fire"></i> Made with 
@@ -337,6 +289,18 @@ mvn package</code></pre>
     $('.dropdown-toggle').dropdown();
   </script>
 
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-45444197-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 
 

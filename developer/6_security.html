@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>Developer Documentation | HAL</title>
+  <title>Security | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
   
-  <meta name="description" content="Table of Contents
-
-Getting Started"/>
+  <meta name="description" content="Authentication
+The web console uses the default Wildfly HTTP entrypoint to access the management layer.
+As such it inherits it&amp;#39;s authentication me"/>
   
   
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <meta property="og:title" content="Developer Documentation"/>
+  <meta property="og:title" content="Security"/>
   <meta property="og:site_name" content="HAL"/>
 
   
@@ -176,17 +176,72 @@ Getting Started"/>
                 <div class="page-header">
                     
   
-    <h1 class="title">Developer Documentation</h1>
+    <h1 class="title">Security</h1>
   
 
                 </div>
             </header>
             <div class="article-entry">
                 
-                <h1>Table of Contents</h1>
-<ul>
-<li><a href="./getting-started.html">Getting Started</a></li>
-</ul>
+                <h3>Authentication</h3>
+<p>The web console uses the default <a href="https://docs.jboss.org/author/display/WFLY8/Default+HTTP+Interface+Security" target="_blank">Wildfly HTTP entrypoint</a> to access the management layer.
+As such it inherits it&#39;s authentication mechanism to secure the HTTP management API.</p>
+<p>The management layer uses <a href="http://tools.ietf.org/html/rfc2069" target="_blank">HTTP Digest Authentication</a>, which is completely
+encapsulated in the browser and beyond the control of the web console application itself.</p>
+<p>In order to develop or work with the console, you need to <a href="https://docs.jboss.org/author/display/WFLY8/add-user+utility" target="_blank">setup a management user</a>.</p>
+<p>The console resources (javascript, css, images) are retrieved using a non-secure connection, but the first management request (console bootstrap, XHR)
+will then trigger the authentication process and prompt for a username and password:</p>
+<img src="/images/auth-prompt.png">
+
+
+<h4>Gotchas</h4>
+<p>The biggest problem with digest authentication is that <a href="http://www.google.com/search?q=digest%20authentication%20logout" target="_blank">logout doesn&#39;t work reliably</a>.
+We tried our best to workaround around the issue and in most cases it works fine.</p>
+<p>However if run into a browser/os combination that fails, the only thing you can do is to close the web browser itself.</p>
+<div class="alert alert-info">
+Obviously this is not a desirable solution. It works and has it&#39;s benefits (out-of-the-box experience),
+but we are already working on <a href="https://github.com/hal/docs/wiki/Keymaker" target="_blank">a replacement</a>.
+</div>
+
+<h3>Authorisation</h3>
+<p><span class="label label-info">Since 2.0</span></p>
+<p>Like the authentication mechanism, authorisation is driven the management layer capabilities as well. Any manageable resource
+does declare a set of privileges to control how a resource, it&#39;s attributes and operations can be accessed.</p>
+<div class="alert alert-info">
+Please note the security policy decision and it&#39;s enforcement are done on the server side. Authorisation checks on the client side
+should merely improve the user experience, but are not meant to a security measure per se.
+</div>
+
+<h4>Meta Data</h4>
+<p>All interaction units need to know what data they operate on, in order to be instrumented by the security framework.
+Sometimes this means removing complete widget or disabling a button if certain operations are not granted.</p>
+<p>In order to tell the security framework what resource meta data needs to be considered, you need to declare the
+access control meta data on a presenter:</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionPresenter</span> {</span>
+
+ <span class="annotation">@ProxyCodeSplit</span>
+ <span class="annotation">@NameToken</span>(NameTokens.TransactionPresenter)
+ <span class="annotation">@AccessControl</span>(resources = {<span class="string">"{selected.profile}/subsystem=transactions"</span>})
+ <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyProxy</span> <span class="keyword">extends</span> <span class="title">Proxy</span>&lt;<span class="title">TransactionPresenter</span>&gt;, <span class="title">Place</span> {</span>
+ }
+</pre></td></tr></table></figure>
+
+<p>The <code>@AccessControl</code> annotation defines the set of resources a presenter operates on.
+In this example it&#39;s just single resource, but you can declare multiple ones.</p>
+<p>Based on that information, the security framework (built-in) creates a security context that will be queried
+when authorisation decisions need to be taken on the client side.</p>
+<h4>Security Framework</h4>
+<p>The security framework is built into the console and operates transparently in the background. It&#39;s tied into the overall framework
+mechanism of <a href="/developer/5_Framework.html">loading and initialising views</a>
+and cooperates with the <a href="/developer/2_look-and-feel.html">widget library</a> to enforce certain decisions.</p>
+<p>Apart from the <code>@AccessControl</code> definition you typically don&#39;t need to interact with it&#39;s API unless you run into a specific edge case.</p>
 
                 
             </div>

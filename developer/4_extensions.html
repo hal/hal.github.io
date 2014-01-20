@@ -3,17 +3,16 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>Framework &amp; Extensions | HAL</title>
+  <title>Compile Time Extensions | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
   
-  <meta name="description" content="GWTP
-The console builds on the GWTP framework and inherits most it&amp;#39;s features and framework services. 
-Most notable are the MVP design pattern [1]">
+  <meta name="description" content="Extensions
+The console provides a compile time extension mechanism. Extensions are regular GWT modules that implement the SPI and follow certain packa"/>
   
   
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <meta property="og:title" content="Framework &amp; Extensions"/>
+  <meta property="og:title" content="Compile Time Extensions"/>
   <meta property="og:site_name" content="HAL"/>
 
   
@@ -24,7 +23,7 @@ Most notable are the MVP design pattern [1]">
     <link rel="alternate" href="/atom.xml" title="HAL" type="application/atom+xml"/>
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--link rel="stylesheet" href="/css/bootstrap.css" media="screen" type="text/css"/-->
-    <link rel="stylesheet" media="screen" href="http://static.jboss.org/theme/css/bootstrap-community/2.3.1.1/bootstrap-community.min.css">
+    <link rel="stylesheet" media="screen" href="http://static.jboss.org/theme/css/bootstrap-community/2.3.1.1/bootstrap-community.min.css"/>
 
 
     <style type="text/css">
@@ -118,7 +117,9 @@ Most notable are the MVP design pattern [1]">
     <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Documentation<b class='caret'></b></a>
     <ul class='dropdown-menu'>
 
-      <li><a href="/developer/getting-started.html">Developer</a></li>
+      <li><a href="/developer/1_getting-started.html">Developer</a></li>
+
+      <li><a href="/mbui/1_overview.html">Interface Kernel</a></li>
 
       <li><a href="//github.com/hal/docs/wiki/">WIKI</a></li>
 
@@ -135,7 +136,7 @@ Most notable are the MVP design pattern [1]">
 
       <li><a href="//lists.jboss.org/mailman/listinfo/wildfly-dev">Mailing List</a></li>
 
-      <li><a href="//freenode.net#wildlfy-management">IRC</a></li>
+      <li><a href="//freenode.net#wildfly-management">IRC</a></li>
 
       <li><a href="//wildfly.org">Wildfly</a></li>
 
@@ -164,7 +165,7 @@ Most notable are the MVP design pattern [1]">
 <div class="row">
     <!--Sidebar content-->
     <div class="span3">
-        <div class='well sidebar-nav'><ul class='nav nav-list'><li class='nav-header'>Developer</li><li><a href='/developer/framework-extensions.html'>Framework Extensions</a></li><li><a href='/developer/getting-started.html'>Getting Started</a></li><li><a href='/developer/look-and-feel.html'>Look And Feel</a></li><li><a href='/developer/security.html'>Security</a></li><li><a href='/developer/services-data-model.html'>Services Data Model</a></li></ul></div>
+        <div class='well sidebar-nav'><ul class='nav nav-list'><li class='nav-header'>Developer</li><li><a href='/developer/1_getting-started.html'> Getting Started</a></li><li><a href='/developer/2_look-and-feel.html'> Look And Feel</a></li><li><a href='/developer/3_data-model.html'> Data Model</a></li><li><a href='/developer/4_extensions.html'> Extensions</a></li><li><a href='/developer/5_Framework.html'> Framework</a></li><li><a href='/developer/6_security.html'> Security</a></li></ul></div>
     </div>
 
     <!--Body content-->
@@ -174,39 +175,30 @@ Most notable are the MVP design pattern [1]">
                 <div class="page-header">
                     
   
-    <h1 class="title">Framework &amp; Extensions</h1>
+    <h1 class="title">Compile Time Extensions</h1>
   
 
                 </div>
             </header>
             <div class="article-entry">
                 
-                <h3>GWTP</h3>
-<p>The console builds on the GWTP framework and inherits most it&#39;s features and framework services. </p>
-<p>Most notable are the MVP design pattern [1] and dependency injection using Gin [2]:</p>
-<p>These two along with the GWTP Placemanager [3] create the foundation for loading, initialising and rendering dialogs. </p>
-<ol>
-<li><a href="http://www.gwtproject.org/articles/mvp-architecture.html" target="_blank">http://www.gwtproject.org/articles/mvp-architecture.html</a></li>
-<li><a href="http://code.google.com/p/google-gin/" target="_blank">http://code.google.com/p/google-gin/</a></li>
-<li><a href="https://github.com/ArcBees/GWTP/wiki/PlaceManager" target="_blank">https://github.com/ArcBees/GWTP/wiki/PlaceManager</a></li>
-</ol>
-<h3>Extensions</h3>
-<p>The web console can be extended using a compile time mechanism. Extensions are regular GWT modules that implement the SPI and follow some packaging conventions. Extension are provided as maven dependencies and distributed through the hal/release-stream build [1].</p>
-<p>Any extension has access to the regular framework contract, all of it&#39;s services and the full dependency injection scope.</p>
-<p>In order the get an idea how extensions are setup, build and integrated it&#39;s best to look at an example [2] project and <code>hal/release-stream</code>, which acts as an aggregator for extensions that can be used across the board.</p>
-<ol>
-<li><a href="https://github.com/hal/release-stream/" target="_blank">https://github.com/hal/release-stream/</a></li>
-<li><a href="https://github.com/teiid/teiid-web-console/tree/teiid-console-parent-1.1.0.Final" target="_blank">https://github.com/teiid/teiid-web-console/tree/teiid-console-parent-1.1.0.Final</a></li>
-</ol>
-<h4>Extension SPI</h4>
+                <h3>Extensions</h3>
+<p>The console provides a compile time extension mechanism. Extensions are regular GWT modules that implement the SPI and follow certain packaging conventions.
+Extension are provided as maven dependencies and distributed through the <a href="https://github.com/hal/release-stream/" target="_blank">hal/release-stream build</a>.</p>
+<p><p/>
+Any extension has access to the regular framework contract, all of it&#39;s services and the full dependency injection scope.
+In order the get an idea how extensions are setup, build and integrated it&#39;s best to look at an <a href="https://github.com/teiid/teiid-web-console/tree/teiid-console-parent-1.1.0.Final" target="_blank">example project</a>
+and <a href="https://github.com/hal/release-stream/" target="_blank">hal/release-stream</a>, which acts as an aggregator build.</p>
+<h3>Contract</h3>
 <p>The extension SPI has two main building blocks: </p>
 <ul>
 <li>The extension point</li>
 <li>Gin mixin definitions</li>
 </ul>
-<p><strong>The Extension Point</strong></p>
-<p>In order to provide an extension point you need to implement a presenter-view (as described in the MVP section). For the extension to be discovered you need to annotate the Presenter proxy with a <code>@SubsystemExtension</code> declaration.</p>
-<p>This instructs the SPI processor to include another place that represents your subsystem specific dialog:</p>
+<h4>Extension Point</h4>
+<p>In order to provide an extension point you need to implement a presenter-view (as described in the <a href="/developer/5_Framework.html">Framework section</a>).
+For the extension to be discovered you need to annotate the Presenter proxy with a <code>@SubsystemExtension</code> declaration.
+This instructs the SPI processor to include another place that represents your subsystem specific dialog:</p>
 <figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -234,9 +226,9 @@ Most notable are the MVP design pattern [1]">
 <li><code>name</code> &amp; <code>group</code> declarations: The link name and the group for the left hand side navigation.</li>
 <li><code>key</code>: the subsystem as it is referred to in the DMR model. If the subsystem doesn&#39;t exist, the dialog will not be shown.</li>
 </ul>
-<p><strong>Gin Mixins</strong></p>
-<p>The mixins are needed to extend the dependency injection scope and wire up your presenters-views couples and other utility classes (if needed).</p>
-<p>A mixin is declared both as a binding and model extension. The <code>@GinExtension</code> value refers the GWT module descriptor used with the extension.</p>
+<h4>IOC Mixins</h4>
+<p>The mixins are needed to extend the dependency injection scope and wire up your presenters-views couples and other utility classes (if needed).
+A mixin is declared both as a binding and model extension. The <code>@GinExtension</code> value refers the GWT module descriptor used with the extension.</p>
 <p>The injection points:</p>
 <figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
 2
@@ -273,12 +265,17 @@ Most notable are the MVP design pattern [1]">
 }
 </pre></td></tr></table></figure>
 
-<p><strong>Packaging Conventions</strong></p>
-<p>Due to the peculiarities of how the GWT compiler works, we need to enforce some constraints on how you can package your extension code:</p>
-<ul>
-<li>Extension must reside below the package <code>org.jboss.as.console.client.*</code>.</li>
-</ul>
+<h4>Data Objects (aka AutoBeans)</h4>
+<p>Extension most often provide their own data objects. Take a look at the <a href="/developer/3_data-model.html">Data Model Section</a>.
+It describes how custom AutoBean&#39;s can be provided and used.</p>
+<h4>Gotchas</h4>
+<div class="alert">
+<strong>Packaging Conventions</strong><br/>
 
+Due to the peculiarities of how the GWT compiler works, we need to enforce some constraints on how you can package your extension code:
+
+- Extension must reside below the package <code>org.jboss.as.console.client.*</code>.
+</div>
                 
             </div>
             <footer><div class="article-comment">
@@ -305,7 +302,7 @@ Most notable are the MVP design pattern [1]">
         <ul>
             <li><a href="/" title="Home">Home</a></li>
             <li><a href="/blog/index.html" title="Blog">Blog</a></li>
-            <li><a href="/developer/getting-started.html" title="Getting Started">Getting Started</a></li>
+            <li><a href="/developer/1_getting-started.html" title="Getting Started">Getting Started</a></li>
         </ul>
     </div>
 
@@ -337,7 +334,7 @@ Most notable are the MVP design pattern [1]">
     <div class="span10 offset2">
         <p style="margin-top: 5px; font-size: 80%;">
         
-            &copy; 2013 Red Hat, Inc. All Rights Reserved
+            &copy; 2014 Red Hat, Inc. All Rights Reserved
             
         <br/>
         <i class="icon-fire"></i> Made with 
@@ -369,6 +366,18 @@ Most notable are the MVP design pattern [1]">
     $('.dropdown-toggle').dropdown();
   </script>
 
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-45444197-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 
 

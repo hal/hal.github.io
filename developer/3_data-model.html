@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8"/>
   
-  <title>Developer Documentation | HAL</title>
+  <title>Data Model | HAL</title>
   <meta name="author" content="Red Hat, Inc.">
   
-  <meta name="description" content="Table of Contents
-
-Getting Started"/>
+  <meta name="description" content="The DMR Model
+The DMR Model provides the core data format and
+RPC capabilities to integrate with the wildfly management layer. Any management use case"/>
   
   
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <meta property="og:title" content="Developer Documentation"/>
+  <meta property="og:title" content="Data Model"/>
   <meta property="og:site_name" content="HAL"/>
 
   
@@ -176,18 +176,207 @@ Getting Started"/>
                 <div class="page-header">
                     
   
-    <h1 class="title">Developer Documentation</h1>
+    <h1 class="title">Data Model</h1>
   
 
                 </div>
             </header>
             <div class="article-entry">
                 
-                <h1>Table of Contents</h1>
-<ul>
-<li><a href="./getting-started.html">Getting Started</a></li>
-</ul>
+                <h3>The DMR Model</h3>
+<p>The <a href="https://docs.jboss.org/author/display/AS71/Management+resources" target="_blank">DMR Model</a> provides the core data format and
+RPC capabilities to integrate with the wildfly management layer. Any management use case implemented in HAL leverages DMR for data retrieval and execution of management operations.</p>
+<p><p/>
+Before you get started it&#39;s good to make yourself familiar with the <a href="https://docs.jboss.org/author/display/AS71/Core+management+concepts" target="_blank">core management concepts</a>
+and the characteristics of <a href="https://docs.jboss.org/author/display/AS71/Management+resources" target="_blank">management resources</a> in general.</p>
+<h3>Dispatcher Service</h3>
+<p>The <a href="https://github.com/hal/core/tree/master/dmr" target="_blank">dispatcher library</a> provides the API and services
+to execute management operations against the wildfly management layer. It uses HTTP as the transport and DMR as the wire format.</p>
+<p>The dispatcher is provided through the <a href="https://github.com/ArcBees/GWTP/wiki/GIN-Binding" target="_blank">core IOC facilities</a>:</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="annotation">@Inject</span>
+<span class="keyword">public</span> TransactionPresenter(DispatchAsync dispatcher)
+{
+    <span class="keyword">this</span>.dispatcher = dispatcher;
+}
+</pre></td></tr></table></figure>
 
+<p>Once you get hold of a dispatcher instance, you need to wrap the DMR representation (aka ModelNode) in an action
+and provide an async callback to retrieve the results:</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre> ModelNode operation = <span class="keyword">new</span> ModelNode();
+ operation.get(ADDRESS).add(<span class="string">"subsystem"</span>, <span class="string">"transactions"</span>);
+ operation.get(OP).set(READ_RESOURCE_OPERATION);
+ operation.get(INCLUDE_RUNTIME).set(<span class="keyword">true</span>);
+
+ dispatcher.execute(<span class="keyword">new</span> DMRAction(operation), <span class="keyword">new</span> AsyncCallback&lt;DMRResponse&gt;() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> onSuccess(DMRResponse dmrResponse) {
+        ModelNode response = dmrResponse.get();
+        <span class="comment">// process the response</span>
+       }
+    }
+ );
+</pre></td></tr></table></figure>
+
+<h3>ModelNode API</h3>
+<p>In addition to the HTTP wrapper and marshalling facilities, the dispatcher library also contains a ModelNode API,
+to interact with the DMR representations at hand.</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre>
+<span class="comment">// create a model node</span>
+ModelNode operation = <span class="keyword">new</span> ModelNode();
+operation.get(OP).set(READ_ATTRIBUTE_OPERATION);
+operation.get(NAME).set(<span class="string">"process-type"</span>);
+operation.get(ADDRESS).setEmptyList();
+
+<span class="comment">// read a model node</span>
+ModelNode response = result.get();
+
+<span class="keyword">if</span>(response.isFailure()) {
+    <span class="comment">// process error</span>
+    Console.error(...);
+
+} <span class="keyword">else</span> {
+    <span class="comment">// all good : parse response</span>
+    ModelNode payload= response.get(RESULT);
+    <span class="keyword">boolean</span> isStandalone = payload.asString().equals(<span class="string">"Server"</span>);
+}
+</pre></td></tr></table></figure>
+
+<h3>AutoBeans and EntityAdapter</h3>
+<p>Many of the GWT widgets work on <a href="http://code.google.com/p/google-web-toolkit/wiki/AutoBean" target="_blank">AutoBean&#39;s</a>.
+Since the web console does rely on the default widgets, we did chose it as the default data-model object representation.
+This way we can leverage all the default GWT API (i.e. <a href="http://www.gwtproject.org/doc/latest/DevGuideUiCellWidgets.html" target="_blank">Cell Widgets</a>) without going through
+extra hoops&amp;loops.</p>
+<p><p/>
+The downside, however is that you need to to convert the DMR wire format into AutoBeans at some point. This typically happens before the data
+is passed into the view. We do provide an <code>EntityAdapter</code> to do the conversion DMR to AutoBean and vice versa.</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>ModelNode response = dmrResponse.get();
+TransactionManager transactionManager = entityAdapter.fromDMR(response.get(RESULT));
+getView().setTransactionManager(transactionManager);
+</pre></td></tr></table></figure>
+
+<div class="alert alert-info">
+In future versions thr AutoBean mapping will not be required anymore.
+We are already working on a different design that fully leverages the DMR meta data and provides
+transparent mappings to default GWT widgets.
+<p/>
+For further information please refer to the <a href="/mbui/1_overview.html">Interface Kernel Documentation</a>
+</div>
+
+<h4>Entity Meta Data</h4>
+<p>In to leverage the EntityAdapter, you need to provide some meta data to bridge the gap between the wireformat
+and the AutoBean framework:</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="annotation">@Address</span>(<span class="string">"/subsystem=transactions"</span>)
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TransactionManager</span> {</span>
+
+    <span class="annotation">@Binding</span>(detypedName = <span class="string">"default-timeout"</span>, expr = <span class="keyword">true</span>)
+    <span class="keyword">int</span> getDefaultTimeout();
+    <span class="keyword">void</span> setDefaultTimeout(<span class="keyword">int</span> t);
+
+    <span class="annotation">@Binding</span>(detypedName = <span class="string">"enable-statistics"</span>, expr = <span class="keyword">true</span>)
+    <span class="keyword">boolean</span> isEnableStatistics();
+    <span class="keyword">void</span> setEnableStatistics(<span class="keyword">boolean</span> b);
+
+    <span class="annotation">@Binding</span>(detypedName = <span class="string">"enable-tsm-status"</span>, expr = <span class="keyword">true</span>)
+    <span class="keyword">boolean</span> isEnableTsmStatus();
+    <span class="keyword">void</span> setEnableTsmStatus(<span class="keyword">boolean</span> b);
+
+    <span class="annotation">@Binding</span>(detypedName = <span class="string">"jts"</span>, expr = <span class="keyword">true</span>)
+    <span class="keyword">boolean</span> isJts();
+    <span class="keyword">void</span> setJts(<span class="keyword">boolean</span> b);
+
+    [...]
+}
+</pre></td></tr></table></figure>
+
+<p>For full documentation please refer to the API docs of the <code>@Binding</code> annotation.</p>
+<h4>AutoBean Factory</h4>
+<p>The central entry point for the GWT compiler to create the boilerplate for the AutoBean&#39;s is the AutoBean factory.
+Any data object that you want to use needs to be registered with the global factory:</p>
+<figure class="highlight lang-java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>
+<span class="keyword">package</span> org.jboss.as.console.client.shared;
+
+<span class="annotation">@BeanFactoryExtension</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CoreBeanFactory</span> {</span>
+
+    AutoBean&lt;TransactionManager&gt; transactionManager();
+    [...]
+}
+</pre></td></tr></table></figure>
+
+<div class="alert alert-info">
+<a href="/developer/4_console-extensions.html">Extension providers</a> can rely on the @BeanFactoryExtension declaration to have separate AutoBean factory definitions
+ outside the scope of the core console.
+</div>
                 
             </div>
             <footer><div class="article-comment">
