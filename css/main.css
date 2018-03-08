@@ -1,3 +1,32 @@
 body {
     font-family: 'Overpass', sans-serif;
 }
+
+.homepage-banner h1,
+.homepage-banner p,
+.footer-dark h6,
+.footer-dark p,
+.footer-dark li,
+.footer-dark a {
+    color: rgba(255, 255, 255, .75);
+}
+
+.homepage-feature {
+    flex-grow: 1;
+    padding: 4rem 6rem 0 6rem;
+}
+
+.homepage-feature-image {
+    height: auto;
+    width: 48px;
+}
+
+.smaller {
+    font-size: 67%;
+}
+
+@media (min-width: 768px) {
+    .homepage-feature {
+        width: 50%;
+    }
+}
