@@ -2,31 +2,92 @@ body {
     font-family: 'Overpass', sans-serif;
 }
 
-.homepage-banner h1,
-.homepage-banner p,
-.footer-dark h6,
-.footer-dark p,
-.footer-dark li,
-.footer-dark a {
+a, a:hover {
+    color: #900;
+}
+
+.hal-aside {
+    height: calc(100vh - 3rem);
+    font-size: .875rem;
+    overflow-y: auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    position: sticky;
+    top: 3rem;
+}
+
+.hal-aside a, .hal-breadcrumb-only a {
+    color: #6c757d;
+}
+
+.hal-aside h6 {
+    color: #212529;
+    padding-left: 1rem;
+}
+
+.hal-aside, .hal-breadcrumb-only {
+    font-size: .875rem;
+}
+
+.hal-aside-separator {
+    border-left: 1px solid #eee;
+}
+
+.hal-breadcrumb .breadcrumb-item.active, .hal-breadcrumb-only .breadcrumb-item.active {
+    color: #999;
+}
+
+.hal-content p {
+    text-align: justify;
+}
+
+.hal-image-caption {
+    color: #6c757d;
+    font-size: 90%;
+    margin-bottom: 0;
+}
+
+.hal-flex-2-per-row {
+    flex: 1 1 50%;
+}
+
+.hal-flex-3-per-row {
+    flex: 1 1 33%;
+}
+
+.hal-flex-4-per-row {
+    flex: 1 1 25%;
+}
+
+.hal-footer h6,
+.hal-footer p,
+.hal-footer li,
+.hal-footer a,
+.hal-homepage-banner h1,
+.hal-homepage-banner p {
     color: rgba(255, 255, 255, .75);
 }
 
-.homepage-feature {
-    flex-grow: 1;
+.hal-homepage-feature {
     padding: 4rem 6rem 0 6rem;
 }
 
-.homepage-feature-image {
+.hal-smaller {
+    font-size: 0.66rem;
+}
+
+.hal-teaser-icon {
     height: auto;
     width: 48px;
 }
 
-.smaller {
-    font-size: 67%;
+.hal-toc ul {
+    list-style: none;
+    padding-left: 1rem;
 }
 
-@media (min-width: 768px) {
-    .homepage-feature {
+@media (min-width: 992px) {
+    .hal-homepage-feature {
         width: 50%;
     }
 }
