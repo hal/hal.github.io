@@ -1,69 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on HAL Management Console</title>
-    <link>https://hal.github.io/</link>
-    <description>Recent content in Home on HAL Management Console</description>
+    <title>Release Notes on HAL Management Console</title>
+    <link>https://hal.github.io/releases/</link>
+    <description>Recent content in Release Notes on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Mar 2018 16:29:52 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 09 Mar 2018 08:01:18 +0100</lastBuildDate>
     
-	<atom:link href="https://hal.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://hal.github.io/releases/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Build Run</title>
-      <link>https://hal.github.io/development/build-run/</link>
-      <pubDate>Thu, 08 Mar 2018 16:29:52 +0100</pubDate>
-      
-      <guid>https://hal.github.io/development/build-run/</guid>
-      <description>Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>Get Started</title>
-      <link>https://hal.github.io/documentation/get-started/</link>
-      <pubDate>Thu, 08 Mar 2018 16:28:42 +0100</pubDate>
-      
-      <guid>https://hal.github.io/documentation/get-started/</guid>
-      <description>Get started - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>Architecture</title>
-      <link>https://hal.github.io/development/architecture/</link>
-      <pubDate>Thu, 08 Mar 2018 16:30:01 +0100</pubDate>
-      
-      <guid>https://hal.github.io/development/architecture/</guid>
-      <description>Architecture - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>End User</title>
-      <link>https://hal.github.io/documentation/end-user/</link>
-      <pubDate>Thu, 08 Mar 2018 16:29:20 +0100</pubDate>
-      
-      <guid>https://hal.github.io/documentation/end-user/</guid>
-      <description>End user documentation - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>Building Blocks</title>
-      <link>https://hal.github.io/development/building-blocks/</link>
-      <pubDate>Thu, 08 Mar 2018 16:30:11 +0100</pubDate>
-      
-      <guid>https://hal.github.io/development/building-blocks/</guid>
-      <description>Building blocks - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>Extensions</title>
-      <link>https://hal.github.io/development/extensions/</link>
-      <pubDate>Thu, 08 Mar 2018 16:30:20 +0100</pubDate>
-      
-      <guid>https://hal.github.io/development/extensions/</guid>
-      <description>Extensions - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
     
     <item>
       <title>2.9.15.Final</title>
@@ -147,25 +93,6 @@
       
       <guid>https://hal.github.io/releases/3.0.0.final/</guid>
       <description>Target: WildFly 13.0.0.Final  New &amp;amp; Improved Features General  Place management for finder and applications. Each finder selection and each application has its own distinct URL  Cross-links between different parts of HAL (configuration ⟷ runtime ⟷ deployment) Applications / finder selections can be bookmarked  Enhanced model browser (visualize deprecated attributes) Macro recording PatternFly compliance Enhanced form items  lists properties booleans (w/ expression support) combo boxes with auto complete support  JavaScript API Support for (dynamic) extensions written in JavaScript Second level cache for metadata (based on IndexDB and web workers)  Finder  Navigation using cursor keys.</description>
-    </item>
-    
-    <item>
-      <title>Contribute</title>
-      <link>https://hal.github.io/contribute/</link>
-      <pubDate>Thu, 08 Mar 2018 16:30:37 +0100</pubDate>
-      
-      <guid>https://hal.github.io/contribute/</guid>
-      <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>What&#39;s New</title>
-      <link>https://hal.github.io/whats-new/</link>
-      <pubDate>Thu, 08 Mar 2018 16:28:57 +0100</pubDate>
-      
-      <guid>https://hal.github.io/whats-new/</guid>
-      <description>Starting with version 3.x we&amp;rsquo;ve rewritten the console from scratch. We still use a similar technical stack, but we removed a lot of old and deprecated code, refactored the main business logic and rewrote pretty much all of the UI related code. We moved from GWT widgets to Elemento and prepared the codebase for the upcoming GWT 3.0 release. We also fully adopt PatternFly now.
-Finally we took the opportunity to enhance the existing features and added support for many new subsystems and attributes.</description>
     </item>
     
   </channel>
