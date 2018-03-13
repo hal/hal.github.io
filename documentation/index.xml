@@ -17,7 +17,9 @@
       <pubDate>Thu, 08 Mar 2018 16:28:42 +0100</pubDate>
       
       <guid>https://hal.github.io/documentation/get-started/</guid>
-      <description>Get started - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+      <description>&lt;p&gt;The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply add an user via the &lt;code&gt;add-user.sh&lt;/code&gt; script, fire up your browser and open &lt;a href=&#34;http://localhost:9990&#34;&gt;http://localhost:9990&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,7 +28,9 @@
       <pubDate>Thu, 08 Mar 2018 16:29:20 +0100</pubDate>
       
       <guid>https://hal.github.io/documentation/end-user/</guid>
-      <description>End user documentation - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+      <description>&lt;p&gt;The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six main sections: homepage, deployments, configuration, runtime, patching and access control.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
