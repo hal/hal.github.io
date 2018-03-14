@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recipes &amp; How To on HAL Management Console</title>
+    <link>https://hal.github.io/documentation/howto/</link>
+    <description>Recent content in Recipes &amp; How To on HAL Management Console</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Mar 2018 11:03:47 +0100</lastBuildDate>
+    
+	<atom:link href="https://hal.github.io/documentation/howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Add a Data Source</title>
+      <link>https://hal.github.io/documentation/howto/datasource/</link>
+      <pubDate>Wed, 14 Mar 2018 10:57:25 +0100</pubDate>
+      
+      <guid>https://hal.github.io/documentation/howto/datasource/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Sed haec nihil sane ad rem; Utram tandem linguam nescio? Quaero igitur, quo modo hae tantae commendationes a natura profectae subito a sapientia relictae sint. Duo Reges: constructio interrete. Quae quidem vel cum periculo est quaerenda vobis.
+An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eaedem res maneant alio modo.</description>
+    </item>
+    
+    <item>
+      <title>Manage Deployments</title>
+      <link>https://hal.github.io/documentation/howto/deployment/</link>
+      <pubDate>Wed, 14 Mar 2018 10:57:19 +0100</pubDate>
+      
+      <guid>https://hal.github.io/documentation/howto/deployment/</guid>
+      <description>An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eaedem res maneant alio modo. Vitae autem degendae ratio maxime quidem illis placuit quieta. Scaevolam M. Nam aliquando posse recte fieri dicunt nulla expectata nec quaesita voluptate. Item de contrariis, a quibus ad genera formasque generum venerunt. Non laboro, inquit, de nomine.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat?</description>
+    </item>
+    
+  </channel>
+</rss>

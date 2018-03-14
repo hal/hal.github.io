@@ -10,8 +10,8 @@
 
 
     <meta name="generator" content="Hugo 0.36" />
-    <link rel="canonical" href="https://hal.github.io/whats-new/">
-    <title>What&#39;s New | HAL Management Console</title>
+    <link rel="canonical" href="https://hal.github.io/documentation/howto/">
+    <title>Recipes &amp; How To | HAL Management Console</title>
     
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -43,10 +43,10 @@ ga('send', 'pageview');
                 <li class="nav-item ">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="/whats-new/">What&#39;s New</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active">
                     <a class="nav-link" href="/documentation/">Documentation</a>
                 </li>
                 <li class="nav-item ">
@@ -71,145 +71,45 @@ ga('send', 'pageview');
 </nav>
 
     <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><header><h1 class="display-4">What&#39;s New</h1></header>
+    <div class="row">
+        <main class="col-12 col-md-12 py-md-3 px-md-5 hal-list" role="main"><nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-white pr-0 pb-0">
+    
+    
+
+
+
+
+    
+        <li class="breadcrumb-item"><a href="/documentation/">Documentation</a></li>
+    
+
+
+
+
+    
+        <li class="breadcrumb-item active" aria-current="page">Recipes &amp; How To</li>
+    
+
+</ol>
+                </nav><header><h1 class="display-4">Recipes &amp; How To</h1></header>
+            <p>Common tasks and how to solve them.</p>
+
             
-
-<p>Starting with version 3.x we&rsquo;ve rewritten the console from scratch. We still use a similar <a href="/development/architecture/">technical stack</a>, but we removed a lot of old and deprecated code, refactored the main business logic and rewrote pretty much all of the UI related code. We moved from <a href="http://www.gwtproject.org/doc/latest/RefWidgetGallery.html">GWT widgets</a> to <a href="https://github.com/hal/elemento">Elemento</a> and prepared the codebase for the upcoming GWT 3.0 release. We also fully adopt <a href="https://www.patternfly.org/">PatternFly</a> now.</p>
-
-<p>Finally we took the opportunity to enhance the existing features and added support for many new subsystems and attributes. The following sections show some highlights of the latest version. Most screenshots show the new version on the left and the old on the right side. For all details see the <a href="/releases/3.0.0.final/">3.0.0.Final release notes</a>.</p>
-
-<h1 id="finder">Finder</h1>
-
-<p>The finder has been greatly improved. You can now use the cursor keys for navigation inside and across columns. To open an application press ↵ (enter) to go back press ⌫ (backspace). Items in one column are now ordered alphabetically by default. You can pin frequently used items to stay at the top. Most columns offer a filter which can be used to quickly find the items you&rsquo;re looking for. Finally the previews have been enriched and provide detailed documentation or the main attributes of the selected resource.</p>
-
-
-<div class="cocoen mb-3">
-    
-        <img src="/img/whatsnew/after/finder.png" alt="">
-        <img src="/img/whatsnew/before/finder.png" alt="">
-    
-</div>
-
-
-<h1 id="applications">Applications</h1>
-
-<p>Applications provide a new breadcrumb at the top to quickly switch between items of the same kind. More complex applications can include a vertical navigation. Finally most applications can be easily opened in an external window and provide an expert mode which uses the generic model browser.</p>
-
-
-<div class="cocoen mb-3">
-    
-        <img src="/img/whatsnew/after/application.png" alt="">
-        <img src="/img/whatsnew/before/application.png" alt="">
-    
-</div>
-
-
-<h1 id="deployments">Deployments</h1>
-
-<p>Many new features have been added to the deployment section:</p>
-
-<ul>
-<li>Use drag and drop to deploy artifacts</li>
-<li>Content browser with preview for text and images</li>
-<li>Create exploded deployments</li>
-<li>CRUD support for exploded deployments:
-
-<ul>
-<li>Add empty files</li>
-<li>Upload content</li>
-<li>Modify content</li>
-<li>Remove content</li>
-</ul></li>
-<li>Download complete deployments or deployment content</li>
-</ul>
-
-<p><p class="hal-image-caption">Deployments</p>
-<div class="cocoen mb-3">
-    
-        <img src="/img/whatsnew/after/deployment.png" alt="">
-        <img src="/img/whatsnew/before/deployment.png" alt="">
-    
-</div>
-
-<p class="hal-image-caption">Deployment Model</p>
-<div class="cocoen mb-3">
-    
-        <img src="/img/whatsnew/after/deployment-model.png" alt="">
-        <img src="/img/whatsnew/before/deployment-model.png" alt="">
-    
-</div>
-
-<p class="hal-image-caption">Content Browser</p>
-<img class="img-fluid mb-2 " src="/img/whatsnew/after/deployment-content.png"  alt="">
-</p>
-
-<h1 id="topology">Topology</h1>
-
-<p>The topology view has been reintroduced to the HAL management console. It was removed in the last versions due to performance issues with large domains. But thanks to new management operations, we were able to add this useful tool again.</p>
-
-
-<img class="img-fluid mb-2 " src="/img/whatsnew/after/topology.png"  alt="">
-
-
-<h1 id="runtime">Runtime</h1>
-
-<p>The lifecycle operations for hosts, server groups and servers have been improved. New operations are available for hosts and disconnected hosts are now shown in the finder columns. For servers you can specify custom URLs which is extremely useful when running WildFly inside a docker container.</p>
-
-
-<div class="cocoen mb-3">
-    
-        <img src="/img/whatsnew/after/runtime.png" alt="">
-        <img src="/img/whatsnew/before/runtime.png" alt="">
-    
-</div>
-
-
-<h1 id="monitor">Monitor</h1>
-
-<p>The existing screens have been improved and many new subsystems have been added to the monitoring section. Some of the new and enhanced subsystems are:</p>
-
-<ul>
-<li>Batch</li>
-<li>EJB</li>
-<li>IO</li>
-<li>JAX-RS</li>
-<li>Messaging</li>
-<li>Web (Undertow)</li>
-</ul>
-
-<p>
-<div class="cocoen mb-3">
-    
-        <img src="/img/whatsnew/after/monitor-server.png" alt="">
-        <img src="/img/whatsnew/before/monitor-server.png" alt="">
-    
-</div>
-
-<p class="hal-image-caption">EJB Subsystem</p>
-<img class="img-fluid mb-2 " src="/img/whatsnew/after/monitor-ejb.png"  alt="">
-
-<p class="hal-image-caption">JAX-RS Resources</p>
-<img class="img-fluid mb-2 " src="/img/whatsnew/after/monitor-jaxrs.png"  alt="">
-
-<p class="hal-image-caption">Undertow Listener Statistics</p>
-<img class="img-fluid mb-2 " src="/img/whatsnew/after/monitor-undertow.png"  alt="">
-</p>
-
-        </main><aside class="d-none d-lg-block col-lg-3 hal-aside">
-                <div class="hal-aside-separator"><div class="hal-toc">
-                        <h6>On this page:</h6><nav id="TableOfContents">
-<ul>
-<li><a href="#finder">Finder</a></li>
-<li><a href="#applications">Applications</a></li>
-<li><a href="#deployments">Deployments</a></li>
-<li><a href="#topology">Topology</a></li>
-<li><a href="#runtime">Runtime</a></li>
-<li><a href="#monitor">Monitor</a></li>
-</ul>
-</nav></div>
-                </div>
-            </aside></div>
+                <div class="d-lg-flex flex-lg-wrap"><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/documentation/howto/datasource/"><img class="hal-teaser-icon mr-3" src="/img/storage.png"></a></div><div>
+                                <h5 class="card-title"><a href="/documentation/howto/datasource/" class="text-dark">Add a Data Source</a></h5>
+                                <div class="card-text"><p>Shows the different ways how to add a data source. Describes the advantages and disadvantages of each approach.</p></div>
+                                <a href="/documentation/howto/datasource/" class="card-link">Read More &raquo;</a>
+                            </div>
+                        </div><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/documentation/howto/deployment/"><img class="hal-teaser-icon mr-3" src="/img/bundle.png"></a></div><div>
+                                <h5 class="card-title"><a href="/documentation/howto/deployment/" class="text-dark">Manage Deployments</a></h5>
+                                <div class="card-text"><p>Shows the various ways how to add deployments. Describes how to manage existing deployments and how you can use the console for rapid prototyping.</p></div>
+                                <a href="/documentation/howto/deployment/" class="card-link">Read More &raquo;</a>
+                            </div>
+                        </div></div>
+            
+        </main>
+    </div>
 </div>
     <footer class="hal-footer footer-dark bg-dark p-5">
     <div class="container">

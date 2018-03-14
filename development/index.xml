@@ -12,14 +12,13 @@
     
     
     <item>
-      <title>Build Run</title>
+      <title>Build &amp; Run</title>
       <link>https://hal.github.io/development/build-run/</link>
       <pubDate>Thu, 08 Mar 2018 16:29:52 +0100</pubDate>
       
       <guid>https://hal.github.io/development/build-run/</guid>
-      <description>&lt;p&gt;Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
@@ -28,9 +27,8 @@
       <pubDate>Thu, 08 Mar 2018 16:30:01 +0100</pubDate>
       
       <guid>https://hal.github.io/development/architecture/</guid>
-      <description>&lt;p&gt;Architecture - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Architecture - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
@@ -39,9 +37,8 @@
       <pubDate>Thu, 08 Mar 2018 16:30:11 +0100</pubDate>
       
       <guid>https://hal.github.io/development/building-blocks/</guid>
-      <description>&lt;p&gt;Building blocks - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Building blocks - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
@@ -50,9 +47,7 @@
       <pubDate>Thu, 08 Mar 2018 16:30:20 +0100</pubDate>
       
       <guid>https://hal.github.io/development/extensions/</guid>
-      <description>&lt;p&gt;Extensions - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Extensions - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
   </channel>

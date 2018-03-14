@@ -6,20 +6,29 @@
     <description>Recent content in Home on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Mar 2018 16:29:52 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 14 Mar 2018 10:57:25 +0100</lastBuildDate>
     
 	<atom:link href="https://hal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Build Run</title>
+      <title>Add a Data Source</title>
+      <link>https://hal.github.io/documentation/howto/datasource/</link>
+      <pubDate>Wed, 14 Mar 2018 10:57:25 +0100</pubDate>
+      
+      <guid>https://hal.github.io/documentation/howto/datasource/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Sed haec nihil sane ad rem; Utram tandem linguam nescio? Quaero igitur, quo modo hae tantae commendationes a natura profectae subito a sapientia relictae sint. Duo Reges: constructio interrete. Quae quidem vel cum periculo est quaerenda vobis.
+An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eaedem res maneant alio modo.</description>
+    </item>
+    
+    <item>
+      <title>Build &amp; Run</title>
       <link>https://hal.github.io/development/build-run/</link>
       <pubDate>Thu, 08 Mar 2018 16:29:52 +0100</pubDate>
       
       <guid>https://hal.github.io/development/build-run/</guid>
-      <description>&lt;p&gt;Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
@@ -28,9 +37,18 @@
       <pubDate>Thu, 08 Mar 2018 16:28:42 +0100</pubDate>
       
       <guid>https://hal.github.io/documentation/get-started/</guid>
-      <description>&lt;p&gt;The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply add an user via the &lt;code&gt;add-user.sh&lt;/code&gt; script, fire up your browser and open &lt;a href=&#34;http://localhost:9990&#34;&gt;http://localhost:9990&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply add an user via the add-user.sh script, fire up your browser and open http://localhost:9990.
+Independent Mode Besides that you can run the console on its own aka independent mode. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&amp;rsquo;s started. You have to provide the URL of the management endpoint you want to connect to.</description>
+    </item>
+    
+    <item>
+      <title>Manage Deployments</title>
+      <link>https://hal.github.io/documentation/howto/deployment/</link>
+      <pubDate>Wed, 14 Mar 2018 10:57:19 +0100</pubDate>
+      
+      <guid>https://hal.github.io/documentation/howto/deployment/</guid>
+      <description>An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eaedem res maneant alio modo. Vitae autem degendae ratio maxime quidem illis placuit quieta. Scaevolam M. Nam aliquando posse recte fieri dicunt nulla expectata nec quaesita voluptate. Item de contrariis, a quibus ad genera formasque generum venerunt. Non laboro, inquit, de nomine.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat?</description>
     </item>
     
     <item>
@@ -39,9 +57,8 @@
       <pubDate>Thu, 08 Mar 2018 16:30:01 +0100</pubDate>
       
       <guid>https://hal.github.io/development/architecture/</guid>
-      <description>&lt;p&gt;Architecture - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Architecture - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
@@ -50,9 +67,18 @@
       <pubDate>Thu, 08 Mar 2018 16:29:20 +0100</pubDate>
       
       <guid>https://hal.github.io/documentation/end-user/</guid>
-      <description>&lt;p&gt;The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six main sections: homepage, deployments, configuration, runtime, patching and access control.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six main sections: homepage, deployments, configuration, runtime, patching and access control.
+This page gives a quick introduction to the main sections. If you want to learn more about the most common use cases, visit the YouTube channel and watch the screencasts.
+Homepage The homepage provides an overview of the main sections in the console.</description>
+    </item>
+    
+    <item>
+      <title>Recipes &amp; How To</title>
+      <link>https://hal.github.io/documentation/howto/</link>
+      <pubDate>Wed, 14 Mar 2018 11:14:45 +0100</pubDate>
+      
+      <guid>https://hal.github.io/documentation/howto/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -61,9 +87,8 @@
       <pubDate>Thu, 08 Mar 2018 16:30:11 +0100</pubDate>
       
       <guid>https://hal.github.io/development/building-blocks/</guid>
-      <description>&lt;p&gt;Building blocks - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Building blocks - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
@@ -72,9 +97,7 @@
       <pubDate>Thu, 08 Mar 2018 16:30:20 +0100</pubDate>
       
       <guid>https://hal.github.io/development/extensions/</guid>
-      <description>&lt;p&gt;Extensions - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Extensions - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
