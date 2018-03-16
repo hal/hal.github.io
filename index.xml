@@ -17,8 +17,7 @@
       <pubDate>Wed, 14 Mar 2018 10:57:25 +0100</pubDate>
       
       <guid>https://hal.github.io/documentation/howto/datasource/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Sed haec nihil sane ad rem; Utram tandem linguam nescio? Quaero igitur, quo modo hae tantae commendationes a natura profectae subito a sapientia relictae sint. Duo Reges: constructio interrete. Quae quidem vel cum periculo est quaerenda vobis.
-An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eaedem res maneant alio modo.</description>
+      <description>Pending</description>
     </item>
     
     <item>
@@ -27,8 +26,10 @@ An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam P
       <pubDate>Thu, 08 Mar 2018 16:29:52 +0100</pubDate>
       
       <guid>https://hal.github.io/development/build-run/</guid>
-      <description>Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+      <description>This page explains how to build, run &amp;amp; debug the console.
+Build If not already done, clone the code from https://github.com/hal/hal.next/ or fork the repository into your own personal GitHub account.
+HAL uses Maven for its build.
+Run Debug Build &amp;amp; run - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</description>
     </item>
     
     <item>
@@ -38,7 +39,7 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ame
       
       <guid>https://hal.github.io/documentation/get-started/</guid>
       <description>The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply add an user via the add-user.sh script, fire up your browser and open http://localhost:9990.
-Independent Mode Besides that you can run the console on its own aka independent mode. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&amp;rsquo;s started. You have to provide the URL of the management endpoint you want to connect to.</description>
+Independent Mode  Besides that you can run the console on its own aka independent mode. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&amp;rsquo;s started. You have to provide the URL of the management endpoint you want to connect to.</description>
     </item>
     
     <item>
@@ -47,8 +48,7 @@ Independent Mode Besides that you can run the console on its own aka independent
       <pubDate>Wed, 14 Mar 2018 10:57:19 +0100</pubDate>
       
       <guid>https://hal.github.io/documentation/howto/deployment/</guid>
-      <description>An hoc usque quaque, aliter in vita? Quid sequatur, quid repugnet, vident. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eaedem res maneant alio modo. Vitae autem degendae ratio maxime quidem illis placuit quieta. Scaevolam M. Nam aliquando posse recte fieri dicunt nulla expectata nec quaesita voluptate. Item de contrariis, a quibus ad genera formasque generum venerunt. Non laboro, inquit, de nomine.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat?</description>
+      <description>Pending</description>
     </item>
     
     <item>
@@ -57,8 +57,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inqui
       <pubDate>Thu, 08 Mar 2018 16:30:01 +0100</pubDate>
       
       <guid>https://hal.github.io/development/architecture/</guid>
-      <description>Architecture - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+      <description>HAL is a client side RIA without server side dependencies. It is a GWT application - which means it&amp;rsquo;s written almost completely in Java. GWT is used to transpile the Java code into a bunch of JavaScript, HTML and CSS files. HAL uses some external JavaScript libraries as well. These dependencies are managed using bower which is in turn integrated into the Maven build using the maven-frontend-plugin. Take a look at the bower.</description>
     </item>
     
     <item>
@@ -69,7 +68,7 @@ At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergr
       <guid>https://hal.github.io/documentation/end-user/</guid>
       <description>The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six main sections: homepage, deployments, configuration, runtime, patching and access control.
 This page gives a quick introduction to the main sections. If you want to learn more about the most common use cases, visit the YouTube channel and watch the screencasts.
-Homepage The homepage provides an overview of the main sections in the console.</description>
+Homepage  The homepage provides an overview of the main sections in the console.</description>
     </item>
     
     <item>
@@ -87,8 +86,8 @@ Homepage The homepage provides an overview of the main sections in the console.<
       <pubDate>Thu, 08 Mar 2018 16:30:11 +0100</pubDate>
       
       <guid>https://hal.github.io/development/building-blocks/</guid>
-      <description>Building blocks - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+      <description> Pending
+MVP Config Core DMR Metadata MBUI User Interface </description>
     </item>
     
     <item>
@@ -97,7 +96,16 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ame
       <pubDate>Thu, 08 Mar 2018 16:30:20 +0100</pubDate>
       
       <guid>https://hal.github.io/development/extensions/</guid>
-      <description>Extensions - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+      <description>Pending</description>
+    </item>
+    
+    <item>
+      <title>JavaScript API</title>
+      <link>https://hal.github.io/development/javascript-api/</link>
+      <pubDate>Fri, 16 Mar 2018 05:39:16 +0100</pubDate>
+      
+      <guid>https://hal.github.io/development/javascript-api/</guid>
+      <description>Pending</description>
     </item>
     
     <item>
