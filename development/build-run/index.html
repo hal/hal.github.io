@@ -27,6 +27,7 @@ ga('send', 'pageview');
 <link rel="stylesheet" href="https://overpass-30e2.kxcdn.com/overpass-mono.css" crossorigin="anonymous">
 <link href="/css/cocoen.min.css" rel="stylesheet" type="text/css">
 <link href="/css/lightbox.min.css" rel="stylesheet" type="text/css">
+<link href="/css/syntax.css" rel="stylesheet" type="text/css">
 <link href="/css/main.css" rel="stylesheet" type="text/css">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -75,21 +76,70 @@ ga('send', 'pageview');
         <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><header><h1 class="display-4">Build &amp; Run</h1></header>
             
 
-<p>This page explains how to build, run &amp; debug the console.</p>
+<p>This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs.</p>
 
 <h1 id="build">Build</h1>
 
 <p>If not already done, clone the code from <a href="https://github.com/hal/hal.next/">https://github.com/hal/hal.next/</a> or <a href="https://github.com/hal/hal.next/fork">fork</a> the repository into your own personal GitHub account.</p>
 
-<p>HAL uses Maven for its build.</p>
-
+<p>For a full build use</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mvn clean install</code></pre></div>
+<p>This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures use</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mvn clean install -Dgwt.skipCompilation</code></pre></div>
 <h1 id="run">Run</h1>
 
-<p>Pending</p>
+<p>HAL is a GWT application and as such it is served from a local Jetty server. As a one time prerequisite you need to add the URL of the local Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
+
+<p><strong>Standalone Mode</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">/core-service<span class="o">=</span>management/management-interface<span class="o">=</span>http-interface:list-add<span class="o">(</span><span class="nv">name</span><span class="o">=</span>allowed-origins,value<span class="o">=</span>http://localhost:8888<span class="o">)</span>
+reload</code></pre></div>
+<p><strong>Domain Mode</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">/host<span class="o">=</span>master/core-service<span class="o">=</span>management/management-interface<span class="o">=</span>http-interface:list-add<span class="o">(</span><span class="nv">name</span><span class="o">=</span>allowed-origins,value<span class="o">=</span>http://localhost:8888<span class="o">)</span>
+reload --host<span class="o">=</span>master</code></pre></div>
+<p>The main GWT application is located in the <code>app</code> folder. To run the console use</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> app
+mvn gwt:devmode</code></pre></div>
+<p>This will start the development mode. Wait until you see a message like</p>
+
+<pre><code>00:00:15,703 [INFO] Code server started in 15.12 s ms
+</code></pre>
+
+<p>Then open <a href="http://localhost:8888/dev.html">http://localhost:8888/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href="/documentation/get-started/#independent-mode">independent mode</a>.</p>
 
 <h1 id="debug">Debug</h1>
 
-<p>Pending</p>
+<div class="clearfix">
+    <a href="/img/development/debug.png" data-lightbox="L2ltZy9kZXZlbG9wbWVudC9kZWJ1Zy5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/development/debug.png" alt=""></a>
+    <div class="hal-imgflow-content">
+        <p><p>GWT uses the <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit?usp=sharing">SourceMaps standard</a> to map the Java source code to the transpiled JavaScript code. This makes it possible to use the browser development tools for debugging.</p>
+
+<p>In Chrome open the development tools and switch to the &lsquo;Sources&rsquo; tab. Press <kbd>⌘ P</kbd> and type the name of the Java source file you want to open.</p>
+
+<p>Let&rsquo;s say we want to debug the enable / disable action in the data source column in configuration. Open the class <code>DataSourceColumn</code> and put a breakpoint on the first line of method <code>void setEnabled(ResourceAddress, boolean, SafeHtml)</code> (should be line 285). Now select a data source like the default &lsquo;ExampleDS&rsquo; data source and press the enable / disable link in the preview. The browser should stop at the specified line and you can use the development tools to inspect and change variables.</p>
+</p>
+    </div>
+</div>
+
+<div class="hal-callout hal-callout-warning">
+    <h5 id="inspect-variables">Inspect Variables</h5>
+
+<p>If you&rsquo;re used to debug Java applications in your favorite IDE, the debugging experience in the browser development tools might feel strange at first. You can inspect simple types like boolean, numbers and strings. Support for native JavaScript types like arrays and objects is also very good. On the other hand Java types like lists or maps are not very well supported. In addition most variable names are suffixed with something like <code>_0_g$</code>. We recommend to inspect these variables using the console and call the <code>toString()</code> method on the respective object.
+</div>
+
+<h1 id="develop">Develop</h1>
+
+<p>To apply changes made to Java code you just need to refresh the browser. GWT will detect the modifications and only transpile the changed sources.</p>
+
+<p>Changes to other resources require a little bit more effort. To make it easier, you can use the script <code>app/refresh.sh</code>. Change to the <code>app</code> folder and call <code>refresh.sh</code> with one of the following parameters, depending what kind of resource you&rsquo;ve modified:</p>
+
+<ul>
+<li><code>less</code>: Compile LESS stylesheets</li>
+<li><code>html</code>: Update HTML snippets</li>
+<li><code>i18n</code>: Process i18n resource bundles</li>
+<li><code>mbui</code>: Regenerate MBUI resources</li>
+</ul>
+
+<p>After calling the script, refresh the browser to see your changes.</p>
 
         </main><aside class="d-none d-lg-block col-lg-3 hal-aside">
                 <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
@@ -120,6 +170,7 @@ ga('send', 'pageview');
 <li><a href="#build">Build</a></li>
 <li><a href="#run">Run</a></li>
 <li><a href="#debug">Debug</a></li>
+<li><a href="#develop">Develop</a></li>
 </ul>
 </nav></div>
                 </div>

@@ -27,6 +27,7 @@ ga('send', 'pageview');
 <link rel="stylesheet" href="https://overpass-30e2.kxcdn.com/overpass-mono.css" crossorigin="anonymous">
 <link href="/css/cocoen.min.css" rel="stylesheet" type="text/css">
 <link href="/css/lightbox.min.css" rel="stylesheet" type="text/css">
+<link href="/css/syntax.css" rel="stylesheet" type="text/css">
 <link href="/css/main.css" rel="stylesheet" type="text/css">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -84,6 +85,8 @@ ga('send', 'pageview');
     <div class="hal-imgflow-content">
         <p><p>Besides that you can run the console on its own aka <em>independent mode</em>. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&rsquo;s started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They&rsquo;re stored in the browser local storage and survive a browser restart.</p>
 
+<p>If you want to skip the connection dialog and connect to an previously defined endpoint, use the <code>connect</code> request parameter. If the console runs on port 9090, you&rsquo;d use an URL like <a href="http://localhost:9090/?connect=Development">http://localhost:9090/?connect=Development</a>.</p>
+
 <p>The independent mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore you can always use the latest HAL version.</p>
 
 <p>There are different ways to use the independent mode. All of them require to configure the allowed origins of the http(s) management endpoint:</p>
@@ -92,11 +95,11 @@ ga('send', 'pageview');
 </div>
 
 <p><strong>Standalone Mode</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/core-service<span style="color:#f92672">=</span>management/management-interface<span style="color:#f92672">=</span>http-interface:list-add<span style="color:#f92672">(</span>name<span style="color:#f92672">=</span>allowed-origins,value<span style="color:#f92672">=</span>&lt;url&gt;<span style="color:#f92672">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">/core-service<span class="o">=</span>management/management-interface<span class="o">=</span>http-interface:list-add<span class="o">(</span><span class="nv">name</span><span class="o">=</span>allowed-origins,value<span class="o">=</span>&lt;url&gt;<span class="o">)</span>
 reload</code></pre></div>
 <p><strong>Domain Mode</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/host<span style="color:#f92672">=</span>master/core-service<span style="color:#f92672">=</span>management/management-interface<span style="color:#f92672">=</span>http-interface:list-add<span style="color:#f92672">(</span>name<span style="color:#f92672">=</span>allowed-origins,value<span style="color:#f92672">=</span>&lt;url&gt;<span style="color:#f92672">)</span>
-reload --host<span style="color:#f92672">=</span>master</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">/host<span class="o">=</span>master/core-service<span class="o">=</span>management/management-interface<span class="o">=</span>http-interface:list-add<span class="o">(</span><span class="nv">name</span><span class="o">=</span>allowed-origins,value<span class="o">=</span>&lt;url&gt;<span class="o">)</span>
+reload --host<span class="o">=</span>master</code></pre></div>
 <p>The URL depends on how you launch the console. You can choose between one of the following options:</p>
 
 <h2 id="undertow">Undertow</h2>
