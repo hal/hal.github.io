@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.37.1" />
     <link rel="canonical" href="https://hal.github.io/development/building-blocks/">
     <title>Building Blocks | HAL Management Console</title>
     
@@ -76,55 +76,264 @@ ga('send', 'pageview');
         <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><header><h1 class="display-4">Building Blocks</h1></header>
             
 
-<p>Pending</p>
+<p>This section describes the main building blocks and central concepts in HAL. The chapters follow a logical order starting from the fundamental concepts to the higher-level modules.</p>
 
-<h1 id="mvp">MVP</h1>
+<h1 id="dependency-injection">Dependency Injection</h1>
+
+<p>HAL uses <a href="https://code.google.com/archive/p/google-gin/">GIN</a> for dependency injection. Although no longer actively developed, GIN is a stable and mature DI framework. In the long run we want to replace GIN with <a href="https://google.github.io/dagger/">Dagger</a>. But this requires a new GWTP version which currently depends on GIN.</p>
+
+<p>Dependencies in GIN are declared in classes which extend <code>com.google.gwt.inject.client.AbstractGinModule</code>. Here&rsquo;s an example from the maven module <code>hal-config</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GinModule</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConfigModule</span> <span class="kd">extends</span> <span class="n">AbstractGinModule</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">bind</span><span class="o">(</span><span class="n">Endpoints</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">in</span><span class="o">(</span><span class="n">Singleton</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">bind</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">in</span><span class="o">(</span><span class="n">Singleton</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">bind</span><span class="o">(</span><span class="n">Settings</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">in</span><span class="o">(</span><span class="n">Singleton</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+        <span class="n">requestStaticInjection</span><span class="o">(</span><span class="n">Endpoints</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">requestStaticInjection</span><span class="o">(</span><span class="n">Settings</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Provides</span>
+    <span class="kd">public</span> <span class="n">User</span> <span class="nf">providesCurrentUser</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+<p>Most maven modules in HAL have their own GIN module. All GIN modules are annotated with <code>@GinModule</code> and are collected by an annotation processor. This processor generates one composite GIN module which includes <em>all</em> other GIN modules:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*
+</span><span class="cm"> * WARNING! This class is generated. Do not modify.
+</span><span class="cm"> */</span>
+<span class="nd">@Generated</span><span class="o">(</span><span class="s">&#34;org.jboss.hal.processor.GinModuleProcessor&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompositeModule</span> <span class="kd">extends</span> <span class="n">AbstractGinModule</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">install</span><span class="o">(</span><span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">jboss</span><span class="o">.</span><span class="na">hal</span><span class="o">.</span><span class="na">resources</span><span class="o">.</span><span class="na">ResourcesModule</span><span class="o">());</span>
+        <span class="n">install</span><span class="o">(</span><span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">jboss</span><span class="o">.</span><span class="na">hal</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">ConfigModule</span><span class="o">());</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+<p>To use dependency injection in your classes use the annotation <code>javax.inject.Inject</code>. All classes bound in GIN modules, presenters, views and finder columns are available for dependency injection. We recommend to use constructor injection.</p>
+
+<h1 id="logging">Logging</h1>
+
+<p>HAL uses the <a href="https://www.slf4j.org/">SL4J</a> API for logging. Just declare a static logger instance in your class:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dispatcher</span> <span class="kd">implements</span> <span class="n">RecordingHandler</span> <span class="o">{</span>
+
+    <span class="nd">@NonNls</span> <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Dispatcher</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="o">...</span>
+<span class="o">}</span></code></pre></div>
+<p>Log messages are printed to the browser console. In development mode the log level is set to <code>FINE</code>. But you can adjust the level using the request parameter <code>logLevel=&lt;LEVEL&gt;</code>, where level is one of the enum values from <code>java.util.logging.Level</code>:</p>
+
+<ul>
+<li>SEVERE (highest value)</li>
+<li>WARNING</li>
+<li>INFO</li>
+<li>CONFIG</li>
+<li>FINE</li>
+<li>FINER</li>
+<li>FINEST (lowest value)</li>
+</ul>
+
+<h1 id="resources">Resources</h1>
+
+<p>HAL includes many different resources which are all available using the class <code>org.jboss.hal.resources.Resources</code>. The class implements the following interfaces:</p>
+
+<ul>
+<li><code>org.jboss.hal.resources.Ids</code>: IDs used in HTML elements and across multiple classes. The IDs defined here are reused by QA.</li>
+<li><code>org.jboss.hal.resources.Names</code>: Common names and technical terms which are not meant to be translated.</li>
+<li><code>org.jboss.hal.resources.UIConstants</code>: UI related constants used in more than one place.</li>
+<li><code>org.jboss.hal.resources.CSS</code>: Common CSS classes from HAL, PatternFly &amp; Bootstrap. The constants in this interface are not involved in any kind of code generation or GWT magic. They&rsquo;re collected in this interface in order to easily detect unused CSS classes.</li>
+<li><code>org.jboss.hal.resources.Icons</code>: Collection of common icons.</li>
+</ul>
+
+<p>In addition it has methods which return the following classes:</p>
+
+<ul>
+<li><code>org.jboss.hal.resources.Constants</code>: I18n constants.</li>
+<li><code>org.jboss.hal.resources.Messages</code>: I18n messages which can contain variable parts.</li>
+<li><code>org.jboss.hal.resources.Previews</code>: HTML snippets mainly used for the finder previews.</li>
+<li><code>org.jboss.hal.resources.Images</code>: Collection of images used in HAL.</li>
+<li><code>org.jboss.hal.resources.Theme</code>: Theme used in HAL.</li>
+</ul>
 
 <h1 id="config">Config</h1>
 
-<h1 id="core">Core</h1>
+<p>Information about the console and its environment is available using the interface <code>org.jboss.hal.config.Environment</code>. It provides the following data:</p>
 
+<ul>
+<li>HAL version</li>
+<li>HAL build (community or product, ie. WildFly or JBoss EAP)</li>
+<li>Supported locales</li>
+</ul>
+
+<p>Some information is only available after the console has been fully loaded:</p>
+
+<ul>
+<li>Instance info containing the product name and version and the release name and version</li>
+<li>Operation mode (standalone or domain)</li>
+<li>Name of the domain controller</li>
+<li>Management version</li>
+<li>Access control provider (simple or rbac)</li>
+<li>Standard and scoped roles</li>
+</ul>
+
+<p>Another important building block is the interface <code>org.jboss.hal.config.Endpoints</code>. It provides access to the endpoints used in HAL. Finally there&rsquo;s the class <code>org.jboss.hal.config.Settings</code> which provides access to the user settings.</p>
+
+<h1 id="flow">Flow</h1>
+
+<p>HAL runs in the browser. As such it uses a lot of (asynchronous) callbacks. We all know that nested callbacks are hard to read, maintain and quickly lead to an anti pattern better known as callback hell.</p>
+
+<p>One solution for this problem is to use reactive programming. Instead of using callbacks as arguments, methods return reactive classes like <code>Single&lt;T&gt;</code> or <code>Observable&lt;T&gt;</code>. With <a href="https://github.com/intendia-oss/rxgwt">RxGWT</a> there&rsquo;s an implementation of RxJava available for GWT. At the moment it&rsquo;s still based on RxJava 1.x, but support for 2.x is in the works.</p>
+
+<p>HAL uses a reactive programming model in many classes to get rid of callbacks. You can find examples in <code>org.jboss.hal.dmr.dispatch.Dispatcher</code> and <code>org.jboss.hal.core.CrudOperations</code>. This really pays off when you want to execute several asynchronous operations in order. Therefore you can use the methods in <code>org.jboss.hal.flow.Flow</code> and the task interface <code>org.jboss.hal.flow.Task</code>.</p>
+
+<p>Say you want to add a system property only if it&rsquo;s not already there. You could implement this using the following code snippet:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">Dispatcher</span> <span class="n">dispatcher</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">ResourceAddress</span> <span class="n">address</span> <span class="o">=</span> <span class="n">ResourceAddress</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="s">&#34;/system-property=foo&#34;</span><span class="o">);</span>
+
+<span class="n">Task</span><span class="o">&lt;</span><span class="n">FlowContext</span><span class="o">&gt;</span> <span class="n">check</span> <span class="o">=</span> <span class="n">context</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">dispatcher</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Operation</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">address</span><span class="o">,</span> <span class="n">READ_RESOURCE_OPERATION</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">doOnSuccess</span><span class="o">(</span><span class="n">result</span> <span class="o">-&gt;</span> <span class="n">context</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">200</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">doOnError</span><span class="o">(</span><span class="n">exception</span> <span class="o">-&gt;</span> <span class="n">context</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">404</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">toCompletable</span><span class="o">();</span>
+<span class="o">};</span>
+<span class="n">Task</span><span class="o">&lt;</span><span class="n">FlowContext</span><span class="o">&gt;</span> <span class="n">add</span> <span class="o">=</span> <span class="n">context</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">status</span> <span class="o">==</span> <span class="n">200</span> 
+            <span class="o">?</span> <span class="n">Completable</span><span class="o">.</span><span class="na">complete</span><span class="o">()</span> 
+            <span class="o">:</span> <span class="n">dispatcher</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Operation</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">address</span><span class="o">,</span> <span class="n">ADD</span><span class="o">).</span><span class="na">build</span><span class="o">()).</span><span class="na">toCompletable</span><span class="o">();</span>
+<span class="o">};</span>
+
+<span class="n">Flow</span><span class="o">.</span><span class="na">series</span><span class="o">(</span><span class="k">new</span> <span class="n">FlowContext</span><span class="o">(</span><span class="n">Progress</span><span class="o">.</span><span class="na">NOOP</span><span class="o">),</span> <span class="n">check</span><span class="o">,</span> <span class="n">add</span><span class="o">).</span><span class="na">subscribe</span><span class="o">(</span><span class="k">new</span> <span class="n">Outcome</span><span class="o">&lt;</span><span class="n">FlowContext</span><span class="o">&gt;()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="n">FlowContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">Throwable</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">&#34;Unable to create system property &#39;foo&#39;: {}&#34;</span><span class="o">,</span> <span class="n">error</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="n">FlowContext</span> <span class="n">flowContext</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;System property &#39;foo&#39; successfully created.&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">});</span></code></pre></div>
 <h1 id="dmr">DMR</h1>
+
+<p>This section assumes you&rsquo;re familiar with the basic concepts of the WildFly management model. If not please read the <a href="http://docs.wildfly.org/Admin_Guide.html">admin guide</a> in the WildFly documentation.</p>
+
+<p>The communication with the management endpoint, heavily relies on the <a href="http://docs.wildfly.org/Admin_Guide.html#Detyped_management_and_the_jboss-dmr_library">detyped management representation</a> as defined in <a href="https://github.com/jbossas/jboss-dmr">JBoss DMR</a>. Due to restriction in GWT (no threading, no IO) HAL comes with its own fork of JBoss DMR. It&rsquo;s a clone of the original code without all the pieces which don&rsquo;t make sense and don&rsquo;t work in GWT.</p>
+
+<p>On top of that HAL adds a small layer of more strongly typed classes. They all extend from <code>org.jboss.hal.dmr.ModelNode</code> so you don&rsquo;t lose the flexibility, but result in more readable code.</p>
+
+<p><strong>Operation</strong><br />
+Represents a DMR operation like <code>read-resource</code> or <code>add</code>. An operation always requires a resource address and the actual operation name. Optionally you can add parameters as key/value pairs. Operations should be built using the builder <code>org.jboss.hal.dmr.Operation.Builder</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Operation</span> <span class="n">operation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Operation</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">address</span><span class="o">,</span> <span class="s">&#34;read-log-file&#34;</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">param</span><span class="o">(</span><span class="s">&#34;lines&#34;</span><span class="o">,</span> <span class="n">100</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">param</span><span class="o">(</span><span class="s">&#34;tail&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span></code></pre></div>
+<p><strong>Composite</strong><br />
+Represents a composite operation consisting of several operations. When executed by the dispatcher you get back an instance of <code>org.jboss.hal.dmr.CompositeResult</code>. Use this class to easily access the different step results by index or name:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Operation</span><span class="o">&gt;</span> <span class="n">operations</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">dispatcher</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Composite</span><span class="o">(</span><span class="n">operations</span><span class="o">),</span> <span class="o">(</span><span class="n">CompositeResult</span> <span class="n">result</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Property</span><span class="o">&gt;</span> <span class="n">list0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">step</span><span class="o">(</span><span class="n">0</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">RESULT</span><span class="o">).</span><span class="na">asPropertyList</span><span class="o">();</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Property</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">step</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">RESULT</span><span class="o">).</span><span class="na">asPropertyList</span><span class="o">();</span>
+    <span class="o">...</span>
+<span class="o">});</span></code></pre></div>
+<p><strong>ResourceAddress</strong><br />
+Represents a fully qualified DMR address ready to be put into a DMR operation. The address consists of 0-n segments
+ with a name and a value for each segment. Implemented by <code>org.jboss.hal.dmr.ResourceAddress</code>.</p>
+
+<p><strong>ModelNodeHelper</strong><br />
+Contains static helper methods related to model nodes. Some of them deal with reading deeply nested model nodes:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Dispatcher</span> <span class="n">dispatcher</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">ResourceAddress</span> <span class="n">address</span> <span class="o">=</span> <span class="n">ResourceAddress</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="s">&#34;/subsystem=jca&#34;</span><span class="o">);</span>
+<span class="n">Operation</span> <span class="n">operation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Operation</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">address</span><span class="o">,</span> <span class="n">READ_RESOURCE_OPERATION</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">param</span><span class="o">(</span><span class="n">RECURSIVE</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="n">dispatcher</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">operation</span><span class="o">,</span> <span class="n">result</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">ModelNode</span> <span class="n">beanValidation</span> <span class="o">=</span> <span class="n">ModelNodeHelper</span><span class="o">.</span><span class="na">failSafeGet</span><span class="o">(</span><span class="s">&#34;bean-validation/bean-validation&#34;</span><span class="o">);</span>    
+<span class="o">});</span></code></pre></div>
+<p><strong>Dispatcher</strong><br />
+Executes operations against the management endpoint. You can execute normal and composite operations. There are signatures which use callbacks and RX variants which return <code>Single&lt;CompositeResult&gt;</code> resp. <code>Single&lt;ModelNode&gt;</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">dispatcher</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Operation</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">ResourceAddress</span><span class="o">.</span><span class="na">root</span><span class="o">(),</span> <span class="n">READ_RESOURCE_OPERATION</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="n">payload</span> <span class="o">-&gt;</span> <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;Root resource: {}&#34;</span><span class="o">,</span> <span class="n">payload</span><span class="o">));</span>
+
+<span class="n">dispatcher</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Operation</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">ResourceAddress</span><span class="o">.</span><span class="na">root</span><span class="o">(),</span> <span class="n">READ_RESOURCE_OPERATION</span><span class="o">).</span><span class="na">build</span><span class="o">(),</span> 
+        <span class="n">payload</span> <span class="o">-&gt;</span> <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;Root resource: {}&#34;</span><span class="o">,</span> <span class="n">payload</span><span class="o">));</span></code></pre></div>
+<div class="hal-callout hal-callout-warning">
+    <p><strong>Payload != Response</strong></p>
+
+<p>Whether you use a callback or an RX type, please note that the model node passed to the callback resp. used in the RX type is <em>not</em> the full response, but just the <code>result</code> part of what you normally get when executing operations in the CLI:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>standalone@localhost:9990 /<span class="o">]</span> :read-resource
+<span class="o">{</span>
+    <span class="s2">&#34;outcome&#34;</span> <span class="o">=</span>&gt; <span class="s2">&#34;success&#34;</span>,
+    <span class="s2">&#34;result&#34;</span> <span class="o">=</span>&gt; <span class="o">{</span>
+        <span class="s2">&#34;management-major-version&#34;</span> <span class="o">=</span>&gt; <span class="m">6</span>,
+        <span class="s2">&#34;management-micro-version&#34;</span> <span class="o">=</span>&gt; <span class="m">0</span>,
+        <span class="s2">&#34;management-minor-version&#34;</span> <span class="o">=</span>&gt; <span class="m">0</span>,
+        <span class="s2">&#34;name&#34;</span> <span class="o">=</span>&gt; <span class="s2">&#34;hpehl-macbook&#34;</span>,
+        ...
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+</div>
 
 <h1 id="metadata">Metadata</h1>
 
+<p>resource description, security context, capabilities, registries, first and second level cache</p>
+
+<p>statement context, address template w/ {selected.*} variables</p>
+
+<p><code>org.jboss.hal.meta.StatementContext</code></p>
+
+<h1 id="ballroom">Ballroom</h1>
+
+<p>core UI elements, Elemento, PatternFly</p>
+
+<h1 id="core">Core</h1>
+
+<p><code>org.jboss.hal.core.CoreStatementContext</code></p>
+
+<p><code>org.jboss.hal.core.CrudOperations</code></p>
+
+<p>model node form, table, finder</p>
+
 <h1 id="mbui">MBUI</h1>
 
-<h1 id="user-interface">User Interface</h1>
+<p>annotation processor</p>
+
+<h1 id="mvp">MVP</h1>
+
+<p>presenter view, place manager, tokens</p>
 
         </main><aside class="d-none d-lg-block col-lg-3 hal-aside">
                 <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
                             <h6>You're here:</h6>
-                            <ol class="breadcrumb bg-white py-0">
-    
-    
-
-
-
-
-    
-        <li class="breadcrumb-item"><a href="/development/">Development</a></li>
-    
-
-
-
-
-    
-        <li class="breadcrumb-item active" aria-current="page">Building Blocks</li>
-    
-
-</ol>
+                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item active" aria-current="page"><span class="dropdown">
+                    <a class="dropdown-toggle clickable" id="b33c9887fd75f436233440737e65e1e8" data-toggle="dropdown">
+                        Building Blocks <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="b33c9887fd75f436233440737e65e1e8">
+                        <a class="dropdown-item" href="/development/build-run/">Build &amp; Run</a><a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/extensions/">Extensions</a><a class="dropdown-item" href="/development/javascript-api/">JavaScript API</a>
+                    </div>
+                </span></li></ol>
                         </nav>
                         <hr/><div class="hal-toc">
                         <h6>On this page:</h6><nav id="TableOfContents">
 <ul>
-<li><a href="#mvp">MVP</a></li>
+<li><a href="#dependency-injection">Dependency Injection</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#resources">Resources</a></li>
 <li><a href="#config">Config</a></li>
-<li><a href="#core">Core</a></li>
+<li><a href="#flow">Flow</a></li>
 <li><a href="#dmr">DMR</a></li>
 <li><a href="#metadata">Metadata</a></li>
+<li><a href="#ballroom">Ballroom</a></li>
+<li><a href="#core">Core</a></li>
 <li><a href="#mbui">MBUI</a></li>
-<li><a href="#user-interface">User Interface</a></li>
+<li><a href="#mvp">MVP</a></li>
 </ul>
 </nav></div>
                 </div>
