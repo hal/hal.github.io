@@ -73,8 +73,34 @@ ga('send', 'pageview');
 
     <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><header><h1 class="display-4">Get Started</h1></header>
-            
+        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
+                            <h6>You're here:</h6>
+                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/documentation/">Documentation</a></li><li class="breadcrumb-item" aria-current="page"><span class="dropdown">
+                    <a class="dropdown-toggle clickable" id="ce5a65374ead234d0dde6f1a51506c47" data-toggle="dropdown">
+                        Get Started <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="ce5a65374ead234d0dde6f1a51506c47">
+                        <a class="dropdown-item" href="/documentation/end-user/">End User</a>
+                    </div>
+                </span></li></ol>
+                        </nav>
+                        <hr/><div class="hal-toc">
+                            <h6>On this page:</h6><nav id="TableOfContents">
+<ul>
+<li><a href="#independent-mode">Independent Mode</a>
+<ul>
+<li><a href="#undertow">Undertow</a></li>
+<li><a href="#yarn-npm">YARN / NPM</a></li>
+<li><a href="#github-pages">GitHub Pages</a></li>
+<li><a href="#docker">Docker</a></li>
+</ul></li>
+</ul>
+</nav></div>
+                    </div>
+                </aside><article class="hal-article">
+                <header><h1 class="display-4">Get Started</h1></header>
+                
 
 <p>The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply add an user via the <code>add-user.sh</code> script, fire up your browser and open <a href="http://localhost:9990">http://localhost:9990</a>.</p>
 
@@ -138,34 +164,11 @@ reload --host<span class="o">=</span>master</code></pre></div>
 
 <p>Finally you can use the docker image <a href="https://hub.docker.com/r/halconsole/hal-standalone/"><code>halconsole/hal-standalone</code></a> which wraps the Undertow server inside a docker container. Follow the steps at <a href="https://hub.docker.com/r/halconsole/hal-standalone/">https://hub.docker.com/r/halconsole/hal-standalone/</a> to get started.</p>
 
-        </main><aside class="d-none d-lg-block col-lg-3 hal-aside">
-                <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
-                            <h6>You're here:</h6>
-                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/documentation/">Documentation</a></li><li class="breadcrumb-item active" aria-current="page"><span class="dropdown">
-                    <a class="dropdown-toggle clickable" id="ce5a65374ead234d0dde6f1a51506c47" data-toggle="dropdown">
-                        Get Started <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="ce5a65374ead234d0dde6f1a51506c47">
-                        <a class="dropdown-item" href="/documentation/end-user/">End User</a><a class="dropdown-item" href="/documentation/howto/">Recipes &amp; How To</a>
-                    </div>
-                </span></li></ol>
-                        </nav>
-                        <hr/><div class="hal-toc">
-                        <h6>On this page:</h6><nav id="TableOfContents">
-<ul>
-<li><a href="#independent-mode">Independent Mode</a>
-<ul>
-<li><a href="#undertow">Undertow</a></li>
-<li><a href="#yarn-npm">YARN / NPM</a></li>
-<li><a href="#github-pages">GitHub Pages</a></li>
-<li><a href="#docker">Docker</a></li>
-</ul></li>
-</ul>
-</nav></div>
-                </div>
-            </aside></div>
+            </article>
+        </main>
+    </div>
 </div>
-    <footer class="hal-footer footer-dark bg-dark p-5">
+    <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">
                 <h6>Related</h6>

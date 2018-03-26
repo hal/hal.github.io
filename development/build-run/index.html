@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Explains how to build and run the console. Talks about the prerequisites and what it necessary to debug the codebase.">
+<meta name="description" content="Explains how to build and run the console. Talks about the prerequisites and what is necessary to debug the codebase.">
 
 <meta name="author" content="">
 
@@ -73,8 +73,31 @@ ga('send', 'pageview');
 
     <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><header><h1 class="display-4">Build &amp; Run</h1></header>
-            
+        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
+                            <h6>You're here:</h6>
+                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item" aria-current="page"><span class="dropdown">
+                    <a class="dropdown-toggle clickable" id="ce75596adb7c6eb3900d54ce55ab8a5b" data-toggle="dropdown">
+                        Build &amp; Run <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="ce75596adb7c6eb3900d54ce55ab8a5b">
+                        <a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/building-blocks/">Building Blocks</a>
+                    </div>
+                </span></li></ol>
+                        </nav>
+                        <hr/><div class="hal-toc">
+                            <h6>On this page:</h6><nav id="TableOfContents">
+<ul>
+<li><a href="#build">Build</a></li>
+<li><a href="#run">Run</a></li>
+<li><a href="#debug">Debug</a></li>
+<li><a href="#develop">Develop</a></li>
+</ul>
+</nav></div>
+                    </div>
+                </aside><article class="hal-article">
+                <header><h1 class="display-4">Build &amp; Run</h1></header>
+                
 
 <p>This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs.</p>
 
@@ -84,7 +107,7 @@ ga('send', 'pageview');
 
 <p>For a full build use</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mvn clean install</code></pre></div>
-<p>This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures use</p>
+<p>This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you canskip the GWT compiler and use</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mvn clean install -Dgwt.skipCompilation</code></pre></div>
 <h1 id="run">Run</h1>
 
@@ -111,7 +134,7 @@ mvn gwt:devmode</code></pre></div>
 <div class="clearfix">
     <a href="/img/development/debug.png" data-lightbox="L2ltZy9kZXZlbG9wbWVudC9kZWJ1Zy5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/development/debug.png" alt=""></a>
     <div class="hal-imgflow-content">
-        <p><p>GWT uses the <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit?usp=sharing">SourceMaps standard</a> to map the Java source code to the transpiled JavaScript code. This makes it possible to use the browser development tools for debugging.</p>
+        <p><p>Start the console as described in the previous chapter. GWT uses the <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit?usp=sharing">SourceMaps standard</a> to map the Java source code to the transpiled JavaScript code. This makes it possible to use the browser development tools for debugging.</p>
 
 <p>In Chrome open the development tools and switch to the &lsquo;Sources&rsquo; tab. Press <kbd>⌘ P</kbd> and type the name of the Java source file you want to open.</p>
 
@@ -141,31 +164,11 @@ mvn gwt:devmode</code></pre></div>
 
 <p>After calling the script, refresh the browser to see your changes.</p>
 
-        </main><aside class="d-none d-lg-block col-lg-3 hal-aside">
-                <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
-                            <h6>You're here:</h6>
-                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item active" aria-current="page"><span class="dropdown">
-                    <a class="dropdown-toggle clickable" id="ce75596adb7c6eb3900d54ce55ab8a5b" data-toggle="dropdown">
-                        Build &amp; Run <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="ce75596adb7c6eb3900d54ce55ab8a5b">
-                        <a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/building-blocks/">Building Blocks</a><a class="dropdown-item" href="/development/extensions/">Extensions</a><a class="dropdown-item" href="/development/javascript-api/">JavaScript API</a>
-                    </div>
-                </span></li></ol>
-                        </nav>
-                        <hr/><div class="hal-toc">
-                        <h6>On this page:</h6><nav id="TableOfContents">
-<ul>
-<li><a href="#build">Build</a></li>
-<li><a href="#run">Run</a></li>
-<li><a href="#debug">Debug</a></li>
-<li><a href="#develop">Develop</a></li>
-</ul>
-</nav></div>
-                </div>
-            </aside></div>
+            </article>
+        </main>
+    </div>
 </div>
-    <footer class="hal-footer footer-dark bg-dark p-5">
+    <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">
                 <h6>Related</h6>

@@ -73,10 +73,24 @@ ga('send', 'pageview');
 
     <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><header><h1 class="display-4">What&#39;s New</h1></header>
-            
+        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator"><div class="hal-toc">
+                            <h6>On this page:</h6><nav id="TableOfContents">
+<ul>
+<li><a href="#finder">Finder</a></li>
+<li><a href="#applications">Applications</a></li>
+<li><a href="#deployments">Deployments</a></li>
+<li><a href="#topology">Topology</a></li>
+<li><a href="#runtime">Runtime</a></li>
+<li><a href="#monitor">Monitor</a></li>
+</ul>
+</nav></div>
+                    </div>
+                </aside><article class="hal-article">
+                <header><h1 class="display-4">What&#39;s New</h1></header>
+                
 
-<p>Starting with version 3.x we&rsquo;ve rewritten the console from scratch. We still use a similar <a href="/development/architecture/">technical stack</a>, but we removed a lot of old and deprecated code, refactored the main business logic and rewrote pretty much all of the UI related code. We moved from <a href="http://www.gwtproject.org/doc/latest/RefWidgetGallery.html">GWT widgets</a> to <a href="https://github.com/hal/elemento">Elemento</a> and prepared the codebase for the upcoming GWT 3.0 release. We also fully adopt <a href="https://www.patternfly.org/">PatternFly</a> now.</p>
+<p>Starting with version 3.x we&rsquo;ve rewritten the console from scratch. We still use a similar <a href="/development/architecture/#technical-stack">technical stack</a>, but we removed a lot of old and deprecated code, refactored the main business logic and rewrote pretty much all of the UI related code. We moved from <a href="http://www.gwtproject.org/doc/latest/RefWidgetGallery.html">GWT widgets</a> to <a href="https://github.com/hal/elemento">Elemento</a> and prepared the codebase for the upcoming GWT 3.0 release. We also fully adopt <a href="https://www.patternfly.org/">PatternFly</a> now.</p>
 
 <p>Finally we took the opportunity to enhance the existing features and added support for many new subsystems and attributes. The following sections show some highlights of the latest version. Most screenshots show the new version on the left and the old on the right side. For all details see the <a href="/releases/3.0.0.final/">3.0.0.Final release notes</a>.</p>
 
@@ -197,22 +211,11 @@ ga('send', 'pageview');
 <img class="img-fluid mb-2 " src="/img/whatsnew/after/monitor-undertow.png"  alt="">
 </p>
 
-        </main><aside class="d-none d-lg-block col-lg-3 hal-aside">
-                <div class="hal-aside-separator"><div class="hal-toc">
-                        <h6>On this page:</h6><nav id="TableOfContents">
-<ul>
-<li><a href="#finder">Finder</a></li>
-<li><a href="#applications">Applications</a></li>
-<li><a href="#deployments">Deployments</a></li>
-<li><a href="#topology">Topology</a></li>
-<li><a href="#runtime">Runtime</a></li>
-<li><a href="#monitor">Monitor</a></li>
-</ul>
-</nav></div>
-                </div>
-            </aside></div>
+            </article>
+        </main>
+    </div>
 </div>
-    <footer class="hal-footer footer-dark bg-dark p-5">
+    <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">
                 <h6>Related</h6>

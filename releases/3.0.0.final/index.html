@@ -73,8 +73,10 @@ ga('send', 'pageview');
 
     <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main"><nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-white pr-0 pb-0"><li class="breadcrumb-item"><a href="/releases/">Release Notes</a></li><li class="breadcrumb-item active" aria-current="page"><span class="dropdown">
+        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
+                            <h6>You're here:</h6>
+                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/releases/">Release Notes</a></li><li class="breadcrumb-item" aria-current="page"><span class="dropdown">
                     <a class="dropdown-toggle clickable" id="38faca8fe2f7c8e5b658210272babff1" data-toggle="dropdown">
                         3.0.0.Final <span class="caret"></span>
                     </a>
@@ -82,8 +84,38 @@ ga('send', 'pageview');
                         <a class="dropdown-item" href="/releases/2.1.1.final/">2.1.1.Final</a><a class="dropdown-item" href="/releases/2.4.9.final/">2.4.9.Final</a><a class="dropdown-item" href="/releases/2.5.5.final/">2.5.5.Final</a><a class="dropdown-item" href="/releases/2.7.4.final/">2.7.4.Final</a><a class="dropdown-item" href="/releases/2.8.19.final/">2.8.19.Final</a><a class="dropdown-item" href="/releases/2.8.24.final/">2.8.24.Final</a><a class="dropdown-item" href="/releases/2.8.27.final/">2.8.27.Final</a><a class="dropdown-item" href="/releases/2.9.15.final/">2.9.15.Final</a>
                     </div>
                 </span></li></ol>
-                </nav><header><h1 class="display-4">3.0.0.Final</h1></header>
-            
+                        </nav>
+                        <hr/><div class="hal-toc">
+                            <h6>On this page:</h6><nav id="TableOfContents">
+<ul>
+<li><a href="#new-improved-features">New &amp; Improved Features</a>
+<ul>
+<li><a href="#general">General</a>
+<ul>
+<li><a href="#finder">Finder</a></li>
+<li><a href="#applications">Applications</a></li>
+</ul></li>
+<li><a href="#deployments">Deployments</a></li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#new-subsystems">New Subsystems</a></li>
+<li><a href="#enhanced-subsystems">Enhanced Subsystems</a></li>
+</ul></li>
+<li><a href="#runtime">Runtime</a>
+<ul>
+<li><a href="#new-subsystems-1">New Subsystems</a></li>
+<li><a href="#enhanced-subsystems-1">Enhanced Subsystems</a></li>
+</ul></li>
+<li><a href="#patching">Patching</a></li>
+<li><a href="#access-control">Access Control</a></li>
+<li><a href="#management">Management</a></li>
+</ul></li>
+</ul>
+</nav></div>
+                    </div>
+                </aside><article class="hal-article">
+                <header><h1 class="display-4">3.0.0.Final</h1></header>
+                
 
 <ul>
 <li>Target: WildFly 13.0.0.Final</li>
@@ -331,9 +363,11 @@ ga('send', 'pageview');
 <li>Extensions</li>
 </ul>
 
-        </main></div>
+            </article>
+        </main>
+    </div>
 </div>
-    <footer class="hal-footer footer-dark bg-dark p-5">
+    <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">
                 <h6>Related</h6>
