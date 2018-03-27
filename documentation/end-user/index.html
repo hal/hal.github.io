@@ -60,8 +60,6 @@ ga('send', 'pageview');
                     <a class="nav-link" href="/releases/">Releases</a>
                 </li></ul>
         <ul class="navbar-nav"><li class="nav-item">
-                <a class="nav-link" href="https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/" title="Youtube"><span class="fab fa-youtube"></span></a>
-            </li><li class="nav-item">
                 <a class="nav-link" href="https://github.com/hal/hal.next" title="Source Code"><span class="fab fa-github"></span></a>
             </li><li class="nav-item">
                 <a class="nav-link" href="https://gitter.im/hal/hal.next" title="Gitter"><span class="fab fa-gitter"></span></a>
@@ -95,8 +93,7 @@ ga('send', 'pageview');
 <li><a href="#patching">Patching</a></li>
 <li><a href="#access-control">Access Control</a>
 <ul>
-<li><a href="#rbac-roles">RBAC Roles</a></li>
-<li><a href="#switching-to-the-rbac-provider">Switching to the &ldquo;rbac&rdquo; provider</a></li>
+<li><a href="#roles">Roles</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -191,12 +188,13 @@ ga('send', 'pageview');
 
 <h1 id="runtime">Runtime</h1>
 
-<div class="clearfix">
+<p><div class="clearfix">
     <a href="/img/documentation/runtime.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL3J1bnRpbWUucG5n"><img class="img-fluid float-lg-left mr-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/runtime.png" alt=""></a>
     <div class="hal-imgflow-content">
         <p>The runtime section is used to control the lifecycle of hosts, server groups and servers. In addition you can monitor runtime data and statistics provided by the various subsystems. You can also enable and view configuration changes. Finally you can view the JMX beans and browser the server log files.</p>
     </div>
 </div>
+</p>
 
 <h1 id="patching">Patching</h1>
 
@@ -218,7 +216,7 @@ ga('send', 'pageview');
 
 <p>The access control scheme implemented by the &ldquo;rbac&rdquo; provider is based on seven standard roles. A role is a named set of permissions to perform one of the actions: addressing (i.e. looking up) a management resource, reading it, or modifying it. The different roles have constraints applied to their permissions that are used to determine whether the permission is granted.</p>
 
-<h2 id="rbac-roles">RBAC Roles</h2>
+<h2 id="roles">Roles</h2>
 
 <p>The seven standard roles are divided into two broad categories, based on whether the role can deal with items that are considered to be &ldquo;security sensitive&rdquo;. Resources, attributes and operations that may affect administrative security (e.g. security realm resources and attributes that contain passwords) are &ldquo;security sensitive&rdquo;.</p>
 
@@ -243,10 +241,6 @@ ga('send', 'pageview');
 
 <li><p>Auditor – can read anything. Can only modify the resources related to the administrative audit logging system.</p></li>
 </ul>
-
-<h2 id="switching-to-the-rbac-provider">Switching to the &ldquo;rbac&rdquo; provider</h2>
-
-<p>Before changing the provider to &ldquo;rbac&rdquo;, be sure your configuration has a user who will be mapped to one of the RBAC roles, preferably with at least one in the Administrator or SuperUser role. Otherwise your installation will not be manageable except by shutting it down and editing the xml configuration. If you have started with one of the standard xml configurations shipped with WildFly, the &ldquo;$local&rdquo; user will be mapped to the &ldquo;SuperUser&rdquo; role and the &ldquo;local&rdquo; authentication scheme will be enabled. This will allow a user running the CLI on the same system as the WildFly process to have full administrative permissions. Remote CLI users and web-based admin console users will have no permissions.</p>
 
             </article>
         </main>
@@ -276,7 +270,7 @@ ga('send', 'pageview');
                     <li><span class="fas fa-wrench"></span> Made with <a href="https://gohugo.io/">Hugo</a> static site
                         generator.
                     </li>
-                    <li><span class="fas fa-terminal"></span> This website is open source! If you want to improve it, <a
+                    <li><span class="fas fa-code-branch"></span> This website is open source! If you want to improve it, <a
                             href="http://github.com/hal/site">fork the project</a> and send a pull
                         request.
                     </li>
