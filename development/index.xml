@@ -18,7 +18,7 @@
       
       <guid>https://hal.github.io/development/build-run/</guid>
       <description>This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs.
-Build If not already done, clone the code from https://github.com/hal/hal.next/ or fork the repository into your own personal GitHub account.
+Build If not already done, clone the code from https://github.com/hal/console/ or fork the repository into your own personal GitHub account.
 For a full build use
 mvn clean install This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you canskip the GWT compiler and use</description>
     </item>

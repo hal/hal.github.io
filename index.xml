@@ -27,7 +27,7 @@
       
       <guid>https://hal.github.io/development/build-run/</guid>
       <description>This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs.
-Build If not already done, clone the code from https://github.com/hal/hal.next/ or fork the repository into your own personal GitHub account.
+Build If not already done, clone the code from https://github.com/hal/console/ or fork the repository into your own personal GitHub account.
 For a full build use
 mvn clean install This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you canskip the GWT compiler and use</description>
     </item>
@@ -67,7 +67,7 @@ Independent Mode  Besides that you can run the console on its own aka independen
       
       <guid>https://hal.github.io/documentation/end-user/</guid>
       <description>The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six main sections: homepage, deployments, configuration, runtime, patching and access control.
-This page gives a quick introduction to the main sections. If you want to learn more about the most common use cases, visit the YouTube channel and watch the screencasts.
+This page gives a quick introduction to the main sections. If you want to learn more about the most common use cases, visit the YouTube channel and watch the screen casts.
 Homepage  The homepage provides an overview of the main sections in the console.</description>
     </item>
     
