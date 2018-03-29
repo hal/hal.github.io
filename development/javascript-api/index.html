@@ -60,11 +60,9 @@ ga('send', 'pageview');
                     <a class="nav-link" href="/releases/">Releases</a>
                 </li></ul>
         <ul class="navbar-nav"><li class="nav-item">
-                <a class="nav-link" href="https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/" title="Youtube"><span class="fab fa-youtube"></span></a>
+                <a class="nav-link" href="https://github.com/hal/console" title="Source Code"><span class="fab fa-github"></span></a>
             </li><li class="nav-item">
-                <a class="nav-link" href="https://github.com/hal/hal.next" title="Source Code"><span class="fab fa-github"></span></a>
-            </li><li class="nav-item">
-                <a class="nav-link" href="https://gitter.im/hal/hal.next" title="Gitter"><span class="fab fa-gitter"></span></a>
+                <a class="nav-link" href="https://gitter.im/hal/console" title="Gitter"><span class="fab fa-gitter"></span></a>
             </li><li class="nav-item">
                 <a class="nav-link" href="https://issues.jboss.org/projects/HAL/issues" title="Issues"><span class="fas fa-bug"></span></a>
             </li></ul>
@@ -73,8 +71,10 @@ ga('send', 'pageview');
 
     <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main"><nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-white pr-0 pb-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item active" aria-current="page"><span class="dropdown">
+        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
+                            <h6>You're here:</h6>
+                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item" aria-current="page"><span class="dropdown">
                     <a class="dropdown-toggle clickable" id="38c6e97f98955b77417051517f34f6c7" data-toggle="dropdown">
                         JavaScript API <span class="caret"></span>
                     </a>
@@ -82,12 +82,195 @@ ga('send', 'pageview');
                         <a class="dropdown-item" href="/development/build-run/">Build &amp; Run</a><a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/building-blocks/">Building Blocks</a><a class="dropdown-item" href="/development/extensions/">Extensions</a>
                     </div>
                 </span></li></ol>
-                </nav><header><h1 class="display-4">JavaScript API</h1></header>
-            <p>Pending</p>
+                        </nav>
+                        <hr/><div class="hal-toc">
+                            <h6>On this page:</h6><nav id="TableOfContents">
+<ul>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#crud-operations">CRUD Operations</a></li>
+<li><a href="#read-child-resources">Read Child Resources</a></li>
+<li><a href="#execute-dmr-operations">Execute DMR Operations</a></li>
+<li><a href="#ui-elements">UI Elements</a>
+<ul>
+<li><a href="#table">Table</a></li>
+<li><a href="#form">Form</a></li>
+<li><a href="#master-detail">Master Detail</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></div>
+                    </div>
+                </aside><article class="hal-article">
+                <header><h1 class="display-4">JavaScript API</h1></header>
+                
 
-        </main></div>
+<p>The goal of the JavaScript API is to open HAL for JavaScript developers. The API can be used to write extensions which add features to the console. Another use case is to write SPAs which interact with the management interface. A monitoring tool which shows the statistics of all data-source pools across the domain could be an example of such an application.</p>
+
+<p>The JavaScript API is divided into several modules which define a common namespace for classes that belong together.</p>
+
+<ul>
+<li><code>hal.config</code> - contains classes which hold information about the console and its environment.</li>
+<li><code>hal.core</code> - provides access to the core classes of HAL.</li>
+<li><code>hal.dmr</code> - deals with executing operations and the DMR API.</li>
+<li><code>hal.meta</code> - provides access to the metadata of resources.</li>
+<li><code>hal.mvp</code> - provides access to the model view presenter framework which is used in HAL (<em>NYI</em>).</li>
+<li><code>hal.ui</code> - contains classes to build the user interface.</li>
+</ul>
+
+<p>See <a href="https://cdn.rawgit.com/hal/console/esdoc/index.html">https://cdn.rawgit.com/hal/console/esdoc/index.html</a> for all details.</p>
+
+<h1 id="examples">Examples</h1>
+
+<h2 id="crud-operations">CRUD Operations</h2>
+
+<p>This example shows the CRUD operations in action. First a IO worker is created using an add-resource dialog, then the newly created resource is read. Finally the IO worker is modified and removed again.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="s2">&#34;{selected.profile}/subsystem=io/worker=*&#34;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AddressTemplate</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">address</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;io-threads&#34;</span><span class="p">,</span> <span class="s2">&#34;stack-size&#34;</span><span class="p">,</span> <span class="s2">&#34;task-keepalive&#34;</span><span class="p">,</span> <span class="s2">&#34;task-max-threads&#34;</span><span class="p">];</span>
+
+<span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">addDialog</span><span class="p">(</span><span class="s2">&#34;Worker&#34;</span><span class="p">,</span> <span class="nx">address</span><span class="p">,</span> <span class="nx">attributes</span><span class="p">,</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+   
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Worker &#39;&#34;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&#34;&#39; successfully added as &#39;&#34;</span> <span class="o">+</span> <span class="nx">address</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;&#39;&#34;</span><span class="p">);</span> 
+    <span class="kd">let</span> <span class="nx">workerAddress</span> <span class="o">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">core</span><span class="p">.</span><span class="nx">statementContext</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">workerAddress</span><span class="p">,</span> <span class="nx">worker</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&#34;Worker&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;stack-size&#34;</span><span class="o">:</span> <span class="mi">42</span><span class="p">},</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Worker &#39;&#34;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&#34;&#39; successfully modified&#34;</span><span class="p">);</span> 
+            <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;Worker&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">workerAddress</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Worker &#39;&#34;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&#34;&#39; successfully removed&#34;</span><span class="p">);</span> 
+            <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="read-child-resources">Read Child Resources</h2>
+
+<p>This example uses the crud operations to read the children of a resource. In this case the subsystems of the selected profile are read.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+
+<span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">readChildren</span><span class="p">(</span><span class="s2">&#34;{selected.profile}&#34;</span><span class="p">,</span> <span class="s2">&#34;subsystem&#34;</span><span class="p">,</span> <span class="nx">children</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">children</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">child</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">child</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="execute-dmr-operations">Execute DMR Operations</h2>
+
+<p>This example shows how to execute arbitrary operations.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">op</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">operation</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="s2">&#34;read-resource&#34;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s2">&#34;attributes-only&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s2">&#34;include-runtime&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+
+<span class="nx">core</span><span class="p">.</span><span class="nx">dispatcher</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">op</span><span class="p">,</span> <span class="nx">result</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">()));</span>
+</code></pre></div>
+<h2 id="ui-elements">UI Elements</h2>
+
+<h3 id="table">Table</h3>
+
+<p>Creates a table to manage paths defined at <code>/path=*</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;Path&#34;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AddressTemplate</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s2">&#34;/path=*&#34;</span><span class="p">);</span>
+
+<span class="nx">core</span><span class="p">.</span><span class="nx">metadataProcessor</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">metadata</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">metadata</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;name&#34;</span><span class="p">,</span> <span class="s2">&#34;path&#34;</span><span class="p">,</span> <span class="s2">&#34;relative-to&#34;</span><span class="p">],</span> <span class="nx">refresh</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="nx">t</span> <span class="p">=&gt;</span> <span class="nx">t</span><span class="p">.</span><span class="nx">selectedRow</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">).</span><span class="nx">asString</span><span class="p">(),</span> <span class="nx">refresh</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">columns</span><span class="p">([</span><span class="s2">&#34;name&#34;</span><span class="p">,</span> <span class="s2">&#34;path&#34;</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#hal-root-container&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">empty</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;&lt;h1&gt;&#34;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&#34;&lt;/h1&gt;&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;&lt;p&gt;&#34;</span> <span class="o">+</span> <span class="nx">metadata</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s2">&#34;&lt;/p&gt;&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">element</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">.</span><span class="nx">attach</span><span class="p">();</span>
+    <span class="nx">refresh</span><span class="p">();</span>
+
+    <span class="kd">function</span> <span class="nx">refresh</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">readChildren</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="s2">&#34;path&#34;</span><span class="p">,</span> <span class="nx">properties</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">table</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">property</span> <span class="p">=&gt;</span> <span class="nx">property</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="form">Form</h3>
+
+<p>Creates a form to view and edit the transaction manager defined at <code>/subsystem=transactions</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;Transaction Manager&#34;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AddressTemplate</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s2">&#34;{selected.profile}/subsystem=transactions&#34;</span><span class="p">);</span>
+
+<span class="nx">core</span><span class="p">.</span><span class="nx">metadataProcessor</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">metadata</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">form</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">form</span><span class="p">(</span><span class="nx">metadata</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">onSave</span><span class="p">((</span><span class="nx">f</span><span class="p">,</span> <span class="nx">changedValues</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">saveSingleton</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="nx">changedValues</span><span class="p">,</span> <span class="nx">refresh</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+    
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#hal-root-container&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">empty</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;&lt;h1&gt;&#34;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&#34;&lt;/h1&gt;&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;&lt;p&gt;&#34;</span> <span class="o">+</span> <span class="nx">metadata</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s2">&#34;&lt;/p&gt;&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">element</span><span class="p">);</span>
+    <span class="nx">form</span><span class="p">.</span><span class="nx">attach</span><span class="p">();</span>
+    <span class="nx">refresh</span><span class="p">();</span>
+    
+    <span class="kd">function</span> <span class="nx">refresh</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=&gt;</span> <span class="nx">form</span><span class="p">.</span><span class="nx">view</span><span class="p">(</span><span class="nx">config</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="master-detail">Master Detail</h3>
+
+<p>Creates a master-detail view to manage log categories defined at <code>/subsystem=logging/logger=*</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="s2">&#34;Category&#34;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AddressTemplate</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s2">&#34;{selected.profile}/subsystem=logging/logger=*&#34;</span><span class="p">);</span>
+
+<span class="nx">core</span><span class="p">.</span><span class="nx">metadataProcessor</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">metadata</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">namedTable</span><span class="p">(</span><span class="nx">metadata</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;level&#34;</span><span class="p">,</span> <span class="s2">&#34;handlers&#34;</span><span class="p">,</span> <span class="s2">&#34;use-parent-handlers&#34;</span><span class="p">],</span> <span class="nx">refresh</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="nx">t</span> <span class="p">=&gt;</span> <span class="nx">t</span><span class="p">.</span><span class="nx">selectedRow</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">refresh</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">columns</span><span class="p">([</span><span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="s2">&#34;level&#34;</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+    
+    <span class="kd">let</span> <span class="nx">form</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">namedForm</span><span class="p">(</span><span class="nx">metadata</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">onSave</span><span class="p">((</span><span class="nx">f</span><span class="p">,</span> <span class="nx">changedValues</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">template</span><span class="p">,</span> <span class="nx">changedValues</span><span class="p">,</span> <span class="nx">refresh</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+    
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#hal-root-container&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">empty</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;&lt;h1&gt;Categories&lt;/h1&gt;&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;&lt;p&gt;&#34;</span> <span class="o">+</span> <span class="nx">metadata</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s2">&#34;&lt;/p&gt;&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">element</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">element</span><span class="p">);</span>
+    
+    <span class="nx">table</span><span class="p">.</span><span class="nx">attach</span><span class="p">();</span>
+    <span class="nx">form</span><span class="p">.</span><span class="nx">attach</span><span class="p">();</span>
+    <span class="nx">table</span><span class="p">.</span><span class="nx">bindForm</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+    <span class="nx">refresh</span><span class="p">();</span>
+    
+    <span class="kd">function</span> <span class="nx">refresh</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">readChildren</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">parent</span><span class="p">,</span> <span class="s2">&#34;logger&#34;</span><span class="p">,</span> <span class="nx">properties</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">form</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+            <span class="nx">table</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">hal</span><span class="p">.</span><span class="nx">dmr</span><span class="p">.</span><span class="nx">ModelNodeHelper</span><span class="p">.</span><span class="nx">asNamedNodes</span><span class="p">(</span><span class="nx">properties</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+            </article>
+        </main>
+    </div>
 </div>
-    <footer class="hal-footer footer-dark bg-dark p-5">
+    <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">
                 <h6>Related</h6>
@@ -97,7 +280,7 @@ ga('send', 'pageview');
                 <ul class="list-unstyled"><li><a class="small" href="/documentation/">Documentation</a></li><li><a class="small" href="/development/">Development</a></li></ul>
             </div><div class="col-md-2 ">
                 <h6>Contribute</h6>
-                <ul class="list-unstyled"><li><a class="small" href="/contribute/">How To</a></li><li><a class="small" href="https://issues.jboss.org/projects/HAL/issues">Submit a Bug</a></li><li><a class="small" href="https://github.com/hal/hal.next/fork">Fork the Code</a></li></ul>
+                <ul class="list-unstyled"><li><a class="small" href="/contribute/">How To</a></li><li><a class="small" href="https://issues.jboss.org/projects/HAL/issues">Submit a Bug</a></li><li><a class="small" href="https://github.com/hal/console/fork">Fork the Code</a></li></ul>
             </div><div class="col-md-3 offset-md-1">
                 <h6>Apache 2 License</h6>
                 <p class="small">All dependencies of this project are available under the Apache 2 or a compatible
@@ -111,7 +294,7 @@ ga('send', 'pageview');
                     <li><span class="fas fa-wrench"></span> Made with <a href="https://gohugo.io/">Hugo</a> static site
                         generator.
                     </li>
-                    <li><span class="fas fa-terminal"></span> This website is open source! If you want to improve it, <a
+                    <li><span class="fas fa-code-branch"></span> This website is open source! If you want to improve it, <a
                             href="http://github.com/hal/site">fork the project</a> and send a pull
                         request.
                     </li>

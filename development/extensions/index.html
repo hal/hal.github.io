@@ -60,11 +60,9 @@ ga('send', 'pageview');
                     <a class="nav-link" href="/releases/">Releases</a>
                 </li></ul>
         <ul class="navbar-nav"><li class="nav-item">
-                <a class="nav-link" href="https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/" title="Youtube"><span class="fab fa-youtube"></span></a>
+                <a class="nav-link" href="https://github.com/hal/console" title="Source Code"><span class="fab fa-github"></span></a>
             </li><li class="nav-item">
-                <a class="nav-link" href="https://github.com/hal/hal.next" title="Source Code"><span class="fab fa-github"></span></a>
-            </li><li class="nav-item">
-                <a class="nav-link" href="https://gitter.im/hal/hal.next" title="Gitter"><span class="fab fa-gitter"></span></a>
+                <a class="nav-link" href="https://gitter.im/hal/console" title="Gitter"><span class="fab fa-gitter"></span></a>
             </li><li class="nav-item">
                 <a class="nav-link" href="https://issues.jboss.org/projects/HAL/issues" title="Issues"><span class="fas fa-bug"></span></a>
             </li></ul>
@@ -73,8 +71,10 @@ ga('send', 'pageview');
 
     <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main"><nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-white pr-0 pb-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item active" aria-current="page"><span class="dropdown">
+        <main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role="main"><aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator"><nav class="hal-breadcrumb" aria-label="breadcrumb">
+                            <h6>You're here:</h6>
+                            <ol class="breadcrumb bg-white py-0"><li class="breadcrumb-item"><a href="/development/">Development</a></li><li class="breadcrumb-item" aria-current="page"><span class="dropdown">
                     <a class="dropdown-toggle clickable" id="572cc8ac8e20f7d2c9213660af9ecbf4" data-toggle="dropdown">
                         Extensions <span class="caret"></span>
                     </a>
@@ -82,12 +82,110 @@ ga('send', 'pageview');
                         <a class="dropdown-item" href="/development/build-run/">Build &amp; Run</a><a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/building-blocks/">Building Blocks</a><a class="dropdown-item" href="/development/javascript-api/">JavaScript API</a>
                     </div>
                 </span></li></ol>
-                </nav><header><h1 class="display-4">Extensions</h1></header>
-            <p>Pending</p>
+                        </nav>
+                        <hr/><div class="hal-toc">
+                            <h6>On this page:</h6><nav id="TableOfContents">
+<ul>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#extension-points">Extension Points</a></li>
+<li><a href="#development">Development</a></li>
+<li><a href="#deployment">Deployment</a>
+<ul>
+<li><a href="#bundled-extensions">Bundled Extensions</a></li>
+<li><a href="#standalone-extensions">Standalone Extensions</a></li>
+</ul></li>
+</ul>
+</nav></div>
+                    </div>
+                </aside><article class="hal-article">
+                <header><h1 class="display-4">Extensions</h1></header>
+                
 
-        </main></div>
+<p>Extensions are a way to add features to the management console. They are written in JavaScript and should use the <a href="/development/javascript-api/">JavaScript API</a> to build the UI and interact with the management interface.</p>
+
+<h1 id="architecture">Architecture</h1>
+
+<p>JavaScript extensions consist of one script and one or more optional stylesheets. The script contains both the code to register the extensions and the actual code of the extension. Here&rsquo;s the code of a sample extension:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">whoami</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">Extension</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s2">&#34;whoami&#34;</span><span class="p">,</span> <span class="s2">&#34;Who am I?&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">operation</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">operation</span><span class="p">(</span><span class="nx">hal</span><span class="p">.</span><span class="nx">dmr</span><span class="p">.</span><span class="nx">ResourceAddress</span><span class="p">.</span><span class="nx">root</span><span class="p">(),</span> <span class="s2">&#34;whoami&#34;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s2">&#34;verbose&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+    <span class="nx">core</span><span class="p">.</span><span class="nx">dispatcher</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">operation</span><span class="p">,</span> <span class="nx">result</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">username</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">dmr</span><span class="p">.</span><span class="nx">ModelNodeHelper</span><span class="p">.</span><span class="nx">failSafeGet</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="s2">&#34;identity/username&#34;</span><span class="p">).</span><span class="nx">asString</span><span class="p">();</span>
+        <span class="kd">let</span> <span class="nx">realm</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">dmr</span><span class="p">.</span><span class="nx">ModelNodeHelper</span><span class="p">.</span><span class="nx">failSafeGet</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="s2">&#34;identity/realm&#34;</span><span class="p">).</span><span class="nx">asString</span><span class="p">();</span>
+        <span class="kd">let</span> <span class="nx">roles</span> <span class="o">=</span> <span class="nx">hal</span><span class="p">.</span><span class="nx">dmr</span><span class="p">.</span><span class="nx">ModelNodeHelper</span><span class="p">.</span><span class="nx">failSafeList</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="s2">&#34;mapped-roles&#34;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">role</span> <span class="p">=&gt;</span> <span class="nx">role</span><span class="p">.</span><span class="nx">asString</span><span class="p">())</span>
+            <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;, &#34;</span><span class="p">);</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="sb">`You are user </span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb"> at </span><span class="si">${</span><span class="nx">realm</span><span class="si">}</span><span class="sb">. Mapped roles: [</span><span class="si">${</span><span class="nx">roles</span><span class="si">}</span><span class="sb">].`</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nx">core</span><span class="p">.</span><span class="nx">extensionRegistry</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">whoami</span><span class="p">);</span>
+</code></pre></div>
+<p>The extension&rsquo;s script and stylesheets must be served by endpoints which are known to HAL. When HAL starts, it injects the scripts and stylesheets of all known extensions which in turn will make them available in HAL.</p>
+
+<h1 id="extension-points">Extension Points</h1>
+
+<p>The console provides four different extension points which can be used by extensions to add their features:</p>
+
+<ol>
+<li>Header: Adds a menu item to the &ldquo;Extensions&rdquo; dropdown in the header</li>
+<li>Finder Item: Adds a new item to a specific finder column</li>
+<li>Footer: Adds a menu item to the &ldquo;Extensions&rdquo; dropdown in the footer</li>
+<li>Custom: It&rsquo;s up to the extension how to add itself to the console</li>
+</ol>
+
+<h1 id="development">Development</h1>
+
+<p>Extensions must adhere to certain rules:</p>
+
+<ul>
+<li>the code must be in one file</li>
+<li>the stylesheets can be spread across multiple files</li>
+<li>the extension must register itself using HAL&rsquo;s JavaScript API (there&rsquo;s no lookup / detection mechanism in the console).</li>
+</ul>
+
+<p>Please make sure that your extension doesn&rsquo;t use the global scope. Use idioms like <a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> to define a custom scope for your extension.</p>
+
+<p>To get started quickly you can use the yarn package hal-edk (extension development kit). Follow these steps to setup a new extension project:</p>
+
+<ol>
+<li>Create a new yarn project</li>
+
+<li><p>Install a developer dependency for hal-edk: <code>yarn add hal-edk --dev</code><br />
+This will install the management console in <code>node_modules/hal-edk</code> and create three files in the project&rsquo;s root folder:</p>
+
+<ol>
+<li>index.html: Starts the console and loads extension.js</li>
+<li>extension.js: Registers a noop header extension</li>
+<li>extension.json: Contains metadata for the extension
+<br /></li>
+</ol></li>
+
+<li><p>Start a local web server and add the URL as allowed origin to the management model.</p></li>
+
+<li><p>Open index.html</p></li>
+</ol>
+
+<h1 id="deployment">Deployment</h1>
+
+<p>Extensions can be deployed using two different ways:</p>
+
+<h2 id="bundled-extensions">Bundled Extensions</h2>
+
+<p>Bundled extensions are part of the WildFly installation and installed as WildFly modules. They have to be installed outside of the console. WildFly and the console have to be restarted / reloaded after adding or removing bundled extensions.</p>
+
+<h2 id="standalone-extensions">Standalone Extensions</h2>
+
+<p>Standalone extensions are hosted by a public available endpoint. This endpoint must serve the extensions metadata. You can add and remove standalone extensions using the management console. They&rsquo;re stored in the browser&rsquo;s local storage. As such they&rsquo;re scoped to the browser and URL which runs the management console.</p>
+
+<p>See <a href="https://github.com/hal/js-extensions">https://github.com/hal/js-extensions</a> for sample standalone extensions.</p>
+
+            </article>
+        </main>
+    </div>
 </div>
-    <footer class="hal-footer footer-dark bg-dark p-5">
+    <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">
                 <h6>Related</h6>
@@ -97,7 +195,7 @@ ga('send', 'pageview');
                 <ul class="list-unstyled"><li><a class="small" href="/documentation/">Documentation</a></li><li><a class="small" href="/development/">Development</a></li></ul>
             </div><div class="col-md-2 ">
                 <h6>Contribute</h6>
-                <ul class="list-unstyled"><li><a class="small" href="/contribute/">How To</a></li><li><a class="small" href="https://issues.jboss.org/projects/HAL/issues">Submit a Bug</a></li><li><a class="small" href="https://github.com/hal/hal.next/fork">Fork the Code</a></li></ul>
+                <ul class="list-unstyled"><li><a class="small" href="/contribute/">How To</a></li><li><a class="small" href="https://issues.jboss.org/projects/HAL/issues">Submit a Bug</a></li><li><a class="small" href="https://github.com/hal/console/fork">Fork the Code</a></li></ul>
             </div><div class="col-md-3 offset-md-1">
                 <h6>Apache 2 License</h6>
                 <p class="small">All dependencies of this project are available under the Apache 2 or a compatible
@@ -111,7 +209,7 @@ ga('send', 'pageview');
                     <li><span class="fas fa-wrench"></span> Made with <a href="https://gohugo.io/">Hugo</a> static site
                         generator.
                     </li>
-                    <li><span class="fas fa-terminal"></span> This website is open source! If you want to improve it, <a
+                    <li><span class="fas fa-code-branch"></span> This website is open source! If you want to improve it, <a
                             href="http://github.com/hal/site">fork the project</a> and send a pull
                         request.
                     </li>

@@ -79,14 +79,18 @@ ga('send', 'pageview');
                         Build &amp; Run <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="ce75596adb7c6eb3900d54ce55ab8a5b">
-                        <a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/building-blocks/">Building Blocks</a>
+                        <a class="dropdown-item" href="/development/architecture/">Architecture</a><a class="dropdown-item" href="/development/building-blocks/">Building Blocks</a><a class="dropdown-item" href="/development/extensions/">Extensions</a><a class="dropdown-item" href="/development/javascript-api/">JavaScript API</a>
                     </div>
                 </span></li></ol>
                         </nav>
                         <hr/><div class="hal-toc">
                             <h6>On this page:</h6><nav id="TableOfContents">
 <ul>
-<li><a href="#build">Build</a></li>
+<li><a href="#build">Build</a>
+<ul>
+<li><a href="#profiles">Profiles</a></li>
+<li><a href="#scripts">Scripts</a></li>
+</ul></li>
 <li><a href="#run">Run</a></li>
 <li><a href="#debug">Debug</a></li>
 <li><a href="#develop">Develop</a></li>
@@ -105,8 +109,32 @@ ga('send', 'pageview');
 
 <p>For a full build use</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mvn clean install</code></pre></div>
-<p>This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you canskip the GWT compiler and use</p>
+<p>This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you can skip the GWT compiler and use</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mvn clean install -Dgwt.skipCompilation</code></pre></div>
+<h2 id="profiles">Profiles</h2>
+
+<p>The maven build defines the following profiles:</p>
+
+<ul>
+<li><p><code>docker</code> Foo</p></li>
+
+<li><p><code>esdoc</code> Foo</p></li>
+
+<li><p><code>prod</code> Foo</p></li>
+
+<li><p><code>release</code> Foo</p></li>
+
+<li><p><code>site</code> Foo</p></li>
+
+<li><p><code>theme-eap</code> Foo</p></li>
+
+<li><p><code>theme-hal</code> Foo</p></li>
+
+<li><p><code>theme-wildfly</code> Foo</p></li>
+</ul>
+
+<h2 id="scripts">Scripts</h2>
+
 <h1 id="run">Run</h1>
 
 <p>HAL is a GWT application and as such it is served from a local Jetty server. As a one time prerequisite you need to add the URL of the local Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
