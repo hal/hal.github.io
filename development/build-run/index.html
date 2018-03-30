@@ -116,24 +116,34 @@ ga('send', 'pageview');
 <p>The maven build defines the following profiles:</p>
 
 <ul>
-<li><p><code>docker</code> Foo</p></li>
+<li><code>docker</code> Produces two docker images:
 
-<li><p><code>esdoc</code> Foo</p></li>
-
-<li><p><code>prod</code> Foo</p></li>
-
-<li><p><code>release</code> Foo</p></li>
-
-<li><p><code>site</code> Foo</p></li>
-
-<li><p><code>theme-eap</code> Foo</p></li>
-
-<li><p><code>theme-hal</code> Foo</p></li>
-
-<li><p><code>theme-wildfly</code> Foo</p></li>
+<ol>
+<li><a href="https://hub.docker.com/r/halconsole/hal-standalone/"><code>halconsole/hal-standalone</code></a> contains HAL standalone</li>
+<li><a href="https://hub.docker.com/r/halconsole/hal-wildfly/"><code>halconsole/hal-wildfly</code></a> contains latest WildFly and and HAL</li>
+</ol></li>
+<li><code>esdoc</code> Produces the JavaScript API documentation</li>
+<li><code>prod</code> Runs the GWT compiler using production settings. Minimizes the CSS and JavaScrip code.</li>
+<li><code>release</code> Signs the maven artifacts, builds and attaches Javadoc</li>
+<li><code>site</code> Builds the maven site</li>
+<li><code>theme-eap</code> Applies the EAP theme</li>
+<li><code>theme-hal</code> Applies the HAL theme</li>
+<li><code>theme-wildfly</code> Applies the WildFly theme</li>
 </ul>
 
 <h2 id="scripts">Scripts</h2>
+
+<p>HAL contains some scripts for typical development tasks. Here&rsquo;s a short description of the scripts and what they&rsquo;re used for:</p>
+
+<ul>
+<li><code>app/refresh.sh</code>: Rebuilds certain resources when running the GWT development mode (see below)</li>
+<li><code>esdoc.sh</code>: Builds and pushes the JavaScript API documentation</li>
+<li><code>loc.sh</code>: Calculates code metrics such as LoC per file type</li>
+<li><code>release.sh</code>: Builds and deploys HAL using profiles <code>release,prod,theme-hal,docker</code> and pushes the latest console build to <a href="https://hal.github.io/console/">https://hal.github.io/console/</a></li>
+<li><code>snapshot.sh</code>: Builds and deploys the latest snapshot</li>
+<li><code>versionBump.sh</code>: Bumps the version in all POMs and some documentation files</li>
+<li><code>zanata.sh</code>: Syncs the i18n resources with the Zanata translation service.</li>
+</ul>
 
 <h1 id="run">Run</h1>
 
