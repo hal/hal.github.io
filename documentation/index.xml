@@ -28,7 +28,8 @@ Independent Mode  Besides that you can run the console on its own aka independen
       
       <guid>https://hal.github.io/documentation/end-user/</guid>
       <description>The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six main sections: homepage, deployments, configuration, runtime, patching and access control.
-Homepage  The homepage provides an overview of the main sections in the console. For each section there&amp;rsquo;s a short introduction followed by a step-by-step guide of the main use case. Links allow you to jump directly into the topic.</description>
+This page gives a quick introduction to the main sections. If you want to learn more about the most common use cases, visit the YouTube channel and watch the screen casts.
+Homepage  The homepage provides an overview of the main sections in the console.</description>
     </item>
     
   </channel>
