@@ -92,7 +92,7 @@
       <pubDate>Thu, 08 Mar 2018 16:43:15 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/3.0.0.final/</guid>
-      <description>Not released yet! Target: WildFly 13.0.0.Final  New &amp;amp; Improved Features General  Place management for finder and applications. Each finder selection and each application has its own distinct URL  Cross-links between different parts of HAL (configuration ⟷ runtime ⟷ deployment) Applications / finder selections can be bookmarked  Enhanced model browser (visualize deprecated attributes) Macro recording PatternFly compliance Enhanced form items  lists properties booleans (w/ expression support) combo boxes with auto complete support  JavaScript API Support for (dynamic) extensions written in JavaScript Second level cache for metadata (based on IndexDB and web workers)  Finder  Navigation using cursor keys.</description>
+      <description>Target: WildFly 13.0.0.Final Tag: 3.0.0.Final Tracking Issue: WFLY-10375  New &amp;amp; Improved Features General  Place management for finder and applications. Each finder selection and each application has its own distinct URL  Cross-links between different parts of HAL (configuration ⟷ runtime ⟷ deployment) Applications / finder selections can be bookmarked  Enhanced model browser (visualize deprecated attributes) Macro recording PatternFly compliance Enhanced form items  lists properties booleans (w/ expression support) combo boxes with auto complete support  JavaScript API Support for (dynamic) extensions written in JavaScript Second level cache for metadata (based on IndexDB and web workers)  Finder  Navigation using cursor keys.</description>
     </item>
     
   </channel>
