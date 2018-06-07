@@ -186,6 +186,15 @@ The JavaScript API is divided into several modules which define a common namespa
     </item>
     
     <item>
+      <title>3.0.1.Final</title>
+      <link>https://hal.github.io/releases/3.0.1.final/</link>
+      <pubDate>Tue, 05 Jun 2018 16:43:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.1.final/</guid>
+      <description>  Target: WildFly 13.0.0.Final Tag: 3.0.1.Final Tracking Issue: WFLY-10505  Bugfixes HAL  HAL-1410: Implement runtime view for Elytron HAL-1469: Unable to read or edit categories in logging profile HAL-1470: add-identity in filesystem-realm with no notification  </description>
+    </item>
+    
+    <item>
       <title>Contribute</title>
       <link>https://hal.github.io/contribute/</link>
       <pubDate>Thu, 08 Mar 2018 16:30:37 +0100</pubDate>
