@@ -101,7 +101,7 @@
       <pubDate>Tue, 05 Jun 2018 16:43:15 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/3.0.1.final/</guid>
-      <description>  Target: WildFly 13.0.0.Final Tag: 3.0.1.Final Tracking Issue: WFLY-10505  Bugfixes HAL  HAL-1410: Implement runtime view for Elytron HAL-1469: Unable to read or edit categories in logging profile HAL-1470: add-identity in filesystem-realm with no notification  </description>
+      <description>  Target: WildFly 13.0.0.Final Tag: 3.0.1.Final Tracking Issue: WFLY-10505  Bugfixes  HAL-1410: Implement runtime view for Elytron HAL-1469: Unable to read or edit categories in logging profile HAL-1470: add-identity in filesystem-realm with no notification  </description>
     </item>
     
   </channel>
