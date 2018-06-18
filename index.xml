@@ -195,6 +195,15 @@ The JavaScript API is divided into several modules which define a common namespa
     </item>
     
     <item>
+      <title>3.0.2.Final</title>
+      <link>https://hal.github.io/releases/3.0.2.final/</link>
+      <pubDate>Thu, 14 Jun 2018 14:42:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.2.final/</guid>
+      <description>  Target: WildFly 14.0.0.CR1 Tag: 3.0.2.Final Tracking Issue: WFLY-10563  Bugfixes  HAL-1468: Implement new infinispan resource: remote-cache-container  </description>
+    </item>
+    
+    <item>
       <title>Contribute</title>
       <link>https://hal.github.io/contribute/</link>
       <pubDate>Thu, 08 Mar 2018 16:30:37 +0100</pubDate>

@@ -104,5 +104,14 @@
       <description>  Target: WildFly 13.0.0.Final Tag: 3.0.1.Final Tracking Issue: WFLY-10505  Bugfixes  HAL-1410: Implement runtime view for Elytron HAL-1469: Unable to read or edit categories in logging profile HAL-1470: add-identity in filesystem-realm with no notification  </description>
     </item>
     
+    <item>
+      <title>3.0.2.Final</title>
+      <link>https://hal.github.io/releases/3.0.2.final/</link>
+      <pubDate>Thu, 14 Jun 2018 14:42:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.2.final/</guid>
+      <description>  Target: WildFly 14.0.0.CR1 Tag: 3.0.2.Final Tracking Issue: WFLY-10563  Bugfixes  HAL-1468: Implement new infinispan resource: remote-cache-container  </description>
+    </item>
+    
   </channel>
 </rss>
