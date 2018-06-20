@@ -9,18 +9,14 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.41" />
+    <meta name="generator" content="Hugo 0.37.1" />
     <link rel="canonical" href="https://hal.github.io/documentation/keycloak-sso/">
     <title>Authentication on Keycloak SSO | HAL Management Console</title>
     
 <script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-89365654-5', 'auto');
-	
-	ga('send', 'pageview');
-}
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-89365654-5', 'auto');
+ga('send', 'pageview');
 </script>
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
@@ -115,13 +111,19 @@ if (!doNotTrack) {
 <li>Point the Access Control link in the Homepage to the Keycloak server URL.</li>
 </ul>
 
-<p>The Wildfly Access Control mechanism should be disabled, because the users and roles are managed in Keycloak server. However RBAC continues to works in Wildfly to fine tune permission settings.</p>
+<p>The Wildfly Access Control mechanism to manage users and roles should be disabled, because they are managed in Keycloak server. However RBAC continues to works in Wildfly to fine tune permission settings.</p>
 
 <p><strong>How to setup Wildfly to use Keycloak authentication</strong></p>
 
 <ul>
 <li><a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#jboss-eap-wildfly-adapter">How to install Keycloak Wildfly Adapter binaries</a></li>
 <li><a href="https://docs.jboss.org/author/display/WFLY/Protecting+Wildfly+Adminstration+Console+With+Keycloak">How to configure Wildfly to enable keycloak</a></li>
+</ul>
+
+<p><strong>Warning</strong></p>
+
+<ul>
+<li>The authentication only works in standalone mode, as the wildfly keycloak adapter doesn&rsquo;t support domain mode yet.</li>
 </ul>
 
 <h1 id="login-attempt">Login attempt</h1>
