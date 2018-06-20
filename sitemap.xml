@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/documentation/keycloak-sso/</loc>
+    <lastmod>2018-06-19T13:17:31-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/documentation/howto/deployment/</loc>
     <lastmod>2018-03-26T19:08:39+02:00</lastmod>
   </url>

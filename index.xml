@@ -43,6 +43,16 @@ Independent Mode  Besides that you can run the console on its own aka independen
     </item>
     
     <item>
+      <title>Authentication on Keycloak SSO</title>
+      <link>https://hal.github.io/documentation/keycloak-sso/</link>
+      <pubDate>Tue, 19 Jun 2018 11:29:20 +0100</pubDate>
+      
+      <guid>https://hal.github.io/documentation/keycloak-sso/</guid>
+      <description>When user configures Wildfly to authenticate user to Keycloak SSO, HAL supports the authentication the following way:
+ HAL redirects the login attempt to keycloak server, if successful redirect back to HAL. Provide the logout option in HAL to call the logout page on keycloak. This is displayed under the username in the header section. Displays basic Keycloak settings in the Access Control page. Displays a link to user profile on Keycloak server.</description>
+    </item>
+    
+    <item>
       <title>Manage Deployments</title>
       <link>https://hal.github.io/documentation/howto/deployment/</link>
       <pubDate>Wed, 14 Mar 2018 10:57:19 +0100</pubDate>
