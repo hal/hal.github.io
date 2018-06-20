@@ -9,14 +9,18 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.37.1" />
+    <meta name="generator" content="Hugo 0.41" />
     <link rel="canonical" href="https://hal.github.io/development/javascript-api/">
     <title>JavaScript API | HAL Management Console</title>
     
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-89365654-5', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-89365654-5', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
@@ -150,7 +154,8 @@ ga('send', 'pageview');
             <span class="p">});</span>
         <span class="p">});</span>
     <span class="p">});</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <h2 id="read-child-resources">Read Child Resources</h2>
 
 <p>This example uses the crud operations to read the children of a resource. In this case the subsystems of the selected profile are read.</p>
@@ -158,7 +163,8 @@ ga('send', 'pageview');
 
 <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">readChildren</span><span class="p">(</span><span class="s2">&#34;{selected.profile}&#34;</span><span class="p">,</span> <span class="s2">&#34;subsystem&#34;</span><span class="p">,</span> <span class="nx">children</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">children</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">child</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">child</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <h2 id="execute-dmr-operations">Execute DMR Operations</h2>
 
 <p>This example shows how to execute arbitrary operations.</p>
@@ -168,7 +174,8 @@ ga('send', 'pageview');
     <span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s2">&#34;include-runtime&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
 
-<span class="nx">core</span><span class="p">.</span><span class="nx">dispatcher</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">op</span><span class="p">,</span> <span class="nx">result</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">()));</span></code></pre></div>
+<span class="nx">core</span><span class="p">.</span><span class="nx">dispatcher</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">op</span><span class="p">,</span> <span class="nx">result</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">()));</span>
+</code></pre></div>
 <h2 id="ui-elements">UI Elements</h2>
 
 <h3 id="table">Table</h3>
@@ -198,7 +205,8 @@ ga('send', 'pageview');
             <span class="nx">table</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">property</span> <span class="p">=&gt;</span> <span class="nx">property</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
         <span class="p">});</span>
     <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <h3 id="form">Form</h3>
 
 <p>Creates a form to view and edit the transaction manager defined at <code>/subsystem=transactions</code>.</p>
@@ -224,7 +232,8 @@ ga('send', 'pageview');
     <span class="kd">function</span> <span class="nx">refresh</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">core</span><span class="p">.</span><span class="nx">crud</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=&gt;</span> <span class="nx">form</span><span class="p">.</span><span class="nx">view</span><span class="p">(</span><span class="nx">config</span><span class="p">));</span>
     <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <h3 id="master-detail">Master Detail</h3>
 
 <p>Creates a master-detail view to manage log categories defined at <code>/subsystem=logging/logger=*</code>.</p>
@@ -263,7 +272,8 @@ ga('send', 'pageview');
             <span class="nx">table</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">hal</span><span class="p">.</span><span class="nx">dmr</span><span class="p">.</span><span class="nx">ModelNodeHelper</span><span class="p">.</span><span class="nx">asNamedNodes</span><span class="p">(</span><span class="nx">properties</span><span class="p">));</span>
         <span class="p">});</span>
     <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
             </article>
         </main>
     </div>
