@@ -6,9 +6,19 @@
     <description>Recent content in Tags on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 10 Jul 2018 15:30:25 +0200</lastBuildDate>
     
 	<atom:link href="https://hal.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Configuration</title>
+      <link>https://hal.github.io/tags/configuration/</link>
+      <pubDate>Tue, 10 Jul 2018 15:30:25 +0200</pubDate>
+      
+      <guid>https://hal.github.io/tags/configuration/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

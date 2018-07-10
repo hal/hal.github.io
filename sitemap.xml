@@ -34,7 +34,7 @@
   
   <url>
     <loc>https://hal.github.io/documentation/keycloak-sso/</loc>
-    <lastmod>2018-06-20T08:06:49+02:00</lastmod>
+    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
   </url>
   
   <url>
@@ -53,8 +53,23 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/releases/2.0.6.final/</loc>
+    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/releases/2.1.1.final/</loc>
     <lastmod>2018-03-20T21:02:50+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/releases/2.2.6.final/</loc>
+    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/releases/2.2.8.final/</loc>
+    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
   </url>
   
   <url>
@@ -108,6 +123,16 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/blog/new-infinispan-resources/</loc>
+    <lastmod>2018-07-10T15:43:09+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/blog/</loc>
+    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/documentation/howto/</loc>
     <lastmod>2018-03-14T13:11:46+01:00</lastmod>
   </url>
@@ -143,12 +168,19 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/tags/configuration/</loc>
+    <lastmod>2018-07-10T15:43:09+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/</loc>
     <lastmod>2018-04-19T17:04:53+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/tags/</loc>
+    <lastmod>2018-07-10T15:43:09+02:00</lastmod>
     <priority>0</priority>
   </url>
   

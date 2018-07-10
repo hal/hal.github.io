@@ -36,7 +36,8 @@ if (!doNotTrack) {
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-</head>
+    <link rel="alternate" type="application/rss+xml" href="https://hal.github.io/development/index.xml" title="HAL Management Console" />
+    </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hal-navbar"
@@ -62,6 +63,9 @@ if (!doNotTrack) {
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="/releases/">Releases</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog/">Blog</a>
                 </li></ul>
         <ul class="navbar-nav"><li class="nav-item">
                 <a class="nav-link" href="https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/" title="Youtube"><span class="fab fa-youtube"></span></a>
@@ -79,34 +83,24 @@ if (!doNotTrack) {
 
     <div class="container-fluid">
     <div class="row">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 hal-list" role="main"><header><h1 class="display-4">Development</h1></header>
+        <main class="col-12 col-md-12 py-md-3 px-md-5" role="main"><header><h1 class="display-4">Development</h1></header>
             <p>This section gathers all developer related information. It serves both as a reference how things are implemented and as a guide for new developers who want to <a href="/contribute/">contribute</a> to the console. Most of the pages in this section are independent to each other. So feel free to read them in any order.</p>
 
             
                 <div class="d-lg-flex flex-lg-wrap"><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/development/build-run/"><img class="hal-teaser-icon mr-3" src="/img/tools.png"></a></div><div>
-                                <h5 class="card-title"><a href="/development/build-run/" class="text-dark">Build &amp; Run</a></h5>
-                                <div class="card-text"><p>Explains how to build and run the console. Talks about the prerequisites and what is necessary to debug the codebase.</p></div>
-                                <a href="/development/build-run/" class="card-link">Read More &raquo;</a>
+                                <h5 class="card-title"><a href="/development/build-run/" class="text-dark">Build &amp; Run</a></h5><div class="card-text"><p>Explains how to build and run the console. Talks about the prerequisites and what is necessary to debug the codebase.</p></div><a href="/development/build-run/" class="card-link">Read More &raquo;</a>
                             </div>
                         </div><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/development/architecture/"><img class="hal-teaser-icon mr-3" src="/img/building.png"></a></div><div>
-                                <h5 class="card-title"><a href="/development/architecture/" class="text-dark">Architecture</a></h5>
-                                <div class="card-text"><p>Describes the basic architecture of the console. Lists the used frameworks and libraries and gives background information about the choices made.</p></div>
-                                <a href="/development/architecture/" class="card-link">Read More &raquo;</a>
+                                <h5 class="card-title"><a href="/development/architecture/" class="text-dark">Architecture</a></h5><div class="card-text"><p>Describes the basic architecture of the console. Lists the used frameworks and libraries and gives background information about the choices made.</p></div><a href="/development/architecture/" class="card-link">Read More &raquo;</a>
                             </div>
                         </div><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/development/building-blocks/"><img class="hal-teaser-icon mr-3" src="/img/puzzle.png"></a></div><div>
-                                <h5 class="card-title"><a href="/development/building-blocks/" class="text-dark">Building Blocks</a></h5>
-                                <div class="card-text"><p>Explains the basic building blocks used in HAL. Read this page if you want to know more about the concepts and layers in HAL or if you plan to contribute to the codebase.</p></div>
-                                <a href="/development/building-blocks/" class="card-link">Read More &raquo;</a>
+                                <h5 class="card-title"><a href="/development/building-blocks/" class="text-dark">Building Blocks</a></h5><div class="card-text"><p>Explains the basic building blocks used in HAL. Read this page if you want to know more about the concepts and layers in HAL or if you plan to contribute to the codebase.</p></div><a href="/development/building-blocks/" class="card-link">Read More &raquo;</a>
                             </div>
                         </div><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/development/extensions/"><img class="hal-teaser-icon mr-3" src="/img/plug.png"></a></div><div>
-                                <h5 class="card-title"><a href="/development/extensions/" class="text-dark">Extensions</a></h5>
-                                <div class="card-text"><p>Shows how you can write custom runtime extensions using the JavaScript API. Includes how to setup your environment and how to add the extensions to the console.</p></div>
-                                <a href="/development/extensions/" class="card-link">Read More &raquo;</a>
+                                <h5 class="card-title"><a href="/development/extensions/" class="text-dark">Extensions</a></h5><div class="card-text"><p>Shows how you can write custom runtime extensions using the JavaScript API. Includes how to setup your environment and how to add the extensions to the console.</p></div><a href="/development/extensions/" class="card-link">Read More &raquo;</a>
                             </div>
                         </div><div class="d-flex hal-flex-3-per-row pt-4 pr-md-5"><div><a href="/development/javascript-api/"><img class="hal-teaser-icon mr-3" src="/img/code.png"></a></div><div>
-                                <h5 class="card-title"><a href="/development/javascript-api/" class="text-dark">JavaScript API</a></h5>
-                                <div class="card-text"><p>Gives background information about the JavaScript API. Shows sample code and describes what you can do with the API.</p></div>
-                                <a href="/development/javascript-api/" class="card-link">Read More &raquo;</a>
+                                <h5 class="card-title"><a href="/development/javascript-api/" class="text-dark">JavaScript API</a></h5><div class="card-text"><p>Gives background information about the JavaScript API. Shows sample code and describes what you can do with the API.</p></div><a href="/development/javascript-api/" class="card-link">Read More &raquo;</a>
                             </div>
                         </div></div>
             

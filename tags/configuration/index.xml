@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configuration on HAL Management Console</title>
+    <link>https://hal.github.io/tags/configuration/</link>
+    <description>Recent content in Configuration on HAL Management Console</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Jul 2018 15:30:25 +0200</lastBuildDate>
+    
+	<atom:link href="https://hal.github.io/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New Infinispan Resources</title>
+      <link>https://hal.github.io/blog/new-infinispan-resources/</link>
+      <pubDate>Tue, 10 Jul 2018 15:30:25 +0200</pubDate>
+      
+      <guid>https://hal.github.io/blog/new-infinispan-resources/</guid>
+      <description>In WildFly 13 the Infinispan subsystem introduces several new resources:
+ Remote Cache Container Scattered Cache HotRod Store  All of these resources are supported in the latest HAL version (3.0.3 and above).
+Remote Cache Container Remote cache containers are listed together with regular cache containers in the &amp;lsquo;Cache Container&amp;rsquo; column. You can use the button drop down to add both remote and regular cache containers.
+Scattered Cache All caches of the selected cache container are now displayed in their own column.</description>
+    </item>
+    
+  </channel>
+</rss>

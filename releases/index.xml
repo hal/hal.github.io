@@ -12,12 +12,39 @@
     
     
     <item>
+      <title>2.0.6.Final</title>
+      <link>https://hal.github.io/releases/2.0.6.final/</link>
+      <pubDate>Sat, 10 Mar 2018 18:35:30 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/2.0.6.final/</guid>
+      <description>Target: EAP 6.2.0.GA Release Stream: 2.0.6.Final Core Console: 2.0.6.Final Tracking Issue: HAL-291  Release Notes  HAL-285: Syslog handler is missing in setting of Handlers in Management Console HAL-284: Changing scope type of the role leads to &amp;ldquo;Failed to save&amp;rdquo; error HAL-281: Unclear error message when trying to configure Auditor role as Administrator HAL-280: Unable to List Driver during Datasource Creation via the management console HAL-278: List attributes in &amp;ldquo;need help&amp;rdquo; in same order as in settings tabs HAL-275: Improve error handling when operating on stopped server instances HAL-274: RunAs after switching roles results in an error HAL-264: Resource adapter inline editing problems HAL-263: Modal windows are sized inconsistently HAL-261: Role management mapping should be accessible for Auditor HAL-256: Module and ClassName fields are disabled in new Custom handler dialog HAL-255: Runtime name input disable in new Unmanaged Deployment dialog HAL-253: Domain mode: kill an unresponsive JVM HAL-250: Revert project name references HAL-244: Unable to unset &amp;ldquo;Default From&amp;rdquo; attribute in Mail Session administration HAL-241: Role names seem to be case insensitive but roles tab of the console assumes they are ALLCAPS HAL-240: Push translations to translate.</description>
+    </item>
+    
+    <item>
       <title>2.1.1.Final</title>
       <link>https://hal.github.io/releases/2.1.1.final/</link>
       <pubDate>Sat, 10 Mar 2018 18:34:56 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/2.1.1.final/</guid>
       <description>Target: WildFly 8.0.0.Final Release Stream: 2.1.1.Final Core Console: 2.1.1.Final Tracking Issue: HAL-346  New &amp;amp; Improved Features  Topology View Performance RBAC sensitive UI  Bugfixes  HAL-337: Partly undo fix which was introduced by HAL-10 HAL-336: Show a warning and change default place to &amp;ldquo;Profiles&amp;rdquo; if there are no groups defined. HAL-335: Workaround using include-aliases=true; more fail-safe RBACGatekeeper HAL-331: Add horizontal scrolling to value table in properties table HAL-329: Fix top level navigation for MBUI dialogs HAL-328: Navigation not highlighted for MBUI dialogs HAL-327: Add RBAC check for server reload button HAL-326: remote repo in dev mode HAL-321: properly clear and reset dialog state upon removal of resources HAL-320: Progress bar for RBAC related r-r-d HAL-319: Scope assignment and statement context resolution HAL-317: Undefine attribute doesn&amp;rsquo;t work HAL-315: &amp;ldquo;Max Retry&amp;rdquo; -&amp;gt; &amp;ldquo;Max Retry Interval&amp;rdquo; HAL-313: Async handlers don&amp;rsquo;t provide handlers to subviews - ie no nesting allowed!</description>
+    </item>
+    
+    <item>
+      <title>2.2.6.Final</title>
+      <link>https://hal.github.io/releases/2.2.6.final/</link>
+      <pubDate>Sat, 10 Mar 2018 18:33:59 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/2.2.6.final/</guid>
+      <description>Target: WildFly 8.1.0.Final Release Stream: 2.2.6.Final Core Console: 2.2.6.Final Tracking Issue: WFLY-3332  New &amp;amp; Improved Features  Patching New top level navigation Home page  Bugfixes  HAL-403: Fix index setup HAL-402: Fix refresh when using view framework HAL-385: Scrollbar for profile selector HAL-384: Only servers which belong to the current profile are part of the verify operation HAL-383: Homepage links don&amp;rsquo;t work as expected HAL-382: Prevent loading of google vis in web mode HAL-381: Default build for community includes modern browsers and en.</description>
+    </item>
+    
+    <item>
+      <title>2.2.8.Final</title>
+      <link>https://hal.github.io/releases/2.2.8.final/</link>
+      <pubDate>Sat, 10 Mar 2018 18:32:53 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/2.2.8.final/</guid>
+      <description>Target: EAP 6.3.0.GA Release Stream: 2.2.8.Final Core Console: 2.2.8.Final Tracking Issue: BZ1104216  New &amp;amp; Improved Features  Role based access control (RBAC) Patching New top level navigation Home page  Bugfixes  BZ901227: Allow -1 as default value for modcluster timeout attributes BZ1092650: Add pager to list of EE modules BZ1088314: Fix refresh in JacORB view BZ1081990: Add restart button; fix for one-off patches BZ1081570: Add check if running in domain mode BZ1081186: Change label and help text for GA BZ1080767: Home page string suggestions and corrections BZ1075720: Get rid of patch confirm step BZ1075264: Remove inline warning icon BZ1075169: Fix wizard title BZ1075137: Disable rollback button when no items are available BZ1074675: Modal patch wizard BZ1074623: Fix parsing error BZ1073988: Fix intro paragraph for homepage BZ1073597: Home page task containers show (empty) scrollbar.</description>
     </item>
     
     <item>
