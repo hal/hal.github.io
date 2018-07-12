@@ -10,8 +10,8 @@
 
 
     <meta name="generator" content="Hugo 0.37.1" />
-    <link rel="canonical" href="https://hal.github.io/releases/2.2.8.final/">
-    <title>2.2.8.Final | HAL Management Console</title>
+    <link rel="canonical" href="https://hal.github.io/tags/security/">
+    <title>Security | HAL Management Console</title>
     
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -32,6 +32,7 @@ ga('send', 'pageview');
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+    <link rel="alternate" type="application/rss+xml" href="https://hal.github.io/tags/security/index.xml" title="HAL Management Console" />
     </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -56,7 +57,7 @@ ga('send', 'pageview');
                 <li class="nav-item ">
                     <a class="nav-link" href="/contribute/">Contribute</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="/releases/">Releases</a>
                 </li>
                 <li class="nav-item ">
@@ -76,69 +77,36 @@ ga('send', 'pageview');
     </div>
 </nav>
 
-    <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-        <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main"><nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
-                        <ol class="breadcrumb bg-white pr-0 pb-0"><li class="breadcrumb-item"><a href="/releases/">Release Notes</a></li><li class="breadcrumb-item" aria-current="page"><span class="dropdown">
-                    <a class="dropdown-toggle clickable" id="09cc17749c3093450bfba5591518cc1a" data-toggle="dropdown">
-                        2.2.8.Final <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="09cc17749c3093450bfba5591518cc1a">
-                        <a class="dropdown-item" href="/releases/2.0.6.final/">2.0.6.Final</a><a class="dropdown-item" href="/releases/2.1.1.final/">2.1.1.Final</a><a class="dropdown-item" href="/releases/2.2.6.final/">2.2.6.Final</a><a class="dropdown-item" href="/releases/2.4.9.final/">2.4.9.Final</a><a class="dropdown-item" href="/releases/2.5.5.final/">2.5.5.Final</a><a class="dropdown-item" href="/releases/2.7.4.final/">2.7.4.Final</a><a class="dropdown-item" href="/releases/2.8.19.final/">2.8.19.Final</a><a class="dropdown-item" href="/releases/2.8.24.final/">2.8.24.Final</a><a class="dropdown-item" href="/releases/2.8.27.final/">2.8.27.Final</a><a class="dropdown-item" href="/releases/2.9.15.final/">2.9.15.Final</a><a class="dropdown-item" href="/releases/3.0.0.final/">3.0.0.Final</a><a class="dropdown-item" href="/releases/3.0.1.final/">3.0.1.Final</a><a class="dropdown-item" href="/releases/3.0.2.final/">3.0.2.Final</a>
-                    </div>
-                </span></li></ol>
-                    </nav><article class="hal-article">
-                <header><h1 class="display-4">2.2.8.Final</h1></header>
-                
-
-<ul>
-<li>Target: EAP 6.3.0.GA</li>
-<li>Release Stream: <a href="https://github.com/hal/release-stream/releases/tag/2.2.8.Final">2.2.8.Final</a></li>
-<li>Core Console: <a href="https://github.com/hal/core/releases/tag/2.2.8.Final">2.2.8.Final</a></li>
-<li>Tracking Issue: <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1104216">BZ1104216</a></li>
+    
+<div class="container-fluid">
+    <div class="row">
+        <main class="col-12 col-md-12 py-md-3 px-md-5" role="main">
+            <header><h1 class="display-4 mb-4">Security</h1></header>
+            
+            
+            <article class="d-md-flex align-items-md-start mb-4">
+                <time class="pr-4 text-md-right hal-post-date">
+                    Jul 12, 2018
+                </time>
+                <div class="flex-md-grow-1">
+                    <a class="hal-bigger" href="/blog/protect-mgmt-interface-ssl/">Protect Wildfly HTTP Management Interface with SSL</a><p class="hal-post-description mb-0">How to use the new SSL Wizard to enable SSL for the HTTP management interface.</p><ul class="hal-tags">
+    
+    <li><a class="hal-tag" href="/tags/configuration">configuration</a></li>
+    
+    <li><a class="hal-tag" href="/tags/security">security</a></li>
+    
 </ul>
-
-<h1 id="new-improved-features">New &amp; Improved Features</h1>
-
-<ul>
-<li>Role based access control (RBAC)</li>
-<li>Patching</li>
-<li>New top level navigation</li>
-<li>Home page</li>
-</ul>
-
-<h1 id="bugfixes">Bugfixes</h1>
-
-<ul>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=901227">BZ901227</a>: Allow -1 as default value for modcluster timeout attributes</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1092650">BZ1092650</a>: Add pager to list of EE modules</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1088314">BZ1088314</a>: Fix refresh in JacORB view</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1081990">BZ1081990</a>: Add restart button; fix for one-off patches</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1081570">BZ1081570</a>: Add check if running in domain mode</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1081186">BZ1081186</a>: Change label and help text for GA</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1080767">BZ1080767</a>: Home page string suggestions and corrections</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1075720">BZ1075720</a>: Get rid of patch confirm step</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1075264">BZ1075264</a>: Remove inline warning icon</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1075169">BZ1075169</a>: Fix wizard title</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1075137">BZ1075137</a>: Disable rollback button when no items are available</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1074675">BZ1074675</a>: Modal patch wizard</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1074623">BZ1074623</a>: Fix parsing error</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1073988">BZ1073988</a>: Fix intro paragraph for homepage</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1073597">BZ1073597</a>: Home page task containers show (empty) scrollbar.</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1072337">BZ1072337</a>: Fix recovery from verify connection failed</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1071949">BZ1071949</a>: Redirect when trying to access &ldquo;Security Domains&rdquo;</li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1070130">BZ1070130</a>: Postpone driver auto detection</li>
-<li><a href="https://issues.jboss.org/browse/EAP6-109">EAP6-109</a>: New top-level navigation</li>
-<li><a href="https://issues.jboss.org/browse/EAP6-87">EAP6-87</a>: Analytics is disabled in product version by default</li>
-<li><a href="https://issues.jboss.org/browse/EAP6-66">EAP6-66</a>: Add ability to test the connection for new and existing datasources</li>
-<li><a href="https://issues.jboss.org/browse/EAP6-18">EAP6-18</a>: Expose patch management in Console</li>
-<li><a href="https://issues.jboss.org/browse/EAP6-16">EAP6-16</a>: Refactoring of the confirm step; apply success i18n</li>
-</ul>
-
+                </div>
             </article>
+            
+            
+
+
         </main>
     </div>
 </div>
+
+
     <footer class="hal-footer footer-dark bg-dark position-relative p-5">
     <div class="container">
         <div class="row"><div class="col-md-2 offset-md-1">

@@ -123,6 +123,11 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/blog/protect-mgmt-interface-ssl/</loc>
+    <lastmod>2018-07-12T17:08:44-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/blog/new-infinispan-resources/</loc>
     <lastmod>2018-07-10T15:43:09+02:00</lastmod>
   </url>
@@ -169,7 +174,7 @@
   
   <url>
     <loc>https://hal.github.io/tags/configuration/</loc>
-    <lastmod>2018-07-10T15:43:09+02:00</lastmod>
+    <lastmod>2018-07-12T17:08:44-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -179,8 +184,14 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/tags/security/</loc>
+    <lastmod>2018-07-12T17:08:44-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/tags/</loc>
-    <lastmod>2018-07-10T15:43:09+02:00</lastmod>
+    <lastmod>2018-07-12T17:08:44-03:00</lastmod>
     <priority>0</priority>
   </url>
   

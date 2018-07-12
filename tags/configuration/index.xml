@@ -6,10 +6,20 @@
     <description>Recent content in Configuration on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jul 2018 15:30:25 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jul 2018 15:30:25 +0200</lastBuildDate>
     
 	<atom:link href="https://hal.github.io/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Protect Wildfly HTTP Management Interface with SSL</title>
+      <link>https://hal.github.io/blog/protect-mgmt-interface-ssl/</link>
+      <pubDate>Thu, 12 Jul 2018 15:30:25 +0200</pubDate>
+      
+      <guid>https://hal.github.io/blog/protect-mgmt-interface-ssl/</guid>
+      <description>In WildFly 13, there is a wizard to enable the SSL for the HTTP management interface, it uses the elytron resource to manage the security features. The certificate may be handled in the following ways:
+ Generate a self-signed certificate Use an existing certificate file Use an existing elytron key-store Use mutual authentication with a client  You can see more information about elytron features and HTTPS in general.</description>
+    </item>
     
     <item>
       <title>New Infinispan Resources</title>
