@@ -9,14 +9,18 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.37.1" />
+    <meta name="generator" content="Hugo 0.41" />
     <link rel="canonical" href="https://hal.github.io/development/extensions/">
     <title>Extensions | HAL Management Console</title>
     
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-89365654-5', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-89365654-5', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
@@ -127,7 +131,8 @@ ga('send', 'pageview');
         <span class="nx">alert</span><span class="p">(</span><span class="sb">`You are user </span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb"> at </span><span class="si">${</span><span class="nx">realm</span><span class="si">}</span><span class="sb">. Mapped roles: [</span><span class="si">${</span><span class="nx">roles</span><span class="si">}</span><span class="sb">].`</span><span class="p">);</span>
     <span class="p">});</span>
 <span class="p">});</span>
-<span class="nx">core</span><span class="p">.</span><span class="nx">extensionRegistry</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">whoami</span><span class="p">);</span></code></pre></div>
+<span class="nx">core</span><span class="p">.</span><span class="nx">extensionRegistry</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">whoami</span><span class="p">);</span>
+</code></pre></div>
 <p>The extension&rsquo;s script and stylesheets must be served by endpoints which are known to HAL. When HAL starts, it injects the scripts and stylesheets of all known extensions which in turn will make them available in HAL.</p>
 
 <h1 id="extension-points">Extension Points</h1>

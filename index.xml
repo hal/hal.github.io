@@ -257,7 +257,7 @@ The JavaScript API is divided into several modules which define a common namespa
       
       <guid>https://hal.github.io/blog/new-infinispan-resources/</guid>
       <description>In WildFly 13 the Infinispan subsystem introduces several new resources:
- Remote Cache Container Scattered Cache HotRod Store  All of these resources are supported in the latest HAL version (3.0.3 and above).
+ Remote Cache Container Scattered Cache Hot Rod Store  All of these resources are supported in the latest HAL version (3.0.3 and above).
 Remote Cache Container Remote cache containers are listed together with regular cache containers in the &amp;lsquo;Cache Container&amp;rsquo; column. You can use the button drop down to add both remote and regular cache containers.
 Scattered Cache All caches of the selected cache container are now displayed in their own column.</description>
     </item>
