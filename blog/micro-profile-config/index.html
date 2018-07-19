@@ -4,14 +4,14 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="How to log and display all configuration changes on a wildfly server.">
+<meta name="description" content="HAL now supports the new MicroProfile Config specification.">
 
 <meta name="author" content="">
 
 
     <meta name="generator" content="Hugo 0.41" />
-    <link rel="canonical" href="https://hal.github.io/blog/configuration-changes/">
-    <title>Log all configuration changes | HAL Management Console</title>
+    <link rel="canonical" href="https://hal.github.io/blog/micro-profile-config/">
+    <title>Micro Profile Config | HAL Management Console</title>
     
 <script>
 var doNotTrack = false;
@@ -84,165 +84,8 @@ if (!doNotTrack) {
     <div class="row flex-xl-nowrap">
         <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main">
             <article class="hal-article">
-                <header><h1 class="display-4">Log all configuration changes</h1></header>
+                <header><h1 class="display-4">Micro Profile Config</h1></header>
                 
-
-<p>There is a feature to record all configuration changes to an in-memory log per host or server, it records any change performed on Wildfly, for example: deploy an application, add a datasource, change any configuration, add  any resource. This blog post will show how it works.</p>
-
-<p>Notes:</p>
-
-<ul>
-<li>For this blog post, domain mode will be used.</li>
-<li>After a domain or server restart all configuration changes are lost, because this is an in-memory logging.</li>
-<li>If you want a persistent audit logging, you must use the audit logging feature on <code>/host=master/core-service=management/access=audit</code> path.</li>
-<li>You can control the number of changes to be kept in memory (<code>max-history</code> attribute), but be aware it will take up JVM memory so be careful about its size.</li>
-</ul>
-
-<h2 id="what-is-a-configuration-change">What is a configuration change</h2>
-
-<p>The <code>Configuration Change</code> is a JSON like structure:</p>
-
-<pre><code>{
-    &quot;operation-date&quot; =&gt; &quot;2018-07-17T20:42:27.728Z&quot;,
-    &quot;domain-uuid&quot; =&gt; &quot;65fe503f-64bb-4f7f-af30-9526b516f523&quot;,
-    &quot;access-mechanism&quot; =&gt; &quot;HTTP&quot;,
-    &quot;remote-address&quot; =&gt; &quot;localhost/127.0.0.1&quot;,
-    &quot;outcome&quot; =&gt; &quot;success&quot;,
-    &quot;operations&quot; =&gt; [{
-        &quot;operation&quot; =&gt; &quot;composite&quot;,
-        &quot;address&quot; =&gt; [],
-        &quot;steps&quot; =&gt; [{
-            &quot;name&quot; =&gt; &quot;max-heap-size&quot;,
-            &quot;value&quot; =&gt; &quot;256m&quot;,
-            &quot;operation&quot; =&gt; &quot;write-attribute&quot;,
-            &quot;address&quot; =&gt; [
-                (&quot;host&quot; =&gt; &quot;master&quot;),
-                (&quot;server-config&quot; =&gt; &quot;server-two&quot;),
-                (&quot;jvm&quot; =&gt; &quot;default&quot;)
-            ]
-        }],
-        &quot;operation-headers&quot; =&gt; {
-            &quot;access-mechanism&quot; =&gt; &quot;HTTP&quot;,
-            &quot;caller-type&quot; =&gt; &quot;user&quot;
-        }
-    }]
-}
-</code></pre>
-
-<p>The change structure is:</p>
-
-<ul>
-<li>Access Mechanism: The source api that issued the command, <strong>native</strong> is a native api call (jboss-cli.sh) or <strong>HTTP</strong>.</li>
-<li>Remote Address: The source network address of the client that originated the change.</li>
-<li>Outcome: success or fail.</li>
-<li>Operations: Each change may be a single operation or a collection of operations.</li>
-<li>Operation: A single operation on a single resource address, in the example above it is <code>write-attribute</code></li>
-<li>Address: The path of the change, in the example above, the address is <code>/host=master/server-config=server-two/jvm=default</code></li>
-<li>Name, Value pair: The attribute and value to change, in the example above it is: <code>max-heap-size=256m</code></li>
-</ul>
-
-<h2 id="configuration-changes-in-domain-and-standalone-mode">Configuration changes in domain and standalone mode</h2>
-
-<p>For domain mode the feature <code>Configuration Changes</code> may be per host and per profile. The <code>Configuration Changes</code> per host, will log all changes performed on the specific host and the servers under it. The <code>Configuration Changes</code> per profile, will log any changes performed on the specific profile and the associated server. For Wildfly 13, HAL handle only the <code>Configuration Changes</code> per host, but current HAL version (to be released with Wildfly 14) also features <code>Configuration Changes</code> per profile.</p>
-
-<p>For standalone mode, the <code>Configuration Changes</code> will log any change.</p>
-
-<h2 id="loading-configuration-changes-panel">Loading configuration changes panel</h2>
-
-<p>Navigate to <code>Runtime</code> -&gt; <code>Hosts</code> -&gt; select a host, the click on the arrow to display de drop-down menu, then select <strong>Configuration Changes</strong></p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-01.png"  alt="">
-
-
-<p>The following screen is displayed, click the button to enable the recording of the changes.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-02.png"  alt="">
-
-
-<p>It will ask for the maximum number of entries to be recorded. Then, after confirmation, the following screen is displayed.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-03.png"  alt="">
-
-
-<p>It shows the last change on top.</p>
-
-<h2 id="show-configuration-changes">Show configuration changes</h2>
-
-<p>After a couple of changes there is the following entries, a detailed description of this view:</p>
-
-<ul>
-<li>Filter search results: On the top left, you can filter the results by:
-
-<ul>
-<li>outcome: valid values: failed, success</li>
-<li>operation name</li>
-<li>address</li>
-<li>access mechanism: native or HTTP</li>
-</ul></li>
-<li>Sort by:
-
-<ul>
-<li>Outcome</li>
-<li>Operation date</li>
-<li>Remote address</li>
-<li>Access Mechanism</li>
-</ul></li>
-</ul>
-
-<p>The <em>Access Mechanism</em> means the <em>native</em> comes from jboss-cli.sh or API calls, the HTTP is self explanatory.</p>
-
-<p>On the top right, there are two action buttons:</p>
-
-<ul>
-<li>Disable: Disable the <em>Configuration Changes</em>, it will remove the resource <code>/host=master/subsystem=core-management/service=configuration-changes</code></li>
-<li>Reload: Reload the configuration changes list, by calling <code>/host=master/subsystem=core-management/service=configuration-changes:list-changes()</code></li>
-</ul>
-
-<p>After many changes are perfomed, there is a list of configuration changes.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-04.png"  alt="">
-
-
-<p>For each item on the list, there is a button <code>View</code> to show the full individual change.</p>
-
-<p>If the change is large with many items, it will not be displayed right away, you must click on it to show, then the item will expand to show the change with more details.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-05.png"  alt="">
-
-
-<p>Then a large view of the change is displayed.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-06.png"  alt="">
-
-
-<p>For any message, you can click on the <code>View</code> button on the right to show the full raw message.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-07.png"  alt="">
-
-
-<h2 id="pagination">Pagination</h2>
-
-<p>On the bottom, there is a navigation bar to paginate the results</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-08.png"  alt="">
-
-
-<h2 id="disable-the-configuration-changes">Disable the Configuration Changes</h2>
-
-<p>To disable, you must click on the <code>Disable</code> button.</p>
-
-
-<img class="img-fluid mb-4 " src="/img/blog/configuration-changes/cc-09.png"  alt="">
-
-
             </article>
             <ul class="pagination mt-4">
                 <li><a class="mr-4" href="/blog/">&uarr; All Posts</a></li>
@@ -251,7 +94,7 @@ if (!doNotTrack) {
                 <li><a class="mr-4" href="/blog/inspect-http-sessions/" title="Previous Post">&larr; Inspect HTTP Sessions</a></li>
                 
                 
-                <li><a class="mr-4" href="/blog/protect-mgmt-interface-ssl/" title="Next Post">Protect Wildfly HTTP Management Interface with SSL &rarr;</a></li>
+                <li><a class="mr-4" href="/blog/new-infinispan-resources/" title="Next Post">New Infinispan Resources &rarr;</a></li>
                 
             </ul>
         </main>

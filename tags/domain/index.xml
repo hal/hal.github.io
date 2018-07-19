@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Domain on HAL Management Console</title>
+    <link>https://hal.github.io/tags/domain/</link>
+    <description>Recent content in Domain on HAL Management Console</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Jul 2018 15:30:25 +0200</lastBuildDate>
+    
+	<atom:link href="https://hal.github.io/tags/domain/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New Server Group Operations</title>
+      <link>https://hal.github.io/blog/new-server-group-operations/</link>
+      <pubDate>Tue, 10 Jul 2018 15:30:25 +0200</pubDate>
+      
+      <guid>https://hal.github.io/blog/new-server-group-operations/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

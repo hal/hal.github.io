@@ -123,8 +123,13 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/blog/inspect-http-sessions/</loc>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/blog/configuration-changes/</loc>
-    <lastmod>2018-07-18T07:23:25-03:00</lastmod>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
   </url>
   
   <url>
@@ -179,7 +184,13 @@
   
   <url>
     <loc>https://hal.github.io/tags/configuration/</loc>
-    <lastmod>2018-07-18T07:23:25-03:00</lastmod>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/deployment/</loc>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -190,7 +201,7 @@
   
   <url>
     <loc>https://hal.github.io/tags/runtime/</loc>
-    <lastmod>2018-07-18T07:23:25-03:00</lastmod>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -202,7 +213,7 @@
   
   <url>
     <loc>https://hal.github.io/tags/</loc>
-    <lastmod>2018-07-18T07:23:25-03:00</lastmod>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
     <priority>0</priority>
   </url>
   
