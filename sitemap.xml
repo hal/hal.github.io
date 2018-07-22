@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://hal.github.io/documentation/howto/datasource/</loc>
-    <lastmod>2018-03-26T19:08:39+02:00</lastmod>
+    <loc>https://hal.github.io/documentation/howto/keycloak-sso/</loc>
+    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
   </url>
   
   <url>
@@ -18,11 +18,6 @@
   </url>
   
   <url>
-    <loc>https://hal.github.io/documentation/howto/deployment/</loc>
-    <lastmod>2018-03-26T19:08:39+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://hal.github.io/development/architecture/</loc>
     <lastmod>2018-06-14T14:36:41+02:00</lastmod>
   </url>
@@ -33,8 +28,8 @@
   </url>
   
   <url>
-    <loc>https://hal.github.io/documentation/keycloak-sso/</loc>
-    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
+    <loc>https://hal.github.io/documentation/howto/</loc>
+    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
   </url>
   
   <url>
@@ -50,6 +45,16 @@
   <url>
     <loc>https://hal.github.io/development/javascript-api/</loc>
     <lastmod>2018-03-29T09:55:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/documentation/contribute/</loc>
+    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/documentation/roadmap/</loc>
+    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
   </url>
   
   <url>
@@ -164,12 +169,7 @@
   
   <url>
     <loc>https://hal.github.io/documentation/</loc>
-    <lastmod>2018-03-12T17:48:11+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/contribute/</loc>
-    <lastmod>2018-03-28T12:05:37+02:00</lastmod>
+    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
   </url>
   
   <url>
