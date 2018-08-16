@@ -248,7 +248,16 @@ For the next minor releases we want to concentrate on stability, bug fixing and 
       <pubDate>Thu, 14 Jun 2018 14:42:15 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/3.0.2.final/</guid>
-      <description>  Target: WildFly 14.0.0.CR1 Tag: 3.0.2.Final Tracking Issue: WFLY-10563  Bugfixes  HAL-1468: Implement new infinispan resource: remote-cache-container  </description>
+      <description>  Target: WildFly 14.0.0.Beta2 Tag: 3.0.2.Final Tracking Issue: WFLY-10563  Bugfixes  HAL-1468: Implement new infinispan resource: remote-cache-container  </description>
+    </item>
+    
+    <item>
+      <title>3.0.4.Final</title>
+      <link>https://hal.github.io/releases/3.0.4.final/</link>
+      <pubDate>Thu, 16 Aug 2018 14:20:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.4.final/</guid>
+      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.4.Final Tracking Issue: WFLY-10874  Bugfixes  HAL-1500: Expose CA management operations for key-store and certificate-authority-account HAL-1504: Update Modcluster view for new resources load-provider HAL-1505: Requests for pollyfill.js are making the whole Web Console unusable in Firefox  </description>
     </item>
     
     <item>
@@ -257,7 +266,7 @@ For the next minor releases we want to concentrate on stability, bug fixing and 
       <pubDate>Tue, 14 Aug 2018 17:20:15 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/3.0.3.final/</guid>
-      <description>Target: WildFly 14.0.0.Final Tag: 3.0.3.Final Tracking Issue: WFLY-10820  Bugfixes  HAL-756: Add datasource connection properties HAL-1392: Session operations for deployments HAL-1407: Add support for configuration changes per server in domain mode HAL-1411: Change &amp;ldquo;Endpoint Configuration&amp;rdquo; view for remoting subsystem HAL-1465: Implement new elytron resource permission-set HAL-1466: Implement new infinispan resources HAL-1471: Support for authentication in Keycloak SSO HAL-1472: Cannot enter specific characters in XA properties values HAL-1474: Support Eclipse MicroProfile Config in Web Console HAL-1478: Migrate from Bower to Yarn HAL-1479: Unable to cancel forms for Servlet Container / Mime Mapping &amp;amp; Welcome File HAL-1481: Provide datasource properties as suggestions HAL-1482: Broken CSS for steps in wizard header HAL-1484: HAL does not work in IE11 HAL-1486: Missing replace operation for deployment HAL-1491: Create Empty Deployment dialog is missing close or cancel buttons HAL-1493: Add multi-server support to mod_cluster HAL-1496: Add support for ModelType.</description>
+      <description>Target: WildFly 14.0.0.Beta2 Tag: 3.0.3.Final Tracking Issue: WFLY-10820  Bugfixes  HAL-756: Add datasource connection properties HAL-1392: Session operations for deployments HAL-1407: Add support for configuration changes per server in domain mode HAL-1411: Change &amp;ldquo;Endpoint Configuration&amp;rdquo; view for remoting subsystem HAL-1465: Implement new elytron resource permission-set HAL-1466: Implement new infinispan resources HAL-1471: Support for authentication in Keycloak SSO HAL-1472: Cannot enter specific characters in XA properties values HAL-1474: Support Eclipse MicroProfile Config in Web Console HAL-1478: Migrate from Bower to Yarn HAL-1479: Unable to cancel forms for Servlet Container / Mime Mapping &amp;amp; Welcome File HAL-1481: Provide datasource properties as suggestions HAL-1482: Broken CSS for steps in wizard header HAL-1484: HAL does not work in IE11 HAL-1486: Missing replace operation for deployment HAL-1491: Create Empty Deployment dialog is missing close or cancel buttons HAL-1493: Add multi-server support to mod_cluster HAL-1496: Add support for ModelType.</description>
     </item>
     
     <item>
