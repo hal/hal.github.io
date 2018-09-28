@@ -270,6 +270,24 @@ Short-Term For the next minor releases we want to concentrate on stability, bug 
     </item>
     
     <item>
+      <title>3.0.5.Final</title>
+      <link>https://hal.github.io/releases/3.0.5.final/</link>
+      <pubDate>Mon, 27 Aug 2018 14:20:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.5.final/</guid>
+      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.5.Final Tracking Issue: WFLY-10936  Bugfixes  HAL-1511: Cross-site scripting (XSS) in JBoss Management Console HAL-1512: Support Wildfly in EMBEDDED mode  </description>
+    </item>
+    
+    <item>
+      <title>3.0.6.Final</title>
+      <link>https://hal.github.io/releases/3.0.6.final/</link>
+      <pubDate>Thu, 30 Aug 2018 16:20:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.6.final/</guid>
+      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.6.Final Tracking Issue: WFLY-10955  Bugfixes  HAL-1514: Add messaging server requires the path=* subresources if a server already exists  </description>
+    </item>
+    
+    <item>
       <title>Inspect HTTP Sessions</title>
       <link>https://hal.github.io/blog/inspect-http-sessions/</link>
       <pubDate>Thu, 19 Jul 2018 14:03:25 +0200</pubDate>

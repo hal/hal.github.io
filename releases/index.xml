@@ -158,5 +158,23 @@
       <description>  Target: WildFly 14.0.0.Final Tag: 3.0.4.Final Tracking Issue: WFLY-10874  Bugfixes  HAL-1500: Expose CA management operations for key-store and certificate-authority-account HAL-1504: Update Modcluster view for new resources load-provider HAL-1505: Requests for pollyfill.js are making the whole Web Console unusable in Firefox  </description>
     </item>
     
+    <item>
+      <title>3.0.5.Final</title>
+      <link>https://hal.github.io/releases/3.0.5.final/</link>
+      <pubDate>Mon, 27 Aug 2018 14:20:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.5.final/</guid>
+      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.5.Final Tracking Issue: WFLY-10936  Bugfixes  HAL-1511: Cross-site scripting (XSS) in JBoss Management Console HAL-1512: Support Wildfly in EMBEDDED mode  </description>
+    </item>
+    
+    <item>
+      <title>3.0.6.Final</title>
+      <link>https://hal.github.io/releases/3.0.6.final/</link>
+      <pubDate>Thu, 30 Aug 2018 16:20:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.0.6.final/</guid>
+      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.6.Final Tracking Issue: WFLY-10955  Bugfixes  HAL-1514: Add messaging server requires the path=* subresources if a server already exists  </description>
+    </item>
+    
   </channel>
 </rss>
