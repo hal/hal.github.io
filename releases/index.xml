@@ -123,57 +123,12 @@
     </item>
     
     <item>
-      <title>3.0.1.Final</title>
-      <link>https://hal.github.io/releases/3.0.1.final/</link>
-      <pubDate>Tue, 05 Jun 2018 16:43:15 +0100</pubDate>
-      
-      <guid>https://hal.github.io/releases/3.0.1.final/</guid>
-      <description>  Target: WildFly 13.0.0.Final Tag: 3.0.1.Final Tracking Issue: WFLY-10505  Bugfixes  HAL-1410: Implement runtime view for Elytron HAL-1469: Unable to read or edit categories in logging profile HAL-1470: add-identity in filesystem-realm with no notification  </description>
-    </item>
-    
-    <item>
-      <title>3.0.2.Final</title>
-      <link>https://hal.github.io/releases/3.0.2.final/</link>
-      <pubDate>Thu, 14 Jun 2018 14:42:15 +0100</pubDate>
-      
-      <guid>https://hal.github.io/releases/3.0.2.final/</guid>
-      <description>  Target: WildFly 14.0.0.Beta2 Tag: 3.0.2.Final Tracking Issue: WFLY-10563  Bugfixes  HAL-1468: Implement new infinispan resource: remote-cache-container  </description>
-    </item>
-    
-    <item>
-      <title>3.0.3.Final</title>
-      <link>https://hal.github.io/releases/3.0.3.final/</link>
-      <pubDate>Tue, 14 Aug 2018 17:20:15 +0100</pubDate>
-      
-      <guid>https://hal.github.io/releases/3.0.3.final/</guid>
-      <description>Target: WildFly 14.0.0.Beta2 Tag: 3.0.3.Final Tracking Issue: WFLY-10820  Bugfixes  HAL-756: Add datasource connection properties HAL-1392: Session operations for deployments HAL-1407: Add support for configuration changes per server in domain mode HAL-1411: Change &amp;ldquo;Endpoint Configuration&amp;rdquo; view for remoting subsystem HAL-1465: Implement new elytron resource permission-set HAL-1466: Implement new infinispan resources HAL-1471: Support for authentication in Keycloak SSO HAL-1472: Cannot enter specific characters in XA properties values HAL-1474: Support Eclipse MicroProfile Config in Web Console HAL-1478: Migrate from Bower to Yarn HAL-1479: Unable to cancel forms for Servlet Container / Mime Mapping &amp;amp; Welcome File HAL-1481: Provide datasource properties as suggestions HAL-1482: Broken CSS for steps in wizard header HAL-1484: HAL does not work in IE11 HAL-1486: Missing replace operation for deployment HAL-1491: Create Empty Deployment dialog is missing close or cancel buttons HAL-1493: Add multi-server support to mod_cluster HAL-1496: Add support for ModelType.</description>
-    </item>
-    
-    <item>
-      <title>3.0.4.Final</title>
-      <link>https://hal.github.io/releases/3.0.4.final/</link>
-      <pubDate>Thu, 16 Aug 2018 14:20:15 +0100</pubDate>
-      
-      <guid>https://hal.github.io/releases/3.0.4.final/</guid>
-      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.4.Final Tracking Issue: WFLY-10874  Bugfixes  HAL-1500: Expose CA management operations for key-store and certificate-authority-account HAL-1504: Update Modcluster view for new resources load-provider HAL-1505: Requests for pollyfill.js are making the whole Web Console unusable in Firefox  </description>
-    </item>
-    
-    <item>
-      <title>3.0.5.Final</title>
-      <link>https://hal.github.io/releases/3.0.5.final/</link>
-      <pubDate>Mon, 27 Aug 2018 14:20:15 +0100</pubDate>
-      
-      <guid>https://hal.github.io/releases/3.0.5.final/</guid>
-      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.5.Final Tracking Issue: WFLY-10936  Bugfixes  HAL-1511: Cross-site scripting (XSS) in JBoss Management Console HAL-1512: Support Wildfly in EMBEDDED mode  </description>
-    </item>
-    
-    <item>
       <title>3.0.6.Final</title>
       <link>https://hal.github.io/releases/3.0.6.final/</link>
       <pubDate>Thu, 30 Aug 2018 16:20:15 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/3.0.6.final/</guid>
-      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.6.Final Tracking Issue: WFLY-10955  Bugfixes  HAL-1514: Add messaging server requires the path=* subresources if a server already exists  </description>
+      <description>  Target: WildFly 14.0.0.Final Tag: 3.0.6.Final Tracking Issue: WFLY-10955  Bugfixes  HAL-1514: Add messaging server requires the path=* subresources if a server already exists HAL-1512: Support Wildfly in EMBEDDED mode HAL-1511: Cross-site scripting (XSS) in JBoss Management Console HAL-1498: Add new elytron resources: certificate-authority-account, custom-security-event-listener, mapped-role-mapper HAL-1496: Add support for ModelType.DOUBLE HAL-1493: Add multi-server support to mod_cluster HAL-1491: Create Empty Deployment dialog is missing close or cancel buttons HAL-1486: Missing replace operation for deployment HAL-1484: HAL does not work in IE11 HAL-1482: Broken CSS for steps in wizard header HAL-1481: Provide datasource properties as suggestions HAL-1479: Unable to cancel forms for Servlet Container / Mime Mapping &amp;amp; Welcome File HAL-1478: Migrate from Bower to Yarn HAL-1474: Support Eclipse MicroProfile Config in Web Console HAL-1472: Cannot enter specific characters in XA properties values HAL-1471: Support for authentication in Keycloak SSO HAL-1470: add-identity in filesystem-realm with no notification HAL-1469: Unable to read or edit categories in logging profile HAL-1468: Implement new infinispan resource: remote-cache-container HAL-1466: Implement new infinispan resources HAL-1465: Implement new elytron resource permission-set HAL-1411: Change &amp;ldquo;Endpoint Configuration&amp;rdquo; view for remoting subsystem HAL-1410: Implement runtime view for Elytron HAL-1407: Add support for configuration changes per server in domain mode HAL-756: Add datasource connection properties- HAL-1392: Session operations for deployments  </description>
     </item>
     
     <item>
@@ -183,6 +138,15 @@
       
       <guid>https://hal.github.io/releases/3.0.7.final/</guid>
       <description>  Target: JBoss EAP 7.2.0.GA Tag: 3.0.7.Final Tracking Issue: JBEAP-15666  Bugfixes  JBEAP-15637 Enable deployments by default JBEAP-15638 Required field error when rolling back a patch JBEAP-15641 The &amp;ldquo;name&amp;rdquo; field of &amp;ldquo;Add&amp;rdquo; dialog for JCA distributed work manager is read only JBEAP-15642 Undeploy operation wording is not unified EAP7-1112 Take a tour wizard is not yet implemented in HAL 3  </description>
+    </item>
+    
+    <item>
+      <title>3.1.1.Final</title>
+      <link>https://hal.github.io/releases/3.1.1.final/</link>
+      <pubDate>Thu, 23 Aug 2018 14:50:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.1.1.final/</guid>
+      <description>Target: WildFly 15.0.0.Final Tag: 3.1.1.Final Tracking Issue: WFLY-11408  Bugfixes HAL-1551 Set the smallrye subtitle for microprofile-health columns HAL-1550 Broken Tail Mode button when log viewer displayed repeatedly HAL-1546 Obtain certificate button of key-store runtime view should use a new alias HAL-1545 Enhance the SSL Wizard to add support to LetsEncrypt CA HAL-1539 NPE when insert a panel item in VerticalNavigation when there are second level items HAL-1537 Support Eclipse MicroProfile Metrics in Web Console HAL-1537 Basic setup for MicroProfile metrics HAL-1528 Add support to several messaging-activemq resources HAL-1526 Required field error when rolling back a patch HAL-1523 Add support for server-ssl-sni-context added to WildFly Elytron subsystem HAL-1521 Add support for JASPI as added to the WildFly Elytron Subsystem HAL-1520 ModelBrowser form doesn&amp;rsquo;t show values if they are expressions and read-only HAL-1519 Undeploy operation wording is not unified HAL-1517 Allow setting address for composite operation HAL-1515 The &amp;ldquo;name&amp;rdquo; field of &amp;ldquo;Add&amp;rdquo; dialog for JCA distributed work manager is read only</description>
     </item>
     
   </channel>
