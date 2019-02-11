@@ -149,5 +149,17 @@
       <description>  Target: WildFly 15.0.0.Final Tag: 3.1.1.Final Tracking Issue: WFLY-11408  Bugfixes  HAL-1551 Set the smallrye subtitle for microprofile-health columns HAL-1550 Broken Tail Mode button when log viewer displayed repeatedly HAL-1546 Obtain certificate button of key-store runtime view should use a new alias HAL-1545 Enhance the SSL Wizard to add support to LetsEncrypt CA HAL-1539 NPE when insert a panel item in VerticalNavigation when there are second level items HAL-1537 Support Eclipse MicroProfile Metrics in Web Console HAL-1537 Basic setup for MicroProfile metrics HAL-1528 Add support to several messaging-activemq resources HAL-1526 Required field error when rolling back a patch HAL-1523 Add support for server-ssl-sni-context added to WildFly Elytron subsystem HAL-1521 Add support for JASPI as added to the WildFly Elytron Subsystem HAL-1520 ModelBrowser form doesn&amp;rsquo;t show values if they are expressions and read-only HAL-1519 Undeploy operation wording is not unified HAL-1517 Allow setting address for composite operation HAL-1515 The &amp;ldquo;name&amp;rdquo; field of &amp;ldquo;Add&amp;rdquo; dialog for JCA distributed work manager is read only  </description>
     </item>
     
+    <item>
+      <title>3.1.2.Final</title>
+      <link>https://hal.github.io/releases/3.1.2.final/</link>
+      <pubDate>Mon, 11 Feb 2019 15:50:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.1.2.final/</guid>
+      <description>Target: WildFly 16.0.0.Final Tag: 3.1.2.Final Tracking Issue: WFLY-11408  Bugfixes  HAL-1565 Properties form item does not allow square brackets in values
+ HAL-1564 Remove &amp;ldquo;Management Operations&amp;rdquo; item in monitor column in domain mode
+ HAL-1561 Disable &amp;ldquo;View&amp;rdquo; action if messaging server is not started or is inactive. HAL-1560 Add confirmation dialog for messaging server / force failover
+ HAL-1557 Show active management operation from hosts and servers in a central place</description>
+    </item>
+    
   </channel>
 </rss>

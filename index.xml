@@ -261,6 +261,18 @@ Short-Term For the next minor releases we want to concentrate on stability, bug 
     </item>
     
     <item>
+      <title>3.1.2.Final</title>
+      <link>https://hal.github.io/releases/3.1.2.final/</link>
+      <pubDate>Mon, 11 Feb 2019 15:50:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.1.2.final/</guid>
+      <description>Target: WildFly 16.0.0.Final Tag: 3.1.2.Final Tracking Issue: WFLY-11408  Bugfixes  HAL-1565 Properties form item does not allow square brackets in values
+ HAL-1564 Remove &amp;ldquo;Management Operations&amp;rdquo; item in monitor column in domain mode
+ HAL-1561 Disable &amp;ldquo;View&amp;rdquo; action if messaging server is not started or is inactive. HAL-1560 Add confirmation dialog for messaging server / force failover
+ HAL-1557 Show active management operation from hosts and servers in a central place</description>
+    </item>
+    
+    <item>
       <title>Inspect HTTP Sessions</title>
       <link>https://hal.github.io/blog/inspect-http-sessions/</link>
       <pubDate>Thu, 19 Jul 2018 14:03:25 +0200</pubDate>
