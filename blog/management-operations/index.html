@@ -4,14 +4,14 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="HAL supports many new operations to inspect the HTTP session of deployments.">
+<meta name="description" content="How to monitor active management operations and detect non-progressing operations.">
 
 <meta name="author" content="">
 
 
     <meta name="generator" content="Hugo 0.37.1" />
-    <link rel="canonical" href="https://hal.github.io/blog/inspect-http-sessions/">
-    <title>Inspect HTTP Sessions | HAL Management Console</title>
+    <link rel="canonical" href="https://hal.github.io/blog/management-operations/">
+    <title>Monitor active management operations and detect non-progressing operations | HAL Management Console</title>
     
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -77,33 +77,147 @@ ga('send', 'pageview');
     <div class="row flex-xl-nowrap">
         <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main">
             <article class="hal-article">
-                <header><h1 class="display-4">Inspect HTTP Sessions</h1></header>
+                <header><h1 class="display-4">Monitor active management operations and detect non-progressing operations</h1></header>
                 
 
-<p>The <code>undertow</code> subsystem in deployments has been enhanced and provides new operations to inspect HTTP sessions.</p>
+<p>A management operation is when any api client that connects to the Wildfly kernel and run operations to read from a running server or write a configuration. Examples of a management operation:</p>
 
-<h2 id="session-statistics">Session Statistics</h2>
+<ul>
+<li>Add a datasource.</li>
+<li>Deploy an application.</li>
+<li>Change the undertow buffer pool.</li>
+<li>A domain controller updates a slave server configuration.</li>
+<li>Host/Server synchronization.</li>
+</ul>
 
-<p>To see session statistics please select a deployment under &ldquo;Runtime / Server / Web / Deployment&rdquo;. Besides the main attributes like deployment name and context path, the preview shows statistics for the number of active, expired and invalid sessions. Besides that you can see statistics about the session time.</p>
+<p>The following tasks are not management operations:</p>
+
+<ul>
+<li>A HTTP request from a browser to a deployed application.</li>
+<li>An application sending a jms message.</li>
+<li>An application writing to a database.</li>
+</ul>
+
+<p>Wildfly modular kernel allows extensions (also know as subsystem) to read/write from/to management model, it can be configuration or runtime data (performance metrics, read-only, etc.). Those requests needs strict control over to not read or write bad data. These api requests are exposed as management operations for the administrator to inspect it and cancel it.</p>
+
+<p>If for some reason, a management operation from an unknown client IP is performing an operation, the administrator may cancel it.</p>
+
+<p>Since Wildfly 13, HAL (Web Management Console) shows the running management operations in an user friendly way. A sample screen is:</p>
 
 
-<img class="img-fluid mb-4 " src="/img/blog/session/stats.png"  alt="">
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-view.png"  alt="">
 
 
-<h2 id="session-attributes">Session Attributes</h2>
+<h2 id="open-the-management-operations-view">Open the management operations view</h2>
 
-<p>If you select a deployment and press &ldquo;View&rdquo;, you can see more details about the deployment. This falls into three categories:</p>
+<p>In domain mode, navigate to <code>Runtime -&gt; Management Operations</code> and click <code>View</code>.
+It shows the management operations of all host controllers and servers.</p>
 
-<ol>
-<li>Sessions</li>
-<li>Servlets</li>
-<li>Web Sockets</li>
-</ol>
-
-<p>In the section about sessions, you can see all active sessions. Select a session to see all session attributes. Finally you can invalidate a session by pressing &ldquo;Invalidate Session&rdquo;.</p>
+<p>In standalone mode, navigate to <code>Runtime -&gt; Server -&gt; Monitor -&gt; Management Operations</code> and click <code>View</code>.</p>
 
 
-<img class="img-fluid mb-4 " src="/img/blog/session/attributes.png"  alt="">
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-column-domain.png"  alt="">
+
+
+<h2 id="api-client">API Client</h2>
+
+<p>The API client is any program to remotely connect to the Wildfly management endpoint.</p>
+
+<ul>
+<li>jboss-cli.sh</li>
+<li>HAL</li>
+<li>A subsystem</li>
+</ul>
+
+<h2 id="how-to-list-the-active-management-operations">How to list the active management operations</h2>
+
+<p>HAL displays the currently running operations.</p>
+
+
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-view.png"  alt="">
+
+
+<p>The example above shows the following information:</p>
+
+<ul>
+<li>The green icon on the left, it is an ongoing management operation.</li>
+<li>If it is a red icon, the operation is non progressing.</li>
+<li>Unique id of the management operation.</li>
+<li>The status of the operation can be: executing, awaiting-other-operation, awaiting-stability, completing, rolling-back.</li>
+<li>The address where the operation is running.</li>
+<li>The operation name.</li>
+<li>Access mechanism can be HTTP for a the web management console, &ldquo;NATIVE&rdquo; for jboss-cli.sh, JMX and IN_VM_USER.</li>
+<li>Running time: Amount of time the operation has been executing.</li>
+<li>Exclusive running time: Amount of time the operation has been executing with the exclusive operation execution lock held.</li>
+</ul>
+
+<p>If running in domain mode, there are two specific fields:</p>
+
+<ul>
+<li>Host: Name of the host controller running the operation.</li>
+<li>Server: Name of the server under a host controller running the operation.</li>
+</ul>
+
+<p>You can filter and sort by selecting different fields.</p>
+
+<h2 id="canceling-a-management-operation">Canceling a management operation</h2>
+
+<p>The administrator can cancel any operation, by clicking on the button &ldquo;Cancel&rdquo; on the right side of the operation line.</p>
+
+
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-view-cancel-op.png"  alt="">
+
+
+<h2 id="non-progressing-operations">Non Progressing Operations</h2>
+
+<p>There are operations that requires an exclusive lock, for example:</p>
+
+<ul>
+<li>Write data to the configuration xml file (host.xml, domain.xml, etc.).</li>
+<li>A subsystem explicitly require an exclusive lock.</li>
+<li>Deployments</li>
+</ul>
+
+<p>But most operations are not exclusive.</p>
+
+<p>If there is an operation that acquired the exclusive lock and is running for more than 15 seconds, it is flagged as non progressing.
+A non progressing operation, may cause problems to Wildfly, such as: slow performance, unable to read or write configuration or runtime data.</p>
+
+<p>A example of a non progressing operation.</p>
+
+
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-view-non-prog.png"  alt="">
+
+
+<p>The administrator can cancel any non progressing operation, by clicking on the &ldquo;Cancel Non Progressing Operation&rdquo;, on the top, right side.</p>
+
+<p>If a non progressing operation was canceled, the notification shows the operation id that was canceled.</p>
+
+
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-view-cancel-non-prog.png"  alt="">
+
+
+<h2 id="automatic-notification-of-non-progressing-operation">Automatic Notification of Non Progressing Operation</h2>
+
+<p>Starting in Wildfly 16, there is automatic notification in the header if there is an ongoing non progressig operation.</p>
+
+
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-notification.png"  alt="">
+
+
+<p>If the user clicks on the top notification, it will open the management operations view.</p>
+
+<p>The automatic notification is configurable in the settings dialog.</p>
+
+<p>The user can configure the following fields:</p>
+
+<ul>
+<li>Poll time: The number of seconds to elapse for HAL to perform a remote network call to Wildfly management interface.</li>
+<li>Poll: Enables or disables the polling mechanism.</li>
+</ul>
+
+
+<img class="img-fluid mb-4 " src="/img/blog/management-operations/mo-settings.png"  alt="">
 
 
             </article>
@@ -111,10 +225,8 @@ ga('send', 'pageview');
                 <li><a class="mr-4" href="/blog/">&uarr; All Posts</a></li>
                 
                 
-                <li><a class="mr-4" href="/blog/management-operations/" title="Previous Post">&larr; Monitor active management operations and detect non-progressing operations</a></li>
                 
-                
-                <li><a class="mr-4" href="/blog/configuration-changes/" title="Next Post">Log all configuration changes &rarr;</a></li>
+                <li><a class="mr-4" href="/blog/inspect-http-sessions/" title="Next Post">Inspect HTTP Sessions &rarr;</a></li>
                 
             </ul>
         </main>

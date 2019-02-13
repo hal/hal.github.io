@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Monitor active management operations and detect non-progressing operations</title>
+      <link>https://hal.github.io/blog/management-operations/</link>
+      <pubDate>Wed, 13 Feb 2019 08:30:25 +0200</pubDate>
+      
+      <guid>https://hal.github.io/blog/management-operations/</guid>
+      <description>A management operation is when any api client that connects to the Wildfly kernel and run operations to read from a running server or write a configuration. Examples of a management operation:
+ Add a datasource. Deploy an application. Change the undertow buffer pool. A domain controller updates a slave server configuration. Host/Server synchronization.  The following tasks are not management operations:
+ A HTTP request from a browser to a deployed application.</description>
+    </item>
+    
+    <item>
       <title>Inspect HTTP Sessions</title>
       <link>https://hal.github.io/blog/inspect-http-sessions/</link>
       <pubDate>Thu, 19 Jul 2018 14:03:25 +0200</pubDate>

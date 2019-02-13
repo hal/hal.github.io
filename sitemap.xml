@@ -138,6 +138,11 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/blog/management-operations/</loc>
+    <lastmod>2019-02-13T08:30:25+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/blog/inspect-http-sessions/</loc>
     <lastmod>2018-07-19T21:32:37+02:00</lastmod>
   </url>
@@ -211,7 +216,7 @@
   
   <url>
     <loc>https://hal.github.io/tags/runtime/</loc>
-    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
+    <lastmod>2019-02-13T08:30:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
