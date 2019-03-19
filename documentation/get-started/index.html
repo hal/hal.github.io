@@ -94,7 +94,7 @@ if (!doNotTrack) {
                         <hr/><div class="hal-toc">
                             <h6>On this page:</h6><nav id="TableOfContents">
 <ul>
-<li><a href="#independent-mode">Independent Mode</a>
+<li><a href="#standalone-mode">Standalone Mode</a>
 <ul>
 <li><a href="#undertow">Undertow</a></li>
 <li><a href="#yarn-npm">YARN / NPM</a></li>
@@ -110,18 +110,18 @@ if (!doNotTrack) {
 
 <p>The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply fire up your browser and open <a href="http://localhost:9990">http://localhost:9990</a>.</p>
 
-<h1 id="independent-mode">Independent Mode</h1>
+<h1 id="standalone-mode">Standalone Mode</h1>
 
 <div class="clearfix">
     <a href="/img/documentation/connect.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2Nvbm5lY3QucG5n"><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/connect.png" alt=""></a>
     <div class="hal-imgflow-content">
-        <p><p>Besides that you can run the console on its own aka <em>independent mode</em>. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&rsquo;s started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They&rsquo;re stored in the browser local storage and survive a browser restart.</p>
+        <p><p>Besides that you can run the console on its own aka <em>standalone mode</em>. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&rsquo;s started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They&rsquo;re stored in the browser local storage and survive a browser restart.</p>
 
-<p>If you want to skip the connection dialog and connect to an previously defined endpoint, use the <code>connect</code> request parameter. If the console runs on port 9090, you&rsquo;d use an URL like <a href="http://localhost:9090/?connect=Development">http://localhost:9090/?connect=Development</a>.</p>
+<p>If you want to skip the connection dialog and connect to a previously defined endpoint, use the <code>connect</code> request parameter. If the console runs on port 9090, you&rsquo;d use an URL like <a href="http://localhost:9090/?connect=Development">http://localhost:9090/?connect=Development</a>.</p>
 
-<p>The independent mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore you can always use the latest HAL version.</p>
+<p>The standalone mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore you can always use the latest HAL version.</p>
 
-<p>There are different ways to use the independent mode. All of them require to configure the allowed origins of the http(s) management endpoint:</p>
+<p>There are different ways to use the standalone mode. All of them require to configure the allowed origins of the http(s) management endpoint:</p>
 </p>
     </div>
 </div>
