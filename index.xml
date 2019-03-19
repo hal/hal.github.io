@@ -49,7 +49,7 @@ Standalone Mode  Besides that you can run the console on its own aka standalone 
       <pubDate>Thu, 08 Mar 2018 16:30:01 +0100</pubDate>
       
       <guid>https://hal.github.io/development/architecture/</guid>
-      <description>HAL is a client side RIA without server side dependencies. It is a GWT application - which means it&amp;rsquo;s written almost completely in Java. GWT is used to transpile the Java code into a bunch of JavaScript, HTML and CSS files. HAL uses some external JavaScript libraries as well. These dependencies are managed using Yarn which is in turn integrated into the Maven build using the maven-frontend-plugin. Take a look at the bower.</description>
+      <description>HAL is a client side RIA without server side dependencies. It is a GWT application - which means it&amp;rsquo;s written almost completely in Java. GWT is used to transpile the Java code into a bunch of JavaScript, HTML and CSS files. HAL uses some external JavaScript libraries as well. These dependencies are managed using NPM which is in turn integrated into the Maven build using the maven-frontend-plugin. Take a look at the bower.</description>
     </item>
     
     <item>

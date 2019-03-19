@@ -97,7 +97,7 @@ if (!doNotTrack) {
 <li><a href="#standalone-mode">Standalone Mode</a>
 <ul>
 <li><a href="#undertow">Undertow</a></li>
-<li><a href="#yarn-npm">YARN / NPM</a></li>
+<li><a href="#npm">NPM</a></li>
 <li><a href="#github-pages">GitHub Pages</a></li>
 <li><a href="#docker">Docker</a></li>
 </ul></li>
@@ -145,14 +145,14 @@ reload --host<span class="o">=</span>master</code></pre></div>
 <br /></li>
 </ol>
 
-<h2 id="yarn-npm">YARN / NPM</h2>
+<h2 id="npm">NPM</h2>
 
-<p>The yarn package <a href="https://www.npmjs.com/package/hal-console"><code>hal-console</code></a> launches a local web server at <a href="http://localhost:3000">http://localhost:3000</a>. You can specify a different port as command line parameter:</p>
+<p>The npm package <a href="https://www.npmjs.com/package/hal-console"><code>hal-console</code></a> launches a local web server at <a href="http://localhost:3000">http://localhost:3000</a>. You can specify a different port using the PORT environment variable:</p>
 
 <ol>
 <li>Add <a href="http://localhost:3000">http://localhost:3000</a> as allowed origin</li>
-<li><code>yarn install -g hal-console</code></li>
-<li><code>hal-console [port]</code></li>
+<li><code>npm install hal-console</code></li>
+<li><code>[PORT=dddd] node hal-console</code></li>
 </ol>
 
 <h2 id="github-pages">GitHub Pages</h2>
