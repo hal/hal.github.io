@@ -9,16 +9,20 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.37.1" />
+    <meta name="generator" content="Hugo 0.54.0" />
     <link rel="canonical" href="https://hal.github.io/development/build-run/">
     <title>Build &amp; Run | HAL Management Console</title>
     
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-89365654-5', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-89365654-5', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/img/hal-256.png">
@@ -120,12 +124,7 @@ ga('send', 'pageview');
 <p>The maven build defines the following profiles:</p>
 
 <ul>
-<li><code>docker</code> Produces two docker images:
-
-<ol>
-<li><a href="https://hub.docker.com/r/halconsole/hal-standalone/"><code>halconsole/hal-standalone</code></a> contains HAL standalone</li>
-<li><a href="https://hub.docker.com/r/halconsole/hal-wildfly/"><code>halconsole/hal-wildfly</code></a> contains latest WildFly and and HAL</li>
-</ol></li>
+<li><code>docker</code> Produces the docker container <a href="https://hub.docker.com/r/halconsole/hal-standalone/"><code>halconsole/hal-standalone</code></a> which runs the console in <a href="/documentation/get-started/#independent-mode">independent mode</a></li>
 <li><code>esdoc</code> Produces the JavaScript API documentation</li>
 <li><code>i18n</code> Compiles the console with language support for German, Spanish, French, Portuguese, Chinese and Japanese</li>
 <li><code>prod</code> Runs the GWT compiler using production settings. Minimizes the CSS and JavaScrip code.</li>
