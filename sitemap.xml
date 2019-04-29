@@ -14,7 +14,7 @@
   
   <url>
     <loc>https://hal.github.io/documentation/get-started/</loc>
-    <lastmod>2019-03-19T17:59:10+01:00</lastmod>
+    <lastmod>2019-04-29T16:40:10+02:00</lastmod>
   </url>
   
   <url>
@@ -138,8 +138,37 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/blog/</loc>
+    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/</loc>
+    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/blog/whats-new-hal-312/</loc>
     <lastmod>2019-02-14T20:20:01-02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/configuration/</loc>
+    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/domain/</loc>
+    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/runtime/</loc>
+    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -148,8 +177,24 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/releases/</loc>
+    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/documentation/</loc>
+    <lastmod>2019-04-29T16:40:10+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/blog/inspect-http-sessions/</loc>
     <lastmod>2018-07-19T21:32:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/deployment/</loc>
+    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -163,33 +208,24 @@
   </url>
   
   <url>
+    <loc>https://hal.github.io/tags/security/</loc>
+    <lastmod>2018-07-17T09:35:44-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hal.github.io/blog/new-infinispan-resources/</loc>
     <lastmod>2018-07-18T10:19:36+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hal.github.io/blog/</loc>
-    <lastmod>2018-07-06T21:31:53+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://hal.github.io/documentation/howto/</loc>
-    <lastmod>2018-03-14T13:11:46+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/releases/</loc>
-    <lastmod>2019-03-19T16:34:52+01:00</lastmod>
+    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/development/</loc>
-    <lastmod>2018-08-17T13:50:36+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/documentation/</loc>
-    <lastmod>2018-07-22T15:38:05+02:00</lastmod>
+    <lastmod>2019-03-19T17:59:10+01:00</lastmod>
   </url>
   
   <url>
@@ -203,44 +239,8 @@
   </url>
   
   <url>
-    <loc>https://hal.github.io/tags/configuration/</loc>
-    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/deployment/</loc>
-    <lastmod>2018-07-19T21:32:37+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/domain/</loc>
-    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://hal.github.io/</loc>
     <lastmod>2018-04-19T17:04:53+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/runtime/</loc>
-    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/security/</loc>
-    <lastmod>2018-07-17T09:35:44-03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/</loc>
-    <lastmod>2019-02-14T20:20:01-02:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

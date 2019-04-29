@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deployment on HAL Management Console</title>
+    <title>deployment on HAL Management Console</title>
     <link>https://hal.github.io/tags/deployment/</link>
-    <description>Recent content in Deployment on HAL Management Console</description>
+    <description>Recent content in deployment on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Jul 2018 14:03:25 +0200</lastBuildDate>

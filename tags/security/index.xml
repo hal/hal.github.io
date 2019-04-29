@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Security on HAL Management Console</title>
+    <title>security on HAL Management Console</title>
     <link>https://hal.github.io/tags/security/</link>
-    <description>Recent content in Security on HAL Management Console</description>
+    <description>Recent content in security on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 12 Jul 2018 15:30:25 +0200</lastBuildDate>
