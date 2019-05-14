@@ -272,6 +272,15 @@ Short-Term For the next minor releases we want to concentrate on stability, bug 
     </item>
     
     <item>
+      <title>3.2.0.Final</title>
+      <link>https://hal.github.io/releases/3.2.0.final/</link>
+      <pubDate>Tue, 14 May 2019 14:29:15 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.2.0.final/</guid>
+      <description>  Target: WildFly 17.0.0.Final Tag: 3.2.0.Final Tracking Issue: WFLY-12001  Bugfixes  HAL-1398 Empty error message when connecting w/o user HAL-1399 Specify port for standalone mode HAL-1568 Add support for error and unauthorized places using the GWTP way HAL-1569 Missing reset link on forms of elytron resources HAL-1570 Do not automatically set datasource-class at datasource wizard https://issues.jboss.org/browse/HAL-1570 HAL-1576 Add BusyWorkerThreadCount metric in IO WorkerPreview HAL-1577 Change use of HTTP download locations to HTTPS HAL-1578 Add support for custom title HAL-1579 Fix duplicate switch item initialization HAL-1582 Domain mode has server-group missing some operations HAL-1583 Management Console says to close the tab to logout, but closing the browser is needed HAL-1587 Switch to new Red Hat Logo  </description>
+    </item>
+    
+    <item>
       <title>What is new in HAL 3.1.2</title>
       <link>https://hal.github.io/blog/whats-new-hal-312/</link>
       <pubDate>Thu, 14 Feb 2019 08:30:25 +0200</pubDate>
