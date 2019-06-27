@@ -14,10 +14,12 @@
     <item>
       <title>Custom Title</title>
       <link>https://hal.github.io/blog/custom-title/</link>
-      <pubDate>Tue, 11 Jun 2019 15:30:25 +0200</pubDate>
+      <pubDate>Thu, 27 Jun 2019 10:30:25 +0200</pubDate>
       
       <guid>https://hal.github.io/blog/custom-title/</guid>
-      <description>Pending</description>
+      <description>HAL 3.2.0 which is part of Wildfly 17 comes with a new option to customize the title of the browser window / tab. This is especially useful if you have multiple HAL windows open and need to know which console manages which WildFly instance.
+The new features makes use of two attributes in the root resource of the management model:
+ name: The name of this server. If not set, defaults to the runtime value of InetAddress.</description>
     </item>
     
     <item>
