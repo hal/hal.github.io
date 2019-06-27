@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>settings on HAL Management Console</title>
+    <link>https://hal.github.io/tags/settings/</link>
+    <description>Recent content in settings on HAL Management Console</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Jun 2019 15:30:25 +0200</lastBuildDate>
+    
+	<atom:link href="https://hal.github.io/tags/settings/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Custom Title</title>
+      <link>https://hal.github.io/blog/custom-title/</link>
+      <pubDate>Tue, 11 Jun 2019 15:30:25 +0200</pubDate>
+      
+      <guid>https://hal.github.io/blog/custom-title/</guid>
+      <description>Pending</description>
+    </item>
+    
+  </channel>
+</rss>

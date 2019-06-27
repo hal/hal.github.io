@@ -6,7 +6,7 @@
     <description>Recent content in Release Notes on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 May 2019 14:29:15 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 09 Mar 2018 08:01:18 +0100</lastBuildDate>
     
 	<atom:link href="https://hal.github.io/releases/index.xml" rel="self" type="application/rss+xml" />
     
@@ -54,7 +54,7 @@
       
       <guid>https://hal.github.io/releases/2.4.9.final/</guid>
       <description>Target:  WildFly 8.2.0.Final WildFly 8.2.1.Final  Release Stream: 2.4.9.Final
- Core Console: 2.4.9.Final Tracking Issue: WFLY-4107  New &amp;amp; Improved Features  Updated look &amp;amp; feel. Now follows the Patternfly styles. Improved information architecture: Domain management, deployments and runtime views have been relocated / consolidated Extended / complete subsystem configuration: EE, Undertow, Messaging, IO and Batch Updated model browser: supports inline editing of resources Log Viewer: Tail log files from within the console Picketlink extension: The GUI now ships the picketlink management parts (enabled on demand) Improved runtime monitoring: The charts and data tables have been cleaned up See also http://hbraun.</description>
+ Core Console: 2.4.9.Final Tracking Issue: WFLY-4107  New &amp;amp; Improved Features  Updated look &amp;amp; feel. Now follows the Patternfly styles. Improved information architecture: Domain management, deployments and runtime views have been relocated / consolidated Extended / complete subsystem configuration: EE, Undertow, Messaging, IO and Batch Updated model browser: supports inline editing of resources Log Viewer: Tail log files from within the console Picketlink extension: The GUI now ships the picketlink management parts (enabled on demand) Improved runtime monitoring: The charts and data tables have been cleaned up  Bugfixes  HAL-514: Prepare double click handler on log file table HAL-512: Display deployment &amp;ldquo;status&amp;rdquo; attribute on deployment list HAL-508: Tools links leave wrong name token HAL-507: Tab titles are no longer truncated by default HAL-506: Add operation adresses to tool buttons in logviewer HAL-503: Product and server name are displayed in the browser&amp;rsquo;s title HAL-501: relative-to for file based log handler is only required if path is relative HAL-500: Navigation for RH Access HAL-497: Entire layout of csp plugin falls apart after visiting different page HAL-495: Fix tooltips in topology view HAL-493: Apply patch wizard stuck on patch application step HAL-492: Fix URL fragment problem HAL-490: Distinguish community and product version HAL-487: Fix handler reference bug which was introduced by HAL-313 HAL-486: Invalid default value for &amp;ldquo;Default Module&amp;rdquo; attribute of Virtual Server HAL-484: Resource adapter names not visible HAL-483: Switch back to &amp;lsquo;StandaloneDriverStrategy&amp;rsquo; for standalpone mode HAL-482: Application constraints for logging subsystem HAL-481: Cache Containers doesn&amp;rsquo;t refresh after save HAL-477: Exclude attribute &amp;lsquo;thread-factory&amp;rsquo; from &amp;lsquo;ThreadPoolsView&amp;rsquo; HAL-476: Update to CSP Plugin 0.</description>
     </item>
     
     <item>
@@ -167,7 +167,7 @@
       <pubDate>Tue, 14 May 2019 14:29:15 +0100</pubDate>
       
       <guid>https://hal.github.io/releases/3.2.0.final/</guid>
-      <description>  Target: WildFly 17.0.0.Final Tag: 3.2.0.Final Tracking Issue: WFLY-12001  Bugfixes  HAL-1398 Empty error message when connecting w/o user HAL-1399 Specify port for standalone mode HAL-1568 Add support for error and unauthorized places using the GWTP way HAL-1569 Missing reset link on forms of elytron resources HAL-1570 Do not automatically set datasource-class at datasource wizard https://issues.jboss.org/browse/HAL-1570 HAL-1576 Add BusyWorkerThreadCount metric in IO WorkerPreview HAL-1577 Change use of HTTP download locations to HTTPS HAL-1578 Add support for custom title HAL-1579 Fix duplicate switch item initialization HAL-1582 Domain mode has server-group missing some operations HAL-1583 Management Console says to close the tab to logout, but closing the browser is needed HAL-1587 Switch to new Red Hat Logo  </description>
+      <description>Target: WildFly 17.0.0.Final Tag: 3.2.0.Final Tracking Issue: WFLY-12001  New Features  HAL-1578 Add support for custom title HAL-1576 Add BusyWorkerThreadCount metric in IO WorkerPreview HAL-1399 Specify port for standalone mode  Bugfixes  HAL-1398 Empty error message when connecting w/o user HAL-1568 Add support for error and unauthorized places using the GWTP way HAL-1569 Missing reset link on forms of elytron resources HAL-1570 Do not automatically set datasource-class at datasource wizard https://issues.</description>
     </item>
     
   </channel>
