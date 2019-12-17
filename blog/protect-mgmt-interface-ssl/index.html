@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.61.0" />
     <link rel="canonical" href="https://hal.github.io/blog/protect-mgmt-interface-ssl/">
     <title>Protect Wildfly HTTP Management Interface with SSL | HAL Management Console</title>
     
@@ -78,156 +78,104 @@ if (!doNotTrack) {
         <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main">
             <article class="hal-article">
                 <header><h1 class="display-4">Protect Wildfly HTTP Management Interface with SSL</h1></header>
-                
-
-<p>In WildFly 13, there is a wizard to enable the SSL for the HTTP management interface, it uses the elytron resource to manage the security features. The certificate may be handled in the following ways:</p>
-
+                <p>In WildFly 13, there is a wizard to enable the SSL for the HTTP management interface, it uses the elytron resource to manage the security features. The certificate may be handled in the following ways:</p>
 <ul>
 <li>Generate a self-signed certificate</li>
 <li>Use an existing certificate file</li>
 <li>Use an existing elytron key-store</li>
 <li>Use mutual authentication with a client</li>
 </ul>
-
 <p>You can see more information about <a href="https://docs.wildfly.org/13/WildFly_Elytron_Security.html">elytron features</a> and <a href="https://www.instantssl.com/ssl-certificate-products/https.html">HTTPS in general</a>.</p>
-
 <p>The wizard may create the following resources to add SSL to the HTTP Management Interface:</p>
-
 <ul>
 <li>/subsystem=elytron/key-manager</li>
 <li>/subsystem=elytron/key-store</li>
 <li>/subsystem=elytron/server-ssl-context</li>
 </ul>
-
 <p>For domain mode, the managed resources are under <code>/host=* address</code>.</p>
-
 <blockquote>
 <p>Note: For domain mode, this wizard works only on the HTTP Management interface of a domain controller, as there is not a HTTP Interface on a slave host controller.</p>
 </blockquote>
-
 <p>Then the <code>/core-service=management/management-interface=http-interface</code> is modified to allow the SSL to work.</p>
-
 <blockquote>
 <p><strong>It is strongly recommended to first experiment this new feature on a non-production system.</strong></p>
 </blockquote>
-
 <h2 id="navigate-to-the-http-management-interface">Navigate to the HTTP Management Interface</h2>
-
 <p>For domain mode you can navigate to <code>Runtime</code> top level menu, select the <code>Hosts</code>, then click on the <code>View</code> button of the domain host controller.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-01.png"  alt="">
 
-
-<p>For standalone mode you can navigate to <code>Runtime</code> top level menu, then click on the <code>View</code> button of the server&rsquo;s column.</p>
-
+<p>For standalone mode you can navigate to <code>Runtime</code> top level menu, then click on the <code>View</code> button of the server's column.</p>
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-01a.png"  alt="">
 
-
 <p>Open the Management Interface -&gt; HTTP.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-02.png"  alt="">
 
-
 <p>The HTTP Management Interface view</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-03.png"  alt="">
 
-
 <h2 id="launch-the-enable-ssl-wizard">Launch the Enable SSL wizard</h2>
-
 <p>Click on the button <code>Enable SSL</code> located on the right of the screen. This will display the following modal dialog, for you to choose the options:</p>
-
 <blockquote>
 <p>The mutual authentication, enabled a trust relationship between the browser client and the https management endpoint. You must provide a client certificate for this to work.</p>
 </blockquote>
-
 <p>Then you must select which strategy related to the certificate store, the description is self explanatory.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-04.png"  alt="">
 
-
 <p>For this tutorial, the selected option is to create a self-signed certificate.</p>
-
 <p>After you choose the initial settings, fill in the required values as show with an asterisk. There are default values for testing purposes.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-04a.png"  alt="">
 
-
 <p>Then click <code>Next</code>, the following screen asks for confirmation to submit the values and create the required resources.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-05.png"  alt="">
 
-
 <p>After the user confirms, the resources are created and if successful, it displays the following screen.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-06.png"  alt="">
 
-
 <p>At this point, there are two options:</p>
-
 <ol>
 <li>The user clicks on the <code>Reload Domain Controller</code> button: This will reload the domain host controller (but will not restart the servers under it), a new link is presented to the user to reload the browser to the new https address.</li>
 <li>The user clicks on the <code>Close</code> button: The host domain controller will remain in <code>reload host</code> state, but will continue to work in an unsecure http protocol. The user must later reload the host domain controller for the changes to take effect.</li>
 </ol>
-
 <ul>
 <li>Also note that, if the certificate is not signed by a trusted certificate authority, upon the first https access, the browser will present a warning about this untrusted certificate.</li>
 </ul>
-
 <h2 id="using-the-https-management-interface">Using the HTTPS Management Interface</h2>
-
 <p>As you can see, after the first access, the https certificate used in the browser:</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-08.png"  alt="">
 
-
 <p>And the https certificate used in the CLI:</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-09.png"  alt="">
 
-
 <h2 id="disable-the-https-management-interface">Disable the HTTPS Management Interface</h2>
-
 <p>The user may also disable the SSL on the HTTP Management Interface, navigate to the HTTP Management Interface, then click on the <code>Disable SSL</code> button on the right side.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-10.png"  alt="">
 
-
 <p>The following dialog asks if the user wants to reload the host domain controller right after disabling it.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-11.png"  alt="">
 
-
 <h2 id="elytron-resources-under-host-controller-for-domain-mode">Elytron resources under host controller for domain mode</h2>
-
 <p>This applies only for domain mode, the elytron resources are created under <code>/host=*/subsystem=elytron</code> path, to manage them you can use the model browser. You can open it by navigating to the HTTP Management Interface screen, then click at <code>Switch to expert mode</code> on the top right corner of the screen.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-12.png"  alt="">
 
-
 <p>The model browser and the created elytron resources.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-13.png"  alt="">
 
-
 <h2 id="elytron-resources-for-standalone-mode">Elytron resources for standalone mode</h2>
-
 <p>The elytron resources are created in the regular <code>/subsystem=elytron</code> path, under the <code>Configuration</code> top level menu, then go to <code>Subsystem</code> column.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/ssl-wizard/ssl-wizard-14.png"  alt="">
 

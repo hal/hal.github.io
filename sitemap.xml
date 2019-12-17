@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -44,37 +44,37 @@
   
   <url>
     <loc>https://hal.github.io/documentation/contribute/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/documentation/roadmap/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.0.6.final/</loc>
-    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.1.1.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.2.6.final/</loc>
-    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.2.8.final/</loc>
-    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.4.9.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
@@ -84,57 +84,62 @@
   
   <url>
     <loc>https://hal.github.io/releases/2.7.4.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.8.13.final/</loc>
-    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.8.19.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.8.24.final/</loc>
-    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.8.27.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/2.9.15.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/3.0.0.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/3.0.10.final/</loc>
-    <lastmod>2019-03-19T16:31:25+01:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/3.0.6.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/3.1.2.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://hal.github.io/releases/3.2.0.final/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+    <lastmod>2019-12-17T10:59:35+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/releases/3.2.1.final/</loc>
+    <lastmod>2019-12-17T10:59:06+01:00</lastmod>
   </url>
   
   <url>
@@ -143,15 +148,28 @@
   </url>
   
   <url>
-    <loc>https://hal.github.io/tags/</loc>
+    <loc>https://hal.github.io/tags/settings/</loc>
     <lastmod>2019-06-27T12:12:12+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://hal.github.io/tags/settings/</loc>
+    <loc>https://hal.github.io/tags/</loc>
     <lastmod>2019-06-27T12:12:12+02:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/configuration/</loc>
+    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/domain/</loc>
+    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hal.github.io/tags/runtime/</loc>
+    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
   </url>
   
   <url>
@@ -160,37 +178,18 @@
   </url>
   
   <url>
-    <loc>https://hal.github.io/tags/configuration/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/domain/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hal.github.io/tags/runtime/</loc>
-    <lastmod>2019-06-27T11:46:10+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://hal.github.io/blog/management-operations/</loc>
     <lastmod>2019-06-27T11:46:10+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hal.github.io/blog/inspect-http-sessions/</loc>
+    <loc>https://hal.github.io/tags/deployment/</loc>
     <lastmod>2018-07-19T21:32:37+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hal.github.io/tags/deployment/</loc>
+    <loc>https://hal.github.io/blog/inspect-http-sessions/</loc>
     <lastmod>2018-07-19T21:32:37+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -206,7 +205,6 @@
   <url>
     <loc>https://hal.github.io/tags/security/</loc>
     <lastmod>2019-06-27T11:46:10+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -241,7 +239,6 @@
   
   <url>
     <loc>https://hal.github.io/categories/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent Posts on HAL Management Console</title>
@@ -74,7 +74,8 @@ Notes:
       
       <guid>https://hal.github.io/blog/protect-mgmt-interface-ssl/</guid>
       <description>In WildFly 13, there is a wizard to enable the SSL for the HTTP management interface, it uses the elytron resource to manage the security features. The certificate may be handled in the following ways:
- Generate a self-signed certificate Use an existing certificate file Use an existing elytron key-store Use mutual authentication with a client  You can see more information about elytron features and HTTPS in general.</description>
+ Generate a self-signed certificate Use an existing certificate file Use an existing elytron key-store Use mutual authentication with a client  You can see more information about elytron features and HTTPS in general.
+The wizard may create the following resources to add SSL to the HTTP Management Interface:</description>
     </item>
     
     <item>

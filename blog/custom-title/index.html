@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.61.0" />
     <link rel="canonical" href="https://hal.github.io/blog/custom-title/">
     <title>Custom Title | HAL Management Console</title>
     
@@ -79,16 +79,12 @@ if (!doNotTrack) {
             <article class="hal-article">
                 <header><h1 class="display-4">Custom Title</h1></header>
                 <p><a href="https://hal.github.io/releases/">HAL 3.2.0</a> which is part of <a href="https://wildfly.org/downloads/">Wildfly 17</a> comes with a new option to customize the title of the browser window / tab. This is especially useful if you have multiple HAL windows open and need to know which console manages which WildFly instance.</p>
-
 <p>The new features makes use of two attributes in the root resource of the management model:</p>
-
 <ol>
 <li><code>name</code>: The name of this server. If not set, defaults to the runtime value of <code>InetAddress.getLocalHost().getHostName()</code>.</li>
 <li><code>organization</code>: Identification of the current organization running this server.</li>
 </ol>
-
 <p>You can use these attributes as part of your title. Use <code>%n</code> to refer to the name and <code>%o</code> to refer to the organization. By default the title is <code>%n | Management Console</code>. To change the title select &ldquo;Settings&rdquo; in the footer:</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/custom-title/settings.png"  alt="">
 

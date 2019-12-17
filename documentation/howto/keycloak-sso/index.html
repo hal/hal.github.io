@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.61.0" />
     <link rel="canonical" href="https://hal.github.io/documentation/howto/keycloak-sso/">
     <title>Keycloak SSO | HAL Management Console</title>
     
@@ -88,21 +88,11 @@ if (!doNotTrack) {
                 </span></li></ol>
                         </nav>
                         <hr/><div class="hal-toc">
-                            <h6>On this page:</h6><nav id="TableOfContents">
-<ul>
-<li><a href="#login-attempt">Login attempt</a></li>
-<li><a href="#access-control">Access control</a></li>
-<li><a href="#account-profile">Account Profile</a></li>
-<li><a href="#keycloak-adapter-subsystem">Keycloak Adapter Subsystem</a></li>
-</ul>
-</nav></div>
+                            <h6>On this page:</h6><nav id="TableOfContents"></nav></div>
                     </div>
                 </aside><article class="hal-article">
                 <header><h1 class="display-4">Keycloak SSO</h1></header>
-                
-
-<p>When user configures Wildfly to authenticate user to Keycloak SSO, HAL supports the authentication the following way:</p>
-
+                <p>When user configures Wildfly to authenticate user to Keycloak SSO, HAL supports the authentication the following way:</p>
 <ul>
 <li>HAL redirects the login attempt to keycloak server, if successful redirect back to HAL.</li>
 <li>Provide the logout option in HAL to call the logout page on keycloak. This is displayed under the username in the header section.</li>
@@ -110,38 +100,28 @@ if (!doNotTrack) {
 <li>Displays a link to user profile on Keycloak server.</li>
 <li>Point the Access Control link in the Homepage to the Keycloak server URL.</li>
 </ul>
-
 <p>The Wildfly Access Control mechanism to manage users and roles should be disabled, because they are managed in Keycloak server. However RBAC continues to works in Wildfly to fine tune permission settings.</p>
-
 <p><strong>How to setup Wildfly to use Keycloak authentication</strong></p>
-
 <ul>
 <li><a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#jboss-eap-wildfly-adapter">How to install Keycloak Wildfly Adapter binaries</a></li>
 <li><a href="https://docs.jboss.org/author/display/WFLY/Protecting+Wildfly+Adminstration+Console+With+Keycloak">How to configure Wildfly to enable keycloak</a></li>
 </ul>
-
 <p><strong>Warning</strong></p>
-
 <ul>
-<li>The authentication only works in standalone mode, as the wildfly keycloak adapter doesn&rsquo;t support domain mode yet.</li>
+<li>The authentication only works in standalone mode, as the wildfly keycloak adapter doesn't support domain mode yet.</li>
 </ul>
-
 <h1 id="login-attempt">Login attempt</h1>
-
 <div class="clearfix">
     <a href="/img/documentation/keycloak-auth.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2tleWNsb2FrLWF1dGgucG5n"><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/keycloak-auth.png" alt=""></a>
     <div class="hal-imgflow-content">
         <p>When user wants to access HAL management console, it redirects to Keycloak server and presents the authentication form.</p>
     </div>
 </div>
-
 <h1 id="access-control">Access control</h1>
-
 <div class="clearfix">
     <a href="/img/documentation/access-control-sso.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2FjY2Vzcy1jb250cm9sLXNzby5wbmc="><img class="img-fluid float-lg-left mr-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/access-control-sso.png" alt=""></a>
     <div class="hal-imgflow-content">
         <p><p>The Access Control top level menu, shows basic Keycloak settings:</p>
-
 <ul>
 <li>User information</li>
 <li>Keycloak server url</li>
@@ -149,22 +129,17 @@ if (!doNotTrack) {
 <li>Realm name</li>
 <li>Realm public key</li>
 </ul>
-
 <p>If RBAC is not set, there is a warning at the top warning the user, there is no role based access control mechanism, and there is an option to enable it.</p>
-
 <p>Also, there is the &ldquo;Logout&rdquo; option in the header section.</p>
 </p>
     </div>
 </div>
-
 <h1 id="account-profile">Account Profile</h1>
-
 <div class="clearfix">
     <a href="/img/documentation/keycloak-acct-mgmt.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2tleWNsb2FrLWFjY3QtbWdtdC5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/keycloak-acct-mgmt.png" alt=""></a>
     <div class="hal-imgflow-content">
         <p>When user wants to view and edit basic user information on keycloak server, there is a link in the Access Control page, that redirects to Keycloak server.
 The page enables users to:</p>
-
 <ul>
 <li>Edit name and email.</li>
 <li>Change password.</li>
@@ -174,9 +149,7 @@ The page enables users to:</p>
 </ul></p>
     </div>
 </div>
-
 <h1 id="keycloak-adapter-subsystem">Keycloak Adapter Subsystem</h1>
-
 <div class="clearfix">
     <a href="/img/documentation/keycloak-subsystem.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2tleWNsb2FrLXN1YnN5c3RlbS5wbmc="><img class="img-fluid float-lg-left mr-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/keycloak-subsystem.png" alt=""></a>
     <div class="hal-imgflow-content">

@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.61.0" />
     <link rel="canonical" href="https://hal.github.io/releases/2.1.1.final/">
     <title>2.1.1.Final | HAL Management Console</title>
     
@@ -81,53 +81,47 @@ if (!doNotTrack) {
                         2.1.1.Final <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role="menu" aria-labelledby="">
-                        <a class="dropdown-item" href="/releases/2.0.6.final/">2.0.6.Final</a><a class="dropdown-item" href="/releases/2.2.6.final/">2.2.6.Final</a><a class="dropdown-item" href="/releases/2.2.8.final/">2.2.8.Final</a><a class="dropdown-item" href="/releases/2.4.9.final/">2.4.9.Final</a><a class="dropdown-item" href="/releases/2.5.5.final/">2.5.5.Final</a><a class="dropdown-item" href="/releases/2.7.4.final/">2.7.4.Final</a><a class="dropdown-item" href="/releases/2.8.13.final/">2.8.13.Final</a><a class="dropdown-item" href="/releases/2.8.19.final/">2.8.19.Final</a><a class="dropdown-item" href="/releases/2.8.24.final/">2.8.24.Final</a><a class="dropdown-item" href="/releases/2.8.27.final/">2.8.27.Final</a><a class="dropdown-item" href="/releases/2.9.15.final/">2.9.15.Final</a><a class="dropdown-item" href="/releases/3.0.0.final/">3.0.0.Final</a><a class="dropdown-item" href="/releases/3.0.10.final/">3.0.10.Final</a><a class="dropdown-item" href="/releases/3.0.6.final/">3.0.6.Final</a><a class="dropdown-item" href="/releases/3.1.2.final/">3.1.2.Final</a><a class="dropdown-item" href="/releases/3.2.0.final/">3.2.0.Final</a>
+                        <a class="dropdown-item" href="/releases/2.0.6.final/">2.0.6.Final</a><a class="dropdown-item" href="/releases/2.2.6.final/">2.2.6.Final</a><a class="dropdown-item" href="/releases/2.2.8.final/">2.2.8.Final</a><a class="dropdown-item" href="/releases/2.4.9.final/">2.4.9.Final</a><a class="dropdown-item" href="/releases/2.5.5.final/">2.5.5.Final</a><a class="dropdown-item" href="/releases/2.7.4.final/">2.7.4.Final</a><a class="dropdown-item" href="/releases/2.8.13.final/">2.8.13.Final</a><a class="dropdown-item" href="/releases/2.8.19.final/">2.8.19.Final</a><a class="dropdown-item" href="/releases/2.8.24.final/">2.8.24.Final</a><a class="dropdown-item" href="/releases/2.8.27.final/">2.8.27.Final</a><a class="dropdown-item" href="/releases/2.9.15.final/">2.9.15.Final</a><a class="dropdown-item" href="/releases/3.0.0.final/">3.0.0.Final</a><a class="dropdown-item" href="/releases/3.0.10.final/">3.0.10.Final</a><a class="dropdown-item" href="/releases/3.0.6.final/">3.0.6.Final</a><a class="dropdown-item" href="/releases/3.1.2.final/">3.1.2.Final</a><a class="dropdown-item" href="/releases/3.2.0.final/">3.2.0.Final</a><a class="dropdown-item" href="/releases/3.2.1.final/">3.2.1.Final</a>
                     </div>
                 </span></li></ol>
                     </nav><article class="hal-article">
                 <header><h1 class="display-4">2.1.1.Final</h1></header>
-                
-
-<ul>
+                <ul>
 <li>Target: <a href="https://wildfly.org/news/2014/02/11/WildFly8-Final-Released/">WildFly 8.0.0.Final</a></li>
 <li>Release Stream: <a href="https://github.com/hal/release-stream/releases/tag/2.1.1.Final">2.1.1.Final</a></li>
 <li>Core Console: <a href="https://github.com/hal/core/releases/tag/2.1.1.Final">2.1.1.Final</a></li>
-<li>Tracking Issue: <a href="https://issues.jboss.org/browse/WFLY-2827">WFLY-2827</a></li>
+<li>Tracking Issue: <a href="https://issues.redhat.com/browse/WFLY-2827">WFLY-2827</a></li>
 </ul>
-
-<h1 id="new-improved-features">New &amp; Improved Features</h1>
-
+<h1 id="new--improved-features">New &amp; Improved Features</h1>
 <ul>
 <li>Topology View</li>
 <li>Performance</li>
 <li>RBAC sensitive UI</li>
 </ul>
-
 <h1 id="bugfixes">Bugfixes</h1>
-
 <ul>
-<li><a href="https://issues.jboss.org/browse/HAL-337">HAL-337</a>: Partly undo fix which was introduced by HAL-10</li>
-<li><a href="https://issues.jboss.org/browse/HAL-336">HAL-336</a>: Show a warning and change default place to &ldquo;Profiles&rdquo; if there are no groups defined.</li>
-<li><a href="https://issues.jboss.org/browse/HAL-335">HAL-335</a>: Workaround using include-aliases=true; more fail-safe RBACGatekeeper</li>
-<li><a href="https://issues.jboss.org/browse/HAL-331">HAL-331</a>: Add horizontal scrolling to value table in properties table</li>
-<li><a href="https://issues.jboss.org/browse/HAL-329">HAL-329</a>: Fix top level navigation for MBUI dialogs</li>
-<li><a href="https://issues.jboss.org/browse/HAL-328">HAL-328</a>: Navigation not highlighted for MBUI dialogs</li>
-<li><a href="https://issues.jboss.org/browse/HAL-327">HAL-327</a>: Add RBAC check for server reload button</li>
-<li><a href="https://issues.jboss.org/browse/HAL-326">HAL-326</a>: remote repo in dev mode</li>
-<li><a href="https://issues.jboss.org/browse/HAL-321">HAL-321</a>: properly clear and reset dialog state upon removal of resources</li>
-<li><a href="https://issues.jboss.org/browse/HAL-320">HAL-320</a>: Progress bar for RBAC related r-r-d</li>
-<li><a href="https://issues.jboss.org/browse/HAL-319">HAL-319</a>: Scope assignment and statement context resolution</li>
-<li><a href="https://issues.jboss.org/browse/HAL-317">HAL-317</a>: Undefine attribute doesn&rsquo;t work</li>
-<li><a href="https://issues.jboss.org/browse/HAL-315">HAL-315</a>: &ldquo;Max Retry&rdquo; -&gt; &ldquo;Max Retry Interval&rdquo;</li>
-<li><a href="https://issues.jboss.org/browse/HAL-313">HAL-313</a>: Async handlers don&rsquo;t provide handlers to subviews - ie no nesting allowed!</li>
-<li><a href="https://issues.jboss.org/browse/HAL-312">HAL-312</a>: Prevent creation of duplicate mail server type per mail session</li>
-<li><a href="https://issues.jboss.org/browse/HAL-308">HAL-308</a>: Fix error when no running server is present</li>
-<li><a href="https://issues.jboss.org/browse/HAL-296">HAL-296</a>: Add progress element to footer</li>
-<li><a href="https://issues.jboss.org/browse/HAL-295">HAL-295</a>: Read topology using async flow API and condensed composite operatiions</li>
-<li><a href="https://issues.jboss.org/browse/HAL-280">HAL-280</a>: Read drivers for domain mode using async flow functions</li>
-<li><a href="https://issues.jboss.org/browse/HAL--26">HAL-266</a>: Upgrade to ballroom 2.0.5.Final</li>
-<li><a href="https://issues.jboss.org/browse/HAL-265">HAL-265</a>: Several GIU enhancements</li>
-<li><a href="https://issues.jboss.org/browse/WFLY-1921">WFLY-1921</a>: Honor cancel button</li>
+<li><a href="https://issues.redhat.com/browse/HAL-337">HAL-337</a>: Partly undo fix which was introduced by HAL-10</li>
+<li><a href="https://issues.redhat.com/browse/HAL-336">HAL-336</a>: Show a warning and change default place to &ldquo;Profiles&rdquo; if there are no groups defined.</li>
+<li><a href="https://issues.redhat.com/browse/HAL-335">HAL-335</a>: Workaround using include-aliases=true; more fail-safe RBACGatekeeper</li>
+<li><a href="https://issues.redhat.com/browse/HAL-331">HAL-331</a>: Add horizontal scrolling to value table in properties table</li>
+<li><a href="https://issues.redhat.com/browse/HAL-329">HAL-329</a>: Fix top level navigation for MBUI dialogs</li>
+<li><a href="https://issues.redhat.com/browse/HAL-328">HAL-328</a>: Navigation not highlighted for MBUI dialogs</li>
+<li><a href="https://issues.redhat.com/browse/HAL-327">HAL-327</a>: Add RBAC check for server reload button</li>
+<li><a href="https://issues.redhat.com/browse/HAL-326">HAL-326</a>: remote repo in dev mode</li>
+<li><a href="https://issues.redhat.com/browse/HAL-321">HAL-321</a>: properly clear and reset dialog state upon removal of resources</li>
+<li><a href="https://issues.redhat.com/browse/HAL-320">HAL-320</a>: Progress bar for RBAC related r-r-d</li>
+<li><a href="https://issues.redhat.com/browse/HAL-319">HAL-319</a>: Scope assignment and statement context resolution</li>
+<li><a href="https://issues.redhat.com/browse/HAL-317">HAL-317</a>: Undefine attribute doesn't work</li>
+<li><a href="https://issues.redhat.com/browse/HAL-315">HAL-315</a>: &ldquo;Max Retry&rdquo; -&gt; &ldquo;Max Retry Interval&rdquo;</li>
+<li><a href="https://issues.redhat.com/browse/HAL-313">HAL-313</a>: Async handlers don't provide handlers to subviews - ie no nesting allowed!</li>
+<li><a href="https://issues.redhat.com/browse/HAL-312">HAL-312</a>: Prevent creation of duplicate mail server type per mail session</li>
+<li><a href="https://issues.redhat.com/browse/HAL-308">HAL-308</a>: Fix error when no running server is present</li>
+<li><a href="https://issues.redhat.com/browse/HAL-296">HAL-296</a>: Add progress element to footer</li>
+<li><a href="https://issues.redhat.com/browse/HAL-295">HAL-295</a>: Read topology using async flow API and condensed composite operatiions</li>
+<li><a href="https://issues.redhat.com/browse/HAL-280">HAL-280</a>: Read drivers for domain mode using async flow functions</li>
+<li><a href="https://issues.redhat.com/browse/HAL--26">HAL-266</a>: Upgrade to ballroom 2.0.5.Final</li>
+<li><a href="https://issues.redhat.com/browse/HAL-265">HAL-265</a>: Several GIU enhancements</li>
+<li><a href="https://issues.redhat.com/browse/WFLY-1921">WFLY-1921</a>: Honor cancel button</li>
 </ul>
 
             </article>

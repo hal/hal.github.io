@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.61.0" />
     <link rel="canonical" href="https://hal.github.io/blog/inspect-http-sessions/">
     <title>Inspect HTTP Sessions | HAL Management Console</title>
     
@@ -78,30 +78,20 @@ if (!doNotTrack) {
         <main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role="main">
             <article class="hal-article">
                 <header><h1 class="display-4">Inspect HTTP Sessions</h1></header>
-                
-
-<p>The <code>undertow</code> subsystem in deployments has been enhanced and provides new operations to inspect HTTP sessions.</p>
-
+                <p>The <code>undertow</code> subsystem in deployments has been enhanced and provides new operations to inspect HTTP sessions.</p>
 <h2 id="session-statistics">Session Statistics</h2>
-
 <p>To see session statistics please select a deployment under &ldquo;Runtime / Server / Web / Deployment&rdquo;. Besides the main attributes like deployment name and context path, the preview shows statistics for the number of active, expired and invalid sessions. Besides that you can see statistics about the session time.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/session/stats.png"  alt="">
 
-
 <h2 id="session-attributes">Session Attributes</h2>
-
 <p>If you select a deployment and press &ldquo;View&rdquo;, you can see more details about the deployment. This falls into three categories:</p>
-
 <ol>
 <li>Sessions</li>
 <li>Servlets</li>
 <li>Web Sockets</li>
 </ol>
-
 <p>In the section about sessions, you can see all active sessions. Select a session to see all session attributes. Finally you can invalidate a session by pressing &ldquo;Invalidate Session&rdquo;.</p>
-
 
 <img class="img-fluid mb-4 " src="/img/blog/session/attributes.png"  alt="">
 
