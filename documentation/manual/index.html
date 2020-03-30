@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.61.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <link rel="canonical" href="https://hal.github.io/documentation/manual/">
     <title>Manual | HAL Management Console</title>
     
@@ -118,7 +118,7 @@ if (!doNotTrack) {
                 </aside><article class="hal-article">
                 <header><h1 class="display-4">Manual</h1></header>
                 <p>The HAL management console features a rich user interface to configure, analyse and monitor the complete WildFly management model. The console uses six top level categories: homepage, deployments, configuration, runtime, patching and access control. In addition HAL uses a header and footer to provide access to global features and give feedback about various states of WildFly and HAL.</p>
-<p>This page gives a quick introduction to the main elements in the header and footer and the six top level categories. If you want to learn more about the most common use cases, take a look at the <a href="/documentation/howto/">recipes &amp; how to</a> or visit our <a href="https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/">YouTube channel</a>.</p>
+<p>This page gives a quick introduction to the main elements in the header and footer and the six top level categories. If you want to learn more about the most common use cases, take a look at the <a href="">recipes &amp; how to</a> or visit our <a href="https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/">YouTube channel</a>.</p>
 <h1 id="header">Header</h1>
 <p>The header shows the current <a href="/documentation/concepts/#theme">theme</a> and contains the following sections:</p>
 <ul>
@@ -176,20 +176,20 @@ Lets you configure console settings like whether to collect user data, the page 
     <a href="/img/documentation/macro-recording.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL21hY3JvLXJlY29yZGluZy5wbmc="><img class="img-fluid float-lg-left mr-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/macro-recording.png" alt=""></a>
     <div class="hal-imgflow-content">
         <p><p>When you make modifications to the management model, HAL can record the related operations as macros. To start a macro recording select &ldquo;Start Macro Recording&rdquo; from the tools menu. In the upcoming dialog you have to choose a unique name for the macro and provide an optional description. Finally you can choose whether to omit read operations during recording and whether the macro should be opened in the macro editor after recording has been stopped.</p>
-<p>Once you've started macro recording, a pulsing icon in the footer will give you feedback that a macro is being recorded and how many operations have been recorded so far. The item in the tools menu will change from &ldquo;Start Macro Recording&rdquo; to &ldquo;Stop Macro Recording&rdquo;. During recording you can use the management console as usual. Every operation (read operation might be omitted) is stored as part of the macro.</p>
-<p>If you're done with recording select &ldquo;Stop M acro Recording&rdquo; from the tools menu. Depending on the &ldquo;Open In Editor&rdquo; option the macro will be opened in the macro editor. You can always open the macro editor from the tools menu. The macro editor shows all recorded macros. Use the macro editor to see the recorded operations, to reply macros or to copy &amp; paste the operations. The operations are shown as you would enter them in the CLI.</p>
+<p>Once you&rsquo;ve started macro recording, a pulsing icon in the footer will give you feedback that a macro is being recorded and how many operations have been recorded so far. The item in the tools menu will change from &ldquo;Start Macro Recording&rdquo; to &ldquo;Stop Macro Recording&rdquo;. During recording you can use the management console as usual. Every operation (read operation might be omitted) is stored as part of the macro.</p>
+<p>If you&rsquo;re done with recording select &ldquo;Stop M acro Recording&rdquo; from the tools menu. Depending on the &ldquo;Open In Editor&rdquo; option the macro will be opened in the macro editor. You can always open the macro editor from the tools menu. The macro editor shows all recorded macros. Use the macro editor to see the recorded operations, to reply macros or to copy &amp; paste the operations. The operations are shown as you would enter them in the CLI.</p>
 <p>Please note that uploads (i.e. deployments and patches) cannot be recorded as part of a macro.</p>
 </p>
     </div>
 </div>
 <div class="hal-callout hal-callout-warning">
-    Macros are saved as base64 encoded DMR strings in the local storage of the browser. If you're using a shared web browser, please be aware that macros could be seen and manipulated by others. Hence, using and performing operations on macros is not suggested on a shared computer. Please do not use macros if the recorded operations contain sensitive information.
+    Macros are saved as base64 encoded DMR strings in the local storage of the browser. If you&rsquo;re using a shared web browser, please be aware that macros could be seen and manipulated by others. Hence, using and performing operations on macros is not suggested on a shared computer. Please do not use macros if the recorded operations contain sensitive information.
 </div>
 <h1 id="homepage">Homepage</h1>
 <div class="clearfix">
     <a href="/img/documentation/homepage.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2hvbWVwYWdlLnBuZw=="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/homepage.png" alt=""></a>
     <div class="hal-imgflow-content">
-        <p><p>The homepage provides an overview of the top level categories in the console. For each section there's a short introduction followed by a step-by-step guide of the main use case. Links allow you to jump directly into the topic. Finally the homepage provides a list of related resources and additional help.</p>
+        <p><p>The homepage provides an overview of the top level categories in the console. For each section there&rsquo;s a short introduction followed by a step-by-step guide of the main use case. Links allow you to jump directly into the topic. Finally the homepage provides a list of related resources and additional help.</p>
 <p>The homepage is the page which is opened by default and you can always go back to the homepage by clicking on the logo in the header.</p>
 </p>
     </div>
@@ -201,7 +201,7 @@ Lets you configure console settings like whether to collect user data, the page 
         <p><p>The deployment section is all about adding and managing deployments. You can upload existing deployments, add unmanaged deployments or create new empty deployments for quick prototyping.</p>
 <p>In a managed domain, deployments are associated with a <code>server-group</code>. Any server within the server group will then be provided with that deployment. The domain and host controller components manage the distribution of binaries across network boundaries.</p>
 <p>The most common use case is to add one or several deployments. This can easily be done by simply dragging and dropping the deployments across the deployment column. Alternatively you can use a wizard to upload deployments. This allows you to decide whether the deployment should be started after the upload. Per default deployments are enabled (started) by default in standalone mode and disabled (stopped) by default in domain mode.</p>
-<p>If there's already a deployment with the same name, the deployment will be replaced, otherwise the deployment will be added.</p>
+<p>If there&rsquo;s already a deployment with the same name, the deployment will be replaced, otherwise the deployment will be added.</p>
 <p>In general deployments can have different states:</p>
 <ul>
 <li>enabled / disabled</li>
@@ -212,7 +212,7 @@ Lets you configure console settings like whether to collect user data, the page 
     </div>
 </div>
 <h2 id="enabled--disabled">Enabled / Disabled</h2>
-<p>Once a deployment has been enabled it is active and can be accessed by the user. If the deployment defines a context root, it's visible in the deployment preview. As mentioned above, when you upload a deployment it is enabled by default in standalone mode and disabled by default in domain mode.</p>
+<p>Once a deployment has been enabled it is active and can be accessed by the user. If the deployment defines a context root, it&rsquo;s visible in the deployment preview. As mentioned above, when you upload a deployment it is enabled by default in standalone mode and disabled by default in domain mode.</p>
 <h2 id="managed--unmanaged">Managed / Unmanaged</h2>
 <p>WildFly supports two mechanisms for dealing with deployment content – managed and unmanaged deployments.</p>
 <p>With a managed deployment the server takes the deployment content and copies it into an internal content repository and thereafter uses that copy of the content, not the original user-provided content. The server is thereafter responsible for the content it uses.</p>
@@ -220,12 +220,12 @@ Lets you configure console settings like whether to collect user data, the page 
 <p>Managed deployments have a number of benefits over unmanaged:</p>
 <ul>
 <li>They can be manipulated by remote management clients, not requiring access to the server filesystem.</li>
-<li>In a managed domain, WildFly/EAP will take responsibility for replicating a copy of the deployment to all hosts/servers in the domain where it is needed. With an unmanaged deployment, it is the user's responsibility to have the deployment available on the local filesystem on all relevant hosts, at a consistent path.</li>
+<li>In a managed domain, WildFly/EAP will take responsibility for replicating a copy of the deployment to all hosts/servers in the domain where it is needed. With an unmanaged deployment, it is the user&rsquo;s responsibility to have the deployment available on the local filesystem on all relevant hosts, at a consistent path.</li>
 <li>The deployment content actually used is stored on the filesystem in the internal content repository, which should help shelter it from unintended changes.</li>
 </ul>
 <h2 id="archived--exploded">Archived / Exploded</h2>
 <p>Managed and unmanaged deployments can be &lsquo;exploded&rsquo;, i.e. on the filesystem in the form of a directory structure whose structure corresponds to an unzipped version of the archive. An exploded deployment can be convenient to administer if your administrative processes involve inserting or replacing files from a base version in order to create a version tailored for a particular use (for example, copy in a base deployment and then copy in a jboss-web.xml file to tailor a deployment for use in WildFly.) Exploded deployments are also nice in some development scenarios, as you can replace static content (e.g. .html, .css) files in the deployment and have the new content visible immediately without requiring a redeploy.</p>
-<p>Please note that you have to disable a deployment, before you can explode it. Once exploded you can use the console to browse the deployment's content, add, replace or remove files.</p>
+<p>Please note that you have to disable a deployment, before you can explode it. Once exploded you can use the console to browse the deployment&rsquo;s content, add, replace or remove files.</p>
 <h1 id="configuration">Configuration</h1>
 <div class="clearfix">
     <a href="/img/documentation/configuration.png" data-lightbox="L2ltZy9kb2N1bWVudGF0aW9uL2NvbmZpZ3VyYXRpb24ucG5n"><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary " src="/img/documentation/configuration.png" alt=""></a>
