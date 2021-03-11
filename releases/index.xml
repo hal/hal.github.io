@@ -6,11 +6,7 @@
     <description>Recent content in Release Notes on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Mar 2018 08:01:18 +0100</lastBuildDate>
-    
-	<atom:link href="https://hal.github.io/releases/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 09 Mar 2018 08:01:18 +0100</lastBuildDate><atom:link href="https://hal.github.io/releases/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2.0.6.Final</title>
       <link>https://hal.github.io/releases/2.0.6.final/</link>
@@ -189,6 +185,15 @@
       
       <guid>https://hal.github.io/releases/3.2.7.final/</guid>
       <description>Target: WildFly 19.0.0.Final Tag: 3.2.7.Final Tracking Issue: WFLY-13143  Bugfixes  HAL-1668: Close blocking dialog after errors HAL-1667: Encode resource address values when used to create an address template HAL-1663: Add null saftey check during life cycle operations HAL-1662: Adjust finder path when servers have been stopped HAL-1660: Fix browseByHosts() / browseByServerGroups() FinderContext.getPath() might be reversed after coming back from an application HAL-1659: Driver-XA-datasource class for mysql is poiniting to incorrect class HAL-1658: Fix address handling in composite operation HAL-1657: Change metadata address templates for host related classes (partly undoes HAL-1640) HAL-1655: Mysql driver class is pointing to wrong path on admin console while creating - datasource HAL-1653: Fix wrong composite failure construction in timeout handler HAL-1649: HAL Management Console black screen - Syntax Error in polyfill.</description>
+    </item>
+    
+    <item>
+      <title>3.3.1.Final</title>
+      <link>https://hal.github.io/releases/3.3.1.final/</link>
+      <pubDate>Fri, 12 Feb 2021 10:18:12 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.3.1.final/</guid>
+      <description>Target: WildFly 23.0.0.Final Tag: 3.3.1.Final Tracking Issue: WFLY-14429  Bugfixes  HAL-636: Enhancing the bootstrap server setup process HAL-1629: Displaying loading panel during the replace of deployment HAL-1633: Enable JAXRS subsystem HAL-1638: Add &amp;lsquo;*&amp;rsquo; as allowed character for properties item HAL-1658: Fix address resolution HAL-1669: Add object attribute support to model browser HAL-1670: Added parentheses to allowed chars for properties HAL-1671: When using admin console to create xa-datasource &amp;ldquo;_&amp;rdquo; is not allowed in xa datasource properties HAL-1673: ClassNotFoundException thrown while creating DB2 datasource from Management console using default driver class HAL-1677: Fix for possible undefined host element for host-scoped-role HAL-1678: IBM DB2 datasource creation via console is pointing to incorrect xa- datasource class HAL-1679: No need to replace wildcard for {selected.</description>
     </item>
     
   </channel>

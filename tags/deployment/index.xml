@@ -6,11 +6,7 @@
     <description>Recent content in deployment on HAL Management Console</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Jul 2018 14:03:25 +0200</lastBuildDate>
-    
-	<atom:link href="https://hal.github.io/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 19 Jul 2018 14:03:25 +0200</lastBuildDate><atom:link href="https://hal.github.io/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Inspect HTTP Sessions</title>
       <link>https://hal.github.io/blog/inspect-http-sessions/</link>

@@ -9,7 +9,7 @@
 <meta name="author" content="">
 
 
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.81.0" />
     <link rel="canonical" href="https://hal.github.io/documentation/manual/">
     <title>Manual | HAL Management Console</title>
     
@@ -277,7 +277,7 @@ Lets you configure console settings like whether to collect user data, the page 
 <p>In addition to applying a patch, you can also roll back the application of a patch.</p>
 <h1 id="access-control">Access Control</h1>
 <p>WildFly introduces a Role Based Access Control scheme that allows different administrative users to have different sets of permissions to read and update parts of the management tree. This replaces the simple permission scheme used in JBoss AS 7, where anyone who could successfully authenticate to the management security realm would have all permissions.</p>
-<p>WildFly ships with two access control providers, the &ldquo;simple&rdquo;, and the <!-- raw HTML omitted -->&quot;rbac&quot;<!-- raw HTML omitted --> provider. The &ldquo;simple&rdquo; provider is the default and provides a permission scheme equivalent to the JBoss AS 7 behavior where any authenticated administrator has all permissions. The &ldquo;rbac&rdquo; provider gives the finer grained permission scheme that is the focus of this section.</p>
+<p>WildFly ships with two access control providers, the &ldquo;simple&rdquo;, and the <!-- raw HTML omitted -->&ldquo;rbac&rdquo;<!-- raw HTML omitted --> provider. The &ldquo;simple&rdquo; provider is the default and provides a permission scheme equivalent to the JBoss AS 7 behavior where any authenticated administrator has all permissions. The &ldquo;rbac&rdquo; provider gives the finer grained permission scheme that is the focus of this section.</p>
 <p>The access control scheme implemented by the &ldquo;rbac&rdquo; provider is based on seven standard roles. A role is a named set of permissions to perform one of the actions: addressing (i.e. looking up) a management resource, reading it, or modifying it. The different roles have constraints applied to their permissions that are used to determine whether the permission is granted.</p>
 <h2 id="roles">Roles</h2>
 <p>The seven standard roles are divided into two broad categories, based on whether the role can deal with items that are considered to be &ldquo;security sensitive&rdquo;. Resources, attributes and operations that may affect administrative security (e.g. security realm resources and attributes that contain passwords) are &ldquo;security sensitive&rdquo;.</p>
