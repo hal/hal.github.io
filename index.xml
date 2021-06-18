@@ -296,6 +296,15 @@ Short-Term For the next releases we want to expose new features added to the var
     </item>
     
     <item>
+      <title>3.3.7.Final</title>
+      <link>https://hal.github.io/releases/3.3.7.final/</link>
+      <pubDate>Thu, 18 Feb 2021 09:24:23 +0100</pubDate>
+      
+      <guid>https://hal.github.io/releases/3.3.7.final/</guid>
+      <description>Target: WildFly 24.0.0.Final Tag: 3.3.7.Final Tracking Issue: WFLY-14891  Bugfixes  HAL-1556: Consolidate names and i18n resources HAL-1722: Only latest applied patch can be rolled back HAL-1729: Add IDs for tests HAL-1736: Fix mixing session creation and last access time HAL-1738: Replace deprecated attribute HAL-1740: Fix security handling in Model Browser HAL-1742: Fix address parsing when address contains duplicate parts HAL-1745: Make autosuggestions HTML safe HAL-1747: Request place builder should check selected server rather than - selected profile for runtime undertow deployment HAL-1748: messaging runtime server column should build with selected server.</description>
+    </item>
+    
+    <item>
       <title>Custom Title</title>
       <link>https://hal.github.io/blog/custom-title/</link>
       <pubDate>Thu, 27 Jun 2019 10:30:25 +0200</pubDate>
