@@ -10,6 +10,12 @@ pygmentsUseClasses = true
 title = "HAL Management Console"
 theme = "hal"
 
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
+
 [[menu.global]]
   name = "Home"
   identifier = "home"
@@ -126,7 +132,7 @@ theme = "hal"
   url = "https://github.com/hal/console/fork"
 
 [params]
-  copyrighthtml = "<span class=\"far fa-copyright\"></span> Copyright 2018 Red Hat, Inc."
+  copyrighthtml = "<span class=\"far fa-copyright\"></span> Copyright 2022 Red Hat, Inc."
   mainClass = "col-12 col-md-12 py-md-3 px-md-5"
 
 [taxonomies]
