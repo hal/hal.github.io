@@ -1,0 +1,297 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content>
+<meta name=generator content="Hugo 0.92.2">
+<link rel=canonical href=https://hal.github.io/releases/2.8.19.final/>
+<title>2.8.19.Final | HAL Management Console</title>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-89365654-5','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=apple-touch-icon href=/img/hal-256.png>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css integrity=sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm crossorigin=anonymous>
+<link rel=stylesheet href=https://overpass-30e2.kxcdn.com/overpass.css crossorigin=anonymous>
+<link rel=stylesheet href=https://overpass-30e2.kxcdn.com/overpass-mono.css crossorigin=anonymous>
+<link href=/css/lightbox.min.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<script src=https://kit.fontawesome.com/2f7363d383.js></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#hal-navbar aria-controls=hal-navbar aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=hal-navbar>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item>
+<a class=nav-link href=/>Home</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/documentation/>Documentation</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/development/>Development</a>
+</li>
+<li class="nav-item active">
+<a class=nav-link href=/releases/>Releases</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/blog/>Blog</a>
+</li></ul>
+<ul class=navbar-nav><li class=nav-item>
+<a class=nav-link href=https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/ title=Youtube><span class="fab fa-youtube"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://github.com/hal/console title="Source Code"><span class="fab fa-github"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://wildfly.zulipchat.com title=Zulip><span class="far fa-comments"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://gitter.im/hal/console title=Gitter><span class="fab fa-gitter"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://issues.jboss.org/projects/HAL/issues title=Issues><span class="fas fa-bug"></span></a>
+</li></ul>
+</div>
+</nav>
+<div class=container-fluid>
+<div class="row flex-xl-nowrap">
+<main class="col-12 col-md-12 py-md-3 px-md-5 hal-content" role=main><nav class="hal-breadcrumb-only float-right" aria-label=breadcrumb>
+<ol class="breadcrumb bg-white pr-0 pb-0"><li class=breadcrumb-item><a href=/releases/>Release Notes</a></li><li class=breadcrumb-item aria-current=page><span class=dropdown>
+<a class="dropdown-toggle clickable" data-toggle=dropdown>
+2.8.19.Final <span class=caret></span>
+</a>
+<div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role=menu aria-labelledby>
+<a class=dropdown-item href=/releases/2.0.6.final/>2.0.6.Final</a><a class=dropdown-item href=/releases/2.1.1.final/>2.1.1.Final</a><a class=dropdown-item href=/releases/2.2.6.final/>2.2.6.Final</a><a class=dropdown-item href=/releases/2.2.8.final/>2.2.8.Final</a><a class=dropdown-item href=/releases/2.4.9.final/>2.4.9.Final</a><a class=dropdown-item href=/releases/2.5.5.final/>2.5.5.Final</a><a class=dropdown-item href=/releases/2.7.4.final/>2.7.4.Final</a><a class=dropdown-item href=/releases/2.8.13.final/>2.8.13.Final</a><a class=dropdown-item href=/releases/2.8.24.final/>2.8.24.Final</a><a class=dropdown-item href=/releases/2.8.27.final/>2.8.27.Final</a><a class=dropdown-item href=/releases/2.9.15.final/>2.9.15.Final</a><a class=dropdown-item href=/releases/3.0.0.final/>3.0.0.Final</a><a class=dropdown-item href=/releases/3.0.10.final/>3.0.10.Final</a><a class=dropdown-item href=/releases/3.0.6.final/>3.0.6.Final</a><a class=dropdown-item href=/releases/3.1.2.final/>3.1.2.Final</a><a class=dropdown-item href=/releases/3.2.0.final/>3.2.0.Final</a><a class=dropdown-item href=/releases/3.2.1.final/>3.2.1.Final</a><a class=dropdown-item href=/releases/3.2.4.final/>3.2.4.Final</a><a class=dropdown-item href=/releases/3.2.7.final/>3.2.7.Final</a><a class=dropdown-item href=/releases/3.3.1.final/>3.3.1.Final</a><a class=dropdown-item href=/releases/3.3.7.final/>3.3.7.Final</a><a class=dropdown-item href=/releases/3.4.1.final/>3.4.1.Final</a>
+</div>
+</span></li></ol>
+</nav><article class=hal-article>
+<header><h1 class=display-4>2.8.19.Final</h1></header>
+<ul>
+<li>Target: <a href=https://wildfly.org/news/2016/01/29/WildFly10-Released/>WildFly 10.0.0.Final</a></li>
+<li>Release Stream: <a href=https://github.com/hal/release-stream/releases/tag/2.8.19.Final>2.8.19.Final</a></li>
+<li>Core Console: <a href=https://github.com/hal/core/releases/tag/2.8.19.Final>2.8.19.Final</a></li>
+<li>Tracking Issue: <a href=https://issues.redhat.com/browse/WFLY-6065>WFLY-6065</a></li>
+</ul>
+<h1 id=new--improved-features>New & Improved Features</h1>
+<ul>
+<li>New homepage</li>
+<li>Support for suspend and graceful shutdown</li>
+<li>Replaced HornetQ with ActiveMQ Artemis</li>
+<li>Request Controller subsystem</li>
+<li>Deployment Scanner subsystem</li>
+</ul>
+<h1 id=bugfixes>Bugfixes</h1>
+<ul>
+<li><a href=https://issues.redhat.com/browse/HAL-1039>HAL-1039</a>: Move test connection button to its own page</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1034>HAL-1034</a>: Add logo image for new product name</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1031>HAL-1031</a>: Fix confirmation messages in TX log view</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1017>HAL-1017</a>: JMSMetricPresenter always uses &ldquo;default&rdquo; as part of operation address even if name is changed.</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1016>HAL-1016</a>: Webconsole should require to have set &lsquo;use journal store&rsquo; as true when changing value &lsquo;Journal store enable async io&rsquo; to true</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1013>HAL-1013</a>: Rely on new DoubleFormItem in ModelNodeFormBuilder; Tweak the double parsing</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1012>HAL-1012</a>: Infinispan cache screens are not cleared when a resource is removed</li>
+<li><a href=https://issues.redhat.com/browse/HAL-1003>HAL-1003</a>: High memory consumption by Firefox when configuring Infinispan subsystem</li>
+<li><a href=https://issues.redhat.com/browse/HAL-993>HAL-993</a>: Show effective port offset for running servers in preview</li>
+<li><a href=https://issues.redhat.com/browse/HAL-992>HAL-992</a>: Socket binding group remembers current page after changing selection</li>
+<li><a href=https://issues.redhat.com/browse/HAL-990>HAL-990</a>: Broken layout when accepting to reload servers in domain mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-988>HAL-988</a>: Update to ballroom 2.3.11-SNAPSHOT</li>
+<li><a href=https://issues.redhat.com/browse/HAL-987>HAL-987</a>: Create socket binding groups and clone them</li>
+<li><a href=https://issues.redhat.com/browse/HAL-984>HAL-984</a>: Add i18n for guided tour</li>
+<li><a href=https://issues.redhat.com/browse/HAL-983>HAL-983</a>: Button to add server doesn&rsquo;t disappear after server group deletion</li>
+<li><a href=https://issues.redhat.com/browse/HAL-975>HAL-975</a>: Fix zanata.sh; update Zanata documentation</li>
+<li><a href=https://issues.redhat.com/browse/HAL-973>HAL-973</a>: Adding socket shouldn&rsquo;t allow user to select binding-group</li>
+<li><a href=https://issues.redhat.com/browse/HAL-972>HAL-972</a>: Replace deployment shouldn&rsquo;t allow to specify name and runtime name</li>
+<li><a href=https://issues.redhat.com/browse/HAL-969>HAL-969</a>: Broken layout for &ldquo;related&rdquo; link</li>
+<li><a href=https://issues.redhat.com/browse/HAL-968>HAL-968</a>: Add link and instructions of adding JMS queue on homepage</li>
+<li><a href=https://issues.redhat.com/browse/HAL-966>HAL-966</a>: Add explanation for unmanaged deployments</li>
+<li><a href=https://issues.redhat.com/browse/HAL-965>HAL-965</a>: Change the label &ldquo;Destinations&rdquo; in messaging provider to &ldquo;Topics/Queues&rdquo;</li>
+<li><a href=https://issues.redhat.com/browse/HAL-964>HAL-964</a>: Add preview for messaging provider</li>
+<li><a href=https://issues.redhat.com/browse/HAL-962>HAL-962</a>: required fields get an asterix</li>
+<li><a href=https://issues.redhat.com/browse/HAL-961>HAL-961</a>: Add h2 database template</li>
+<li><a href=https://issues.redhat.com/browse/HAL-960>HAL-960</a>: Add help texts in add datasource wizard</li>
+<li><a href=https://issues.redhat.com/browse/HAL-959>HAL-959</a>: Replace op at content repository level not server group level</li>
+<li><a href=https://issues.redhat.com/browse/HAL-956>HAL-956</a>: Web Console shows different Infinispan Eviction Max Entries value for default value.</li>
+<li><a href=https://issues.redhat.com/browse/HAL-951>HAL-951</a>: Fix i18n text on homepage</li>
+<li><a href=https://issues.redhat.com/browse/HAL-947>HAL-947</a>: Problem with showing elements in table in messaging clustering.</li>
+<li><a href=https://issues.redhat.com/browse/HAL-946>HAL-946</a>: Update jboss.as.console.bom.version to 2.8.15</li>
+<li><a href=https://issues.redhat.com/browse/HAL-943>HAL-943</a>: Security domain module options not reading data from configuration</li>
+<li><a href=https://issues.redhat.com/browse/HAL-942>HAL-942</a>: Validate changing transaction log store</li>
+<li><a href=https://issues.redhat.com/browse/HAL-934>HAL-934</a>: Update ballroom to 2.3.10</li>
+<li><a href=https://issues.redhat.com/browse/HAL-931>HAL-931</a>: Group reload operation runs into timeout</li>
+<li><a href=https://issues.redhat.com/browse/HAL-930>HAL-930</a>: HAL&rsquo;s TransactionPresenter doesn&rsquo;t update underlying model upon successful save</li>
+<li><a href=https://issues.redhat.com/browse/HAL-929>HAL-929</a>: Cleanup breadcrumb management</li>
+<li><a href=https://issues.redhat.com/browse/HAL-928>HAL-928</a>: Wrong &lsquo;Access tutorials and quickstarts&rsquo; link in Web Console homepage</li>
+<li><a href=https://issues.redhat.com/browse/HAL-926>HAL-926</a>: server group reload does not work</li>
+<li><a href=https://issues.redhat.com/browse/HAL-925>HAL-925</a>: IO subsystem not shown</li>
+<li><a href=https://issues.redhat.com/browse/HAL-923>HAL-923</a>: Reimplement PicketLink extension</li>
+<li><a href=https://issues.redhat.com/browse/HAL-922>HAL-922</a>: Picket link user interface (functional)</li>
+<li><a href=https://issues.redhat.com/browse/HAL-915>HAL-915</a>: Fix RRD address resolution for root resources</li>
+<li><a href=https://issues.redhat.com/browse/HAL-914>HAL-914</a>: Backt to finder based on place hierarchy, opposed to PM#navigateBack()</li>
+<li><a href=https://issues.redhat.com/browse/HAL-913>HAL-913</a>: keepalive-time attribute of batch thread pool is not visible</li>
+<li><a href=https://issues.redhat.com/browse/HAL-910>HAL-910</a>: Resource focus change after edit is confusing</li>
+<li><a href=https://issues.redhat.com/browse/HAL-909>HAL-909</a>: Missing start and stop button for server in domain mode with operator roles</li>
+<li><a href=https://issues.redhat.com/browse/HAL-904>HAL-904</a>: Followup fix</li>
+<li><a href=https://issues.redhat.com/browse/HAL-903>HAL-903</a>: Cannot add discovery group to bridge attributes</li>
+<li><a href=https://issues.redhat.com/browse/HAL-903>HAL-903</a>: Cannot add discovery group to bridge attributes</li>
+<li><a href=https://issues.redhat.com/browse/HAL-900>HAL-900</a>: Log viewer can show logs of another server in domain mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-898>HAL-898</a>: Webconsole - runtime - webservices - responses graph - zero value not shown, old one displayed</li>
+<li><a href=https://issues.redhat.com/browse/HAL-897>HAL-897</a>: web service metrics not displayed</li>
+<li><a href=https://issues.redhat.com/browse/HAL-895>HAL-895</a>: Detect error message when statistics are disabled</li>
+<li><a href=https://issues.redhat.com/browse/HAL-894>HAL-894</a>: Reload required information should be stressed more</li>
+<li><a href=https://issues.redhat.com/browse/HAL-893>HAL-893</a>: Impossible to disable usage data collection by web console.</li>
+<li><a href=https://issues.redhat.com/browse/HAL-892>HAL-892</a>: Data Collection doesn&rsquo;t indicate if Google analytics are already enabled</li>
+<li><a href=https://issues.redhat.com/browse/HAL-891>HAL-891</a>: server status is confusing</li>
+<li><a href=https://issues.redhat.com/browse/HAL-887>HAL-887</a>: incorrect error message in transaction subsystem configuration</li>
+<li><a href=https://issues.redhat.com/browse/HAL-882>HAL-882</a>: Missing JPA Statistics</li>
+<li><a href=https://issues.redhat.com/browse/HAL-880>HAL-880</a>: Problem with creating bridge in messaging subsystem</li>
+<li><a href=https://issues.redhat.com/browse/HAL-879>HAL-879</a>: Tour wizard can&rsquo;t be closed by Esc</li>
+<li><a href=https://issues.redhat.com/browse/HAL-878>HAL-878</a>: Guided tour for standalone mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-877>HAL-877</a>: added incrementer and decrementer suggestions</li>
+<li><a href=https://issues.redhat.com/browse/HAL-860>HAL-860</a>: ServerStore shows incomplete data</li>
+<li><a href=https://issues.redhat.com/browse/HAL-858>HAL-858</a>: Use manual reveal for host and server group presenters</li>
+<li><a href=https://issues.redhat.com/browse/HAL-856>HAL-856</a>: fix for runtime DS view</li>
+<li><a href=https://issues.redhat.com/browse/HAL-850>HAL-850</a>: Disable AddressTemplate test</li>
+<li><a href=https://issues.redhat.com/browse/HAL-846>HAL-846</a>: Reuse model browser to show deployment details</li>
+<li><a href=https://issues.redhat.com/browse/HAL-845>HAL-845</a>: Unable to open &lsquo;Transport Settings&rsquo; dialogue for any Infinispan cache container</li>
+<li><a href=https://issues.redhat.com/browse/HAL-844>HAL-844</a>: Add &lsquo;false&rsquo; for EAP build profiles</li>
+<li><a href=https://issues.redhat.com/browse/HAL-837>HAL-837</a>: Can not set thread pool max size to -1</li>
+<li><a href=https://issues.redhat.com/browse/HAL-836>HAL-836</a>: No items present in EE subsystem -> services tables</li>
+<li><a href=https://issues.redhat.com/browse/HAL-835>HAL-835</a>: Freeze of domain runtimem finder</li>
+<li><a href=https://issues.redhat.com/browse/HAL-834>HAL-834</a>: New homepage</li>
+<li><a href=https://issues.redhat.com/browse/HAL-834>HAL-834</a>: Fix i18n resources</li>
+<li><a href=https://issues.redhat.com/browse/HAL-832>HAL-832</a>: Can not add messaging connection factory through web console</li>
+<li><a href=https://issues.redhat.com/browse/HAL-831>HAL-831</a>: Fix resource address in new activemq msg impl</li>
+<li><a href=https://issues.redhat.com/browse/HAL-830>HAL-830</a>: Fix typo in resource address</li>
+<li><a href=https://issues.redhat.com/browse/HAL-829>HAL-829</a>: Equal signs in property lists</li>
+<li><a href=https://issues.redhat.com/browse/HAL-828>HAL-828</a>: Can not set cluster connection attributes to null</li>
+<li><a href=https://issues.redhat.com/browse/HAL-827>HAL-827</a>: Can not create messaging clustering connection</li>
+<li><a href=https://issues.redhat.com/browse/HAL-826>HAL-826</a>: Increase page size for deployment finder columns to 999</li>
+<li><a href=https://issues.redhat.com/browse/HAL-824>HAL-824</a>: missing help texts for broadcast groups</li>
+<li><a href=https://issues.redhat.com/browse/HAL-823>HAL-823</a>: JBEAP-978 - Added scrollbar to deployment preview</li>
+<li><a href=https://issues.redhat.com/browse/HAL-822>HAL-822</a>: Can&rsquo;t change cache attributes</li>
+<li><a href=https://issues.redhat.com/browse/HAL-820>HAL-820</a>: Add support for new jberet-batch metrics</li>
+<li><a href=https://issues.redhat.com/browse/HAL-818>HAL-818</a>: Cannot set initial-pool-size attribute of datasource from web console</li>
+<li><a href=https://issues.redhat.com/browse/HAL-817>HAL-817</a>: Cannot set use-fast-fail attribute of datasource from web console</li>
+<li><a href=https://issues.redhat.com/browse/HAL-814>HAL-814</a>: file attributes for log handlers</li>
+<li><a href=https://issues.redhat.com/browse/HAL-813>HAL-813</a>: Port 0 in syslog handler config</li>
+<li><a href=https://issues.redhat.com/browse/HAL-812>HAL-812</a>: Fix XHR2 / FormData uploads</li>
+<li><a href=https://issues.redhat.com/browse/HAL-809>HAL-809</a>: Fix missing class metadata in EntityAdapter and production mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-804>HAL-804</a>: Change undertow to web/http</li>
+<li><a href=https://issues.redhat.com/browse/HAL-801>HAL-801</a>: Add support for new batch-jberet subsystem</li>
+<li><a href=https://issues.redhat.com/browse/HAL-798>HAL-798</a>: Switch to XHR / FormData uploads using &lsquo;management-upload&rsquo; for deployments and patching</li>
+<li><a href=https://issues.redhat.com/browse/HAL-796>HAL-796</a>: Add ability to restart a server</li>
+<li><a href=https://issues.redhat.com/browse/HAL-795>HAL-795</a>: ModelBrowser window size handling</li>
+<li><a href=https://issues.redhat.com/browse/HAL-788>HAL-788</a>: Remote socket binding is not displayed if it&rsquo;s port uses a property expression</li>
+<li><a href=https://issues.redhat.com/browse/HAL-787>HAL-787</a>: Adding new Logger category: remove the name attribute/field etc.</li>
+<li><a href=https://issues.redhat.com/browse/HAL-785>HAL-785</a>: Fix requires resources to match new Infinispan management model</li>
+<li><a href=https://issues.redhat.com/browse/HAL-781>HAL-781</a>: Removed deprecated tx properties; switch to MBUI forms</li>
+<li><a href=https://issues.redhat.com/browse/HAL-780>HAL-780</a>: Datasource: Statement Cache Size, Min Pool Size, Max Pool Size should not be required fields</li>
+<li><a href=https://issues.redhat.com/browse/HAL-778>HAL-778</a>: Some socket bindings group is not in table with all socket binding groups in web console</li>
+<li><a href=https://issues.redhat.com/browse/HAL-774>HAL-774</a>: JVM attributes heapSize and maxHeapSize should be nillable.</li>
+<li><a href=https://issues.redhat.com/browse/HAL-769>HAL-769</a>: left align application contents</li>
+<li><a href=https://issues.redhat.com/browse/HAL-766>HAL-766</a>: Splitbutton on chrome and safari did not work properly</li>
+<li><a href=https://issues.redhat.com/browse/HAL-765>HAL-765</a>: StandaloneRuntimeRefresh.java did reside in wrong module</li>
+<li><a href=https://issues.redhat.com/browse/HAL-764>HAL-764</a>: Unable to unset wsdl-port and wsdl-secure-port via console</li>
+<li><a href=https://issues.redhat.com/browse/HAL-763>HAL-763</a>: Run as Role dialog: web console is reloaded</li>
+<li><a href=https://issues.redhat.com/browse/HAL-762>HAL-762</a>: CAnnot add http server resources</li>
+<li><a href=https://issues.redhat.com/browse/HAL-760>HAL-760</a>: Server-group-scoped-roles not respected in Domain mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-758>HAL-758</a>: Add color codes to the deployment previews</li>
+<li><a href=https://issues.redhat.com/browse/HAL-754>HAL-754</a>: preview contents</li>
+<li><a href=https://issues.redhat.com/browse/HAL-754>HAL-754</a>: Fix previews for included subsystems</li>
+<li><a href=https://issues.redhat.com/browse/HAL-753>HAL-753</a>: Fix error after uploading and removing content from the content repository</li>
+<li><a href=https://issues.redhat.com/browse/HAL-750>HAL-750</a>: Re-add deployment scanner</li>
+<li><a href=https://issues.redhat.com/browse/HAL-749>HAL-749</a>: allow white space in profile names</li>
+<li><a href=https://issues.redhat.com/browse/HAL-747>HAL-747</a>: Initialisation of finder contributions doesn&rsquo;t work reliably</li>
+<li><a href=https://issues.redhat.com/browse/HAL-745>HAL-745</a>: Show progress bar for long running deployment actions</li>
+<li><a href=https://issues.redhat.com/browse/HAL-744>HAL-744</a>: Add tooltips for deployments</li>
+<li><a href=https://issues.redhat.com/browse/HAL-743>HAL-743</a>: Finder tooltip facilities</li>
+<li><a href=https://issues.redhat.com/browse/HAL-740>HAL-740</a>: Button overlay for finder rows</li>
+<li><a href=https://issues.redhat.com/browse/HAL-739>HAL-739</a>: Switch defaults in new deployment / choose</li>
+<li><a href=https://issues.redhat.com/browse/HAL-738>HAL-738</a>: Finder context menus remain visible</li>
+<li><a href=https://issues.redhat.com/browse/HAL-737>HAL-737</a>: Finder row hover color</li>
+<li><a href=https://issues.redhat.com/browse/HAL-736>HAL-736</a>: Revisit deployment previews</li>
+<li><a href=https://issues.redhat.com/browse/HAL-734>HAL-734</a>: Filter for deployments, servers and server groups</li>
+<li><a href=https://issues.redhat.com/browse/HAL-732>HAL-732</a>: State dependent menu actions for deployments</li>
+<li><a href=https://issues.redhat.com/browse/HAL-731>HAL-731</a>: Add unmanaged content to the content repository</li>
+<li><a href=https://issues.redhat.com/browse/HAL-730>HAL-730</a>: Change label from &lsquo;Remove&rsquo; to &lsquo;Unassign&rsquo;</li>
+<li><a href=https://issues.redhat.com/browse/HAL-729>HAL-729</a>: Allow users to assign deployments to server groups from Content Repository and Unassigned Content</li>
+<li><a href=https://issues.redhat.com/browse/HAL-725>HAL-725</a>: Add notifications for deployment related actions</li>
+<li><a href=https://issues.redhat.com/browse/HAL-723>HAL-723</a>: Add &lsquo;Unassign&rsquo; context menu item to content column</li>
+<li><a href=https://issues.redhat.com/browse/HAL-722>HAL-722</a>: Change default value for flag &lsquo;enabled&rsquo;</li>
+<li><a href=https://issues.redhat.com/browse/HAL-720>HAL-720</a>: ResourceAdapter become finder contributions</li>
+<li><a href=https://issues.redhat.com/browse/HAL-719>HAL-719</a>: Datasources become finder contributions</li>
+<li><a href=https://issues.redhat.com/browse/HAL-718>HAL-718</a>: HTTP metrics in standalone mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-716>HAL-716</a>: Can&rsquo;t change cache store attributes back to false from true</li>
+<li><a href=https://issues.redhat.com/browse/HAL-712>HAL-712</a>: Add preview for include / exclude columns</li>
+<li><a href=https://issues.redhat.com/browse/HAL-705>HAL-705</a>: Mail server definitons and mail session attributes have been fixed (includes <a href=https://issues.redhat.com/browse/HAL-706>HAL-706</a>)</li>
+<li><a href=https://issues.redhat.com/browse/HAL-702>HAL-702</a>: Fix deprecated links</li>
+<li><a href=https://issues.redhat.com/browse/HAL-701>HAL-701</a>: Fix broken links on homepage</li>
+<li><a href=https://issues.redhat.com/browse/HAL-700>HAL-700</a>: scrolling with nested presenters</li>
+<li><a href=https://issues.redhat.com/browse/HAL-699>HAL-699</a>: Closong of notification messages</li>
+<li><a href=https://issues.redhat.com/browse/HAL-698>HAL-698</a>: Reload standalone server, server and groups in domain</li>
+<li><a href=https://issues.redhat.com/browse/HAL-697>HAL-697</a>: Scrolling in standalone mode</li>
+<li><a href=https://issues.redhat.com/browse/HAL-692>HAL-692</a>: Web Console uses wrong JGroup stack transport address</li>
+<li><a href=https://issues.redhat.com/browse/HAL-690>HAL-690</a>: Check and add missing subresource; reset finder column selection</li>
+<li><a href=https://issues.redhat.com/browse/HAL-685>HAL-685</a>: Backlink for finder breadcrumb ( includes an update to the page views)</li>
+<li><a href=https://issues.redhat.com/browse/HAL-684>HAL-684</a>: Add all resource adapter config options to console</li>
+<li><a href=https://issues.redhat.com/browse/HAL-683>HAL-683</a>: Support for scoped roles (except host scopes)</li>
+<li><a href=https://issues.redhat.com/browse/HAL-679>HAL-679</a>: RBAC for finder menu items</li>
+<li><a href=https://issues.redhat.com/browse/HAL-672>HAL-672</a>: Replace old access control UI with finder based UI</li>
+<li><a href=https://issues.redhat.com/browse/HAL-658>HAL-658</a>: Missing configuration options in Console for new attributes in webservices subsystem</li>
+<li><a href=https://issues.redhat.com/browse/HAL-649>HAL-649</a>: suspend resume operations on groups and servers</li>
+<li><a href=https://issues.redhat.com/browse/HAL-641>HAL-641</a>: Add content columns; remove old deployment classes</li>
+<li><a href=https://issues.redhat.com/browse/HAL-638>HAL-638</a>: Upgrade Ballroom to 2.3.1</li>
+<li><a href=https://issues.redhat.com/browse/HAL-619>HAL-619</a>: Tweak maven settings to use new extension archetypes</li>
+<li><a href=https://issues.redhat.com/browse/HAL-618>HAL-618</a>: New ActiveMQ messaging subsystem</li>
+<li><a href=https://issues.redhat.com/browse/HAL-615>HAL-615</a>: Support for profile inheritance</li>
+<li><a href=https://issues.redhat.com/browse/HAL-614>HAL-614</a>: Support for cloning of profiles</li>
+<li><a href=https://issues.redhat.com/browse/HAL-610>HAL-610</a>: Support capacity policies for JCA deployments</li>
+<li><a href=https://issues.redhat.com/browse/HAL-520>HAL-520</a>: ported enhancements to master</li>
+<li><a href=https://issues.redhat.com/browse/HAL-297>HAL-297</a>: Migrate datasource wizard to have back buttons</li>
+</ul>
+</article>
+</main>
+</div>
+</div>
+<footer class="hal-footer footer-dark bg-dark position-relative p-5">
+<div class=container>
+<div class=row><div class="col-md-2 offset-md-1">
+<h6>Related</h6>
+<ul class=list-unstyled><li><a class=small href=https://wildfly.org/>WildFly</a></li><li><a class=small href=http://www.gwtproject.org/>GWT</a></li><li><a class=small href=https://github.com/hal/elemento>Elemento</a></li></ul>
+</div><div class=col-md-2>
+<h6>Learn</h6>
+<ul class=list-unstyled><li><a class=small href=/documentation/>Documentation</a></li><li><a class=small href=/development/>Development</a></li><li><a class=small href=/documentation/roadmap/>Roadmap</a></li></ul>
+</div><div class=col-md-2>
+<h6>Contribute</h6>
+<ul class=list-unstyled><li><a class=small href=/documentation/contribute/>How To</a></li><li><a class=small href=https://issues.jboss.org/projects/HAL/issues>Submit a Bug</a></li><li><a class=small href=https://github.com/hal/console/fork>Fork the Code</a></li></ul>
+</div><div class="col-md-3 offset-md-1">
+<h6>Apache 2 License</h6>
+<p class=small>All dependencies of this project are available under the Apache 2 or a compatible
+license.</p>
+</div>
+</div>
+<div class=row>
+<div class="col-md-6 offset-md-1 hal-smaller font-weight-light">
+<ul class="list-unstyled mb-0">
+<li><span class="far fa-copyright"></span> Copyright 2018 Red Hat, Inc.</li>
+<li><span class="fas fa-wrench"></span> Made with <a href=https://gohugo.io/>Hugo</a> static site
+generator.
+</li>
+<li><span class="fas fa-code-branch"></span> This website is open source! If you want to improve it,
+<a href=https://github.com/hal/site>fork the project</a> and send a pull request.
+</li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<div class="d-flex justify-content-center p-2 m-2">
+<a href=https://www.redhat.com/><img src=/img/redhat.svg alt class=img-fluid style=width:100px></a>
+</div>
+<script src=https://code.jquery.com/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js integrity=sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl crossorigin=anonymous></script>
+<script src=/script/lightbox.min.js type=text/javascript></script>
+<script src=/script/main.js type=text/javascript></script>
+</body>
+</html>

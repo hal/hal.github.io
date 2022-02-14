@@ -1,0 +1,571 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Explains the basic building blocks used in HAL from the developer's point of view. Read this page if you want to know more about the concepts and layers in HAL or if you plan to contribute to the codebase.">
+<meta name=author content>
+<meta name=generator content="Hugo 0.92.2">
+<link rel=canonical href=https://hal.github.io/development/building-blocks/>
+<title>Building Blocks | HAL Management Console</title>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-89365654-5','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=apple-touch-icon href=/img/hal-256.png>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css integrity=sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm crossorigin=anonymous>
+<link rel=stylesheet href=https://overpass-30e2.kxcdn.com/overpass.css crossorigin=anonymous>
+<link rel=stylesheet href=https://overpass-30e2.kxcdn.com/overpass-mono.css crossorigin=anonymous>
+<link href=/css/lightbox.min.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<script src=https://kit.fontawesome.com/2f7363d383.js></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#hal-navbar aria-controls=hal-navbar aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=hal-navbar>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item>
+<a class=nav-link href=/>Home</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/documentation/>Documentation</a>
+</li>
+<li class="nav-item active">
+<a class=nav-link href=/development/>Development</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/releases/>Releases</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/blog/>Blog</a>
+</li></ul>
+<ul class=navbar-nav><li class=nav-item>
+<a class=nav-link href=https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/ title=Youtube><span class="fab fa-youtube"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://github.com/hal/console title="Source Code"><span class="fab fa-github"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://wildfly.zulipchat.com title=Zulip><span class="far fa-comments"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://gitter.im/hal/console title=Gitter><span class="fab fa-gitter"></span></a>
+</li><li class=nav-item>
+<a class=nav-link href=https://issues.jboss.org/projects/HAL/issues title=Issues><span class="fas fa-bug"></span></a>
+</li></ul>
+</div>
+</nav>
+<div class=container-fluid>
+<div class="row flex-xl-nowrap">
+<main class="col-12 col-md-12 py-md-3 px-md-5 col-lg-9 hal-content" role=main><aside class="d-none d-lg-block col-lg-3 hal-aside">
+<div class=hal-aside-separator><nav class=hal-breadcrumb aria-label=breadcrumb>
+<h6>You're here:</h6>
+<ol class="breadcrumb bg-white py-0"><li class=breadcrumb-item><a href=/development/>Development</a></li><li class=breadcrumb-item aria-current=page><span class=dropdown>
+<a class="dropdown-toggle clickable" data-toggle=dropdown>
+Building Blocks <span class=caret></span>
+</a>
+<div class="dropdown-menu dropdown-menu-right hal-breadcrumb-dropdown" role=menu aria-labelledby>
+<a class=dropdown-item href=/development/build-run/>Build & Run</a><a class=dropdown-item href=/development/architecture/>Architecture</a>
+</div>
+</span></li></ol>
+</nav>
+<hr><div class=hal-toc>
+<h6>On this page:</h6><nav id=TableOfContents></nav></div>
+</div>
+</aside><article class=hal-article>
+<header><h1 class=display-4>Building Blocks</h1></header>
+<p>This section describes the main building blocks and central concepts in HAL. The chapters follow a logical order starting from the fundamental concepts to the higher-level modules.</p>
+<h1 id=dependency-injection>Dependency Injection</h1>
+<p>HAL uses <a href=https://code.google.com/archive/p/google-gin/>GIN</a> for dependency injection. Although no longer actively developed, GIN is a stable and mature DI framework. In the long run we want to replace GIN with <a href=https://google.github.io/dagger/>Dagger</a>. But this requires a new GWTP version which currently depends on GIN.</p>
+<p>Dependencies in GIN are declared in classes which extend <code>com.google.gwt.inject.client.AbstractGinModule</code>. Here&rsquo;s an example from the maven module <code>hal-config</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@GinModule</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>ConfigModule</span> <span class=kd>extends</span> <span class=n>AbstractGinModule</span> <span class=o>{</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>protected</span> <span class=kt>void</span> <span class=nf>configure</span><span class=o>()</span> <span class=o>{</span>
+        <span class=n>bind</span><span class=o>(</span><span class=n>Endpoints</span><span class=o>.</span><span class=na>class</span><span class=o>).</span><span class=na>in</span><span class=o>(</span><span class=n>Singleton</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+        <span class=n>bind</span><span class=o>(</span><span class=n>Environment</span><span class=o>.</span><span class=na>class</span><span class=o>).</span><span class=na>in</span><span class=o>(</span><span class=n>Singleton</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+        <span class=n>bind</span><span class=o>(</span><span class=n>Settings</span><span class=o>.</span><span class=na>class</span><span class=o>).</span><span class=na>in</span><span class=o>(</span><span class=n>Singleton</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+
+        <span class=n>requestStaticInjection</span><span class=o>(</span><span class=n>Endpoints</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+        <span class=n>requestStaticInjection</span><span class=o>(</span><span class=n>Settings</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+    <span class=o>}</span>
+
+    <span class=nd>@Provides</span>
+    <span class=kd>public</span> <span class=n>User</span> <span class=nf>providesCurrentUser</span><span class=o>()</span> <span class=o>{</span>
+        <span class=k>return</span> <span class=n>User</span><span class=o>.</span><span class=na>current</span><span class=o>();</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><p>Most maven modules in HAL have their own GIN module. All GIN modules are annotated with <code>org.jboss.hal.spi.GinModule</code> and are collected by an annotation processor. This processor generates one composite GIN module which includes <em>all</em> other GIN modules:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=cm>/*
+</span><span class=cm> * WARNING! This class is generated. Do not modify.
+</span><span class=cm> */</span>
+<span class=nd>@Generated</span><span class=o>(</span><span class=s>&#34;org.jboss.hal.processor.GinModuleProcessor&#34;</span><span class=o>)</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>CompositeModule</span> <span class=kd>extends</span> <span class=n>AbstractGinModule</span> <span class=o>{</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>protected</span> <span class=kt>void</span> <span class=nf>configure</span><span class=o>()</span> <span class=o>{</span>
+        <span class=n>install</span><span class=o>(</span><span class=k>new</span> <span class=n>org</span><span class=o>.</span><span class=na>jboss</span><span class=o>.</span><span class=na>hal</span><span class=o>.</span><span class=na>resources</span><span class=o>.</span><span class=na>ResourcesModule</span><span class=o>());</span>
+        <span class=n>install</span><span class=o>(</span><span class=k>new</span> <span class=n>org</span><span class=o>.</span><span class=na>jboss</span><span class=o>.</span><span class=na>hal</span><span class=o>.</span><span class=na>config</span><span class=o>.</span><span class=na>ConfigModule</span><span class=o>());</span>
+        <span class=o>...</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><p>This class is a good starting point to find out which classes are available for dependency injection. To use dependency injection in your classes use the annotation <code>javax.inject.Inject</code>. All classes bound in GIN modules, presenters, views and finder columns are available for dependency injection. We recommend to use constructor injection.</p>
+<h1 id=logging>Logging</h1>
+<p>HAL uses the <a href=https://www.slf4j.org/>SL4J</a> API for logging. Just declare a static logger instance in your class:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Dispatcher</span> <span class=kd>implements</span> <span class=n>RecordingHandler</span> <span class=o>{</span>
+
+    <span class=nd>@NonNls</span> <span class=kd>private</span> <span class=kd>static</span> <span class=kd>final</span> <span class=n>Logger</span> <span class=n>logger</span> <span class=o>=</span> <span class=n>LoggerFactory</span><span class=o>.</span><span class=na>getLogger</span><span class=o>(</span><span class=n>Dispatcher</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+    
+    <span class=o>...</span>
+<span class=o>}</span>
+</code></pre></div><p>Log messages are printed to the browser console. In development mode the log level is set to <code>FINE</code>. But you can adjust the level using the request parameter <code>logLevel=&lt;LEVEL></code>, where level is one of the enum values from <code>java.util.logging.Level</code>:</p>
+<ul>
+<li>SEVERE (highest value)</li>
+<li>WARNING</li>
+<li>INFO</li>
+<li>CONFIG</li>
+<li>FINE</li>
+<li>FINER</li>
+<li>FINEST (lowest value)</li>
+</ul>
+<h1 id=resources>Resources</h1>
+<p>HAL includes many different resources which are all available using the class <code>org.jboss.hal.resources.Resources</code>. The class implements the following interfaces:</p>
+<ul>
+<li><code>org.jboss.hal.resources.Ids</code>: IDs used in HTML elements and across multiple classes. The IDs defined here are reused by QA.</li>
+<li><code>org.jboss.hal.resources.Names</code>: Common names and technical terms which are not meant to be translated.</li>
+<li><code>org.jboss.hal.resources.UIConstants</code>: UI related constants used in more than one place.</li>
+<li><code>org.jboss.hal.resources.CSS</code>: Common CSS classes from HAL, PatternFly & Bootstrap. The constants in this interface are not involved in any kind of code generation or GWT magic. They&rsquo;re collected in this interface in order to easily detect unused CSS classes.</li>
+<li><code>org.jboss.hal.resources.Icons</code>: Collection of common icons.</li>
+</ul>
+<p>In addition it has methods which return the following classes:</p>
+<ul>
+<li><code>org.jboss.hal.resources.Constants</code>: I18n constants.</li>
+<li><code>org.jboss.hal.resources.Messages</code>: I18n messages which can contain variable parts.</li>
+<li><code>org.jboss.hal.resources.Previews</code>: HTML snippets mainly used for the finder previews.</li>
+<li><code>org.jboss.hal.resources.Images</code>: Collection of images used in HAL.</li>
+<li><code>org.jboss.hal.resources.Theme</code>: Theme used in HAL.</li>
+</ul>
+<h1 id=config>Config</h1>
+<p>Information about the console and its environment is available using the interface <code>org.jboss.hal.config.Environment</code>. It provides the following data:</p>
+<ul>
+<li>HAL version</li>
+<li>HAL build (community or product, ie. WildFly or JBoss EAP)</li>
+<li>supported locales</li>
+</ul>
+<p>Some information is only available after the console has been fully loaded:</p>
+<ul>
+<li>product name / version and release name / version</li>
+<li>operation mode (standalone or domain)</li>
+<li>name of the domain controller</li>
+<li>management version</li>
+<li>access control provider (simple or rbac)</li>
+<li>standard and scoped roles</li>
+</ul>
+<p>Another important building block is the interface <code>org.jboss.hal.config.Endpoints</code>. It provides access to the endpoints used in HAL. Finally there&rsquo;s the class <code>org.jboss.hal.config.Settings</code> which provides access to the user settings.</p>
+<h1 id=flow>Flow</h1>
+<p>HAL runs in the browser. As such it uses a lot of (asynchronous) callbacks. We all know that nested callbacks are hard to read, maintain and quickly lead to an anti pattern better known as callback hell.</p>
+<p>One solution for this problem is to use reactive programming. Instead of using callbacks as arguments, methods return reactive classes like <code>Single&lt;T></code> or <code>Observable&lt;T></code>. With <a href=https://github.com/intendia-oss/rxgwt>RxGWT</a> there&rsquo;s an implementation of RxJava available for GWT. At the moment it&rsquo;s still based on RxJava 1.x, but support for 2.x is in the works.</p>
+<p>HAL uses a reactive programming model in many classes to get rid of callbacks. You can find examples in <code>org.jboss.hal.dmr.dispatch.Dispatcher</code> and <code>org.jboss.hal.core.CrudOperations</code>. This really pays off when you want to execute several asynchronous operations in order. Therefore you can use the methods in <code>org.jboss.hal.flow.Flow</code> and the task interface <code>org.jboss.hal.flow.Task</code>.</p>
+<p>Say you want to add a system property only if it&rsquo;s not already there. You could implement this using the following code snippet:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>Logger</span> <span class=n>logger</span> <span class=o>=</span> <span class=o>...;</span>
+<span class=n>Dispatcher</span> <span class=n>dispatcher</span> <span class=o>=</span> <span class=o>...;</span>
+<span class=n>ResourceAddress</span> <span class=n>address</span> <span class=o>=</span> <span class=n>ResourceAddress</span><span class=o>.</span><span class=na>from</span><span class=o>(</span><span class=s>&#34;/system-property=foo&#34;</span><span class=o>);</span>
+
+<span class=n>Task</span><span class=o>&lt;</span><span class=n>FlowContext</span><span class=o>&gt;</span> <span class=n>check</span> <span class=o>=</span> <span class=n>context</span> <span class=o>-&gt;</span> <span class=o>{</span>
+    <span class=k>return</span> <span class=n>dispatcher</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=k>new</span> <span class=n>Operation</span><span class=o>.</span><span class=na>Builder</span><span class=o>(</span><span class=n>address</span><span class=o>,</span> <span class=n>READ_RESOURCE_OPERATION</span><span class=o>).</span><span class=na>build</span><span class=o>())</span>
+            <span class=o>.</span><span class=na>doOnSuccess</span><span class=o>(</span><span class=n>result</span> <span class=o>-&gt;</span> <span class=n>context</span><span class=o>.</span><span class=na>push</span><span class=o>(</span><span class=n>200</span><span class=o>))</span>
+            <span class=o>.</span><span class=na>doOnError</span><span class=o>(</span><span class=n>exception</span> <span class=o>-&gt;</span> <span class=n>context</span><span class=o>.</span><span class=na>push</span><span class=o>(</span><span class=n>404</span><span class=o>))</span>
+            <span class=o>.</span><span class=na>toCompletable</span><span class=o>();</span>
+<span class=o>};</span>
+<span class=n>Task</span><span class=o>&lt;</span><span class=n>FlowContext</span><span class=o>&gt;</span> <span class=n>add</span> <span class=o>=</span> <span class=n>context</span> <span class=o>-&gt;</span> <span class=o>{</span>
+    <span class=kt>int</span> <span class=n>status</span> <span class=o>=</span> <span class=n>context</span><span class=o>.</span><span class=na>pop</span><span class=o>();</span>
+    <span class=k>return</span> <span class=n>status</span> <span class=o>==</span> <span class=n>200</span> 
+            <span class=o>?</span> <span class=n>Completable</span><span class=o>.</span><span class=na>complete</span><span class=o>()</span> 
+            <span class=o>:</span> <span class=n>dispatcher</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=k>new</span> <span class=n>Operation</span><span class=o>.</span><span class=na>Builder</span><span class=o>(</span><span class=n>address</span><span class=o>,</span> <span class=n>ADD</span><span class=o>).</span><span class=na>build</span><span class=o>()).</span><span class=na>toCompletable</span><span class=o>();</span>
+<span class=o>};</span>
+
+<span class=n>Flow</span><span class=o>.</span><span class=na>series</span><span class=o>(</span><span class=k>new</span> <span class=n>FlowContext</span><span class=o>(</span><span class=n>Progress</span><span class=o>.</span><span class=na>NOOP</span><span class=o>),</span> <span class=n>check</span><span class=o>,</span> <span class=n>add</span><span class=o>).</span><span class=na>subscribe</span><span class=o>(</span><span class=k>new</span> <span class=n>Outcome</span><span class=o>&lt;</span><span class=n>FlowContext</span><span class=o>&gt;()</span> <span class=o>{</span>
+        <span class=nd>@Override</span>
+        <span class=kd>public</span> <span class=kt>void</span> <span class=nf>onError</span><span class=o>(</span><span class=n>FlowContext</span> <span class=n>context</span><span class=o>,</span> <span class=n>Throwable</span> <span class=n>error</span><span class=o>)</span> <span class=o>{</span>
+            <span class=n>logger</span><span class=o>.</span><span class=na>error</span><span class=o>(</span><span class=s>&#34;Unable to create system property &#39;foo&#39;: {}&#34;</span><span class=o>,</span> <span class=n>error</span><span class=o>.</span><span class=na>getMessage</span><span class=o>());</span>
+        <span class=o>}</span>
+
+        <span class=nd>@Override</span>
+        <span class=kd>public</span> <span class=kt>void</span> <span class=nf>onSuccess</span><span class=o>(</span><span class=n>FlowContext</span> <span class=n>flowContext</span><span class=o>)</span> <span class=o>{</span>
+            <span class=n>logger</span><span class=o>.</span><span class=na>info</span><span class=o>(</span><span class=s>&#34;System property &#39;foo&#39; successfully created.&#34;</span><span class=o>);</span>
+        <span class=o>}</span>
+<span class=o>});</span>
+</code></pre></div><h1 id=dmr>DMR</h1>
+<p>This section assumes you&rsquo;re familiar with the basic concepts of the WildFly management model. If not please read the <a href=https://docs.wildfly.org/Admin_Guide.html>admin guide</a> in the WildFly documentation.</p>
+<p>The communication with the management endpoint, heavily relies on the <a href=https://docs.wildfly.org/Admin_Guide.html#Detyped_management_and_the_jboss-dmr_library>detyped management representation</a> as defined in <a href=https://github.com/jbossas/jboss-dmr>JBoss DMR</a>. Due to restrictions in GWT (no threading, no IO) HAL comes with its own fork of JBoss DMR. It&rsquo;s a clone of the original code without all the pieces which don&rsquo;t make sense and don&rsquo;t work in GWT.</p>
+<p>HAL adds a thin layer of more strongly typed classes on top of that. They all extend from <code>org.jboss.hal.dmr.ModelNode</code> so you don&rsquo;t lose the flexibility, but are more specific so that the the code becomes more readable.</p>
+<p><strong>Operation</strong><br>
+Represents a DMR operation like <code>read-resource</code> or <code>add</code>. An operation always requires a resource address and the actual operation name. Optionally you can add parameters as key/value pairs. Operations should be built using the builder <code>org.jboss.hal.dmr.Operation.Builder</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>Operation</span> <span class=n>operation</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Operation</span><span class=o>.</span><span class=na>Builder</span><span class=o>(</span><span class=n>address</span><span class=o>,</span> <span class=s>&#34;read-log-file&#34;</span><span class=o>)</span>
+        <span class=o>.</span><span class=na>param</span><span class=o>(</span><span class=s>&#34;lines&#34;</span><span class=o>,</span> <span class=n>100</span><span class=o>)</span>
+        <span class=o>.</span><span class=na>param</span><span class=o>(</span><span class=s>&#34;tail&#34;</span><span class=o>,</span> <span class=kc>true</span><span class=o>)</span>
+        <span class=o>.</span><span class=na>build</span><span class=o>();</span>
+</code></pre></div><p><strong>Composite</strong><br>
+Represents a composite operation consisting of several operations. When executed by the dispatcher you get back an instance of <code>org.jboss.hal.dmr.CompositeResult</code>. Use this class to easily access the different step results by index or name:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>List</span><span class=o>&lt;</span><span class=n>Operation</span><span class=o>&gt;</span> <span class=n>operations</span> <span class=o>=</span> <span class=o>...;</span>
+<span class=n>dispatcher</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=k>new</span> <span class=n>Composite</span><span class=o>(</span><span class=n>operations</span><span class=o>),</span> <span class=o>(</span><span class=n>CompositeResult</span> <span class=n>result</span><span class=o>)</span> <span class=o>-&gt;</span> <span class=o>{</span>
+    <span class=n>List</span><span class=o>&lt;</span><span class=n>Property</span><span class=o>&gt;</span> <span class=n>list0</span> <span class=o>=</span> <span class=n>result</span><span class=o>.</span><span class=na>step</span><span class=o>(</span><span class=n>0</span><span class=o>).</span><span class=na>get</span><span class=o>(</span><span class=n>RESULT</span><span class=o>).</span><span class=na>asPropertyList</span><span class=o>();</span>
+    <span class=n>List</span><span class=o>&lt;</span><span class=n>Property</span><span class=o>&gt;</span> <span class=n>list1</span> <span class=o>=</span> <span class=n>result</span><span class=o>.</span><span class=na>step</span><span class=o>(</span><span class=n>1</span><span class=o>).</span><span class=na>get</span><span class=o>(</span><span class=n>RESULT</span><span class=o>).</span><span class=na>asPropertyList</span><span class=o>();</span>
+    <span class=o>...</span>
+<span class=o>});</span>
+</code></pre></div><p><strong>ResourceAddress</strong><br>
+Represents a fully qualified DMR address ready to be put into a DMR operation. The address consists of 0-n segments
+with a name and a value for each segment. Implemented by <code>org.jboss.hal.dmr.ResourceAddress</code>.</p>
+<p><strong>ModelNodeHelper</strong><br>
+Contains static helper methods related to model nodes. Some of them deal with reading deeply nested model nodes using a path seperated by &ldquo;/":</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>Dispatcher</span> <span class=n>dispatcher</span> <span class=o>=</span> <span class=o>...;</span>
+<span class=n>ResourceAddress</span> <span class=n>address</span> <span class=o>=</span> <span class=n>ResourceAddress</span><span class=o>.</span><span class=na>from</span><span class=o>(</span><span class=s>&#34;/subsystem=jca&#34;</span><span class=o>);</span>
+<span class=n>Operation</span> <span class=n>operation</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Operation</span><span class=o>.</span><span class=na>Builder</span><span class=o>(</span><span class=n>address</span><span class=o>,</span> <span class=n>READ_RESOURCE_OPERATION</span><span class=o>)</span>
+        <span class=o>.</span><span class=na>param</span><span class=o>(</span><span class=n>RECURSIVE</span><span class=o>,</span> <span class=kc>true</span><span class=o>)</span>
+        <span class=o>.</span><span class=na>build</span><span class=o>();</span>
+<span class=n>dispatcher</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=n>operation</span><span class=o>,</span> <span class=n>result</span> <span class=o>-&gt;</span> <span class=o>{</span>
+    <span class=n>ModelNode</span> <span class=n>beanValidation</span> <span class=o>=</span> <span class=n>ModelNodeHelper</span><span class=o>.</span><span class=na>failSafeGet</span><span class=o>(</span><span class=s>&#34;bean-validation/bean-validation&#34;</span><span class=o>);</span>    
+<span class=o>});</span>
+</code></pre></div><p><strong>Dispatcher</strong><br>
+Executes operations against the management endpoint. You can execute normal and composite operations. There are signatures which use callbacks and RX variants which return <code>Single&lt;CompositeResult></code> resp. <code>Single&lt;ModelNode></code>.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>dispatcher</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=k>new</span> <span class=n>Operation</span><span class=o>.</span><span class=na>Builder</span><span class=o>(</span><span class=n>ResourceAddress</span><span class=o>.</span><span class=na>root</span><span class=o>(),</span> <span class=n>READ_RESOURCE_OPERATION</span><span class=o>).</span><span class=na>build</span><span class=o>())</span>
+        <span class=o>.</span><span class=na>subscribe</span><span class=o>(</span><span class=n>payload</span> <span class=o>-&gt;</span> <span class=n>logger</span><span class=o>.</span><span class=na>info</span><span class=o>(</span><span class=s>&#34;Root resource: {}&#34;</span><span class=o>,</span> <span class=n>payload</span><span class=o>));</span>
+
+<span class=n>dispatcher</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=k>new</span> <span class=n>Operation</span><span class=o>.</span><span class=na>Builder</span><span class=o>(</span><span class=n>ResourceAddress</span><span class=o>.</span><span class=na>root</span><span class=o>(),</span> <span class=n>READ_RESOURCE_OPERATION</span><span class=o>).</span><span class=na>build</span><span class=o>(),</span> 
+        <span class=n>payload</span> <span class=o>-&gt;</span> <span class=n>logger</span><span class=o>.</span><span class=na>info</span><span class=o>(</span><span class=s>&#34;Root resource: {}&#34;</span><span class=o>,</span> <span class=n>payload</span><span class=o>));</span>
+</code></pre></div><div class="hal-callout hal-callout-warning">
+<p><strong>Payload != Response</strong></p>
+<p>Whether you use a callback or an RX type, please note that the model node passed to the callback resp. used in the RX type is <em>not</em> the full response, but just the <code>result</code> part of what you normally get when executing operations in the CLI:</p>
+<pre tabindex=0><code>[standalone@localhost:9990 /] :read-resource
+{
+    &quot;outcome&quot; =&gt; &quot;success&quot;,
+    &quot;result&quot; =&gt; {
+        &quot;management-major-version&quot; =&gt; 6,
+        &quot;management-micro-version&quot; =&gt; 0,
+        &quot;management-minor-version&quot; =&gt; 0,
+        &quot;name&quot; =&gt; &quot;hpehl-macbook&quot;,
+        ...
+    }
+}
+</code></pre>
+</div>
+<h1 id=metadata>Metadata</h1>
+<p>HAL heavily relies on metadata from the resource descriptions. This data is used when building the user interface in many different ways:</p>
+<ul>
+<li>The descriptions are used for the context help.</li>
+<li>The data type and flags like <code>required</code> are used to build the form items.</li>
+<li>The capabilities are used to build type-ahead combo boxes.</li>
+<li>The security related information is used to filter form items and disable / enable buttons.</li>
+</ul>
+<p>The metadata must be present, before the UI is setup. That&rsquo;s why central classes like presenter proxies and finder columns can be annotated with <code>org.jboss.hal.spi.Requires</code>. This information is parsed by an annotation processor and made available as an implementation of <code>org.jboss.hal.meta.resource.RequiredResources</code>. Here&rsquo;s an example of the batch presenter:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>BatchPresenter</span> <span class=kd>extends</span> <span class=n>MbuiPresenter</span><span class=o>&lt;</span><span class=n>BatchPresenter</span><span class=o>.</span><span class=na>MyView</span><span class=o>,</span> <span class=n>BatchPresenter</span><span class=o>.</span><span class=na>MyProxy</span><span class=o>&gt;</span>
+        <span class=kd>implements</span> <span class=n>SupportsExpertMode</span> <span class=o>{</span>
+        
+    <span class=o>...</span>
+    
+    <span class=nd>@ProxyCodeSplit</span>
+    <span class=nd>@NameToken</span><span class=o>(</span><span class=s>&#34;batch-jberet-configuration&#34;</span><span class=o>)</span>
+    <span class=nd>@Requires</span><span class=o>(</span><span class=s>&#34;/{selected.profile}/subsystem=batch-jberet&#34;</span><span class=o>)</span>
+    <span class=kd>public</span> <span class=kd>interface</span> <span class=nc>MyProxy</span> <span class=kd>extends</span> <span class=n>ProxyPlace</span><span class=o>&lt;</span><span class=n>BatchPresenter</span><span class=o>&gt;</span> <span class=o>{}</span>
+<span class=o>}</span>
+</code></pre></div><p>When the user navigates to http://localhost:9990/#batch-jberet-configuration the following steps are executed:</p>
+<ol>
+<li>The required resources for the name token &ldquo;batch-jberet-configuration&rdquo; are looked up from the registry.</li>
+<li>The first and second level cache are checked whether the metadata is already present.</li>
+<li>If not present, the DMR operation <code>/subsystem=batch-jberet:read-resource-description</code> is executed.</li>
+<li>The response is parsed and stored in the registries and caches.</li>
+</ol>
+<p>Complex presenters may have a lot of required resources and reading them takes some time. That&rsquo;s why HAL stores the metadata in different registries and caches. There&rsquo;s a first level cache with a limited number of entries which lives in the memory and there&rsquo;s a second level cache which is based on <a href=https://pouchdb.com/>PouchDB</a> and which is stored in the browser local storage.</p>
+<p>Use the class <code>MetadataRegistry</code> to get metadata for a given address template. The class <code>Metadata</code> is an umbrella around the different parts of the resource description: descriptions, attribute metadata, security context and capabilities. An <code>AddressTemplate</code> is like a resource address, but can contain variable parts:</p>
+<ul>
+<li><code>{domain.controller}</code>: The name of the domain controller</li>
+<li><code>{selected.profile}</code>: The selected profile</li>
+<li><code>{selected.group}</code>: The selected server group</li>
+<li><code>{selected.host}</code>: The selected host</li>
+<li><code>{selected.server-config}</code>: The selected server-config</li>
+<li><code>{selected.server}</code>: The selected server</li>
+</ul>
+<p>The values for these variables are stored in class <code>StatementContext</code> and updated as the user navigates through the console. The address template class has methods to resolve an template into a real resource address:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>StatementContext</span> <span class=n>statementContext</span> <span class=o>=</span> <span class=o>...;</span>
+<span class=n>AddressTemplate</span> <span class=n>template</span> <span class=o>=</span> <span class=n>AddressTemplate</span><span class=o>.</span><span class=na>of</span><span class=o>(</span><span class=s>&#34;{selected.host}/{selected.server}/subsystem=elytron&#34;</span><span class=o>);</span>
+<span class=n>ResourceAddress</span> <span class=n>address</span> <span class=o>=</span> <span class=n>template</span><span class=o>.</span><span class=na>resolve</span><span class=o>(</span><span class=n>statementContext</span><span class=o>);</span> 
+</code></pre></div><p>In domain mode with host &lsquo;master&rsquo; and server &lsquo;server-one&rsquo; selected, this results in the address
+<code>/host=master/server=server-one/subsystem=elytron</code>.</p>
+<h1 id=ballroom>Ballroom</h1>
+<p>The ballroom module contains the core UI elements. This includes many different components from PatternFly like alerts, charts, dialogs, forms, list views, tables and wizards. Most of them are created using <a href=https://github.com/hal/elemento>Elemento&rsquo;s</a> fluent API and can be seen as <a href=https://github.com/hal/elemento#custom-elements>custom elements</a>. In this context custom elements are a composite of HTML elements and/or other custom elements. They&rsquo;re ordinary classes which can hold state or register event handlers. The only requirement is to implement <code>IsElement&lt;E extends HTMLElement></code> and return the root element:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Tabs</span> <span class=kd>implements</span> <span class=n>IsElement</span><span class=o>&lt;</span><span class=n>HTMLElement</span><span class=o>&gt;</span> <span class=o>{</span>
+
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>HTMLElement</span> <span class=n>root</span><span class=o>;</span>
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>HTMLElement</span> <span class=n>tabs</span><span class=o>;</span>
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>HTMLElement</span> <span class=n>panes</span><span class=o>;</span>
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>Map</span><span class=o>&lt;</span><span class=n>Integer</span><span class=o>,</span> <span class=n>String</span><span class=o>&gt;</span> <span class=n>indexToId</span><span class=o>;</span>
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>Map</span><span class=o>&lt;</span><span class=n>String</span><span class=o>,</span> <span class=n>HTMLElement</span><span class=o>&gt;</span> <span class=n>paneElements</span><span class=o>;</span>
+
+    <span class=kd>public</span> <span class=nf>Tabs</span><span class=o>(</span><span class=n>String</span> <span class=n>id</span><span class=o>)</span> <span class=o>{</span>
+        <span class=n>root</span> <span class=o>=</span> <span class=n>div</span><span class=o>().</span><span class=na>id</span><span class=o>(</span><span class=n>id</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>tabs</span> <span class=o>=</span> <span class=n>ul</span><span class=o>()</span>
+                        <span class=o>.</span><span class=na>css</span><span class=o>(</span><span class=n>nav</span><span class=o>,</span> <span class=n>navTabs</span><span class=o>,</span> <span class=n>navTabsPf</span><span class=o>,</span> <span class=n>navTabsHal</span><span class=o>)</span>
+                        <span class=o>.</span><span class=na>attr</span><span class=o>(</span><span class=n>UIConstants</span><span class=o>.</span><span class=na>ROLE</span><span class=o>,</span> <span class=n>UIConstants</span><span class=o>.</span><span class=na>TABLIST</span><span class=o>)</span>
+                        <span class=o>.</span><span class=na>asElement</span><span class=o>())</span>
+                <span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>panes</span> <span class=o>=</span> <span class=n>div</span><span class=o>().</span><span class=na>css</span><span class=o>(</span><span class=n>tabContent</span><span class=o>).</span><span class=na>asElement</span><span class=o>())</span>
+                <span class=o>.</span><span class=na>asElement</span><span class=o>();</span>
+
+        <span class=n>indexToId</span> <span class=o>=</span> <span class=k>new</span> <span class=n>HashMap</span><span class=o>&lt;&gt;();</span>
+        <span class=n>paneElements</span> <span class=o>=</span> <span class=k>new</span> <span class=n>HashMap</span><span class=o>&lt;&gt;();</span>
+    <span class=o>}</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>public</span> <span class=n>HTMLElement</span> <span class=nf>asElement</span><span class=o>()</span> <span class=o>{</span>
+        <span class=k>return</span> <span class=n>root</span><span class=o>;</span>
+    <span class=o>}</span>
+
+    <span class=c1>// more methds...
+</span><span class=c1></span><span class=o>}</span>
+</code></pre></div><h1 id=crud-operations>CRUD Operations</h1>
+<p>The class <code>org.jboss.hal.core.CrudOperations</code> contains generic CRUD methods which can be roughly divided into the following categories:</p>
+<ul>
+<li>Add a (singleton) resource using a generic add resource dialog</li>
+<li>Add a (singleton) resource using an operation</li>
+<li>Read a resource (recursively)</li>
+<li>Read child resources</li>
+<li>Update a (singleton) resource using a change set (key/value map)</li>
+<li>Update a (singleton) resource using an operation</li>
+<li>Reset a (singleton) resource</li>
+<li>Remove a (singleton) resource</li>
+</ul>
+<p>All in all there are over 60 different methods. Some methods just execute the underlying DMR operations, other methods also interact with the user by showing (confirmation) dialogs. Some methods use address templates, some resource addresses, some return RX types others accept callbacks.</p>
+<h1 id=finder>Finder</h1>
+<p>The finder is a central UI component in HAL. Each top level category (except the homepage) uses the finder for navigation. The finder manages a number of columns and one preview pane. In HAL there&rsquo;s only one finder instance which is used across the different top level categories.</p>
+<p>Finder columns have an unique ID, a title, a number of optional actions and an item renderer which defines how the items of this column are rendered. All items of a column must be of the same type. Columns are self-contained and should not have references to other columns (only by ID).</p>
+<p>If you want to implement your own column follow these steps:</p>
+<ol>
+<li>Extend from <code>org.jboss.hal.core.finder.FinderColumn&lt;T></code>.</li>
+<li>Annotate your class with <code>org.jboss.hal.spi.Column</code> resp. <code>org.jboss.hal.spi.AsyncColumn</code>.</li>
+<li>Create an instance of <code>org.jboss.hal.core.finder.FinderColumn.Builder</code> and pass it to <code>super()</code>. The builder requires three mandatory parameters:
+<ol>
+<li>an instance to the finder instance</li>
+<li>an unique ID</li>
+<li>the column title</li>
+</ol>
+</li>
+<li>Use the builder to define additional column attributes:
+<ul>
+<li>column actions</li>
+<li>an implementation for <code>org.jboss.hal.core.finder.ItemsProvider&lt;T></code></li>
+<li>an implementation for <code>org.jboss.hal.core.finder.ItemRenderer&lt;T></code> and <code>org.jboss.hal.core.finder.ItemDisplay&lt;T></code></li>
+<li>a custom item preview</li>
+<li>the ID for the next column</li>
+</ul>
+</li>
+</ol>
+<p>Here&rsquo;s a complete example of a simple column which is used in the configuration section to manage the interfaces:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@Column</span><span class=o>(</span><span class=n>Ids</span><span class=o>.</span><span class=na>INTERFACE</span><span class=o>)</span>
+<span class=nd>@Requires</span><span class=o>(</span><span class=s>&#34;/interface=*&#34;</span><span class=o>)</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>InterfaceColumn</span> <span class=kd>extends</span> <span class=n>FinderColumn</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;</span> <span class=o>{</span>
+
+    <span class=nd>@Inject</span>
+    <span class=kd>public</span> <span class=nf>InterfaceColumn</span><span class=o>(</span><span class=n>Finder</span> <span class=n>finder</span><span class=o>,</span>
+            <span class=n>ColumnActionFactory</span> <span class=n>columnActionFactory</span><span class=o>,</span>
+            <span class=n>ItemActionFactory</span> <span class=n>itemActionFactory</span><span class=o>,</span>
+            <span class=n>Places</span> <span class=n>places</span><span class=o>,</span>
+            <span class=n>Dispatcher</span> <span class=n>dispatcher</span><span class=o>,</span>
+            <span class=n>CrudOperations</span> <span class=n>crud</span><span class=o>)</span> <span class=o>{</span>
+
+        <span class=kd>super</span><span class=o>(</span><span class=k>new</span> <span class=n>Builder</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;(</span><span class=n>finder</span><span class=o>,</span> <span class=n>Ids</span><span class=o>.</span><span class=na>INTERFACE</span><span class=o>,</span> <span class=n>Names</span><span class=o>.</span><span class=na>INTERFACE</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>columnAction</span><span class=o>(</span><span class=n>columnActionFactory</span><span class=o>.</span><span class=na>add</span><span class=o>(</span>
+                        <span class=n>Ids</span><span class=o>.</span><span class=na>INTERFACE_ADD</span><span class=o>,</span>
+                        <span class=n>Names</span><span class=o>.</span><span class=na>INTERFACE</span><span class=o>,</span>
+                        <span class=n>InterfacePresenter</span><span class=o>.</span><span class=na>ROOT_TEMPLATE</span><span class=o>,</span>
+                        <span class=n>singletonList</span><span class=o>(</span><span class=n>INET_ADDRESS</span><span class=o>)))</span>
+                <span class=o>.</span><span class=na>columnAction</span><span class=o>(</span><span class=n>columnActionFactory</span><span class=o>.</span><span class=na>refresh</span><span class=o>(</span><span class=n>Ids</span><span class=o>.</span><span class=na>INTERFACE_REFRESH</span><span class=o>))</span>
+                <span class=o>.</span><span class=na>itemsProvider</span><span class=o>((</span><span class=n>context</span><span class=o>,</span> <span class=n>callback</span><span class=o>)</span> <span class=o>-&gt;</span> <span class=n>crud</span><span class=o>.</span><span class=na>readChildren</span><span class=o>(</span><span class=n>ResourceAddress</span><span class=o>.</span><span class=na>root</span><span class=o>(),</span> <span class=n>INTERFACE</span><span class=o>,</span>
+                        <span class=n>result</span> <span class=o>-&gt;</span> <span class=n>callback</span><span class=o>.</span><span class=na>onSuccess</span><span class=o>(</span><span class=n>asNamedNodes</span><span class=o>(</span><span class=n>result</span><span class=o>))))</span>
+                <span class=o>.</span><span class=na>useFirstActionAsBreadcrumbHandler</span><span class=o>()</span>
+                <span class=o>.</span><span class=na>onPreview</span><span class=o>(</span><span class=n>item</span> <span class=o>-&gt;</span> <span class=k>new</span> <span class=n>InterfacePreview</span><span class=o>(</span><span class=n>item</span><span class=o>,</span> <span class=n>dispatcher</span><span class=o>,</span> <span class=n>places</span><span class=o>))</span>
+        <span class=o>);</span>
+
+        <span class=n>setItemRenderer</span><span class=o>(</span><span class=n>item</span> <span class=o>-&gt;</span> <span class=k>new</span> <span class=n>ItemDisplay</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;()</span> <span class=o>{</span>
+            <span class=nd>@Override</span>
+            <span class=kd>public</span> <span class=n>String</span> <span class=nf>getTitle</span><span class=o>()</span> <span class=o>{</span>
+                <span class=k>return</span> <span class=n>item</span><span class=o>.</span><span class=na>getName</span><span class=o>();</span>
+            <span class=o>}</span>
+
+            <span class=nd>@Override</span>
+            <span class=kd>public</span> <span class=n>List</span><span class=o>&lt;</span><span class=n>ItemAction</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;&gt;</span> <span class=nf>actions</span><span class=o>()</span> <span class=o>{</span>
+                <span class=k>return</span> <span class=n>asList</span><span class=o>(</span>
+                        <span class=n>itemActionFactory</span><span class=o>.</span><span class=na>view</span><span class=o>(</span><span class=n>NameTokens</span><span class=o>.</span><span class=na>INTERFACE</span><span class=o>,</span> <span class=n>NAME</span><span class=o>,</span> <span class=n>item</span><span class=o>.</span><span class=na>getName</span><span class=o>()),</span>
+                        <span class=n>itemActionFactory</span><span class=o>.</span><span class=na>remove</span><span class=o>(</span><span class=n>Names</span><span class=o>.</span><span class=na>INTERFACE</span><span class=o>,</span> <span class=n>item</span><span class=o>.</span><span class=na>getName</span><span class=o>(),</span> <span class=n>InterfacePresenter</span><span class=o>.</span><span class=na>ROOT_TEMPLATE</span><span class=o>,</span>
+                                <span class=n>InterfaceColumn</span><span class=o>.</span><span class=na>this</span><span class=o>));</span>
+            <span class=o>}</span>
+        <span class=o>});</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><p>HAL provides many factories and helper classes like <code>org.jboss.hal.core.finder.ColumnActionFactory</code> and <code>org.jboss.hal.core.finder.ItemActionFactory</code> which simplify adding common column and item actions.</p>
+<h1 id=mvp>MVP</h1>
+<p>HAL uses <a href=https://dev.arcbees.com/gwtp/>GWTP</a> for its MVP implementation. At the heart of GWTP is a model-view-presenter architecture (MVP). Although this model <a href=https://youtu.be/PDuhR18-EdM>has been lauded as one of the best approaches to GWT development</a>, it is still hard to find an out-of-the-box MVP solution that supports all the requirements of modern web apps. GWTP aims to provide such a solution while reducing the amount of code required to reach it.</p>
+<p>For example, adding history management and code splitting to your presenter is as simple as adding these lines to your class:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@ProxyCodeSplit</span>
+<span class=nd>@NameToken</span><span class=o>(</span><span class=s>&#34;datasource-configuration&#34;</span><span class=o>)</span>
+<span class=kd>public</span> <span class=kd>interface</span> <span class=nc>MyProxy</span> <span class=kd>extends</span> <span class=n>ProxyPlace</span><span class=o>&lt;</span><span class=n>DataSourcePresenter</span><span class=o>&gt;</span> <span class=o>{</span>
+<span class=o>}</span>
+</code></pre></div><p>GWTP uses GWT&rsquo;s event bus in a clear and efficient way. Events are used to decouple loosely related objects, while program flow between strongly coupled components is kept clear using direct method invocations. The result is an easy to understand and debug application that can continually scale up.</p>
+<p>The goal of GWTP is to offer an easy-to-use MVP architecture with minimal boilerplate, without compromising GWT&rsquo;s best features. Here are some of the core features of GWTP:</p>
+<ul>
+<li>Dependency injection through GIN</li>
+<li>Simple and powerful history management mechanism</li>
+<li>Lifecycle events to manage presenters</li>
+<li>Lazy instantiation for presenters and views</li>
+<li>Effortless and efficient code splitting</li>
+<li>Bootstrap tools to make the creation of new GWT applications dead simple.</li>
+</ul>
+<div class=clearfix>
+<a href=/img/development/mvp-classes.png data-lightbox="L2ltZy9kZXZlbG9wbWVudC9tdnAtY2xhc3Nlcy5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary" src=/img/development/mvp-classes.png alt></a>
+<div class=hal-imgflow-content>
+<p><p>HAL adds a thin layer on top of GWTP: Every presenter in HAL extends from <code>org.jboss.hal.core.mvp.HalPresenter</code>. This class implements central behaviour like integration with the header. It also ensures that every view implements <code>org.jboss.hal.core.mvp.HalView</code>. This interface is an adapter between GWTP views which are based on GWT widgets and HAL views which are based on HTML elements.</p>
+<p>Presenters in HAL don&rsquo;t extend from <code>HalPresenter</code> directly though. Most presenters either extend from <code>FinderPresenter</code> or <code>ApplicationFinderPresenter</code>.</p>
+<p>In addition there are several interfaces which are implemented by the various presenters and which add specific features:</p>
+<ul>
+<li><code>HasFinderPath</code>: Implemented by application presenters which interact with the finder.</li>
+<li><code>SupportsExpertMode</code>: Interface meant to be implemented by presenters which support switching to an &lsquo;expert mode&rsquo; using the model browser</li>
+<li><code>SupportsExternalMode</code>: Tagging interface meant to be implemented by presenters which can be opened in an external browser window / tab.</li>
+</ul>
+</p>
+</div>
+</div>
+<h1 id=mbui>MBUI</h1>
+<p>Many application screens in HAL which are used to configure resources follow a very similar layout:</p>
+<ul>
+<li>an optional vertical navigation at the left</li>
+<li>a header and an optional description (often taken from the resource description)</li>
+<li>an optional table showing the resources</li>
+<li>one or several tabs holding the forms to view and modify the resource</li>
+</ul>
+<p>In addition also the behaviour is very similar. The table has buttons to add and remove resources, the forms have links to view, modify or reset resources.</p>
+<p>HAL can generate presenter and view implementations described by MBUI XML files. MBUI stands for <strong>m</strong>odel <strong>b</strong>ased <strong>u</strong>ser <strong>i</strong>nterface. The XML files use the <a href=http://www.relaxng.org/>Relax NG</a> schema defined by <a href=https://raw.githubusercontent.com/hal/console/develop/spi/src/main/resources/org/jboss/hal/spi/MbuiView.rng><code>MbuiView.rng</code></a>. The code generation is triggered by an annotation processor.</p>
+<p>To implement a MBUI presenter / view you need the following compilation units:</p>
+<ol>
+<li>presenter which extends <code>MbuiPresenter&lt;V extends MbuiView, Proxy_ extends ProxyPlace&lt;?>></code></li>
+<li>abstract view annotated with <code>MbuiView</code> which implements <code>MbuiView&lt;P extends MbuiPresenter></code></li>
+<li>MBUI XML file which defines the UI</li>
+</ol>
+<p>The following code snippets show the path presenter / view tuple which uses MBUI to define the UI <em>and</em> common behaviour:</p>
+<p><strong>PathsPresenter.java</strong></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>PathsPresenter</span> <span class=kd>extends</span> <span class=n>MbuiPresenter</span><span class=o>&lt;</span><span class=n>PathsPresenter</span><span class=o>.</span><span class=na>MyView</span><span class=o>,</span> <span class=n>PathsPresenter</span><span class=o>.</span><span class=na>MyProxy</span><span class=o>&gt;</span> <span class=o>{</span>
+
+    <span class=nd>@Inject</span>
+    <span class=kd>public</span> <span class=nf>PathsPresenter</span><span class=o>(</span><span class=n>EventBus</span> <span class=n>eventBus</span><span class=o>,</span> <span class=n>MyView</span> <span class=n>view</span><span class=o>,</span> <span class=n>MyProxy</span> <span class=n>proxy</span><span class=o>,</span> <span class=n>Finder</span> <span class=n>finder</span><span class=o>,</span> <span class=n>CrudOperations</span> <span class=n>crud</span><span class=o>)</span> <span class=o>{</span>
+        <span class=kd>super</span><span class=o>(</span><span class=n>eventBus</span><span class=o>,</span> <span class=n>view</span><span class=o>,</span> <span class=n>proxy</span><span class=o>,</span> <span class=n>finder</span><span class=o>);</span>
+        <span class=k>this</span><span class=o>.</span><span class=na>crud</span> <span class=o>=</span> <span class=n>crud</span><span class=o>;</span>
+    <span class=o>}</span>
+
+    <span class=c1>// business methods omitted 
+</span><span class=c1></span>
+    <span class=nd>@ProxyCodeSplit</span>
+    <span class=nd>@Requires</span><span class=o>(</span><span class=s>&#34;/path=*&#34;</span><span class=o>)</span>
+    <span class=nd>@NameToken</span><span class=o>(</span><span class=n>NameTokens</span><span class=o>.</span><span class=na>PATH</span><span class=o>)</span>
+    <span class=kd>public</span> <span class=kd>interface</span> <span class=nc>MyProxy</span> <span class=kd>extends</span> <span class=n>ProxyPlace</span><span class=o>&lt;</span><span class=n>PathsPresenter</span><span class=o>&gt;</span> <span class=o>{</span> <span class=o>}</span>
+
+    <span class=kd>public</span> <span class=kd>interface</span> <span class=nc>MyView</span> <span class=kd>extends</span> <span class=n>MbuiView</span><span class=o>&lt;</span><span class=n>PathsPresenter</span><span class=o>&gt;</span> <span class=o>{</span>
+        <span class=kt>void</span> <span class=nf>update</span><span class=o>(</span><span class=n>List</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;</span> <span class=n>paths</span><span class=o>);</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><p><strong>PathsView.java</strong></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@MbuiView</span>
+<span class=kd>public</span> <span class=kd>abstract</span> <span class=kd>class</span> <span class=nc>PathsView</span> <span class=kd>extends</span> <span class=n>MbuiViewImpl</span><span class=o>&lt;</span><span class=n>PathsPresenter</span><span class=o>&gt;</span> <span class=kd>implements</span> <span class=n>PathsPresenter</span><span class=o>.</span><span class=na>MyView</span> <span class=o>{</span>
+
+    <span class=kd>public</span> <span class=kd>static</span> <span class=n>PathsView</span> <span class=nf>create</span><span class=o>(</span><span class=kd>final</span> <span class=n>MbuiContext</span> <span class=n>mbuiContext</span><span class=o>)</span> <span class=o>{</span>
+        <span class=k>return</span> <span class=k>new</span> <span class=n>Mbui_PathsView</span><span class=o>(</span><span class=n>mbuiContext</span><span class=o>);</span>
+    <span class=o>}</span>
+
+    <span class=nd>@MbuiElement</span><span class=o>(</span><span class=s>&#34;path-table&#34;</span><span class=o>)</span> <span class=n>Table</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;</span> <span class=n>table</span><span class=o>;</span>
+    <span class=nd>@MbuiElement</span><span class=o>(</span><span class=s>&#34;path-form&#34;</span><span class=o>)</span> <span class=n>Form</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;</span> <span class=n>form</span><span class=o>;</span>
+
+    <span class=n>PathsView</span><span class=o>(</span><span class=n>MbuiContext</span> <span class=n>mbuiContext</span><span class=o>)</span> <span class=o>{</span>
+        <span class=kd>super</span><span class=o>(</span><span class=n>mbuiContext</span><span class=o>);</span>
+    <span class=o>}</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>update</span><span class=o>(</span><span class=n>List</span><span class=o>&lt;</span><span class=n>NamedNode</span><span class=o>&gt;</span> <span class=n>paths</span><span class=o>)</span> <span class=o>{</span>
+        <span class=n>form</span><span class=o>.</span><span class=na>clear</span><span class=o>();</span>
+        <span class=n>table</span><span class=o>.</span><span class=na>update</span><span class=o>(</span><span class=n>paths</span><span class=o>);</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><p><strong>PathsView.mbui.xml</strong></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;view&gt;</span>
+    <span class=nt>&lt;metadata</span> <span class=na>address=</span><span class=s>&#34;/path=*&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;h1&gt;</span>Paths<span class=nt>&lt;/h1&gt;</span>
+        <span class=nt>&lt;p&gt;</span>${metadata.getDescription().getDescription()}<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;table</span> <span class=na>id=</span><span class=s>&#34;path-table&#34;</span> <span class=na>form-ref=</span><span class=s>&#34;path-form&#34;</span><span class=nt>&gt;</span>
+            <span class=nt>&lt;actions&gt;</span>
+                <span class=nt>&lt;action</span> <span class=na>handler-ref=</span><span class=s>&#34;add-resource&#34;</span><span class=nt>&gt;</span>
+                    <span class=nt>&lt;attributes&gt;</span>
+                        <span class=nt>&lt;attribute</span> <span class=na>name=</span><span class=s>&#34;name&#34;</span><span class=nt>/&gt;</span>
+                        <span class=nt>&lt;attribute</span> <span class=na>name=</span><span class=s>&#34;path&#34;</span><span class=nt>/&gt;</span>
+                        <span class=nt>&lt;attribute</span> <span class=na>name=</span><span class=s>&#34;relative-to&#34;</span> <span class=na>suggest-handler=</span><span class=s>&#34;${new PathsAutoComplete()}&#34;</span><span class=nt>/&gt;</span>
+                    <span class=nt>&lt;/attributes&gt;</span>
+                <span class=nt>&lt;/action&gt;</span>
+                <span class=nt>&lt;action</span> <span class=na>handler-ref=</span><span class=s>&#34;remove-resource&#34;</span> <span class=na>scope=</span><span class=s>&#34;selected&#34;</span> <span class=na>name-resolver=</span><span class=s>&#34;${table.selectedRow().getName()}&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;/actions&gt;</span>
+            <span class=nt>&lt;columns&gt;</span>
+                <span class=nt>&lt;column</span> <span class=na>name=</span><span class=s>&#34;name&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;column</span> <span class=na>name=</span><span class=s>&#34;path&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;/columns&gt;</span>
+        <span class=nt>&lt;/table&gt;</span>
+        <span class=nt>&lt;form</span> <span class=na>id=</span><span class=s>&#34;path-form&#34;</span> <span class=na>auto-save=</span><span class=s>&#34;true&#34;</span> <span class=na>reset=</span><span class=s>&#34;true&#34;</span> <span class=na>name-resolver=</span><span class=s>&#34;${form.getModel().getName()}&#34;</span><span class=nt>&gt;</span>
+            <span class=nt>&lt;attributes&gt;</span>
+                <span class=nt>&lt;attribute</span> <span class=na>name=</span><span class=s>&#34;name&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;attribute</span> <span class=na>name=</span><span class=s>&#34;path&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;attribute</span> <span class=na>name=</span><span class=s>&#34;relative-to&#34;</span> <span class=na>suggest-handler=</span><span class=s>&#34;${new PathsAutoComplete()}&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;/attributes&gt;</span>
+        <span class=nt>&lt;/form&gt;</span>
+    <span class=nt>&lt;/metadata&gt;</span>
+<span class=nt>&lt;/view&gt;</span>
+</code></pre></div>
+</article>
+</main>
+</div>
+</div>
+<footer class="hal-footer footer-dark bg-dark position-relative p-5">
+<div class=container>
+<div class=row><div class="col-md-2 offset-md-1">
+<h6>Related</h6>
+<ul class=list-unstyled><li><a class=small href=https://wildfly.org/>WildFly</a></li><li><a class=small href=http://www.gwtproject.org/>GWT</a></li><li><a class=small href=https://github.com/hal/elemento>Elemento</a></li></ul>
+</div><div class=col-md-2>
+<h6>Learn</h6>
+<ul class=list-unstyled><li><a class=small href=/documentation/>Documentation</a></li><li><a class=small href=/development/>Development</a></li><li><a class=small href=/documentation/roadmap/>Roadmap</a></li></ul>
+</div><div class=col-md-2>
+<h6>Contribute</h6>
+<ul class=list-unstyled><li><a class=small href=/documentation/contribute/>How To</a></li><li><a class=small href=https://issues.jboss.org/projects/HAL/issues>Submit a Bug</a></li><li><a class=small href=https://github.com/hal/console/fork>Fork the Code</a></li></ul>
+</div><div class="col-md-3 offset-md-1">
+<h6>Apache 2 License</h6>
+<p class=small>All dependencies of this project are available under the Apache 2 or a compatible
+license.</p>
+</div>
+</div>
+<div class=row>
+<div class="col-md-6 offset-md-1 hal-smaller font-weight-light">
+<ul class="list-unstyled mb-0">
+<li><span class="far fa-copyright"></span> Copyright 2018 Red Hat, Inc.</li>
+<li><span class="fas fa-wrench"></span> Made with <a href=https://gohugo.io/>Hugo</a> static site
+generator.
+</li>
+<li><span class="fas fa-code-branch"></span> This website is open source! If you want to improve it,
+<a href=https://github.com/hal/site>fork the project</a> and send a pull request.
+</li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<div class="d-flex justify-content-center p-2 m-2">
+<a href=https://www.redhat.com/><img src=/img/redhat.svg alt class=img-fluid style=width:100px></a>
+</div>
+<script src=https://code.jquery.com/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js integrity=sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl crossorigin=anonymous></script>
+<script src=/script/lightbox.min.js type=text/javascript></script>
+<script src=/script/main.js type=text/javascript></script>
+</body>
+</html>
