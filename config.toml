@@ -1,0 +1,134 @@
+baseURL = "https://hal.github.io/"
+description = "HAL is the project name of the management console used in WildFly and JBoss EAP"
+enableGitInfo = true
+googleAnalytics = "UA-89365654-5"
+languageCode = "en-us"
+paginate = 7
+pluralizeListTitles = false
+pygmentsCodefences = true
+pygmentsUseClasses = true
+title = "HAL Management Console"
+theme = "hal"
+
+[[menu.global]]
+  name = "Home"
+  identifier = "home"
+  weight = 10
+  url = "/"
+[[menu.global]]
+  name = "Documentation"
+  identifier = "documentation"
+  weight = 20
+  url = "/documentation/"
+[[menu.global]]
+  name = "Development"
+  identifier = "development"
+  weight = 30
+  url = "/development/"
+[[menu.global]]
+  name = "Releases"
+  identifier = "releases"
+  weight = 40
+  url = "/releases/"
+[[menu.global]]
+  name = "Blog"
+  identifier = "blog"
+  weight = 50
+  url = "/blog/"
+
+[[menu.external]]
+  name = "Youtube"
+  identifier = "youtube"
+  weight = 10
+  post = "fab fa-youtube"
+  url = "https://www.youtube.com/channel/UCcXaCVPvmzgLz74FnzlWoSg/"
+[[menu.external]]
+  name = "Source Code"
+  identifier = "code"
+  weight = 20
+  post = "fab fa-github"
+  url = "https://github.com/hal/console"
+[[menu.external]]
+  name = "Zulip"
+  identifier = "zulip"
+  weight = 30
+  post = "far fa-comments"
+  url = "https://wildfly.zulipchat.com"
+[[menu.external]]
+  name = "Gitter"
+  identifier = "gitter"
+  weight = 40
+  post = "fab fa-gitter"
+  url = "https://gitter.im/hal/console"
+[[menu.external]]
+  name = "Issues"
+  identifier = "issues"
+  weight = 50
+  post = "fas fa-bug"
+  url = "https://issues.jboss.org/projects/HAL/issues"
+
+[[menu.footer]]
+  name = "Related"
+  identifier = "related"
+  weight = 10
+[[menu.footer]]
+  name = "WildFly"
+  parent = "related"
+  weight = 100
+  url = "https://wildfly.org/"
+[[menu.footer]]
+  name = "GWT"
+  parent = "related"
+  weight = 110
+  url = "http://www.gwtproject.org/"
+[[menu.footer]]
+  name = "Elemento"
+  parent = "related"
+  weight = 120
+  url = "https://github.com/hal/elemento"
+[[menu.footer]]
+  name = "Learn"
+  identifier = "learn"
+  weight = 20
+[[menu.footer]]
+  name = "Documentation"
+  parent = "learn"
+  weight = 200
+  url = "/documentation/"
+[[menu.footer]]
+  name = "Development"
+  parent = "learn"
+  weight = 210
+  url = "/development/"
+[[menu.footer]]
+  name = "Roadmap"
+  parent = "learn"
+  weight = 220
+  url = "/documentation/roadmap/"
+[[menu.footer]]
+  name = "Contribute"
+  identifier = "contribute"
+  weight = 30
+[[menu.footer]]
+  name = "How To"
+  parent = "contribute"
+  weight = 300
+  url = "/documentation/contribute/"
+[[menu.footer]]
+  name = "Submit a Bug"
+  parent = "contribute"
+  weight = 310
+  url = "https://issues.jboss.org/projects/HAL/issues"
+[[menu.footer]]
+  name = "Fork the Code"
+  parent = "contribute"
+  weight = 320
+  url = "https://github.com/hal/console/fork"
+
+[params]
+  copyrighthtml = "<span class=\"far fa-copyright\"></span> Copyright 2018 Red Hat, Inc."
+  mainClass = "col-12 col-md-12 py-md-3 px-md-5"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
