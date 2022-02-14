@@ -12,9 +12,9 @@ HAL uses a set of UI components which follow the design guides from [PatternFly]
 
 The header and footer provide access to global features and give feedback about various states of WildFly. The color of the top line in the header shows the used <a name="theme">theme</a>: 
 
-- <span style="background-color:#f0ab00">&nbsp;&nbsp;&nbsp;&nbsp;</span> HAL ([standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}))
-- <span style="background-color:#39a5dc">&nbsp;&nbsp;&nbsp;&nbsp;</span> WildFly (community)
-- <span style="background-color:#c82e2e">&nbsp;&nbsp;&nbsp;&nbsp;</span> EAP (product)
+- {{< rawhtml >}}<span style="background-color:#f0ab00">&nbsp;&nbsp;&nbsp;&nbsp;</span>{{< /rawhtml >}} HAL ([standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}))
+- {{< rawhtml >}}<span style="background-color:#39a5dc">&nbsp;&nbsp;&nbsp;&nbsp;</span>{{< /rawhtml >}} WildFly (community)
+- {{< rawhtml >}}<span style="background-color:#c82e2e">&nbsp;&nbsp;&nbsp;&nbsp;</span>{{< /rawhtml >}} EAP (product)
 
 The header also contains the top level navigation. The navigation changes depending on whether the finder or an application is used. Please refer to the [manual]({{< relref "/documentation/manual.md" >}}) to find out about all elements in the header and footer. 
 

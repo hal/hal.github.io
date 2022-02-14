@@ -12,72 +12,94 @@ This page explains how to build, run and debug the console. We recommend to use 
 
 If not already done, clone the code from https://github.com/hal/console/ or [fork](https://github.com/hal/console/fork) the repository into your own personal GitHub account.
 
-For a full build use 
+For a full build use
 
-```bash
-mvn clean install
+```shell
+mvn verify
 ``` 
 
 This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you can skip the GWT compiler and use
 
-```bash
-mvn clean install -Dgwt.skipCompilation
+```shell
+mvn verify -P skip-gwt
 ``` 
+
+To build a HAL release ready to be used for WildFly or JBoss EAP use one of the following commands:
+
+- WildFly: `mvn clean install -P prod,theme-wildfly`
+- JBoss EAP: `mvn clean install -P prod,theme-eap`
 
 ## Profiles
 
-The maven build defines the following profiles:
+The POM defines the following profiles:
 
-- `docker` Produces the docker container [`halconsole/hal`](https://hub.docker.com/r/halconsole/hal/) which runs the console in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}})
-- `esdoc` Produces the JavaScript API documentation
-- `i18n` Compiles the console with language support for German, Spanish, French, Portuguese, Chinese and Japanese
-- `prod` Runs the GWT compiler using production settings. Minimizes the CSS and JavaScript code. 
-- `release` Signs the maven artifacts, builds and attaches Javadoc
-- `site` Builds the maven site
-- `theme-eap` Applies the EAP theme
-- `theme-hal` Applies the HAL theme
-- `theme-wildfly` Applies the WildFly theme
-
-## Scripts
-
-HAL contains some scripts for typical development tasks. Here's a short description of the scripts and what they're used for:
-
-- `app/refresh.sh`: Rebuilds certain resources when running the GWT development mode (see below)
-- `esdoc.sh`: Builds and pushes the JavaScript API documentation
-- `loc.sh`: Calculates code metrics such as LoC per file type
-- `release.sh`: Builds and deploys HAL using profiles `release,prod,theme-hal,docker` and pushes the latest console build to https://hal.github.io/console/
-- `snapshot.sh`: Builds and deploys the latest snapshot
-- `versionBump.sh`: Bumps the version in all POMs and some documentation files
-- `zanata.sh`: Syncs the i18n resources with the Zanata translation service.
+- `native`: Used to build the native binary for the standalone mode
+- `prod`: Activates GWT settings for the production build
+- `release`: Builds and signs source and JavaDoc JARs
+- `skip-gwt`: Skips GWT compilation
+- `theme-eap`: Theme for JBoss EAP
+- `theme-hal`: Theme for HAL standalone
+- `theme-wildfly`: Theme for WildFly
 
 # Run
 
-HAL is a GWT application and as such it is served from a local Jetty server. As a one time prerequisite you need to add the URL of the local Jetty server as an allowed origin to your WildFly / JBoss EAP configuration: 
+## Development Mode
 
-**Standalone Mode**
+The GWT development mode starts a local Jetty server. As a one time prerequisite you need to add the URL of the local
+Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:
 
-```bash
+```shell
 /core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:8888)
 reload
 ```
-**Domain Mode**
 
-```bash
+resp.
+
+```shell
 /host=master/core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:8888)
 reload --host=master
 ``` 
- 
-The main GWT application is located in the `app` folder. To run the console use
 
-```bash
+The main GWT application is located in the `app` folder. To run the console in dev mode use
+
+```shell
 cd app
 mvn gwt:devmode
 ```
 
-This will start the development mode. Wait until you see a message like 
+This will start the development mode. Wait until you see a message like
 
 ```
 00:00:15,703 [INFO] Code server started in 15.12 s ms
+```
+
+Then open http://localhost:8888/dev.html in your browser and connect to your WildFly / JBoss EAP instance.
+
+The dev mode allows you to change code and see your changes simply by refreshing the browser. GWT will detect the
+modifications and only transpile the changed sources.
+
+## Standalone Mode
+
+HAL can also be started as standalone Java application. The standalone mode is a Quarkus application which uses port
+9090. Similar to GWT dev mode, you have to add the URL as allowed origin to your WildFly / JBoss EAP configuration:
+
+```shell
+/core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:9090)
+reload
+```
+
+resp.
+
+```shell
+/host=master/core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:9090)
+reload --host=master
+``` 
+
+To build and run the standalone mode use
+
+```shell
+mvn package --projects standalone --also-make -P prod,theme-hal
+java -jar standalone/target/quarkus-app/quarkus-run.jar
 ```
 
 Then open [http://localhost:8888/hal/dev.html](http://localhost:8888/hal/dev.html) in your browser and connect to your WildFly / JBoss EAP instance as described in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}). 
@@ -98,15 +120,32 @@ Let's say we want to debug the enable / disable action in the data source column
 If you're used to debug Java applications in your favorite IDE, the debugging experience in the browser development tools might feel strange at first. You can inspect simple types like boolean, numbers and strings. Support for native JavaScript types like arrays and objects is also very good. On the other hand Java types like lists or maps are not very well supported. In addition most variable names are suffixed with something like `_0_g$`. We recommend to inspect these variables using the console and call the `toString()` method on the respective object.    
 {{</ callout >}}
 
-# Develop
+# Scripts
 
-To apply changes made to Java code you just need to refresh the browser. GWT will detect the modifications and only transpile the changed sources. 
+This repository contains various scripts to automate tasks.
 
-Changes to other resources require a little bit more effort. To make it easier, you can use the script `app/refresh.sh`. Change to the `app` folder and call `refresh.sh` with one of the following parameters, depending what kind of resource you've modified:
+## `depgraph.sh`
 
-- `less`: Compile LESS stylesheets
-- `html`: Update HTML snippets
-- `i18n`: Process i18n resource bundles
-- `mbui`: Regenerate MBUI resources
+Generates a visual dependency graph
 
-After calling the script, refresh the browser to see your changes. 
+## `format.sh`
+
+Formats the codebase by applying the following maven goals:
+
+- [`license-maven-plugin:format`](https://mycila.carbou.me/license-maven-plugin/#goals)
+- [`formatter-maven-plugin:format`](https://code.revelc.net/formatter-maven-plugin/format-mojo.html)
+- [`impsort-maven-plugin:sort`](https://code.revelc.net/impsort-maven-plugin/sort-mojo.html)
+
+## `validate.sh`
+
+Validates the codebase by applying the following maven goals:
+
+- [`enforcer:enforce`](https://maven.apache.org/enforcer/maven-enforcer-plugin/enforce-mojo.html)
+- [`checkstyle:check`](https://maven.apache.org/plugins/maven-checkstyle-plugin/check-mojo.html)
+- [`license-maven-plugin:check`](https://mycila.carbou.me/license-maven-plugin/#goals)
+- [`formatter-maven-plugin:validate`](https://code.revelc.net/formatter-maven-plugin/validate-mojo.html)
+- [`impsort-maven-plugin:check`](https://code.revelc.net/impsort-maven-plugin/check-mojo.html)
+
+## `versionBump.sh`
+
+Bumps the version to the specified version number.

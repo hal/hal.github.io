@@ -12,7 +12,7 @@ This page gives a quick introduction to the main elements in the header and foot
 
 # Header
 
-The header shows the current [theme]({{< relref "/documentation/concepts.md#theme" >}}) and contains the following sections:
+The header shows the current [theme]({{< relref "/documentation/concepts.md#header--footer" >}}) and contains the following sections:
 
 - Non processing operations \
   If configured HAL polls WildFly for non processing operations. In case there are non processing operations a marker is shown in the header.  

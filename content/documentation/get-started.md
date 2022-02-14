@@ -6,7 +6,7 @@ icon: "/img/rocket.png"
 toc: true
 weight: 10
 ---
-The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply fire up your browser and open http://localhost:9990. 
+The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply fire up your browser and open [http://localhost:9990](http://localhost:9990). 
 
 # Standalone Mode
 
@@ -22,44 +22,32 @@ There are different ways to use the standalone mode. All of them require to conf
 
 **Standalone Mode**
 
-```bash
+```shell
 /core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=<url>)
 reload
 ```
 **Domain Mode**
 
-```bash
+```shell
 /host=master/core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=<url>)
 reload --host=master
 ``` 
 
 The URL depends on how you launch the console. You can choose between one of the following options:
 
-## Undertow
+## Container
 
-The package `hal-standalone.jar` starts an Undertow server at http://localhost:9090. You can specify a different port as command line parameter:
+The standalone version of HAL is available as a container image at [`quay.io/halconsole/hal`](https://quay.io/repository/halconsole/hal). It's a native binary based on Quarkus and listens to port 9090 by default.
 
-1. Add http://localhost:9090 as allowed origin
-1. `java -jar hal-standalone-<version>.jar [port]` 
-1. Open http://localhost:9090
-  
-## NPM 
-
-The npm package [`hal-console`](https://www.npmjs.com/package/hal-console) launches a local web server at http://localhost:3000. You can specify a different port using the PORT environment variable:
-
-1. Add http://localhost:3000 as allowed origin
-1. `npm install hal-console`
-1. `[PORT=dddd] node hal-console`
+```shell
+docker run --publish 9090:9090 quay.io/halconsole/hal
+```
 
 ## GitHub Pages
 
-The latest console version is also available at GitHub:
+The latest stable version of HAL is also available at GitHub:
 
-1. Add https://hal.github.io/console/ as allowed origin
+1. Add https://hal.github.io as allowed origin
 1. Open https://hal.github.io/console/
 
 GitHub pages are served from https so you need to secure the management interface as well. Please note that if you're using a self signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.
-
-## Docker
-
-Finally you can use the docker image [`halconsole/hal`](https://hub.docker.com/r/halconsole/hal/) which wraps an Undertow server inside a docker container. Follow the steps at https://hub.docker.com/r/halconsole/hal/ to get started. 
