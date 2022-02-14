@@ -75,12 +75,23 @@ Build & Run <span class=caret></span>
 <li><a href=#build>Build</a>
 <ul>
 <li><a href=#profiles>Profiles</a></li>
-<li><a href=#scripts>Scripts</a></li>
 </ul>
 </li>
-<li><a href=#run>Run</a></li>
+<li><a href=#run>Run</a>
+<ul>
+<li><a href=#development-mode>Development Mode</a></li>
+<li><a href=#standalone-mode>Standalone Mode</a></li>
+</ul>
+</li>
 <li><a href=#debug>Debug</a></li>
-<li><a href=#develop>Develop</a></li>
+<li><a href=#scripts>Scripts</a>
+<ul>
+<li><a href=#depgraphsh><code>depgraph.sh</code></a></li>
+<li><a href=#formatsh><code>format.sh</code></a></li>
+<li><a href=#validatesh><code>validate.sh</code></a></li>
+<li><a href=#versionbumpsh><code>versionBump.sh</code></a></li>
+</ul>
+</li>
 </ul>
 </nav></div>
 </div>
@@ -90,47 +101,54 @@ Build & Run <span class=caret></span>
 <h1 id=build>Build</h1>
 <p>If not already done, clone the code from <a href=https://github.com/hal/console/>https://github.com/hal/console/</a> or <a href=https://github.com/hal/console/fork>fork</a> the repository into your own personal GitHub account.</p>
 <p>For a full build use</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mvn clean install
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>mvn verify
 </code></pre></div><p>This includes the GWT compiler, which might take a while. If you just want to make sure that there are no compilation or test failures, you can skip the GWT compiler and use</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mvn clean install -Dgwt.skipCompilation
-</code></pre></div><h2 id=profiles>Profiles</h2>
-<p>The maven build defines the following profiles:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>mvn verify -P skip-gwt
+</code></pre></div><p>To build a HAL release ready to be used for WildFly or JBoss EAP use one of the following commands:</p>
 <ul>
-<li><code>docker</code> Produces the docker container <a href=https://hub.docker.com/r/halconsole/hal/><code>halconsole/hal</code></a> which runs the console in <a href=/documentation/get-started/#standalone-mode>standalone mode</a></li>
-<li><code>esdoc</code> Produces the JavaScript API documentation</li>
-<li><code>i18n</code> Compiles the console with language support for German, Spanish, French, Portuguese, Chinese and Japanese</li>
-<li><code>prod</code> Runs the GWT compiler using production settings. Minimizes the CSS and JavaScript code.</li>
-<li><code>release</code> Signs the maven artifacts, builds and attaches Javadoc</li>
-<li><code>site</code> Builds the maven site</li>
-<li><code>theme-eap</code> Applies the EAP theme</li>
-<li><code>theme-hal</code> Applies the HAL theme</li>
-<li><code>theme-wildfly</code> Applies the WildFly theme</li>
+<li>WildFly: <code>mvn clean install -P prod,theme-wildfly</code></li>
+<li>JBoss EAP: <code>mvn clean install -P prod,theme-eap</code></li>
 </ul>
-<h2 id=scripts>Scripts</h2>
-<p>HAL contains some scripts for typical development tasks. Here&rsquo;s a short description of the scripts and what they&rsquo;re used for:</p>
+<h2 id=profiles>Profiles</h2>
+<p>The POM defines the following profiles:</p>
 <ul>
-<li><code>app/refresh.sh</code>: Rebuilds certain resources when running the GWT development mode (see below)</li>
-<li><code>esdoc.sh</code>: Builds and pushes the JavaScript API documentation</li>
-<li><code>loc.sh</code>: Calculates code metrics such as LoC per file type</li>
-<li><code>release.sh</code>: Builds and deploys HAL using profiles <code>release,prod,theme-hal,docker</code> and pushes the latest console build to <a href=https://hal.github.io/console/>https://hal.github.io/console/</a></li>
-<li><code>snapshot.sh</code>: Builds and deploys the latest snapshot</li>
-<li><code>versionBump.sh</code>: Bumps the version in all POMs and some documentation files</li>
-<li><code>zanata.sh</code>: Syncs the i18n resources with the Zanata translation service.</li>
+<li><code>native</code>: Used to build the native binary for the standalone mode</li>
+<li><code>prod</code>: Activates GWT settings for the production build</li>
+<li><code>release</code>: Builds and signs source and JavaDoc JARs</li>
+<li><code>skip-gwt</code>: Skips GWT compilation</li>
+<li><code>theme-eap</code>: Theme for JBoss EAP</li>
+<li><code>theme-hal</code>: Theme for HAL standalone</li>
+<li><code>theme-wildfly</code>: Theme for WildFly</li>
 </ul>
 <h1 id=run>Run</h1>
-<p>HAL is a GWT application and as such it is served from a local Jetty server. As a one time prerequisite you need to add the URL of the local Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
-<p><strong>Standalone Mode</strong></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
+<h2 id=development-mode>Development Mode</h2>
+<p>The GWT development mode starts a local Jetty server. As a one time prerequisite you need to add the URL of the local
+Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
 reload
-</code></pre></div><p><strong>Domain Mode</strong></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
+</code></pre></div><p>resp.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
 reload --host<span class=o>=</span>master
-</code></pre></div><p>The main GWT application is located in the <code>app</code> folder. To run the console use</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> app
+</code></pre></div><p>The main GWT application is located in the <code>app</code> folder. To run the console in dev mode use</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>cd</span> app
 mvn gwt:devmode
 </code></pre></div><p>This will start the development mode. Wait until you see a message like</p>
 <pre tabindex=0><code>00:00:15,703 [INFO] Code server started in 15.12 s ms
-</code></pre><p>Then open <a href=http://localhost:8888/hal/dev.html>http://localhost:8888/hal/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href=/documentation/get-started/#standalone-mode>standalone mode</a>.</p>
+</code></pre><p>Then open http://localhost:8888/dev.html in your browser and connect to your WildFly / JBoss EAP instance.</p>
+<p>The dev mode allows you to change code and see your changes simply by refreshing the browser. GWT will detect the
+modifications and only transpile the changed sources.</p>
+<h2 id=standalone-mode>Standalone Mode</h2>
+<p>HAL can also be started as standalone Java application. The standalone mode is a Quarkus application which uses port
+9090. Similar to GWT dev mode, you have to add the URL as allowed origin to your WildFly / JBoss EAP configuration:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:9090<span class=o>)</span>
+reload
+</code></pre></div><p>resp.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:9090<span class=o>)</span>
+reload --host<span class=o>=</span>master
+</code></pre></div><p>To build and run the standalone mode use</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>mvn package --projects standalone --also-make -P prod,theme-hal
+java -jar standalone/target/quarkus-app/quarkus-run.jar
+</code></pre></div><p>Then open <a href=http://localhost:8888/hal/dev.html>http://localhost:8888/hal/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href=/documentation/get-started/#standalone-mode>standalone mode</a>.</p>
 <h1 id=debug>Debug</h1>
 <div class=clearfix>
 <a href=/img/development/debug.png data-lightbox="L2ltZy9kZXZlbG9wbWVudC9kZWJ1Zy5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary" src=/img/development/debug.png alt></a>
@@ -145,16 +163,28 @@ mvn gwt:devmode
 <h5 id=inspect-variables>Inspect Variables</h5>
 <p>If you&rsquo;re used to debug Java applications in your favorite IDE, the debugging experience in the browser development tools might feel strange at first. You can inspect simple types like boolean, numbers and strings. Support for native JavaScript types like arrays and objects is also very good. On the other hand Java types like lists or maps are not very well supported. In addition most variable names are suffixed with something like <code>_0_g$</code>. We recommend to inspect these variables using the console and call the <code>toString()</code> method on the respective object.
 </div>
-<h1 id=develop>Develop</h1>
-<p>To apply changes made to Java code you just need to refresh the browser. GWT will detect the modifications and only transpile the changed sources.</p>
-<p>Changes to other resources require a little bit more effort. To make it easier, you can use the script <code>app/refresh.sh</code>. Change to the <code>app</code> folder and call <code>refresh.sh</code> with one of the following parameters, depending what kind of resource you&rsquo;ve modified:</p>
+<h1 id=scripts>Scripts</h1>
+<p>This repository contains various scripts to automate tasks.</p>
+<h2 id=depgraphsh><code>depgraph.sh</code></h2>
+<p>Generates a visual dependency graph</p>
+<h2 id=formatsh><code>format.sh</code></h2>
+<p>Formats the codebase by applying the following maven goals:</p>
 <ul>
-<li><code>less</code>: Compile LESS stylesheets</li>
-<li><code>html</code>: Update HTML snippets</li>
-<li><code>i18n</code>: Process i18n resource bundles</li>
-<li><code>mbui</code>: Regenerate MBUI resources</li>
+<li><a href=https://mycila.carbou.me/license-maven-plugin/#goals><code>license-maven-plugin:format</code></a></li>
+<li><a href=https://code.revelc.net/formatter-maven-plugin/format-mojo.html><code>formatter-maven-plugin:format</code></a></li>
+<li><a href=https://code.revelc.net/impsort-maven-plugin/sort-mojo.html><code>impsort-maven-plugin:sort</code></a></li>
 </ul>
-<p>After calling the script, refresh the browser to see your changes.</p>
+<h2 id=validatesh><code>validate.sh</code></h2>
+<p>Validates the codebase by applying the following maven goals:</p>
+<ul>
+<li><a href=https://maven.apache.org/enforcer/maven-enforcer-plugin/enforce-mojo.html><code>enforcer:enforce</code></a></li>
+<li><a href=https://maven.apache.org/plugins/maven-checkstyle-plugin/check-mojo.html><code>checkstyle:check</code></a></li>
+<li><a href=https://mycila.carbou.me/license-maven-plugin/#goals><code>license-maven-plugin:check</code></a></li>
+<li><a href=https://code.revelc.net/formatter-maven-plugin/validate-mojo.html><code>formatter-maven-plugin:validate</code></a></li>
+<li><a href=https://code.revelc.net/impsort-maven-plugin/check-mojo.html><code>impsort-maven-plugin:check</code></a></li>
+</ul>
+<h2 id=versionbumpsh><code>versionBump.sh</code></h2>
+<p>Bumps the version to the specified version number.</p>
 </article>
 </main>
 </div>

@@ -74,10 +74,8 @@ Get Started <span class=caret></span>
 <ul>
 <li><a href=#standalone-mode>Standalone Mode</a>
 <ul>
-<li><a href=#undertow>Undertow</a></li>
-<li><a href=#npm>NPM</a></li>
+<li><a href=#container>Container</a></li>
 <li><a href=#github-pages>GitHub Pages</a></li>
-<li><a href=#docker>Docker</a></li>
 </ul>
 </li>
 </ul>
@@ -85,7 +83,7 @@ Get Started <span class=caret></span>
 </div>
 </aside><article class=hal-article>
 <header><h1 class=display-4>Get Started</h1></header>
-<p>The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply fire up your browser and open http://localhost:9990.</p>
+<p>The HAL management console is part of every WildFly and JBoss EAP installation. To get started simply fire up your browser and open <a href=http://localhost:9990>http://localhost:9990</a>.</p>
 <h1 id=standalone-mode>Standalone Mode</h1>
 <div class=clearfix>
 <a href=/img/documentation/connect.png data-lightbox=L2ltZy9kb2N1bWVudGF0aW9uL2Nvbm5lY3QucG5n><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary" src=/img/documentation/connect.png alt></a>
@@ -98,35 +96,22 @@ Get Started <span class=caret></span>
 </div>
 </div>
 <p><strong>Standalone Mode</strong></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>&lt;url&gt;<span class=o>)</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>&lt;url&gt;<span class=o>)</span>
 reload
 </code></pre></div><p><strong>Domain Mode</strong></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>&lt;url&gt;<span class=o>)</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>&lt;url&gt;<span class=o>)</span>
 reload --host<span class=o>=</span>master
 </code></pre></div><p>The URL depends on how you launch the console. You can choose between one of the following options:</p>
-<h2 id=undertow>Undertow</h2>
-<p>The package <code>hal-standalone.jar</code> starts an Undertow server at http://localhost:9090. You can specify a different port as command line parameter:</p>
+<h2 id=container>Container</h2>
+<p>The standalone version of HAL is available as a container image at <a href=https://quay.io/repository/halconsole/hal><code>quay.io/halconsole/hal</code></a>. It&rsquo;s a native binary based on Quarkus and listens to port 9090 by default.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>docker run --publish 9090:9090 quay.io/halconsole/hal
+</code></pre></div><h2 id=github-pages>GitHub Pages</h2>
+<p>The latest stable version of HAL is also available at GitHub:</p>
 <ol>
-<li>Add http://localhost:9090 as allowed origin</li>
-<li><code>java -jar hal-standalone-&lt;version>.jar [port]</code></li>
-<li>Open http://localhost:9090</li>
-</ol>
-<h2 id=npm>NPM</h2>
-<p>The npm package <a href=https://www.npmjs.com/package/hal-console><code>hal-console</code></a> launches a local web server at http://localhost:3000. You can specify a different port using the PORT environment variable:</p>
-<ol>
-<li>Add http://localhost:3000 as allowed origin</li>
-<li><code>npm install hal-console</code></li>
-<li><code>[PORT=dddd] node hal-console</code></li>
-</ol>
-<h2 id=github-pages>GitHub Pages</h2>
-<p>The latest console version is also available at GitHub:</p>
-<ol>
-<li>Add <a href=https://hal.github.io/console/>https://hal.github.io/console/</a> as allowed origin</li>
+<li>Add <a href=https://hal.github.io>https://hal.github.io</a> as allowed origin</li>
 <li>Open <a href=https://hal.github.io/console/>https://hal.github.io/console/</a></li>
 </ol>
 <p>GitHub pages are served from https so you need to secure the management interface as well. Please note that if you&rsquo;re using a self signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.</p>
-<h2 id=docker>Docker</h2>
-<p>Finally you can use the docker image <a href=https://hub.docker.com/r/halconsole/hal/><code>halconsole/hal</code></a> which wraps an Undertow server inside a docker container. Follow the steps at <a href=https://hub.docker.com/r/halconsole/hal/>https://hub.docker.com/r/halconsole/hal/</a> to get started.</p>
 </article>
 </main>
 </div>
