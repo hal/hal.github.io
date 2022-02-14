@@ -1,3 +1,3 @@
 # HAL Website
 
-Content for the [HAL website](https://hal.github.io). Uses [Hugo](https://gohugo.io/) to generate the website. 
+Content for the [HAL website](https://hal.github.io), generated with [Hugo](https://gohugo.io/) and [published](.github/workflows/publish.yml) to GitHub Pages. 
