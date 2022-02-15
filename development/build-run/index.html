@@ -77,18 +77,14 @@ Build & Run <span class=caret></span>
 <li><a href=#profiles>Profiles</a></li>
 </ul>
 </li>
-<li><a href=#run>Run</a>
-<ul>
 <li><a href=#development-mode>Development Mode</a></li>
-<li><a href=#standalone-mode>Standalone Mode</a></li>
-</ul>
-</li>
 <li><a href=#debug>Debug</a></li>
 <li><a href=#scripts>Scripts</a>
 <ul>
 <li><a href=#depgraphsh><code>depgraph.sh</code></a></li>
 <li><a href=#formatsh><code>format.sh</code></a></li>
 <li><a href=#validatesh><code>validate.sh</code></a></li>
+<li><a href=#releasesh><code>release.sh</code></a></li>
 <li><a href=#versionbumpsh><code>versionBump.sh</code></a></li>
 </ul>
 </li>
@@ -120,8 +116,7 @@ Build & Run <span class=caret></span>
 <li><code>theme-hal</code>: Theme for HAL standalone</li>
 <li><code>theme-wildfly</code>: Theme for WildFly</li>
 </ul>
-<h1 id=run>Run</h1>
-<h2 id=development-mode>Development Mode</h2>
+<h1 id=development-mode>Development Mode</h1>
 <p>The GWT development mode starts a local Jetty server. As a one time prerequisite you need to add the URL of the local
 Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
@@ -134,21 +129,9 @@ reload --host<span class=o>=</span>master
 mvn gwt:devmode
 </code></pre></div><p>This will start the development mode. Wait until you see a message like</p>
 <pre tabindex=0><code>00:00:15,703 [INFO] Code server started in 15.12 s ms
-</code></pre><p>Then open http://localhost:8888/dev.html in your browser and connect to your WildFly / JBoss EAP instance.</p>
+</code></pre><p>Then open <a href=http://localhost:8888/hal/dev.html>http://localhost:8888/hal/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href=/documentation/get-started/#standalone-mode>standalone mode</a>.</p>
 <p>The dev mode allows you to change code and see your changes simply by refreshing the browser. GWT will detect the
 modifications and only transpile the changed sources.</p>
-<h2 id=standalone-mode>Standalone Mode</h2>
-<p>HAL can also be started as standalone Java application. The standalone mode is a Quarkus application which uses port
-9090. Similar to GWT dev mode, you have to add the URL as allowed origin to your WildFly / JBoss EAP configuration:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:9090<span class=o>)</span>
-reload
-</code></pre></div><p>resp.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:9090<span class=o>)</span>
-reload --host<span class=o>=</span>master
-</code></pre></div><p>To build and run the standalone mode use</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>mvn package --projects standalone --also-make -P prod,theme-hal
-java -jar standalone/target/quarkus-app/quarkus-run.jar
-</code></pre></div><p>Then open <a href=http://localhost:8888/hal/dev.html>http://localhost:8888/hal/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href=/documentation/get-started/#standalone-mode>standalone mode</a>.</p>
 <h1 id=debug>Debug</h1>
 <div class=clearfix>
 <a href=/img/development/debug.png data-lightbox="L2ltZy9kZXZlbG9wbWVudC9kZWJ1Zy5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary" src=/img/development/debug.png alt></a>
@@ -164,9 +147,9 @@ java -jar standalone/target/quarkus-app/quarkus-run.jar
 <p>If you&rsquo;re used to debug Java applications in your favorite IDE, the debugging experience in the browser development tools might feel strange at first. You can inspect simple types like boolean, numbers and strings. Support for native JavaScript types like arrays and objects is also very good. On the other hand Java types like lists or maps are not very well supported. In addition most variable names are suffixed with something like <code>_0_g$</code>. We recommend to inspect these variables using the console and call the <code>toString()</code> method on the respective object.
 </div>
 <h1 id=scripts>Scripts</h1>
-<p>This repository contains various scripts to automate tasks.</p>
+<p>This repository contains some scripts to automate various development tasks.</p>
 <h2 id=depgraphsh><code>depgraph.sh</code></h2>
-<p>Generates a visual dependency graph</p>
+<p>Generates a visual dependency graph.</p>
 <h2 id=formatsh><code>format.sh</code></h2>
 <p>Formats the codebase by applying the following maven goals:</p>
 <ul>
@@ -183,6 +166,8 @@ java -jar standalone/target/quarkus-app/quarkus-run.jar
 <li><a href=https://code.revelc.net/formatter-maven-plugin/validate-mojo.html><code>formatter-maven-plugin:validate</code></a></li>
 <li><a href=https://code.revelc.net/impsort-maven-plugin/check-mojo.html><code>impsort-maven-plugin:check</code></a></li>
 </ul>
+<h2 id=releasesh><code>release.sh</code></h2>
+<p>Releases a new HAL version.</p>
 <h2 id=versionbumpsh><code>versionBump.sh</code></h2>
 <p>Bumps the version to the specified version number.</p>
 </article>

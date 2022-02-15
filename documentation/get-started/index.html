@@ -74,6 +74,7 @@ Get Started <span class=caret></span>
 <ul>
 <li><a href=#standalone-mode>Standalone Mode</a>
 <ul>
+<li><a href=#native-binary>Native Binary</a></li>
 <li><a href=#container>Container</a></li>
 <li><a href=#github-pages>GitHub Pages</a></li>
 </ul>
@@ -102,6 +103,8 @@ reload
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>&lt;url&gt;<span class=o>)</span>
 reload --host<span class=o>=</span>master
 </code></pre></div><p>The URL depends on how you launch the console. You can choose between one of the following options:</p>
+<h2 id=native-binary>Native Binary</h2>
+<p>Download the native binary for your platform from the latest <a href=https://github.com/hal/console/releases>HAL release</a>. It&rsquo;s a native binary based on Quarkus and listens to port 9090 by default.</p>
 <h2 id=container>Container</h2>
 <p>The standalone version of HAL is available as a container image at <a href=https://quay.io/repository/halconsole/hal><code>quay.io/halconsole/hal</code></a>. It&rsquo;s a native binary based on Quarkus and listens to port 9090 by default.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>docker run --publish 9090:9090 quay.io/halconsole/hal
