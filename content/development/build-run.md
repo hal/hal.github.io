@@ -41,9 +41,7 @@ The POM defines the following profiles:
 - `theme-hal`: Theme for HAL standalone
 - `theme-wildfly`: Theme for WildFly
 
-# Run
-
-## Development Mode
+# Development Mode
 
 The GWT development mode starts a local Jetty server. As a one time prerequisite you need to add the URL of the local
 Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:
@@ -73,36 +71,10 @@ This will start the development mode. Wait until you see a message like
 00:00:15,703 [INFO] Code server started in 15.12 s ms
 ```
 
-Then open http://localhost:8888/dev.html in your browser and connect to your WildFly / JBoss EAP instance.
+Then open [http://localhost:8888/hal/dev.html](http://localhost:8888/hal/dev.html) in your browser and connect to your WildFly / JBoss EAP instance as described in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}).
 
 The dev mode allows you to change code and see your changes simply by refreshing the browser. GWT will detect the
 modifications and only transpile the changed sources.
-
-## Standalone Mode
-
-HAL can also be started as standalone Java application. The standalone mode is a Quarkus application which uses port
-9090. Similar to GWT dev mode, you have to add the URL as allowed origin to your WildFly / JBoss EAP configuration:
-
-```shell
-/core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:9090)
-reload
-```
-
-resp.
-
-```shell
-/host=master/core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:9090)
-reload --host=master
-``` 
-
-To build and run the standalone mode use
-
-```shell
-mvn package --projects standalone --also-make -P prod,theme-hal
-java -jar standalone/target/quarkus-app/quarkus-run.jar
-```
-
-Then open [http://localhost:8888/hal/dev.html](http://localhost:8888/hal/dev.html) in your browser and connect to your WildFly / JBoss EAP instance as described in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}). 
 
 # Debug
 
@@ -122,11 +94,11 @@ If you're used to debug Java applications in your favorite IDE, the debugging ex
 
 # Scripts
 
-This repository contains various scripts to automate tasks.
+This repository contains some scripts to automate various development tasks.
 
 ## `depgraph.sh`
 
-Generates a visual dependency graph
+Generates a visual dependency graph.
 
 ## `format.sh`
 
@@ -145,6 +117,10 @@ Validates the codebase by applying the following maven goals:
 - [`license-maven-plugin:check`](https://mycila.carbou.me/license-maven-plugin/#goals)
 - [`formatter-maven-plugin:validate`](https://code.revelc.net/formatter-maven-plugin/validate-mojo.html)
 - [`impsort-maven-plugin:check`](https://code.revelc.net/impsort-maven-plugin/check-mojo.html)
+
+## `release.sh`
+
+Releases a new HAL version.
 
 ## `versionBump.sh`
 

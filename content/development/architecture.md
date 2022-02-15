@@ -53,7 +53,7 @@ HAL consists of many maven modules, each of which serves a specific purpose. Her
 | hal-theme-eap           | Theme used for [JBoss EAP](https://developers.redhat.com/products/eap/overview/)                                                 |
 | hal-theme-hal           | Theme used for the [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}})                             |
 | hal-theme-wildfly       | Theme used for [WildFly](https://wildfly.org/)                                                                                   |
-  \    
+
     
 ## Dependencies
 

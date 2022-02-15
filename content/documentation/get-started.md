@@ -35,6 +35,10 @@ reload --host=master
 
 The URL depends on how you launch the console. You can choose between one of the following options:
 
+## Native Binary
+
+Download the native binary for your platform from the latest [HAL release](https://github.com/hal/console/releases). It's a native binary based on Quarkus and listens to port 9090 by default.  
+
 ## Container
 
 The standalone version of HAL is available as a container image at [`quay.io/halconsole/hal`](https://quay.io/repository/halconsole/hal). It's a native binary based on Quarkus and listens to port 9090 by default.
