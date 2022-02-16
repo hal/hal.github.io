@@ -17,11 +17,13 @@ The first step to get started is to build HAL yourself. This requires creating a
 
 There are many ways to get in touch with us:
 
+{{< rawhtml >}}
 <ul class="fa-ul">
-  <li><span class="fa-li"><i class="far fa-envelope"></i></span>HAL is part of Wildfly and hence you can post questions to the <a href="https://community.jboss.org/en/wildfly?view=discussions">WildFly user forums.</a></li>
+  <li><span class="fa-li"><i class="far fa-envelope"></i></span>HAL is part of Wildfly and hence you can post questions to the <a href="https://groups.google.com/g/wildfly">WildFly user group.</a></li>
   <li><span class="fa-li"><i class="far fa-comments"></i></span>You can also use <a href="https://www.zulipchat.com/">Zulip</a> for real-time communications. Join us in the <a href="https://wildfly.zulipchat.com">WildFly user room</a>.</li>
   <li><span class="fa-li"><i class="fab fa-gitter"></i></span>Finally you can find us also on <a href="https://gitter.im/">Gitter</a> in the <a href="https://gitter.im/hal/console">HAL console room</a>.</li>
 </ul>
+{{< /rawhtml >}}
 
 # File an Issue
 
@@ -33,4 +35,4 @@ All HAL issues are tracked in the JBoss JIRA. Feel free to raise an issue, wheth
 
 # Submit a Pull Request
 
-We love pull requests! Submitting a pull request involves forking the GutHub project and creating branches. Please follow the steps in the [contribution guide](https://github.com/hal/console/blob/develop/CONTRIBUTING.md).
+We love pull requests! Submitting a pull request involves forking the GutHub project and creating branches. Please follow the steps in the [contribution guide](https://github.com/hal/console/blob/main/CONTRIBUTING.md).
