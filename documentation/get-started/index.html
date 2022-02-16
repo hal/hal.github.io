@@ -90,8 +90,9 @@ Get Started <span class=caret></span>
 <a href=/img/documentation/connect.png data-lightbox=L2ltZy9kb2N1bWVudGF0aW9uL2Nvbm5lY3QucG5n><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary" src=/img/documentation/connect.png alt></a>
 <div class=hal-imgflow-content>
 <p><p>Besides that you can run the console on its own aka <em>standalone mode</em>. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it&rsquo;s started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They&rsquo;re stored in the browser local storage and survive a browser restart.</p>
-<p>If you want to skip the connection dialog and connect to a previously defined endpoint, use the <code>connect</code> request parameter. If the console runs on port 9090, you&rsquo;d use an URL like http://localhost:9090/?connect=Development.</p>
-<p>The standalone mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore you can always use the latest HAL version.</p>
+<p>If you want to skip the connection dialog and connect to a previously defined endpoint, use the <code>connect</code> request parameter. If the console runs on port 9090, you&rsquo;d use a URL like http://localhost:9090/?connect=Development.</p>
+<p>If you want to connect to a URL not stored by name, you can also provide the URL of the management endpoint to the <code>connect</code> parameter like in http://localhost:9090/?connect=http://localhost:9990.</p>
+<p>The standalone mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore, you can always use the latest HAL version.</p>
 <p>There are different ways to use the standalone mode. All of them require to configure the allowed origins of the http(s) management endpoint:</p>
 </p>
 </div>
@@ -104,17 +105,20 @@ reload
 reload --host<span class=o>=</span>master
 </code></pre></div><p>The URL depends on how you launch the console. You can choose between one of the following options:</p>
 <h2 id=native-binary>Native Binary</h2>
-<p>Download the native binary for your platform from the latest <a href=https://github.com/hal/console/releases>HAL release</a>. It&rsquo;s a native binary based on Quarkus and listens to port 9090 by default.</p>
+<p>The standalone version of HAL is available as native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest <a href=https://github.com/hal/console/releases>HAL release</a>. It&rsquo;s based on Quarkus and listens to port 9090 by default. If you want to listen to a different port use the <code>quarkus.http.port</code> property to specify a different port. If you&rsquo;re on macOS, run</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>halconsole-&lt;version&gt;-macos -Dquarkus.http.port<span class=o>=</span><span class=m>9123</span>
+</code></pre></div><p>Then add https://localhost:9123 as allowed origin.</p>
 <h2 id=container>Container</h2>
-<p>The standalone version of HAL is available as a container image at <a href=https://quay.io/repository/halconsole/hal><code>quay.io/halconsole/hal</code></a>. It&rsquo;s a native binary based on Quarkus and listens to port 9090 by default.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>docker run --publish 9090:9090 quay.io/halconsole/hal
-</code></pre></div><h2 id=github-pages>GitHub Pages</h2>
+<p>In addition, the standalone mode is also available as a container image at <a href=https://quay.io/repository/halconsole/hal><code>quay.io/halconsole/hal</code></a>. It&rsquo;s based on the native Linux binary and listens to port 9090 by default. Start the container using</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>docker run --publish 9123:9090 quay.io/halconsole/hal
+</code></pre></div><p>Then add https://localhost:9123 as allowed origin.</p>
+<h2 id=github-pages>GitHub Pages</h2>
 <p>The latest stable version of HAL is also available at GitHub:</p>
 <ol>
 <li>Add <a href=https://hal.github.io>https://hal.github.io</a> as allowed origin</li>
 <li>Open <a href=https://hal.github.io/console/>https://hal.github.io/console/</a></li>
 </ol>
-<p>GitHub pages are served from https so you need to secure the management interface as well. Please note that if you&rsquo;re using a self signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.</p>
+<p>GitHub Pages are served from https, so you need to secure the management interface as well. Please note that if you&rsquo;re using a self-signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.</p>
 </article>
 </main>
 </div>
