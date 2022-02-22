@@ -105,7 +105,7 @@ reload
 reload --host<span class=o>=</span>master
 </code></pre></div><p>The URL depends on how you launch the console. You can choose between one of the following options:</p>
 <h2 id=native-binary>Native Binary</h2>
-<p>The standalone version of HAL is available as native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest <a href=https://github.com/hal/console/releases>HAL release</a>. It&rsquo;s based on Quarkus and listens to port 9090 by default. If you want to listen to a different port use the <code>quarkus.http.port</code> property to specify a different port. If you&rsquo;re on macOS, run</p>
+<p>The standalone version of HAL is available as native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest <a href=https://github.com/hal/console/releases>HAL release</a>. It&rsquo;s based on Quarkus and listens to port 9090 by default. If you want to listen to a different port use the property <code>quarkus.http.port</code> to change the port. If you&rsquo;re on macOS, run</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>halconsole-&lt;version&gt;-macos -Dquarkus.http.port<span class=o>=</span><span class=m>9123</span>
 </code></pre></div><p>Then add https://localhost:9123 as allowed origin.</p>
 <h2 id=container>Container</h2>
@@ -118,7 +118,17 @@ reload --host<span class=o>=</span>master
 <li>Add <a href=https://hal.github.io>https://hal.github.io</a> as allowed origin</li>
 <li>Open <a href=https://hal.github.io/console/>https://hal.github.io/console/</a></li>
 </ol>
-<p>GitHub Pages are served from https, so you need to secure the management interface as well. Please note that if you&rsquo;re using a self-signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.</p>
+<p>GitHub Pages are served from https, so you need to <a href=https://docs.wildfly.org/26/WildFly_Elytron_Security.html#enable-one-way-ssltls-for-the-management-interfaces>secure the management interface</a> as well. Please note that if you&rsquo;re using a self-signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.</p>
+<div class="hal-callout hal-callout-info">
+<p>The link above points to the documentation for WildFly 26 (time of writing). To find the most recent version</p>
+<ol>
+<li>open <a href=https://docs.wildfly.org/>https://docs.wildfly.org/</a></li>
+<li>choose the latest version</li>
+<li>open the &ldquo;Security Guide&rdquo;</li>
+<li>go to section &ldquo;Configure SSL/TLS&rdquo; and</li>
+<li>find the subsection &ldquo;Enable One-way SSL/TLS for the Management Interfaces&rdquo;</li>
+</ol>
+</div>
 </article>
 </main>
 </div>

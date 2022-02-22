@@ -64,7 +64,11 @@ pre, code {
 }
 
 .hal-callout-warning {
-    border-left-color: #f0ad4e;
+    border-left-color: #F0AB00;
+}
+
+.hal-callout-info {
+    border-left-color: #2B9AF3;
 }
 
 .hal-callout p:last-child {

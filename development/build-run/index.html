@@ -117,8 +117,7 @@ Build & Run <span class=caret></span>
 <li><code>theme-wildfly</code>: Theme for WildFly</li>
 </ul>
 <h1 id=development-mode>Development Mode</h1>
-<p>The GWT development mode starts a local Jetty server. As a one time prerequisite you need to add the URL of the local
-Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
+<p>GWT comes with a so-called development mode. In this mode a local server is started and HAL is served from http://localhost:8888. As a one time prerequisite you need to add the URL of the local server as an allowed origin to your WildFly / JBoss EAP configuration:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
 reload
 </code></pre></div><p>resp.</p>
@@ -130,8 +129,11 @@ mvn gwt:devmode
 </code></pre></div><p>This will start the development mode. Wait until you see a message like</p>
 <pre tabindex=0><code>00:00:15,703 [INFO] Code server started in 15.12 s ms
 </code></pre><p>Then open <a href=http://localhost:8888/hal/dev.html>http://localhost:8888/hal/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href=/documentation/get-started/#standalone-mode>standalone mode</a>.</p>
-<p>The dev mode allows you to change code and see your changes simply by refreshing the browser. GWT will detect the
-modifications and only transpile the changed sources.</p>
+<p>The dev mode allows you to modify your Java code and see your changes simply by refreshing the browser. GWT will detect the modifications and only transpile the changed sources. All other resources like external JavaScript dependencies, stylesheets and most images are controlled and bundled by <a href=https://parceljs.org/>Parcel</a>. Parcel is called as part of the Maven build using the <a href=https://github.com/eirslett/frontend-maven-plugin>Maven Frontend Plugin</a>.</p>
+<p>If you want to make modifications to the resources controlled by Parcel. You can run Parcel&rsquo;s <code>watch</code> command in another shell:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>cd</span> app
+npm run watch
+</code></pre></div><p>This will detect changes to the resources controlled by Parcel and automatically reload your browser when these resources have been modified.</p>
 <h1 id=debug>Debug</h1>
 <div class=clearfix>
 <a href=/img/development/debug.png data-lightbox="L2ltZy9kZXZlbG9wbWVudC9kZWJ1Zy5wbmc="><img class="img-fluid float-lg-right ml-lg-3 mb-2 w-lg-50 border border-secondary" src=/img/development/debug.png alt></a>
