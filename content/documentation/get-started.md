@@ -39,7 +39,7 @@ The URL depends on how you launch the console. You can choose between one of the
 
 ## Native Binary
 
-The standalone version of HAL is available as native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest [HAL release](https://github.com/hal/console/releases). It's based on Quarkus and listens to port 9090 by default. If you want to listen to a different port use the `quarkus.http.port` property to specify a different port. If you're on macOS, run 
+The standalone version of HAL is available as native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest [HAL release](https://github.com/hal/console/releases). It's based on Quarkus and listens to port 9090 by default. If you want to listen to a different port use the property `quarkus.http.port` to change the port. If you're on macOS, run 
 
 ```shell
 halconsole-<version>-macos -Dquarkus.http.port=9123
@@ -64,4 +64,14 @@ The latest stable version of HAL is also available at GitHub:
 1. Add https://hal.github.io as allowed origin
 1. Open https://hal.github.io/console/
 
-GitHub Pages are served from https, so you need to secure the management interface as well. Please note that if you're using a self-signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.
+GitHub Pages are served from https, so you need to [secure the management interface](https://docs.wildfly.org/26/WildFly_Elytron_Security.html#enable-one-way-ssltls-for-the-management-interfaces) as well. Please note that if you're using a self-signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.
+
+{{< callout info >}}
+The link above points to the documentation for WildFly 26 (time of writing). To find the most recent version
+
+1. open https://docs.wildfly.org/
+1. choose the latest version
+1. open the "Security Guide" 
+1. go to section "Configure SSL/TLS" and 
+1. find the subsection "Enable One-way SSL/TLS for the Management Interfaces"
+{{< /callout >}}

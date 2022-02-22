@@ -43,8 +43,7 @@ The POM defines the following profiles:
 
 # Development Mode
 
-The GWT development mode starts a local Jetty server. As a one time prerequisite you need to add the URL of the local
-Jetty server as an allowed origin to your WildFly / JBoss EAP configuration:
+GWT comes with a so-called development mode. In this mode a local server is started and HAL is served from http://localhost:8888. As a one time prerequisite you need to add the URL of the local server as an allowed origin to your WildFly / JBoss EAP configuration:
 
 ```shell
 /core-service=management/management-interface=http-interface:list-add(name=allowed-origins,value=http://localhost:8888)
@@ -73,8 +72,16 @@ This will start the development mode. Wait until you see a message like
 
 Then open [http://localhost:8888/hal/dev.html](http://localhost:8888/hal/dev.html) in your browser and connect to your WildFly / JBoss EAP instance as described in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}).
 
-The dev mode allows you to change code and see your changes simply by refreshing the browser. GWT will detect the
-modifications and only transpile the changed sources.
+The dev mode allows you to modify your Java code and see your changes simply by refreshing the browser. GWT will detect the modifications and only transpile the changed sources. All other resources like external JavaScript dependencies, stylesheets and most images are controlled and bundled by [Parcel](https://parceljs.org/). Parcel is called as part of the Maven build using the [Maven Frontend Plugin](https://github.com/eirslett/frontend-maven-plugin). 
+
+If you want to make modifications to the resources controlled by Parcel. You can run Parcel's `watch` command in another shell:
+
+```shell
+cd app
+npm run watch
+```
+
+This will detect changes to the resources controlled by Parcel and automatically reload your browser when these resources have been modified. 
 
 # Debug
 
