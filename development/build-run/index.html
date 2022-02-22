@@ -93,7 +93,7 @@ Build & Run <span class=caret></span>
 </div>
 </aside><article class=hal-article>
 <header><h1 class=display-4>Build & Run</h1></header>
-<p>This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs.</p>
+<p>This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs. To get a better understanding of the build process, we recommend that you take a look at the <a href=/development/architecture/>architecture</a> as well.</p>
 <h1 id=build>Build</h1>
 <p>If not already done, clone the code from <a href=https://github.com/hal/console/>https://github.com/hal/console/</a> or <a href=https://github.com/hal/console/fork>fork</a> the repository into your own personal GitHub account.</p>
 <p>For a full build use</p>
@@ -102,8 +102,8 @@ Build & Run <span class=caret></span>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>mvn verify -P skip-gwt
 </code></pre></div><p>To build a HAL release ready to be used for WildFly or JBoss EAP use one of the following commands:</p>
 <ul>
-<li>WildFly: <code>mvn clean install -P prod,theme-wildfly</code></li>
-<li>JBoss EAP: <code>mvn clean install -P prod,theme-eap</code></li>
+<li>WildFly: <code>mvn verify -P prod,theme-wildfly</code></li>
+<li>JBoss EAP: <code>mvn verify -P prod,theme-eap</code></li>
 </ul>
 <h2 id=profiles>Profiles</h2>
 <p>The POM defines the following profiles:</p>
@@ -123,13 +123,13 @@ reload
 </code></pre></div><p>resp.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>/host<span class=o>=</span>master/core-service<span class=o>=</span>management/management-interface<span class=o>=</span>http-interface:list-add<span class=o>(</span><span class=nv>name</span><span class=o>=</span>allowed-origins,value<span class=o>=</span>http://localhost:8888<span class=o>)</span>
 reload --host<span class=o>=</span>master
-</code></pre></div><p>The main GWT application is located in the <code>app</code> folder. To run the console in dev mode use</p>
+</code></pre></div><p>To run the console in development mode, build and install all artifacts once using <code>mvn install</code> from the base directory. The GWT application is located in the <code>app</code> folder. Use</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>cd</span> app
 mvn gwt:devmode
-</code></pre></div><p>This will start the development mode. Wait until you see a message like</p>
+</code></pre></div><p>to start the development mode. Wait until you see a message like</p>
 <pre tabindex=0><code>00:00:15,703 [INFO] Code server started in 15.12 s ms
 </code></pre><p>Then open <a href=http://localhost:8888/hal/dev.html>http://localhost:8888/hal/dev.html</a> in your browser and connect to your WildFly / JBoss EAP instance as described in <a href=/documentation/get-started/#standalone-mode>standalone mode</a>.</p>
-<p>The dev mode allows you to modify your Java code and see your changes simply by refreshing the browser. GWT will detect the modifications and only transpile the changed sources. All other resources like external JavaScript dependencies, stylesheets and most images are controlled and bundled by <a href=https://parceljs.org/>Parcel</a>. Parcel is called as part of the Maven build using the <a href=https://github.com/eirslett/frontend-maven-plugin>Maven Frontend Plugin</a>.</p>
+<p>The development mode allows you to modify your Java code and see your changes simply by refreshing the browser. GWT will detect the modifications and only transpile the changed sources. All other resources like external JavaScript dependencies, stylesheets and most images are controlled and bundled by <a href=https://parceljs.org/>Parcel</a>. Parcel is called as part of the Maven build using the <a href=https://github.com/eirslett/frontend-maven-plugin><code>maven-frontend-plugin</code></a>.</p>
 <p>If you want to make modifications to the resources controlled by Parcel. You can run Parcel&rsquo;s <code>watch</code> command in another shell:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>cd</span> app
 npm run watch
