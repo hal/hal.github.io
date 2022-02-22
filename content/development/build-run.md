@@ -6,7 +6,7 @@ icon: "/img/tools.png"
 toc: true
 weight: 10
 ---
-This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs. 
+This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs. To get a better understanding of the build process, we recommend that you take a look at the [architecture]({{< relref "architecture.md" >}}) as well. 
 
 # Build
 
@@ -26,8 +26,8 @@ mvn verify -P skip-gwt
 
 To build a HAL release ready to be used for WildFly or JBoss EAP use one of the following commands:
 
-- WildFly: `mvn clean install -P prod,theme-wildfly`
-- JBoss EAP: `mvn clean install -P prod,theme-eap`
+- WildFly: `mvn verify -P prod,theme-wildfly`
+- JBoss EAP: `mvn verify -P prod,theme-eap`
 
 ## Profiles
 
@@ -57,14 +57,14 @@ resp.
 reload --host=master
 ``` 
 
-The main GWT application is located in the `app` folder. To run the console in dev mode use
+To run the console in development mode, build and install all artifacts once using `mvn install` from the base directory. The GWT application is located in the `app` folder. Use
 
 ```shell
 cd app
 mvn gwt:devmode
 ```
 
-This will start the development mode. Wait until you see a message like
+to start the development mode. Wait until you see a message like
 
 ```
 00:00:15,703 [INFO] Code server started in 15.12 s ms
@@ -72,7 +72,7 @@ This will start the development mode. Wait until you see a message like
 
 Then open [http://localhost:8888/hal/dev.html](http://localhost:8888/hal/dev.html) in your browser and connect to your WildFly / JBoss EAP instance as described in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}).
 
-The dev mode allows you to modify your Java code and see your changes simply by refreshing the browser. GWT will detect the modifications and only transpile the changed sources. All other resources like external JavaScript dependencies, stylesheets and most images are controlled and bundled by [Parcel](https://parceljs.org/). Parcel is called as part of the Maven build using the [Maven Frontend Plugin](https://github.com/eirslett/frontend-maven-plugin). 
+The development mode allows you to modify your Java code and see your changes simply by refreshing the browser. GWT will detect the modifications and only transpile the changed sources. All other resources like external JavaScript dependencies, stylesheets and most images are controlled and bundled by [Parcel](https://parceljs.org/). Parcel is called as part of the Maven build using the [`maven-frontend-plugin`](https://github.com/eirslett/frontend-maven-plugin). 
 
 If you want to make modifications to the resources controlled by Parcel. You can run Parcel's `watch` command in another shell:
 
