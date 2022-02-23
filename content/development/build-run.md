@@ -8,6 +8,8 @@ weight: 10
 ---
 This page explains how to build, run and debug the console. We recommend to use Maven and the command line. This will work reliably across different environments and IDEs. To get a better understanding of the build process, we recommend that you take a look at the [architecture]({{< relref "architecture.md" >}}) as well. 
 
+All recent development happens in the branch `main`. There are additional [branches]({{< relref "/development/branches.md" >}}) mainly used for maintenance. 
+
 # Build
 
 If not already done, clone the code from https://github.com/hal/console/ or [fork](https://github.com/hal/console/fork) the repository into your own personal GitHub account.
