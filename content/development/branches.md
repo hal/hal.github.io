@@ -8,7 +8,7 @@ weight: 40
 ---
 This page lists the branches of HAL and describes their relation to the WildFly and EAP major versions. If you want to see a full list of all HAL releases and a detailed changelog, please go to the [release notes]({{< relref "../releases" >}}). 
 
-The information on this page is important if you want to contribute to HAL. Especially if you like to backport an issue or want to submit a PR for maintenance. 
+The information on this page is important if you want to [contribute]({{< relref "/documentation/contribute.md" >}}) to HAL. Especially if you like to backport an issue or want to submit a PR for maintenance. 
 
 | Branch   | Description                                                                                                                          |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------|
