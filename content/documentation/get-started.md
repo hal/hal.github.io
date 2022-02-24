@@ -11,15 +11,19 @@ The HAL management console is part of every WildFly and JBoss EAP installation. 
 # Standalone Mode
 
 {{< imgflow src="/img/documentation/connect.png" float="right" >}}
-Besides that you can run the console on its own aka *standalone mode*. HAL is a RIA with no server side dependencies. When run on its own, HAL will show a dialog when it's started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They're stored in the browser local storage and survive a browser restart. 
+Besides that you can run the console on its own aka *standalone mode*. HAL is a single page application ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) without any server side dependencies. When run on its own, HAL will show a dialog when it's started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They're stored in the browser local storage and survive a browser restart. 
 
 If you want to skip the connection dialog and connect to a previously defined endpoint, use the `connect` request parameter. If the console runs on port 9090, you'd use a URL like http://localhost:9090/?connect=Development.
 
-If you want to connect to a URL not stored by name, you can also provide the URL of the management endpoint to the `connect` parameter like in http://localhost:9090/?connect=http://localhost:9990.
+If you want to connect to a URL not stored by name, you can also provide the URL of the management endpoint directly to the `connect` parameter like in http://localhost:9090/?connect=http://localhost:9990.
 
 The standalone mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore, you can always use the latest HAL version.
 
-There are different ways to use the standalone mode. All of them require to configure the allowed origins of the http(s) management endpoint:
+## Prerequisites
+
+The console uses the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to talk to the management endpoint of a running WildFly instance. When the console is started on its own, the origins of HAL and WildFly are different, and we need to tell WildFly that HAL is allowed to make requests to the management endpoint (see [CORS policies](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) for more details).
+
+To do this we can add URLs as allowed origins to the http(s) management endpoint. Open the WildFly CLI and execute the following command
 {{</ imgflow >}}
 
 **Standalone Mode**
@@ -35,31 +39,33 @@ reload
 reload --host=master
 ``` 
 
-The URL depends on how you launch the console. You can choose between one of the following options:
+The URL depends on how you launch the console.
+
+If you don't want to bother with configuring URLs, use one of the images from [quay.io/halconsole/wildfly](https://quay.io/repository/halconsole/wildfly) or the scripts provided by [github.com/hal/wildfly](https://github.com/hal/wildfly). You get WildFly containers for each major version with preconfigured allowed origins ready to be used with the options below.
 
 ## Native Binary
 
-The standalone version of HAL is available as native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest [HAL release](https://github.com/hal/console/releases). It's based on Quarkus and listens to port 9090 by default. If you want to listen to a different port use the property `quarkus.http.port` to change the port. If you're on macOS, run 
+HAL is available as a native binary for Linux, macOS and Windows. You can download the native binary for your platform from the latest [HAL release](https://github.com/hal/console/releases). If you're on macOS, run
 
 ```shell
-halconsole-<version>-macos -Dquarkus.http.port=9123
+halconsole-<version>-macos
 ```
 
-Then add https://localhost:9123 as allowed origin.
+The native binary listens to port 9090 by default. If you want to listen to a different port use `-Dquarkus.http.port=<port>` to change the port. Then add https://localhost:<port> as allowed origin.
 
 ## Container
 
-In addition, the standalone mode is also available as a container image at [`quay.io/halconsole/hal`](https://quay.io/repository/halconsole/hal). It's based on the native Linux binary and listens to port 9090 by default. Start the container using 
+Another option is to use the container image from [quay.io/halconsole/hal](https://quay.io/repository/halconsole/hal). Start the container using
 
 ```shell
-docker run --publish 9123:9090 quay.io/halconsole/hal
+docker run quay.io/halconsole/hal
 ```
 
-Then add https://localhost:9123 as allowed origin. 
+The container publishes port 9090 by default. If you want to listen to a different port, use `--publish <port>:9090`. Then add https://localhost:<port> as allowed origin.
 
-## GitHub Pages
+## Online
 
-The latest stable version of HAL is also available at GitHub:
+Finally, the latest stable version of HAL is also available at GitHub:
 
 1. Add https://hal.github.io as allowed origin
 1. Open https://hal.github.io/console/
@@ -71,7 +77,7 @@ The link above points to the documentation for WildFly 26 (time of writing). To 
 
 1. open https://docs.wildfly.org/
 1. choose the latest version
-1. open the "Security Guide" 
-1. go to section "Configure SSL/TLS" and 
+1. open the "Security Guide"
+1. go to section "Configure SSL/TLS" and
 1. find the subsection "Enable One-way SSL/TLS for the Management Interfaces"
 {{< /callout >}}
