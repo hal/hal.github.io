@@ -35,7 +35,7 @@ To build a HAL release ready to be used for WildFly or JBoss EAP use one of the 
 
 The POM defines the following profiles:
 
-- `native`: Used to build the native binary for the standalone mode
+- `native`: Used to build the native binary for the [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}})
 - `prod`: Activates GWT settings for the production build
 - `release`: Builds and signs source and JavaDoc JARs
 - `skip-gwt`: Skips GWT compilation
