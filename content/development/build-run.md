@@ -40,7 +40,7 @@ The POM defines the following profiles:
 - `release`: Builds and signs source and JavaDoc JARs
 - `skip-gwt`: Skips GWT compilation
 - `theme-eap`: Theme for JBoss EAP
-- `theme-hal`: Theme for HAL standalone
+- `theme-hal`: Theme for HAL [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}})
 - `theme-wildfly`: Theme for WildFly
 
 # Development Mode
