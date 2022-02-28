@@ -51,7 +51,7 @@ The HTTP Management Interface view
 
 Click on the button `Enable SSL` located on the right of the screen. This will display the following modal dialog, for you to choose the options:
 
-> The mutual authentication, enabled a trust relationship between the browser client and the https management endpoint. You must provide a client certificate for this to work.
+> The mutual authentication, enabled a trust relationship between the browser client and the https interface endpoint. You must provide a client certificate for this to work.
 
 Then you must select which strategy related to the certificate store, the description is self explanatory.
 

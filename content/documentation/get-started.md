@@ -11,19 +11,27 @@ The HAL management console is part of every WildFly and JBoss EAP installation. 
 # Standalone Mode
 
 {{< imgflow src="/img/documentation/connect.png" float="right" >}}
-Besides that you can run the console on its own aka *standalone mode*. HAL is a single page application ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) without any server side dependencies. When run on its own, HAL will show a dialog when it's started. You have to provide the URL of the management endpoint you want to connect to. This is typically the one which uses port 9990. You can add as many endpoints as you want. They're stored in the browser local storage and survive a browser restart. 
+You can run the console on its own aka *standalone mode*. This mode starts a local web server and serves HAL on its own without being part of a WildFly installation. HAL is "just" a single page application ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) without any server side dependencies. The only requirement is a management interface of a running WIldFly instance.
 
-If you want to skip the connection dialog and connect to a previously defined endpoint, use the `connect` request parameter. If the console runs on port 9090, you'd use a URL like http://localhost:9090/?connect=Development.
+When run on its own, HAL will show a dialog when it's started. You have to provide the URL of the management interface you want to connect to. This is typically the one which uses port 9990. You can add as many interfaces as you want. They're stored in the browser local storage and survive a browser restart. 
 
-If you want to connect to a URL not stored by name, you can also provide the URL of the management endpoint directly to the `connect` parameter like in http://localhost:9090/?connect=http://localhost:9990.
+If you want to skip the connection dialog and connect to a previously defined interface, use the `connect` request parameter. If the console runs on port 9090, you'd use a URL like http://localhost:9090/?connect=Development.
 
-The standalone mode allows you to manage different WildFly and / or JBoss EAP instances using the same console. Furthermore, you can always use the latest HAL version.
+If you want to connect to an interface not stored by name, you can also provide the URL of the management interface directly to the `connect` parameter like in http://localhost:9090/?connect=http://localhost:9990.
+
+The standalone mode has some advantages over the traditional mode:
+
+- Use the latest version  
+  You can use the latest HAL version with the latest features and bugfixes even before the version is bundled into the next WildFly major release. Check the GitHub [repository](https://github.com/hal/console) for the latest [release](https://github.com/hal/console/releases).
+
+- One console to rule them all  
+  You can use one console to connect to arbitrary WildFly instances. The console can manage and store the connections in an internal registry.
 
 ## Prerequisites
 
-The console uses the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to talk to the management endpoint of a running WildFly instance. When the console is started on its own, the origins of HAL and WildFly are different, and we need to tell WildFly that HAL is allowed to make requests to the management endpoint (see [CORS policies](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) for more details).
+The console uses the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to talk to the management interface of a running WildFly instance. When the console is started on its own, the origins of HAL and WildFly are different, and we need to tell WildFly that HAL is allowed to make requests to the management interface (see [CORS policies](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) for more details).
 
-To do this we can add URLs as allowed origins to the http(s) management endpoint. Open the WildFly CLI and execute the following command
+To do this we can add URLs as allowed origins to the http(s) management interface. Open the WildFly CLI and execute the following command
 {{</ imgflow >}}
 
 **Standalone Mode**
@@ -51,7 +59,7 @@ HAL is available as a native binary for Linux, macOS and Windows. You can downlo
 halconsole-<version>-macos
 ```
 
-The native binary listens to port 9090 by default. If you want to listen to a different port use `-Dquarkus.http.port=<port>` to change the port. Then add https://localhost:<port> as allowed origin.
+The native binary listens to port 9090 by default. If you want to listen to a different port use `-Dquarkus.http.port=<port>` to change the port. Then add https://localhost:\<port\> as allowed origin.
 
 ## Container
 
@@ -61,7 +69,7 @@ Another option is to use the container image from [quay.io/halconsole/hal](https
 docker run quay.io/halconsole/hal
 ```
 
-The container publishes port 9090 by default. If you want to listen to a different port, use `--publish <port>:9090`. Then add https://localhost:<port> as allowed origin.
+The container publishes port 9090 by default. If you want to listen to a different port, use `--publish <port>:9090`. Then add https://localhost:\<port\> as allowed origin.
 
 ## Online
 
@@ -70,7 +78,7 @@ Finally, the latest stable version of HAL is also available at GitHub:
 1. Add https://hal.github.io as allowed origin
 1. Open https://hal.github.io/console/
 
-GitHub Pages are served from https, so you need to [secure the management interface](https://docs.wildfly.org/26/WildFly_Elytron_Security.html#enable-one-way-ssltls-for-the-management-interfaces) as well. Please note that if you're using a self-signed key store you might need to open the local management endpoint in the browser and accept the unsafe certificate once, before you can use it with HAL.
+GitHub Pages are served from https, so you need to [secure the management interface](https://docs.wildfly.org/26/WildFly_Elytron_Security.html#enable-one-way-ssltls-for-the-management-interfaces) as well. Please note that if you're using a self-signed key store you might need to open the local management interface in the browser and accept the unsafe certificate once, before you can use it with HAL.
 
 {{< callout info >}}
 The link above points to the documentation for WildFly 26 (time of writing). To find the most recent version

@@ -160,7 +160,7 @@ Flow.series(new FlowContext(Progress.NOOP), check, add).subscribe(new Outcome<Fl
 
 This section assumes you're familiar with the basic concepts of the WildFly management model. If not please read the [admin guide](https://docs.wildfly.org/Admin_Guide.html) in the WildFly documentation.
 
-The communication with the management endpoint, heavily relies on the [detyped management representation](https://docs.wildfly.org/Admin_Guide.html#Detyped_management_and_the_jboss-dmr_library) as defined in [JBoss DMR](https://github.com/jbossas/jboss-dmr). Due to restrictions in GWT (no threading, no IO) HAL comes with its own fork of JBoss DMR. It's a clone of the original code without all the pieces which don't make sense and don't work in GWT. 
+The communication with the management interface, heavily relies on the [detyped management representation](https://docs.wildfly.org/Admin_Guide.html#Detyped_management_and_the_jboss-dmr_library) as defined in [JBoss DMR](https://github.com/jbossas/jboss-dmr). Due to restrictions in GWT (no threading, no IO) HAL comes with its own fork of JBoss DMR. It's a clone of the original code without all the pieces which don't make sense and don't work in GWT. 
 
 HAL adds a thin layer of more strongly typed classes on top of that. They all extend from `org.jboss.hal.dmr.ModelNode` so you don't lose the flexibility, but are more specific so that the the code becomes more readable. 
 
@@ -205,7 +205,7 @@ dispatcher.execute(operation, result -> {
 ```
 
 **Dispatcher**\
-Executes operations against the management endpoint. You can execute normal and composite operations. There are signatures which use callbacks and RX variants which return `Single<CompositeResult>` resp. `Single<ModelNode>`. 
+Executes operations against the management interface. You can execute normal and composite operations. There are signatures which use callbacks and RX variants which return `Single<CompositeResult>` resp. `Single<ModelNode>`. 
 
 ```java
 dispatcher.execute(new Operation.Builder(ResourceAddress.root(), READ_RESOURCE_OPERATION).build())

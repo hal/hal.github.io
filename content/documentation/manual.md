@@ -22,8 +22,8 @@ The header shows the current [theme]({{< relref "/documentation/concepts.md#head
   Shows whether there are unread messages. Click on the icon to open the notification drawer which lets you review and manage all unread notifications.
 - Current user \
   Shows the current user and its roles. If WildFly uses the [RBAC]({{< relref "/documentation/manual.md#rbac" >}}) provider and the current user is assigned to role SuperUser this section allows to run the console as a different role. 
-- Connect to management endpoint \
-  If HAL runs in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}) this section allows you to connect to a different management endpoint. 
+- Connect to management interface \
+  If HAL runs in [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}}) this section allows you to connect to a different management interface. 
 
 # Footer
 

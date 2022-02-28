@@ -39,7 +39,7 @@ In standalone mode, navigate to `Runtime -> Server -> Monitor -> Management Oper
 
 ## API Client
 
-The API client is any program to remotely connect to the Wildfly management endpoint.
+The API client is any program to remotely connect to the Wildfly management interface.
 
 * jboss-cli.sh
 * HAL
