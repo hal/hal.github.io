@@ -31,7 +31,7 @@ To build a HAL release ready to be used for WildFly or JBoss EAP use one of the 
 - WildFly: `mvn verify -P prod,theme-wildfly`
 - JBoss EAP: `mvn verify -P prod,theme-eap`
 
-To use such a build in a WildFly distribution, follow the following steps:
+To use such a release in a WildFly distribution, follow the these steps:
 
 1. Copy `app/target/hal-console-<version>-resources.jar` to `WILDFLY_HOME/modules/system/layers/base/org/jboss/as/console/main/`
 2. Edit `WILDFLY_HOME/modules/system/layers/base/org/jboss/as/console/main/module.xml`
