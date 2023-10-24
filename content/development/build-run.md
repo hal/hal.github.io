@@ -42,6 +42,7 @@ To use such a release in a WildFly distribution, follow the these steps:
 
 The POM defines the following profiles:
 
+- `i18n`: Builds the console with support for different languages
 - `native`: Used to build the native binary for the [standalone mode]({{< relref "/documentation/get-started.md#standalone-mode" >}})
 - `prod`: Activates GWT settings for the production build
 - `release`: Builds and signs source and JavaDoc JARs
